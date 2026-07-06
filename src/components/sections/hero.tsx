@@ -25,10 +25,15 @@ export function Hero() {
       <div className="relative z-[1] mx-auto flex max-w-4xl flex-col items-start gap-6">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          animate={{ opacity: 1, y: [0, -4, 0] }}
+          transition={{
+            opacity: { duration: 0.5 },
+            y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+          }}
         >
-          <Chip variant="assist">Senior Product Design Leader</Chip>
+          <Chip variant="assist" glass>
+            Senior Product Design Leader
+          </Chip>
         </motion.div>
 
         <KineticText

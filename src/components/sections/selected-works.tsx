@@ -28,12 +28,17 @@ export function SelectedWorks() {
                     padding={false}
                     className="flex h-full flex-col gap-4 overflow-hidden"
                   >
-                    <ImageSequenceViewer
-                      frames={project.frames}
-                      poster={project.poster}
-                      alt={`${project.name} preview`}
-                      className="aspect-[16/10] rounded-none"
-                    />
+                    <div className="relative overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.03]">
+                      <ImageSequenceViewer
+                        frames={project.frames}
+                        poster={project.poster}
+                        alt={`${project.name} preview`}
+                        className="aspect-[16/10] rounded-none"
+                      />
+                      <span className="glass pointer-events-none absolute left-3 top-3 rounded-m3-sm px-3 py-1.5 text-label-md text-on-surface">
+                        {project.category}
+                      </span>
+                    </div>
 
                     <div className="flex flex-1 flex-col gap-4 p-6 pt-2">
                       <div className="flex items-start justify-between gap-2">

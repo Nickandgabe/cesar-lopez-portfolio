@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
+import { Reveal } from "@/components/motion/reveal";
+import { Magnetic } from "@/components/motion/magnetic";
 
 function LinkedInIcon() {
   return (
@@ -15,7 +17,7 @@ export function Footer() {
   return (
     <footer id="contact" className="border-t border-outline-variant bg-surface-container-low">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="font-display text-headline-md text-on-surface">Let&apos;s build something unified.</h2>
             <p className="mt-2 max-w-md text-body-lg text-on-surface-variant">
@@ -25,24 +27,28 @@ export function Footer() {
           </div>
 
           <div className="flex gap-3">
-            <Link
-              href="mailto:hello@example.com"
-              className="state-layer inline-flex h-12 w-12 items-center justify-center rounded-m3-full border border-outline text-on-surface-variant"
-              aria-label="Email"
-            >
-              <Mail size={20} aria-hidden />
-            </Link>
-            <Link
-              href="https://www.linkedin.com"
-              className="state-layer inline-flex h-12 w-12 items-center justify-center rounded-m3-full border border-outline text-on-surface-variant"
-              aria-label="LinkedIn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkedInIcon />
-            </Link>
+            <Magnetic strength={0.4}>
+              <Link
+                href="mailto:hello@example.com"
+                className="state-layer glass inline-flex h-12 w-12 items-center justify-center rounded-m3-full text-on-surface-variant"
+                aria-label="Email"
+              >
+                <Mail size={20} aria-hidden />
+              </Link>
+            </Magnetic>
+            <Magnetic strength={0.4}>
+              <Link
+                href="https://www.linkedin.com"
+                className="state-layer glass inline-flex h-12 w-12 items-center justify-center rounded-m3-full text-on-surface-variant"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon />
+              </Link>
+            </Magnetic>
           </div>
-        </div>
+        </Reveal>
 
         <p className="mt-12 text-body-sm text-on-surface-variant">
           © {year} Cesar Lopez. Built with Next.js, Tailwind CSS, and Material Design 3 principles.

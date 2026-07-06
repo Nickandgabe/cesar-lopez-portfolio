@@ -15,8 +15,11 @@ export function ValueProps() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {valueProps.map(({ icon: Icon, title, description }, i) => (
             <Reveal key={title} delay={i * 0.08}>
-              <Card variant="elevated" className="flex h-full flex-col gap-4">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-m3-md bg-primary-container text-on-primary-container">
+              <Card
+                variant="elevated"
+                className="group flex h-full flex-col gap-4 transition-transform duration-300 ease-out hover:-translate-y-1.5"
+              >
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-m3-md bg-primary-container text-on-primary-container transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110">
                   <Icon size={22} aria-hidden />
                 </span>
                 <h3 className="font-display text-title-lg text-on-surface">{title}</h3>

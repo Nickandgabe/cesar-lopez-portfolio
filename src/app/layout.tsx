@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Roboto_Serif, Roboto_Flex } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { MotionConfig } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const robotoSerif = Roboto_Serif({
+  variable: "--font-roboto-serif",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
+  axes: ["opsz"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const robotoFlex = Roboto_Flex({
+  variable: "--font-roboto-flex",
   subsets: ["latin"],
 });
 
@@ -52,7 +52,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${robotoSerif.variable} ${robotoFlex.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-on-background">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

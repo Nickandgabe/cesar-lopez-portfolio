@@ -4,7 +4,8 @@
   Design system: Material Design 3 role/token structure (color roles,
   elevation, shape, state layers, type scale) with a custom brand identity —
   "Blueprint" indigo primary + warm copper tertiary — instead of stock M3
-  Google colors. Fraunces (display) + Inter (UI/body) replace default Roboto.
+  Google colors. Typography uses the Roboto superfamily: Roboto Serif for
+  display, Roboto Flex (variable) for UI/body — Google's own Material type family.
 */
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -126,8 +127,8 @@
 
 @theme inline {
   /* Fonts */
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-roboto-serif);
+  --font-sans: var(--font-roboto-flex);
 
   /* Color roles: generates bg-, text-, and border- utilities */
   --color-primary: var(--md-primary);
@@ -286,6 +287,15 @@
 
   .state-layer:active::after {
     opacity: var(--state-pressed);
+  }
+
+  /* Glassmorphism surface: frosted, translucent panel over whatever sits
+     behind it (grid background, gradient stage, page content on scroll). */
+  .glass {
+    background: color-mix(in srgb, var(--md-surface) 55%, transparent);
+    border: 1px solid color-mix(in srgb, var(--md-outline-variant) 55%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 }
 
