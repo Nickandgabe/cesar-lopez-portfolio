@@ -9,7 +9,7 @@ steps:
     args:
       - push
       - us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/cesar-lopez-portfolio:$COMMIT_SHA
-  - name: gcr.io/google.com/cloudsdk/cloud-sdk
+  - name: gcr.io/cloud-builders/gcloud
     entrypoint: gcloud
     args:
       - run

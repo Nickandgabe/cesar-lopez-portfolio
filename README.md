@@ -15,13 +15,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deploy to Google Cloud Run
 
+Pushes to `main` auto-deploy via a Cloud Build trigger (see `cloudbuild.yaml`
+and `PROJECT_LOG.md` for the full CI/CD setup). To deploy manually instead:
+
 ```bash
-gcloud builds submit --tag gcr.io/PROJECT_ID/portfolio
-gcloud run deploy portfolio \
-  --image gcr.io/PROJECT_ID/portfolio \
-  --platform managed \
-  --region us-central1 \
-  --allow-unauthenticated
+gcloud run deploy cesar-lopez-portfolio --source . --region=us-central1
 ```
 
 The `Dockerfile` uses the Next.js `standalone` output (enabled in `next.config.ts`) so the container image only ships the production server and its resolved dependencies.
+
+See `PROJECT_LOG.md` for full project context, design system notes, and open items.
