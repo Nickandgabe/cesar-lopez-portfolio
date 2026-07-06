@@ -14,6 +14,10 @@ export type Project = {
   approach: string[];
   outcome: string;
   metrics?: { label: string; value: string }[];
+  /** Ordered frame URLs for a drag-to-rotate 360 view (image sequence). Optional — falls back to poster/placeholder. */
+  frames?: string[];
+  /** Static hero/preview image, used when no frame sequence is set. */
+  poster?: string;
 };
 
 export const projects: Project[] = [

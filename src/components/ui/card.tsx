@@ -12,14 +12,23 @@ type Variant = keyof typeof VARIANT_CLASSES;
 type CardProps = HTMLAttributes<HTMLDivElement> & {
   variant?: Variant;
   interactive?: boolean;
+  padding?: boolean;
   children: ReactNode;
 };
 
-export function Card({ variant = "elevated", interactive, className, children, ...props }: CardProps) {
+export function Card({
+  variant = "elevated",
+  interactive,
+  padding = true,
+  className,
+  children,
+  ...props
+}: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-m3-lg p-6 transition-shadow duration-200",
+        "rounded-m3-lg transition-shadow duration-200",
+        padding && "p-6",
         VARIANT_CLASSES[variant],
         interactive && "state-layer cursor-pointer hover:shadow-elevation-2",
         className,
