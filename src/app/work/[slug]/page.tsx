@@ -5,6 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import { Chip } from "@/components/ui/chip";
 import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
+import { ComingSoon } from "@/components/sections/coming-soon";
+import { MAINTENANCE_MODE } from "@/config/site-mode";
 import { projects, getProjectBySlug } from "@/content/projects";
 
 type PageProps = {
@@ -27,6 +29,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectPage({ params }: PageProps) {
+  if (MAINTENANCE_MODE) return <ComingSoon />;
+
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 

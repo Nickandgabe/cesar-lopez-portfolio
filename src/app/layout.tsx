@@ -5,6 +5,7 @@ import { MotionConfig } from "framer-motion";
 import { SmoothScrollProvider } from "@/components/motion/smooth-scroll-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { MAINTENANCE_MODE } from "@/config/site-mode";
 import "./globals.css";
 
 const robotoSerif = Roboto_Serif({
@@ -42,6 +43,7 @@ export const metadata: Metadata = {
     description:
       "Transforming massive enterprise complexity into unified, highly scalable digital ecosystems.",
   },
+  ...(MAINTENANCE_MODE && { robots: { index: false, follow: false } }),
 };
 
 export default function RootLayout({
@@ -59,9 +61,15 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <MotionConfig reducedMotion="user">
             <SmoothScrollProvider>
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Footer />
+              {MAINTENANCE_MODE ? (
+                <main className="flex-1">{children}</main>
+              ) : (
+                <>
+                  <Navbar />
+                  <main className="flex-1">{children}</main>
+                  <Footer />
+                </>
+              )}
             </SmoothScrollProvider>
           </MotionConfig>
         </ThemeProvider>
