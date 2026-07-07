@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Serif, Roboto_Flex } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { MotionConfig } from "framer-motion";
+import { SmoothScrollProvider } from "@/components/motion/smooth-scroll-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
@@ -57,9 +58,11 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-background text-on-background">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <MotionConfig reducedMotion="user">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <SmoothScrollProvider>
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </SmoothScrollProvider>
           </MotionConfig>
         </ThemeProvider>
       </body>

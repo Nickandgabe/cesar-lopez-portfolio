@@ -24,7 +24,6 @@ function Word({ word, index, total, progress }: WordProps): ReactNode {
   return (
     <motion.span style={{ opacity }} className="inline-block">
       {word}
-      {index < total - 1 ? " " : ""}
     </motion.span>
   );
 }
@@ -42,7 +41,10 @@ export function ScrollRevealText({ text, className }: ScrollRevealTextProps) {
   return (
     <p ref={ref} className={className}>
       {words.map((word, i) => (
-        <Word key={`${word}-${i}`} word={word} index={i} total={words.length} progress={scrollYProgress} />
+        <span key={`${word}-${i}`}>
+          <Word word={word} index={i} total={words.length} progress={scrollYProgress} />
+          {i < words.length - 1 ? " " : ""}
+        </span>
       ))}
     </p>
   );

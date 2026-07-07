@@ -4,34 +4,36 @@ import { Card } from "@/components/ui/card";
 import { Chip } from "@/components/ui/chip";
 import { Reveal } from "@/components/motion/reveal";
 import { TiltCard } from "@/components/motion/tilt-card";
-import { ImageSequenceViewer } from "@/components/motion/image-sequence-viewer";
+import { ProjectMedia } from "@/components/motion/project-media";
+import { FlagshipProjectShowcase } from "@/components/sections/flagship-showcase";
 import { projects } from "@/content/projects";
 
 export function SelectedWorks() {
+  const flagshipProject = projects.find((p) => p.flagship);
+  const otherProjects = projects.filter((p) => !p.flagship);
+
   return (
-    <section id="work" className="border-t border-outline-variant px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="work" className="border-t border-outline-variant">
+      <div className="mx-auto max-w-6xl px-6 pt-24">
         <Reveal>
           <h2 className="font-display text-headline-md text-on-surface md:text-headline-lg">
             Selected Works
           </h2>
         </Reveal>
+      </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {projects.map((project, i) => (
+      {flagshipProject && <FlagshipProjectShowcase project={flagshipProject} />}
+
+      <div className="mx-auto max-w-6xl px-6 py-24">
+        <div className="grid gap-6 lg:grid-cols-2">
+          {otherProjects.map((project, i) => (
             <Reveal key={project.slug} delay={i * 0.1}>
               <TiltCard className="group h-full rounded-m3-lg">
                 <Link href={`/work/${project.slug}`} className="block h-full">
-                  <Card
-                    variant={project.flagship ? "elevated" : "outlined"}
-                    interactive
-                    padding={false}
-                    className="flex h-full flex-col gap-4 overflow-hidden"
-                  >
+                  <Card variant="outlined" interactive padding={false} className="flex h-full flex-col gap-4 overflow-hidden">
                     <div className="relative overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.03]">
-                      <ImageSequenceViewer
-                        frames={project.frames}
-                        poster={project.poster}
+                      <ProjectMedia
+                        project={project}
                         alt={`${project.name} preview`}
                         className="aspect-[16/10] rounded-none"
                       />
@@ -42,11 +44,9 @@ export function SelectedWorks() {
 
                     <div className="flex flex-1 flex-col gap-4 p-6 pt-2">
                       <div className="flex items-start justify-between gap-2">
-                        {project.flagship && (
-                          <Chip variant="assist" className="border-transparent bg-tertiary-container text-on-tertiary-container">
-                            Flagship
-                          </Chip>
-                        )}
+                        <p className="text-label-lg text-on-surface-variant">
+                          {project.category} · {project.year}
+                        </p>
                         <ArrowUpRight
                           size={20}
                           aria-hidden
@@ -54,14 +54,7 @@ export function SelectedWorks() {
                         />
                       </div>
 
-                      <div>
-                        <p className="text-label-lg text-on-surface-variant">
-                          {project.category} · {project.year}
-                        </p>
-                        <h3 className="mt-1 font-display text-title-lg text-on-surface">
-                          {project.name}
-                        </h3>
-                      </div>
+                      <h3 className="font-display text-title-lg text-on-surface">{project.name}</h3>
 
                       <p className="text-body-md text-on-surface-variant">{project.summary}</p>
 

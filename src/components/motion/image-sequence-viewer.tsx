@@ -5,6 +5,7 @@ import type { PointerEvent } from "react";
 import Image from "next/image";
 import { RotateCw } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { GradientPlaceholder } from "@/components/motion/gradient-placeholder";
 
 type ImageSequenceViewerProps = {
   /** Ordered frame URLs captured around the subject — drag horizontally to scrub through them. */
@@ -82,16 +83,5 @@ export function ImageSequenceViewer({ frames = [], poster, alt, className }: Ima
     );
   }
 
-  return (
-    <div
-      className={cn(
-        "relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-m3-lg bg-gradient-to-br from-primary-container via-surface-container-highest to-tertiary-container",
-        className,
-      )}
-      role="img"
-      aria-label={alt}
-    >
-      <span className="text-label-md text-on-surface-variant">Visual coming soon</span>
-    </div>
-  );
+  return <GradientPlaceholder seed={alt} label={alt} className={className} />;
 }

@@ -40,14 +40,15 @@ export function KineticText({ text, className, delay = 0, as = "h1" }: KineticTe
       className={cn("[perspective:1000px]", className)}
     >
       {words.map((w, i) => (
-        <motion.span
-          key={`${w}-${i}`}
-          variants={word}
-          className="inline-block [transform-style:preserve-3d] will-change-transform"
-        >
-          {w}
-          {i < words.length - 1 ? " " : ""}
-        </motion.span>
+        <span key={`${w}-${i}`}>
+          <motion.span
+            variants={word}
+            className="inline-block [transform-style:preserve-3d] will-change-transform"
+          >
+            {w}
+          </motion.span>
+          {i < words.length - 1 ? " " : ""}
+        </span>
       ))}
     </MotionTag>
   );

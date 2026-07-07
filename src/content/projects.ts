@@ -16,6 +16,8 @@ export type Project = {
   metrics?: { label: string; value: string }[];
   /** Ordered frame URLs for a drag-to-rotate 360 view (image sequence). Optional — falls back to poster/placeholder. */
   frames?: string[];
+  /** Looping muted background clip for the media stage. Optional — falls back to poster/frames/placeholder via ProjectMedia's priority chain. */
+  video?: string;
   /** Static hero/preview image, used when no frame sequence is set. */
   poster?: string;
 };

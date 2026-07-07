@@ -9,6 +9,11 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // resolvedTheme can already be defined on the client's first render (read
+  // synchronously from localStorage) while the server always renders it
+  // undefined — deferring to an effect keeps the first client render
+  // identical to the server's, avoiding a hydration mismatch.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   const isDark = mounted && resolvedTheme === "dark";

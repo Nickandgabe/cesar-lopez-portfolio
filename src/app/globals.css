@@ -312,6 +312,30 @@
   animation: marquee var(--marquee-duration, 24s) linear infinite;
 }
 
+@keyframes gradient-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-drift {
+  animation: gradient-drift 12s ease-in-out infinite;
+}
+
+/* Lenis smooth-scroll companion rules — see SmoothScrollProvider. */
+html.lenis,
+html.lenis body {
+  min-height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
