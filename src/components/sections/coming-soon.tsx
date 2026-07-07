@@ -5,7 +5,16 @@ import { Mail } from "lucide-react";
 import { Chip } from "@/components/ui/chip";
 import { CursorSpotlight } from "@/components/motion/cursor-spotlight";
 import { KineticText } from "@/components/motion/kinetic-text";
+import { Magnetic } from "@/components/motion/magnetic";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor" aria-hidden focusable="false">
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+    </svg>
+  );
+}
 
 export function ComingSoon() {
   const year = new Date().getFullYear();
@@ -52,14 +61,28 @@ export function ComingSoon() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6, ease: [0.2, 0, 0, 1] }}
+          className="flex flex-wrap items-center gap-4"
         >
-          <a
-            href="mailto:hello@example.com"
-            className="state-layer inline-flex items-center gap-2 rounded-m3-full bg-primary px-6 py-2.5 text-label-lg font-medium text-on-primary"
-          >
-            <Mail size={18} aria-hidden />
-            Get in touch
-          </a>
+          <Magnetic>
+            <a
+              href="mailto:hello@example.com"
+              className="state-layer inline-flex items-center gap-2 rounded-m3-full bg-primary px-6 py-2.5 text-label-lg font-medium text-on-primary"
+            >
+              <Mail size={18} aria-hidden />
+              Get in touch
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="state-layer inline-flex items-center gap-2 rounded-m3-full border border-outline px-6 py-2.5 text-label-lg font-medium text-on-surface"
+            >
+              <LinkedInIcon />
+              LinkedIn
+            </a>
+          </Magnetic>
         </motion.div>
       </main>
 
