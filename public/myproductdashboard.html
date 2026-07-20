@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Products Hub</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f7f7f8;
+    --card: #ffffff;
+    --border: #e4e4e7;
+    --text: #18181b;
+    --muted: #71717a;
+    --accent: #4f46e5;
+    --accent-light: #eef2ff;
+    --live: #16a34a;
+    --dev: #d97706;
+    --planning: #64748b;
+    --paused: #dc2626;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 1px 8px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 28px 32px 60px;
+  }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin: 0 0 22px;
+  }
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .stats {
+    display: flex;
+    gap: 10px;
+    margin-right: auto;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 12.5px;
+    color: var(--muted);
+    box-shadow: var(--shadow);
+  }
+  .stat b { color: var(--text); font-size: 14px; }
+  select, input[type=text] {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 13px;
+    background: var(--card);
+    color: var(--text);
+  }
+  button {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: white; }
+  .btn-primary:hover { background: #4338ca; }
+  .btn-ghost { background: var(--card); border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { background: #f4f4f5; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform .08s ease, box-shadow .08s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .card-name { font-size: 16px; font-weight: 700; }
+  .card-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .02em; }
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-live { background: #dcfce7; color: var(--live); }
+  .badge-dev { background: #fef3c7; color: var(--dev); }
+  .badge-planning { background: #e2e8f0; color: var(--planning); }
+  .badge-paused { background: #fee2e2; color: var(--paused); }
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.4;
+    min-height: 18px;
+  }
+  .card-desc.empty { font-style: italic; color: #b0b0b6; }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .card-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .card-link:hover { text-decoration: underline; }
+  .add-card {
+    border: 2px dashed var(--border);
+    background: transparent;
+    box-shadow: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-weight: 600;
+    min-height: 140px;
+  }
+  .add-card:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  /* Modal */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+  .overlay.open { display: flex; }
+  .modal {
+    background: var(--card);
+    border-radius: 16px;
+    width: 520px;
+    max-width: 92vw;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 24px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  }
+  .modal h2 { margin: 0 0 16px; font-size: 18px; }
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 11px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: #fafafa;
+  }
+  .field textarea { resize: vertical; min-height: 70px; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: white;
+  }
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    gap: 10px;
+  }
+  .modal-actions .right { display: flex; gap: 8px; }
+  .danger { color: var(--paused); background: none; border: none; font-size: 12.5px; font-weight: 600; cursor: pointer; padding: 8px 4px; }
+  .danger:hover { text-decoration: underline; }
+  .meta-note {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-note {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 700px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<h1>Products Hub</h1>
+<p class="subtitle">Central view of everything you're running — click a card to update its status, description, links, and specs.</p>
+
+<div class="toolbar">
+  <div class="stats" id="stats"></div>
+  <select id="filterType">
+    <option value="">All types</option>
+    <option value="Own product">Own product</option>
+    <option value="Tool I use">Tool I use</option>
+  </select>
+  <select id="filterStatus">
+    <option value="">All statuses</option>
+    <option value="Live">Live</option>
+    <option value="In development">In development</option>
+    <option value="Planning">Planning</option>
+    <option value="Paused">Paused</option>
+  </select>
+  <button class="btn-ghost" id="exportBtn">Export JSON</button>
+  <button class="btn-ghost" id="importBtn">Import JSON</button>
+  <input type="file" id="importFile" accept="application/json" style="display:none">
+</div>
+
+<div class="grid" id="grid"></div>
+
+<p class="footer-note">
+  This hub is stored locally in this artifact and updates whenever you edit a card — nothing is deleted until you confirm it.
+  If any of these projects expose a public status or API endpoint later, this can be wired up to pull status automatically instead of manual updates.
+</p>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h2 id="modalTitle">Edit product</h2>
+    <div class="field">
+      <label>Name</label>
+      <input type="text" id="f-name">
+    </div>
+    <div class="field">
+      <label>Type</label>
+      <select id="f-type">
+        <option>Own product</option>
+        <option>Tool I use</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Status</label>
+      <select id="f-status">
+        <option>Live</option>
+        <option>In development</option>
+        <option>Planning</option>
+        <option>Paused</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>One-line description</label>
+      <input type="text" id="f-desc" placeholder="What is this / what does it do?">
+    </div>
+    <div class="field">
+      <label>Link / URL</label>
+      <input type="text" id="f-url" placeholder="https://...">
+    </div>
+    <div class="field">
+      <label>Specs / notes</label>
+      <textarea id="f-specs" placeholder="Structure, stack, key decisions, roadmap notes..."></textarea>
+    </div>
+    <div class="meta-note" id="metaNote"></div>
+    <div class="modal-actions">
+      <button class="danger" id="deleteBtn">Delete</button>
+      <div class="right">
+        <button class="btn-ghost" id="cancelBtn">Cancel</button>
+        <button class="btn-primary" id="saveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'products_hub_data_v1';
+
+const defaults = [
+  { id: cryptoId(), name: 'Nexus', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
+  { id: cryptoId(), name: 'Nerve', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
+  { id: cryptoId(), name: 'Swap Zone', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
+  { id: cryptoId(), name: 'Together', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
+  { id: cryptoId(), name: 'My Portfolio', type: 'Own product', status: 'Live', desc: '', url: '', specs: '', updated: null },
+];
+
+function cryptoId() {
+  return 'p_' + Math.random().toString(36).slice(2, 10);
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return defaults;
+}
+
+function save(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+let data = load();
+let editingId = null;
+
+const grid = document.getElementById('grid');
+const statsEl = document.getElementById('stats');
+const overlay = document.getElementById('overlay');
+const filterType = document.getElementById('filterType');
+const filterStatus = document.getElementById('filterStatus');
+
+function statusBadgeClass(status) {
+  return {
+    'Live': 'badge-live',
+    'In development': 'badge-dev',
+    'Planning': 'badge-planning',
+    'Paused': 'badge-paused'
+  }[status] || 'badge-planning';
+}
+
+function fmtDate(iso) {
+  if (!iso) return 'never updated';
+  const d = new Date(iso);
+  return 'updated ' + d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function render() {
+  const t = filterType.value;
+  const s = filterStatus.value;
+  const filtered = data.filter(p => (!t || p.type === t) && (!s || p.status === s));
+
+  grid.innerHTML = '';
+  filtered.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.onclick = () => openModal(p.id);
+    card.innerHTML = `
+      <div class="card-top">
+        <div>
+          <div class="card-name">${escapeHtml(p.name)}</div>
+          <div class="card-type">${escapeHtml(p.type)}</div>
+        </div>
+        <span class="badge ${statusBadgeClass(p.status)}">${escapeHtml(p.status)}</span>
+      </div>
+      <div class="card-desc ${p.desc ? '' : 'empty'}">${p.desc ? escapeHtml(p.desc) : 'Click to add a description'}</div>
+      <div class="card-footer">
+        <span>${fmtDate(p.updated)}</span>
+        ${p.url ? `<a class="card-link" href="${escapeHtml(p.url)}" target="_blank" onclick="event.stopPropagation()">Open →</a>` : '<span></span>'}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  const addCard = document.createElement('div');
+  addCard.className = 'card add-card';
+  addCard.innerText = '+ Add product';
+  addCard.onclick = () => openModal(null);
+  grid.appendChild(addCard);
+
+  renderStats();
+}
+
+function renderStats() {
+  const total = data.length;
+  const live = data.filter(p => p.status === 'Live').length;
+  const dev = data.filter(p => p.status === 'In development').length;
+  const own = data.filter(p => p.type === 'Own product').length;
+  statsEl.innerHTML = `
+    <div class="stat"><b>${total}</b> total</div>
+    <div class="stat"><b>${live}</b> live</div>
+    <div class="stat"><b>${dev}</b> in dev</div>
+    <div class="stat"><b>${own}</b> own products</div>
+  `;
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.innerText = str || '';
+  return d.innerHTML;
+}
+
+function openModal(id) {
+  editingId = id;
+  const isNew = id === null;
+  const p = isNew ? { name: '', type: 'Own product', status: 'Planning', desc: '', url: '', specs: '', updated: null } : data.find(x => x.id === id);
+
+  document.getElementById('modalTitle').innerText = isNew ? 'Add product' : 'Edit product';
+  document.getElementById('f-name').value = p.name;
+  document.getElementById('f-type').value = p.type;
+  document.getElementById('f-status').value = p.status;
+  document.getElementById('f-desc').value = p.desc;
+  document.getElementById('f-url').value = p.url;
+  document.getElementById('f-specs').value = p.specs;
+  document.getElementById('metaNote').innerText = isNew ? '' : fmtDate(p.updated);
+  document.getElementById('deleteBtn').style.display = isNew ? 'none' : 'inline-block';
+
+  overlay.classList.add('open');
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  editingId = null;
+}
+
+document.getElementById('cancelBtn').onclick = closeModal;
+
+document.getElementById('saveBtn').onclick = () => {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { document.getElementById('f-name').focus(); return; }
+
+  const payload = {
+    name,
+    type: document.getElementById('f-type').value,
+    status: document.getElementById('f-status').value,
+    desc: document.getElementById('f-desc').value.trim(),
+    url: document.getElementById('f-url').value.trim(),
+    specs: document.getElementById('f-specs').value.trim(),
+    updated: new Date().toISOString()
+  };
+
+  if (editingId === null) {
+    data.push({ id: cryptoId(), ...payload });
+  } else {
+    const idx = data.findIndex(x => x.id === editingId);
+    data[idx] = { ...data[idx], ...payload };
+  }
+  save(data);
+  closeModal();
+  render();
+};
+
+document.getElementById('deleteBtn').onclick = () => {
+  if (editingId === null) return;
+  if (!confirm('Delete this product from the hub?')) return;
+  data = data.filter(x => x.id !== editingId);
+  save(data);
+  closeModal();
+  render();
+};
+
+filterType.onchange = render;
+filterStatus.onchange = render;
+
+document.getElementById('exportBtn').onclick = () => {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'products-hub-backup.json';
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+document.getElementById('importFile').onchange = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      if (Array.isArray(parsed)) {
+        data = parsed;
+        save(data);
+        render();
+      }
+    } catch (err) {
+      alert('Could not read that file as valid JSON.');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+};
+
+render();
+</script>
+</body>
+</html>
