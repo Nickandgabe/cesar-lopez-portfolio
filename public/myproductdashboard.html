@@ -307,21 +307,33 @@
 const STORAGE_KEY = 'products_hub_data_v1';
 
 const defaults = [
-  { id: cryptoId(), name: 'Nexus', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
-  { id: cryptoId(), name: 'Nerve', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
-  { id: cryptoId(), name: 'Swap Zone', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
-  { id: cryptoId(), name: 'Together', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null },
-  { id: cryptoId(), name: 'My Portfolio', type: 'Own product', status: 'Live', desc: '', url: '', specs: '', updated: null },
+  { id: cryptoId(), name: 'Nexus', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null, slug: 'nexus' },
+  { id: cryptoId(), name: 'Nerve', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null, slug: 'nerve' },
+  { id: cryptoId(), name: 'Swap Zone', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null, slug: 'swapzone' },
+  { id: cryptoId(), name: 'Together', type: 'Own product', status: 'In development', desc: '', url: '', specs: '', updated: null, slug: 'together' },
+  { id: cryptoId(), name: 'My Portfolio', type: 'Own product', status: 'Live', desc: '', url: '', specs: '', updated: null, slug: 'portfolio' },
 ];
 
 function cryptoId() {
   return 'p_' + Math.random().toString(36).slice(2, 10);
 }
 
+const KNOWN_SLUGS = {
+  'Nexus': 'nexus',
+  'Nerve': 'nerve',
+  'Swap Zone': 'swapzone',
+  'Together': 'together',
+  'My Portfolio': 'portfolio',
+};
+
 function load() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      // Backfill slugs for anyone who saved data before report links existed.
+      return parsed.map(p => (p.slug || !KNOWN_SLUGS[p.name]) ? p : { ...p, slug: KNOWN_SLUGS[p.name] });
+    }
   } catch (e) {}
   return defaults;
 }
@@ -375,7 +387,10 @@ function render() {
       <div class="card-desc ${p.desc ? '' : 'empty'}">${p.desc ? escapeHtml(p.desc) : 'Click to add a description'}</div>
       <div class="card-footer">
         <span>${fmtDate(p.updated)}</span>
-        ${p.url ? `<a class="card-link" href="${escapeHtml(p.url)}" target="_blank" onclick="event.stopPropagation()">Open →</a>` : '<span></span>'}
+        <span style="display:flex;gap:10px;align-items:center;">
+          ${p.slug ? `<a class="card-link" href="/myproductdashboard/${escapeHtml(p.slug)}" target="_top" onclick="event.stopPropagation()">Report →</a>` : ''}
+          ${p.url ? `<a class="card-link" href="${escapeHtml(p.url)}" target="_blank" onclick="event.stopPropagation()">Open →</a>` : ''}
+        </span>
       </div>
     `;
     grid.appendChild(card);
