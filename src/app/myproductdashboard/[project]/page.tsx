@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PROJECT_REPOS, fetchReport, type ProjectSlug } from "@/lib/reports";
+import ReportMenu from "@/components/report-menu";
 
 export const dynamic = "force-dynamic";
 
@@ -36,10 +37,13 @@ export default async function ProjectReportPage({
           >
             ← Back to Products Hub
           </Link>
-          <span className="text-body-sm text-on-surface-variant">
-            {ref.displayName}
-            {report.lastUpdated ? ` · updated ${new Date(report.lastUpdated).toLocaleString()}` : ""}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="text-body-sm text-on-surface-variant">
+              {ref.displayName}
+              {report.lastUpdated ? ` · updated ${new Date(report.lastUpdated).toLocaleString()}` : ""}
+            </span>
+            <ReportMenu slug={project} displayName={ref.displayName} githubUrl={report.htmlUrl} />
+          </div>
         </div>
         <iframe
           srcDoc={report.html}
@@ -52,12 +56,15 @@ export default async function ProjectReportPage({
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
-      <Link
-        href="/myproductdashboard"
-        className="state-layer inline-flex items-center gap-1 text-label-lg font-medium text-primary"
-      >
-        ← Back to Products Hub
-      </Link>
+      <div className="flex items-center justify-between">
+        <Link
+          href="/myproductdashboard"
+          className="state-layer inline-flex items-center gap-1 text-label-lg font-medium text-primary"
+        >
+          ← Back to Products Hub
+        </Link>
+        <ReportMenu slug={project} displayName={ref.displayName} githubUrl={report.htmlUrl} />
+      </div>
 
       <h1 className="mt-4 mb-2 font-display text-headline-lg text-on-surface md:text-display-sm">
         {ref.displayName}
