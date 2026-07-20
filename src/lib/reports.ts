@@ -14,35 +14,35 @@ export const PROJECT_REPOS: Record<ProjectSlug, RepoRef> = {
   nexus: {
     owner: "Nickandgabe",
     repo: "Project-Nexus",
-    path: "REPORT.md",
+    path: "REPORT.html",
     branch: "main",
     displayName: "Nexus",
   },
   nerve: {
     owner: "Nickandgabe",
     repo: "nerve-app",
-    path: "REPORT.md",
+    path: "REPORT.html",
     branch: "main",
     displayName: "Nerve",
   },
   swapzone: {
     owner: "Nickandgabe",
     repo: "theswapzone",
-    path: "REPORT.md",
+    path: "REPORT.html",
     branch: "main",
     displayName: "Swap Zone",
   },
   together: {
     owner: "Nickandgabe",
     repo: "Together",
-    path: "REPORT.md",
+    path: "REPORT.html",
     branch: "main",
     displayName: "Together",
   },
   portfolio: {
     owner: "Nickandgabe",
     repo: "cesar-lopez-portfolio",
-    path: "REPORT.md",
+    path: "REPORT.html",
     branch: "main",
     displayName: "My Portfolio",
   },
@@ -50,7 +50,8 @@ export const PROJECT_REPOS: Record<ProjectSlug, RepoRef> = {
 
 export interface ReportResult {
   found: boolean;
-  markdown: string;
+  /** Raw HTML content of the report file, ready to render in an iframe. */
+  html: string;
   htmlUrl: string;
   lastUpdated: string | null;
   lastCommitMessage: string | null;
@@ -71,7 +72,7 @@ export async function fetchReport(slug: ProjectSlug): Promise<ReportResult> {
   if (!token) {
     return {
       found: false,
-      markdown: "",
+      html: "",
       htmlUrl,
       lastUpdated: null,
       lastCommitMessage: null,
@@ -92,20 +93,13 @@ export async function fetchReport(slug: ProjectSlug): Promise<ReportResult> {
     );
 
     if (contentRes.status === 404) {
-      return {
-        found: false,
-        markdown: "",
-        htmlUrl,
-        lastUpdated: null,
-        lastCommitMessage: null,
-        error: null,
-      };
+      return { found: false, html: "", htmlUrl, lastUpdated: null, lastCommitMessage: null, error: null };
     }
 
     if (!contentRes.ok) {
       return {
         found: false,
-        markdown: "",
+        html: "",
         htmlUrl,
         lastUpdated: null,
         lastCommitMessage: null,
@@ -114,7 +108,7 @@ export async function fetchReport(slug: ProjectSlug): Promise<ReportResult> {
     }
 
     const json = (await contentRes.json()) as { content: string; encoding: string };
-    const markdown = Buffer.from(json.content, "base64").toString("utf-8");
+    const html = Buffer.from(json.content, "base64").toString("utf-8");
 
     let lastUpdated: string | null = null;
     let lastCommitMessage: string | null = null;
@@ -134,11 +128,11 @@ export async function fetchReport(slug: ProjectSlug): Promise<ReportResult> {
       }
     }
 
-    return { found: true, markdown, htmlUrl, lastUpdated, lastCommitMessage, error: null };
+    return { found: true, html, htmlUrl, lastUpdated, lastCommitMessage, error: null };
   } catch {
     return {
       found: false,
-      markdown: "",
+      html: "",
       htmlUrl,
       lastUpdated: null,
       lastCommitMessage: null,
