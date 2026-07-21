@@ -18,14 +18,33 @@ type ProductRecord = {
 
 const STATUS_OPTIONS = ["Live", "In development", "Planning", "Paused"];
 
+// Canonical list of known projects. Kept in sync with the `defaults` array in
+// public/myproductdashboard.html. This exists so that saving from a single
+// report page's menu can never silently drop the *other* projects from the
+// dashboard — see the union-merge in loadAll() below.
+const DEFAULT_PROJECTS: ProductRecord[] = [
+  { id: "p_default_nexus", name: "Nexus", type: "Own product", status: "In development", desc: "", url: "", specs: "", updated: null, slug: "nexus" },
+  { id: "p_default_nerve", name: "Nerve", type: "Own product", status: "In development", desc: "", url: "", specs: "", updated: null, slug: "nerve" },
+  { id: "p_default_swapzone", name: "Swap Zone", type: "Own product", status: "In development", desc: "", url: "", specs: "", updated: null, slug: "swapzone" },
+  { id: "p_default_together", name: "Together", type: "Own product", status: "In development", desc: "", url: "", specs: "", updated: null, slug: "together" },
+  { id: "p_default_portfolio", name: "My Portfolio", type: "Own product", status: "Live", desc: "", url: "", specs: "", updated: null, slug: "portfolio" },
+];
+
 function loadAll(): ProductRecord[] {
+  let existing: ProductRecord[] = [];
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) existing = JSON.parse(raw);
   } catch {
     // ignore malformed storage
   }
-  return [];
+  // Union-merge with the known defaults so this page's save() never ends up
+  // being the *only* source of truth and erasing projects it doesn't know
+  // about (e.g. if this report page loads before the dashboard has ever
+  // seeded localStorage itself).
+  const existingSlugs = new Set(existing.map((p) => p.slug).filter(Boolean));
+  const missing = DEFAULT_PROJECTS.filter((d) => !existingSlugs.has(d.slug));
+  return existing.concat(missing);
 }
 
 function saveAll(records: ProductRecord[]) {
