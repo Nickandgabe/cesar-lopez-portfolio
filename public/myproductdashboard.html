@@ -202,15 +202,27 @@ const KNOWN_SLUGS = {
 };
 
 function load() {
+  let existing = [];
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
       // Backfill slugs for anyone who saved data before report links existed.
-      return parsed.map(p => (p.slug || !KNOWN_SLUGS[p.name]) ? p : { ...p, slug: KNOWN_SLUGS[p.name] });
+      existing = parsed.map(p => (p.slug || !KNOWN_SLUGS[p.name]) ? p : { ...p, slug: KNOWN_SLUGS[p.name] });
     }
   } catch (e) {}
-  return defaults;
+
+  // Union-merge with defaults: a report page's menu only ever knows about
+  // the single project it's managing, so if it saves before this dashboard
+  // has ever seeded localStorage, `existing` can be missing projects. Add
+  // back any known default whose slug isn't already present, instead of
+  // trusting `existing` as if it were guaranteed complete.
+  const existingSlugs = new Set(existing.map(p => p.slug).filter(Boolean));
+  const missing = defaults.filter(d => !existingSlugs.has(d.slug));
+  const merged = existing.concat(missing);
+
+  if (missing.length) save(merged);
+  return merged;
 }
 
 function save(data) {
