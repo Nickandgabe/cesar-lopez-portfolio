@@ -1,196 +1,150 @@
 @import "tailwindcss";
 
 /*
-  Design system: Material Design 3 role/token structure (color roles,
-  elevation, shape, state layers, type scale) with a custom brand identity —
-  "Blueprint" indigo primary + warm copper tertiary — instead of stock M3
-  Google colors. Typography uses the Roboto superfamily: Roboto Serif for
-  display, Roboto Flex (variable) for UI/body — Google's own Material type family.
+  Design system v3 — "Studio". Replaces the earlier "Deep Space &
+  Bioluminescence" console concept entirely (no HUD glass, no scanlines, no
+  terminal micro-copy). Light and dark are both first-class: color roles are
+  defined once as tokens and swapped wholesale via [data-theme], so every
+  component built against --color-* names works in both without special
+  casing. Elevation is a soft neutral shadow + floating device-frame cards,
+  not accent glow.
 */
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  /* ---- Brand color roles (light) ---- */
-  --md-primary: #33479e;
-  --md-on-primary: #ffffff;
-  --md-primary-container: #dce1ff;
-  --md-on-primary-container: #0c1b4e;
+  /* ---- Grounds ---- */
+  --color-void: #08090c;
+  --color-charcoal: #0f1116;
+  --color-panel: #15171e;
+  --color-panel-high: #1c1f28;
 
-  --md-secondary: #5b5d72;
-  --md-on-secondary: #ffffff;
-  --md-secondary-container: #dfe1f9;
-  --md-on-secondary-container: #181a2c;
+  /* ---- Ink ---- */
+  --color-ink: #f5f6f8;
+  --color-ink-dim: #9198a8;
 
-  --md-tertiary: #8c5000;
-  --md-on-tertiary: #ffffff;
-  --md-tertiary-container: #ffddb3;
-  --md-on-tertiary-container: #2c1600;
+  /* ---- Signal: cyan (primary) ---- */
+  --color-cyan: #4fd8ff;
+  --color-cyan-glow: color-mix(in srgb, #4fd8ff 14%, transparent);
+  --color-on-cyan: #001318;
 
-  --md-error: #ba1a1a;
-  --md-on-error: #ffffff;
-  --md-error-container: #ffdad6;
-  --md-on-error-container: #410002;
+  /* ---- Signal: purple (secondary) ---- */
+  --color-purple: #c084fc;
+  --color-purple-glow: color-mix(in srgb, #c084fc 16%, transparent);
+  --color-on-purple: #1a0b2e;
 
-  --md-background: #fbf8ff;
-  --md-on-background: #1b1b21;
+  /* ---- Danger (kept for error/destructive states) ---- */
+  --color-danger: #ff5c7a;
+  --color-danger-glow: color-mix(in srgb, #ff5c7a 16%, transparent);
+  --color-on-danger-glow: #2a0410;
 
-  --md-surface: #fbf8ff;
-  --md-on-surface: #1b1b21;
-  --md-surface-variant: #e3e1ec;
-  --md-on-surface-variant: #46464f;
+  /* ---- Structure (borders, hairlines) ---- */
+  --color-hud-line: rgba(245, 246, 248, 0.12);
+  --color-hud-line-strong: rgba(245, 246, 248, 0.28);
+  --color-scrim: #000000;
 
-  --md-surface-container-lowest: #ffffff;
-  --md-surface-container-low: #f5f2fa;
-  --md-surface-container: #efecf4;
-  --md-surface-container-high: #e9e7ee;
-  --md-surface-container-highest: #e3e1e9;
-
-  --md-outline: #777680;
-  --md-outline-variant: #c7c5d0;
-
-  --md-inverse-surface: #303036;
-  --md-inverse-on-surface: #f2eff7;
-  --md-inverse-primary: #b0c1ff;
-
-  --md-scrim: #000000;
+  /* Aliases so page-level chrome (body bg/ink) reads the same as every
+     other surface pairing without inventing a third naming scheme. */
+  --color-background: var(--color-void);
+  --color-on-background: var(--color-ink);
 
   /* ---- State layer opacities ---- */
   --state-hover: 0.08;
-  --state-focus: 0.12;
-  --state-pressed: 0.12;
-  --state-dragged: 0.16;
+  --state-focus: 0.14;
+  --state-pressed: 0.18;
+  --state-dragged: 0.24;
 
-  /* ---- Elevation (M3 light: shadow-based) ---- */
-  --shadow-color: 228deg 12% 20%;
-  --md-elevation-0: none;
-  --md-elevation-1: 0 1px 2px 0 hsl(var(--shadow-color) / 0.3), 0 1px 3px 1px hsl(var(--shadow-color) / 0.15);
-  --md-elevation-2: 0 1px 2px 0 hsl(var(--shadow-color) / 0.3), 0 2px 6px 2px hsl(var(--shadow-color) / 0.15);
-  --md-elevation-3: 0 1px 3px 0 hsl(var(--shadow-color) / 0.3), 0 4px 8px 3px hsl(var(--shadow-color) / 0.15);
-  --md-elevation-4: 0 2px 3px 0 hsl(var(--shadow-color) / 0.3), 0 6px 10px 4px hsl(var(--shadow-color) / 0.15);
-  --md-elevation-5: 0 4px 4px 0 hsl(var(--shadow-color) / 0.3), 0 8px 12px 6px hsl(var(--shadow-color) / 0.15);
+  /* ---- Elevation: soft neutral shadow (device-frame cards), not glow ---- */
+  --shadow-card: 0 24px 60px -20px rgba(0, 0, 0, 0.55), 0 8px 24px -12px rgba(0, 0, 0, 0.4);
+  --shadow-card-lg: 0 40px 90px -24px rgba(0, 0, 0, 0.6), 0 14px 36px -16px rgba(0, 0, 0, 0.45);
 }
 
-.dark {
-  --md-primary: #b0c1ff;
-  --md-on-primary: #16296b;
-  --md-primary-container: #2d3f85;
-  --md-on-primary-container: #dce1ff;
+/* Light theme — same role names, inverted grounds. Default (no attribute,
+   or explicit [data-theme="dark"]) stays dark; [data-theme="light"]
+   overrides just the color roles below. Toggled by theme-toggle.tsx, which
+   sets the attribute on <html> and persists the choice to localStorage; a
+   blocking inline script in layout.tsx applies it before first paint so
+   there's no flash of the wrong theme. */
+[data-theme="light"] {
+  --color-void: #ffffff;
+  --color-charcoal: #f4f5f7;
+  --color-panel: #ffffff;
+  --color-panel-high: #eef0f3;
 
-  --md-secondary: #c3c5dd;
-  --md-on-secondary: #2c2f42;
-  --md-secondary-container: #434659;
-  --md-on-secondary-container: #dfe1f9;
+  --color-ink: #0b0c0f;
+  --color-ink-dim: #5c6270;
 
-  --md-tertiary: #ffb870;
-  --md-on-tertiary: #4a2800;
-  --md-tertiary-container: #693c00;
-  --md-on-tertiary-container: #ffddb3;
+  --color-cyan: #0086a8;
+  --color-cyan-glow: color-mix(in srgb, #0086a8 10%, transparent);
+  --color-on-cyan: #ffffff;
 
-  --md-error: #ffb4ab;
-  --md-on-error: #690005;
-  --md-error-container: #93000a;
-  --md-on-error-container: #ffdad6;
+  --color-purple: #7c1fd6;
+  --color-purple-glow: color-mix(in srgb, #7c1fd6 10%, transparent);
+  --color-on-purple: #ffffff;
 
-  --md-background: #131318;
-  --md-on-background: #e4e1e9;
+  --color-danger: #d6294a;
+  --color-danger-glow: color-mix(in srgb, #d6294a 10%, transparent);
+  --color-on-danger-glow: #ffffff;
 
-  --md-surface: #131318;
-  --md-on-surface: #e4e1e9;
-  --md-surface-variant: #46464f;
-  --md-on-surface-variant: #c7c5d0;
+  --color-hud-line: rgba(11, 12, 15, 0.1);
+  --color-hud-line-strong: rgba(11, 12, 15, 0.22);
+  --color-scrim: #ffffff;
 
-  --md-surface-container-lowest: #0e0e13;
-  --md-surface-container-low: #1b1b21;
-  --md-surface-container: #1f1f25;
-  --md-surface-container-high: #29292f;
-  --md-surface-container-highest: #34343a;
-
-  --md-outline: #90909a;
-  --md-outline-variant: #46464f;
-
-  --md-inverse-surface: #e4e1e9;
-  --md-inverse-on-surface: #303036;
-  --md-inverse-primary: #33479e;
-
-  --md-scrim: #000000;
-
-  /* Dark elevation: M3 favors surface-tone escalation over stronger shadows
-     since shadows barely read on dark backgrounds; shadows stay subtle. */
-  --shadow-color: 228deg 30% 2%;
-  --md-elevation-1: 0 1px 2px 0 hsl(var(--shadow-color) / 0.6), 0 1px 3px 1px hsl(var(--shadow-color) / 0.4);
-  --md-elevation-2: 0 1px 2px 0 hsl(var(--shadow-color) / 0.6), 0 2px 6px 2px hsl(var(--shadow-color) / 0.4);
-  --md-elevation-3: 0 1px 3px 0 hsl(var(--shadow-color) / 0.6), 0 4px 8px 3px hsl(var(--shadow-color) / 0.4);
-  --md-elevation-4: 0 2px 3px 0 hsl(var(--shadow-color) / 0.6), 0 6px 10px 4px hsl(var(--shadow-color) / 0.4);
-  --md-elevation-5: 0 4px 4px 0 hsl(var(--shadow-color) / 0.6), 0 8px 12px 6px hsl(var(--shadow-color) / 0.4);
+  --shadow-card: 0 24px 60px -20px rgba(15, 17, 22, 0.18), 0 8px 24px -12px rgba(15, 17, 22, 0.1);
+  --shadow-card-lg: 0 40px 90px -24px rgba(15, 17, 22, 0.22), 0 14px 36px -16px rgba(15, 17, 22, 0.12);
 }
 
 @theme inline {
   /* Fonts */
-  --font-display: var(--font-roboto-serif);
-  --font-sans: var(--font-roboto-flex);
+  --font-display: var(--font-roboto);
+  --font-sans: var(--font-roboto);
+  --font-mono: var(--font-jetbrains-mono);
 
-  /* Color roles: generates bg-, text-, and border- utilities */
-  --color-primary: var(--md-primary);
-  --color-on-primary: var(--md-on-primary);
-  --color-primary-container: var(--md-primary-container);
-  --color-on-primary-container: var(--md-on-primary-container);
+  /* Color utilities: bg-*, text-*, border-* */
+  --color-void: var(--color-void);
+  --color-charcoal: var(--color-charcoal);
+  --color-panel: var(--color-panel);
+  --color-panel-high: var(--color-panel-high);
 
-  --color-secondary: var(--md-secondary);
-  --color-on-secondary: var(--md-on-secondary);
-  --color-secondary-container: var(--md-secondary-container);
-  --color-on-secondary-container: var(--md-on-secondary-container);
+  --color-ink: var(--color-ink);
+  --color-ink-dim: var(--color-ink-dim);
 
-  --color-tertiary: var(--md-tertiary);
-  --color-on-tertiary: var(--md-on-tertiary);
-  --color-tertiary-container: var(--md-tertiary-container);
-  --color-on-tertiary-container: var(--md-on-tertiary-container);
+  --color-cyan: var(--color-cyan);
+  --color-cyan-glow: var(--color-cyan-glow);
+  --color-on-cyan: var(--color-on-cyan);
 
-  --color-error: var(--md-error);
-  --color-on-error: var(--md-on-error);
-  --color-error-container: var(--md-error-container);
-  --color-on-error-container: var(--md-on-error-container);
+  --color-purple: var(--color-purple);
+  --color-purple-glow: var(--color-purple-glow);
+  --color-on-purple: var(--color-on-purple);
 
-  --color-background: var(--md-background);
-  --color-on-background: var(--md-on-background);
+  --color-danger: var(--color-danger);
+  --color-danger-glow: var(--color-danger-glow);
+  --color-on-danger-glow: var(--color-on-danger-glow);
 
-  --color-surface: var(--md-surface);
-  --color-on-surface: var(--md-on-surface);
-  --color-surface-variant: var(--md-surface-variant);
-  --color-on-surface-variant: var(--md-on-surface-variant);
+  --color-hud-line: var(--color-hud-line);
+  --color-hud-line-strong: var(--color-hud-line-strong);
+  --color-scrim: var(--color-scrim);
 
-  --color-surface-container-lowest: var(--md-surface-container-lowest);
-  --color-surface-container-low: var(--md-surface-container-low);
-  --color-surface-container: var(--md-surface-container);
-  --color-surface-container-high: var(--md-surface-container-high);
-  --color-surface-container-highest: var(--md-surface-container-highest);
+  --color-background: var(--color-background);
+  --color-on-background: var(--color-on-background);
 
-  --color-outline: var(--md-outline);
-  --color-outline-variant: var(--md-outline-variant);
+  /* Rounded, "physical" card radius — replaces the old sharp 8px HUD corner
+     now that surfaces are floating device-frame cards, not blueprint panels. */
+  --radius-hud: 20px;
 
-  --color-inverse-surface: var(--md-inverse-surface);
-  --color-inverse-on-surface: var(--md-inverse-on-surface);
-  --color-inverse-primary: var(--md-inverse-primary);
+  /* Elevation: soft neutral shadow for cards (theme-aware, see :root /
+     [data-theme="light"] above), plus a couple of accent-tinted glows kept
+     for small emphasis elements (badge dot, focus rings) — these read fine
+     as color-mix against either ground since they're small/low-opacity. */
+  --shadow-hud-0: none;
+  --shadow-hud-1: var(--shadow-card);
+  --shadow-hud-2: var(--shadow-card);
+  --shadow-hud-3: var(--shadow-card-lg);
+  --shadow-hud-4: 0 0 0 1px color-mix(in srgb, var(--color-purple) 20%, transparent), var(--shadow-card-lg);
+  --shadow-hud-5: 0 0 32px 4px color-mix(in srgb, var(--color-cyan) 25%, transparent), 0 0 80px 12px color-mix(in srgb, var(--color-purple) 18%, transparent);
 
-  --color-scrim: var(--md-scrim);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-lg: var(--shadow-card-lg);
 
-  /* Shape scale (M3) */
-  --radius-m3-xs: 4px;
-  --radius-m3-sm: 8px;
-  --radius-m3-md: 12px;
-  --radius-m3-lg: 16px;
-  --radius-m3-xl: 28px;
-  --radius-m3-full: 9999px;
-
-  /* Elevation -> shadow-* utilities */
-  --shadow-elevation-0: var(--md-elevation-0);
-  --shadow-elevation-1: var(--md-elevation-1);
-  --shadow-elevation-2: var(--md-elevation-2);
-  --shadow-elevation-3: var(--md-elevation-3);
-  --shadow-elevation-4: var(--md-elevation-4);
-  --shadow-elevation-5: var(--md-elevation-5);
-
-  /* Type scale (M3 roles, custom display/body pairing) */
+  /* Type scale — sizes/line-heights kept, fonts/values above carry the identity */
   --text-display-lg: 3.5rem;
   --text-display-lg--line-height: 4rem;
   --text-display-lg--letter-spacing: -0.015em;
@@ -232,19 +186,27 @@
   --text-label-sm: 0.6875rem;
   --text-label-sm--line-height: 1rem;
   --text-label-sm--letter-spacing: 0.025em;
+
+  /* Technical readout scale — for HUD micro-copy/data metrics */
+  --text-hud-xs: 0.6875rem;
+  --text-hud-xs--line-height: 1rem;
+  --text-hud-xs--letter-spacing: 0.08em;
+  --text-hud-sm: 0.75rem;
+  --text-hud-sm--line-height: 1.1rem;
+  --text-hud-sm--letter-spacing: 0.06em;
 }
 
 @layer base {
   * {
-    border-color: var(--md-outline-variant);
+    border-color: var(--color-hud-line);
   }
 
   html {
-    color-scheme: light;
+    color-scheme: dark;
   }
 
-  html.dark {
-    color-scheme: dark;
+  html[data-theme="light"] {
+    color-scheme: light;
   }
 
   body {
@@ -259,8 +221,7 @@
 }
 
 @layer components {
-  /* State-layer overlay: an absolutely-positioned pseudo-element whose
-     opacity ramps on hover/focus/press, per M3 interaction states. */
+  /* State-layer overlay: ramps opacity on hover/focus/press. */
   .state-layer {
     position: relative;
     isolation: isolate;
@@ -289,23 +250,26 @@
     opacity: var(--state-pressed);
   }
 
-  /* Glassmorphism surface: frosted, translucent panel over whatever sits
-     behind it (grid background, gradient stage, page content on scroll). */
-  .glass {
-    background: color-mix(in srgb, var(--md-surface) 55%, transparent);
-    border: 1px solid color-mix(in srgb, var(--md-outline-variant) 55%, transparent);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  /* HUD glass: frosted instrument-panel surface, cyan hairline border. */
+  .hud-glass {
+    background: color-mix(in srgb, var(--color-charcoal) 62%, transparent);
+    border: 1px solid var(--color-hud-line);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+
+  /* Fine scanline texture for HUD chrome — subtle, decorative only. */
+  .hud-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-cyan) 10%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-cyan) 10%, transparent) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 
 .animate-marquee {
@@ -313,13 +277,8 @@
 }
 
 @keyframes gradient-drift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .animate-gradient-drift {

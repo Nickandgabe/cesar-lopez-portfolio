@@ -1,0 +1,16 @@
+
+.Loader{
+    position: fixed;
+    width: 100%;
+    height: auto;
+    z-index: 9999; /* or higher if necessary */
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    img{
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+

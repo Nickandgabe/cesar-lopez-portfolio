@@ -1,0 +1,67 @@
+@import '../.././../assets/style/variables';
+.box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    color: #747474;
+    background-color: #F2F2F2;
+    @media only screen and (max-height: $resMobileBreakPoint) {
+     overflow:hidden!important;
+     }
+    &Close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      z-index: 16;
+      @media only screen and (max-height: $resMobileBreakPoint) {
+        position: fixed;
+       }
+    }
+    &VideoInfo{
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: 0.9;
+      transition: all 0.4s ease-in-out;
+      
+      &Button {
+        text-align: center;
+        width: 100%;
+        height: auto;
+        
+        &Replay{
+          width: 10%;
+          height: auto;
+          cursor: pointer;
+          padding: 300px 0 0 0;
+          @media only screen and (max-height: $resMobileBreakPoint) {
+            padding:25vh 0 0 0;
+          }
+        }
+        &LearnMore{
+          margin-top: 50px;
+          cursor: pointer;
+          width: 15%;
+          @media only screen and (max-height: $resMobileBreakPoint) {
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+
+  .btnClose{
+    position: absolute;
+    right: 0;
+    z-index: 15;
+    margin: 1rem auto;
+    @media only screen and (max-height: $resMobileBreakPoint) {
+     position: fixed;
+    }
+}
+
+

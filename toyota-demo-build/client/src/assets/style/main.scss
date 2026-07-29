@@ -1,0 +1,225 @@
+@import './variables';
+
+@import 'util/reset';
+@import 'util/hamburger_menu/hamburger';
+@import '_mixins';
+
+body {
+  overflow: hidden;
+  font-family: 'ToyotaType-Regular';
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+  // background: black;
+  // background-image: url('./../../assets/MidGroundForPanoTest_1-25-21-min.png');
+
+  
+}
+@media only screen and (max-height: $resMobileBreakPoint){
+  html,body{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+.cloudimage-360 {
+  position: absolute;
+  z-index: 5;
+  // overflow: inherit !important;
+  // flex: 2;
+  //   order: 2;
+  //   border: solid 1px red;
+  //   width: 1920px;
+  //   height: 1080px;
+  // @media only screen and (max-height: $BreakPoint5) {
+  //   width: 650px!important;
+  //   height: 350px!important;
+  //   margin: auto;
+  // }
+  // @media(max-height: $resMobileBreakPoint) and (orientation : landscape)  { 
+  //   width: 650px!important;
+  //   height: 350px!important;
+  //   margin: auto;
+  // }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+   
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #ed1b2f;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  
+}
+
+input:checked + .slider {
+  background-color: white;
+}
+
+input:disabled + .slider::before {
+  background-color: gray;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.spritespin-canvas {
+  // width: 90vw !important;
+  // height: auto !important;
+}
+.button {
+  background-color: #eb0a1e;
+  border: none;
+  color: #ffffff;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px; //16px;
+  width: 100%;
+  height: auto;
+  font-size: 1vw;
+  font-family: 'ToyotaType-Semibold';
+  @media (max-width: 800px) and (orientation: landscape) {
+    font-size: 1.5vw;
+  }
+  &:hover {
+    background-color: #bf1730;
+    text-decoration: underline;
+  }
+}
+
+
+.buttonQuiz {
+  background-color: transparent;
+  border: none;
+  color: #747474;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px; //16px;
+  border: 1px solid #747474;
+  width: 100%;
+  height: auto;
+  font-size: 1vw;
+  font-family: 'ToyotaType-Semibold';
+  @media (max-width: 800px) and (orientation: landscape) {
+    font-size: 1.5vw;
+  }
+  &:hover{
+    background-color: #747474;
+    text-decoration: underline;
+    color: white;
+  }
+  &:active, &.active{
+    background-color: #747474;
+    text-decoration: underline;
+    color: white;
+  }
+}
+
+
+
+
+
+/****************************
+* LANDSCAPE WARNING MESSAGE
+*****************************/
+#warning-message {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background: #ffffff!important;
+  p{
+    padding:  23vh 0 0 0; //calc(100% - 30vh) 0 0 0;
+    font-family: 'ToyotaType-Bold';
+    font-size: 30px;
+  }
+  #logo{
+    width: 100%;
+    height: 22%;
+    background: url('../Icons/Toogle/TOY_VIRTUAL_Toogle2_autoExLogo.svg') no-repeat;
+    background-size: 80%;
+    background-position: 45% 30%; //35px 20px;
+  }
+  #device {
+    width: 100%;
+    height: 14%;
+    background: url('../Icons/Toogle/TOY_VIRTUAL_Toogle_deviceExperience.svg') no-repeat;
+    background-size: 60%;
+    background-position: 50% 0;//78px 0px;
+  }
+}
+@media only screen and (orientation:portrait){
+  #wrapper { display:none; }
+  #warning-message { display:block; } 
+}
+@media only screen and (orientation:landscape){
+  #warning-message { display:none; }
+}
+
+// Force 360 to be update
+// .spritespin-instance, .with-canvas {
+//   position: absolute !important;
+
+// }

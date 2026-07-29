@@ -1,134 +1,150 @@
 "use client";
 
-import { motion, useTransform, type MotionValue } from "framer-motion";
-import { ArrowDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Chip } from "@/components/ui/chip";
-import { Magnetic } from "@/components/motion/magnetic";
-import { CursorSpotlight } from "@/components/motion/cursor-spotlight";
-import { KineticText } from "@/components/motion/kinetic-text";
-import { Marquee } from "@/components/motion/marquee";
-import { PinnedSection } from "@/components/motion/pinned-section";
-import { projects } from "@/content/projects";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { DeviceFrameCard } from "@/components/motion/device-frame-card";
+import { getProjectBySlug } from "@/content/projects";
 
-const clients = Array.from(new Set(projects.map((p) => p.client)));
+// Only Toyota has real preview imagery today (poster + gallery) — the other
+// two projects are still placeholder-only in content/projects.ts. Rather
+// than block the rebuild on real screenshots, Toyota is featured center
+// with the real image and the other two get simple typographic placeholder
+// cards, swappable for real images the moment they're available. See
+// PROJECT_LOG "Content gap" note.
+const FEATURED_SLUG = "toyota-virtual-auto-show";
+const SIDE_SLUGS = ["att-digital-transformation", "invited-club-golf"];
 
-export function Hero() {
+function PlaceholderScreen({ client, category }: { client: string; category: string }) {
   return (
-    <PinnedSection length={1.5} restingProgress={0} className="px-6">
-      {(progress) => <HeroContent progress={progress} />}
-    </PinnedSection>
+    <div
+      className="flex h-full w-full flex-col items-center justify-center gap-2 p-4 text-center"
+      style={{
+        backgroundImage:
+          "linear-gradient(160deg, var(--color-cyan-glow), var(--color-panel-high) 60%, var(--color-purple-glow))",
+      }}
+    >
+      <p className="text-label-md uppercase tracking-wide text-ink-dim">{category}</p>
+      <p className="font-display text-title-md text-ink">{client}</p>
+    </div>
   );
 }
 
-function HeroContent({ progress }: { progress: MotionValue<number> }) {
-  const scale = useTransform(progress, [0, 1], [1, 0.86]);
-  const rotateX = useTransform(progress, [0, 1], [0, -14]);
-  const contentOpacity = useTransform(progress, [0, 1], [1, 0.15]);
-  const y = useTransform(progress, [0, 1], [0, -40]);
-  const ambientOpacity = useTransform(progress, [0, 0.6, 1], [1, 0, 0]);
-  const marqueeOpacity = useTransform(progress, [0, 1], [1, 0.4]);
+/** Centered hero built from scratch around a floating device-card
+ * composition — replaces every earlier iteration (console/HUD sidebar,
+ * clickable brain node-graph, WebGL energy ring). No canvas, no
+ * post-processing, no HDR/Bloom risk: the "alive" feeling comes entirely
+ * from DeviceFrameCard's CSS-transform idle float + pointer tilt. */
+export function Hero() {
+  const featured = getProjectBySlug(FEATURED_SLUG);
+  const sides = SIDE_SLUGS.map((slug) => getProjectBySlug(slug)).filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
-    <div className="relative flex h-full flex-col justify-center overflow-hidden pb-20 pt-20 md:pt-28">
-      <motion.div style={{ opacity: ambientOpacity }}>
-        <CursorSpotlight />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-0 opacity-[0.05] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:40px_40px]"
-        />
+    <section className="relative isolate flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-void px-6 py-32">
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.2, 0, 0, 1] }}
+        className="relative z-0 mx-auto max-w-4xl text-center"
+      >
+        <p className="text-label-md uppercase tracking-[0.15em] text-ink-dim">Product Design &amp; Systems Architecture</p>
+        <h1
+          className="mt-4 font-display font-bold text-ink [text-wrap:balance]"
+          style={{ fontSize: "clamp(2.75rem, 1.7rem + 4.5vw, 6rem)", lineHeight: 1.02, letterSpacing: "-0.02em" }}
+        >
+          <span className="block">Complex systems,</span>
+          <span className="block text-ink-dim">made effortless.</span>
+        </h1>
       </motion.div>
 
-      <motion.div
-        style={{
-          scale,
-          rotateX,
-          opacity: contentOpacity,
-          y,
-          transformPerspective: 1200,
-          transformOrigin: "top center",
-        }}
-        className="relative z-[1] mx-auto flex w-full max-w-4xl flex-col items-start gap-6"
+      <div
+        className="relative z-[1] flex w-full max-w-4xl items-end justify-center"
+        style={{ marginTop: "-2.5rem", gap: "1rem" }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: [0, -4, 0] }}
-          transition={{
-            opacity: { duration: 0.5 },
-            y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-          }}
-        >
-          <Chip variant="assist" glass>
-            Senior Product Design Leader
-          </Chip>
-        </motion.div>
+        {sides[0] && (
+          <div className="hidden sm:block" style={{ transform: "translateY(2.5rem) rotate(-6deg)" }}>
+            <DeviceFrameCard
+              width="clamp(120px, 16vw, 192px)"
+              height="clamp(160px, 21vw, 256px)"
+              floatDuration={6.5}
+              floatDelay={0.2}
+              floatY={10}
+              floatRotate={2}
+            >
+              <PlaceholderScreen client={sides[0].client} category={sides[0].category} />
+            </DeviceFrameCard>
+          </div>
+        )}
 
-        <KineticText
-          as="h1"
-          delay={0.1}
-          text="Senior Product Design Leader & Systems Architect"
-          className="font-display text-display-sm text-on-surface md:text-display-md lg:text-display-lg"
-        />
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5, ease: [0.2, 0, 0, 1] }}
-          className="max-w-2xl text-title-lg font-normal text-on-surface-variant"
-        >
-          Transforming massive enterprise complexity into unified, highly scalable digital
-          ecosystems.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6, ease: [0.2, 0, 0, 1] }}
-          className="mt-4 flex flex-wrap items-center gap-4"
-        >
-          <Magnetic>
-            <Button href="#work" variant="filled">
-              View Selected Works
-            </Button>
-          </Magnetic>
-          <Magnetic>
-            <Button href="#about" variant="outlined">
-              About Me
-            </Button>
-          </Magnetic>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-        className="relative z-[1] mt-16 border-t border-outline-variant pt-6"
-      >
-        <motion.div style={{ opacity: marqueeOpacity }}>
-          <p className="mb-3 px-1 text-label-md tracking-wide text-on-surface-variant uppercase">
-            Trusted by
-          </p>
-          <Marquee durationSeconds={18}>
-            {clients.map((client) => (
-              <span
-                key={client}
-                className="font-display text-title-lg text-on-surface-variant/70 transition-colors hover:text-on-surface"
+        {featured?.poster && (
+          <div className="relative z-[1]">
+            <DeviceFrameCard
+              width="clamp(224px, 26vw, 288px)"
+              height="clamp(288px, 34vw, 384px)"
+              floatDuration={7.5}
+              floatY={14}
+              floatRotate={1.5}
+            >
+              <Image
+                src={featured.poster}
+                alt={`${featured.name} preview`}
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(min-width: 768px) 320px, 240px"
+                priority
+              />
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)", padding: "1rem" }}
               >
-                {client}
-              </span>
-            ))}
-          </Marquee>
-        </motion.div>
-      </motion.div>
+                <p className="text-label-lg font-medium" style={{ color: "#fff" }}>{featured.client}</p>
+                <p className="text-label-md" style={{ color: "rgba(255,255,255,0.7)" }}>{featured.category}</p>
+              </div>
+            </DeviceFrameCard>
+          </div>
+        )}
 
-      <a
-        href="#about"
-        aria-label="Scroll to next section"
-        className="state-layer absolute bottom-4 left-1/2 z-[1] hidden -translate-x-1/2 rounded-m3-full p-2 text-on-surface-variant md:inline-flex"
+        {sides[1] && (
+          <div className="hidden sm:block" style={{ transform: "translateY(3.5rem) rotate(5deg)" }}>
+            <DeviceFrameCard
+              width="clamp(112px, 14vw, 176px)"
+              height="clamp(144px, 19vw, 240px)"
+              floatDuration={7}
+              floatDelay={0.5}
+              floatY={10}
+              floatRotate={2}
+            >
+              <PlaceholderScreen client={sides[1].client} category={sides[1].category} />
+            </DeviceFrameCard>
+          </div>
+        )}
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.15, ease: [0.2, 0, 0, 1] }}
+        className="relative z-[1] mt-10 flex flex-col items-center gap-6 sm:mt-14"
       >
-        <ArrowDown size={20} aria-hidden />
-      </a>
-    </div>
+        <p className="max-w-lg text-center text-body-lg text-ink-dim">
+          A decade turning fragmented enterprise complexity into cohesive, scalable products — bridging UX
+          strategy and front-end execution.
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/work"
+            className="inline-flex items-center justify-center rounded-full bg-ink px-7 py-3 text-label-lg font-medium text-void transition-transform duration-200 hover:scale-[1.03]"
+          >
+            View Work
+          </Link>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center justify-center rounded-full border border-hud-line-strong bg-transparent px-7 py-3 text-label-lg font-medium text-ink transition-colors duration-200 hover:bg-panel"
+          >
+            Get in Touch
+          </Link>
+        </div>
+      </motion.div>
+    </section>
   );
 }

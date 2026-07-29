@@ -1,0 +1,161 @@
+@import '../../../assets/style/variables';
+
+.container{
+    position: relative;
+    width: 100%;
+    height: auto;
+    color: black;
+
+&Content {
+    width: 80%;
+    height: auto;
+    //margin-top: 10vh; //6rem;
+    padding: 12vh 0 0 5vw;
+    font-family: 'ToyotaType-Regular';
+    @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+        padding: calc(100% - 23vw) 0 0 5vw;
+      }
+    @media only screen and (max-height:$resMobileBreakPoint){
+        padding: 55px 0 0 25px;
+        width: 90%;
+    }
+    
+    &Logo{
+        width: 100%;
+        height: auto;
+        position: relative;
+        img{
+            width: 70%;
+            height: auto;
+            @media only screen and (max-height:$resMobileBreakPoint){
+               width: 35%;
+               padding: 10px 0 0 0;
+            }
+        }
+    }
+    &Title{
+        font-size: 40px;
+        letter-spacing: 1.5px;
+        padding-bottom: 20px;
+        margin-top: 4vh;//30px;
+        font-family: 'ToyotaType-SemiBold';
+        @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+            font-size: 2.1vw;
+            margin-top: calc(100% - 22vw);
+        }
+        @media only screen and (max-height:$resMobileBreakPoint){
+           font-size: 22px;
+           margin-top: -5px;
+           padding: 5px 0 0 0;
+         }
+    }
+    &Body {
+        width: 100%;
+        height: auto;
+        float: left;
+        font-size: 22px;
+        @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+            font-size: 1.2vw;
+        }
+        @media only screen and (max-height:$resMobileBreakPoint){
+            font-size: 10px;
+        }
+        p{
+            width: 80%;
+            @media only screen and (max-height:$resMobileBreakPoint){
+                width: 95%;
+            }
+        }
+    }
+    &Button{
+        position: relative;
+        width: 50%;
+        height: auto;
+        margin: 3em auto;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'ToyotaType-SemiBold';
+        @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+            width: 60%;
+            font-size: 1vw;
+        }
+        @media only screen and (max-height:$resMobileBreakPoint){
+            margin: 10px auto;
+        }
+    }
+   
+    
+    @media(max-width:$resFontSizeBreakPoint) and (orientation: portrait){
+        &Button{
+           width: 100%;
+        }
+    }
+}
+    
+}
+.btnClose{
+    position: absolute;
+    right: 0;
+    z-index: 15;
+    margin: 1rem auto;
+    button{
+        cursor: pointer;
+    }
+    @media only screen and (max-height:$resMobileBreakPoint){
+        margin: 0;
+        padding: 5px 0 0 0;
+    }
+}
+// @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+//     .btnClose{
+//         position: absolute;
+//         right: 0;
+//         z-index: 15;
+//     }
+   
+// }
+
+  /*****************************************/
+  /* MOBILE LANDSCAPE
+  /****************************************/
+// @media(max-height: $resMobileBreakPoint) and (orientation : landscape)  {
+//     .container{
+//         &Content {
+//             width: 100%;
+//             padding: calc(100% - 22vw) 0 0 15px;
+//             //padding-left: 15px;
+//             //margin-top: 19vh!important;
+//             &Logo{
+//                 img{
+//                     width: 45%;
+//                 }
+//             }
+//             &Title{
+//                 font-size: 2.5vw;//24px;
+//                 margin-top: 0;
+//                 padding-bottom: 5px;
+//             }
+//             &Body {
+//                 font-size: 1.4vw;//14px;
+//             }
+//             &Button{
+//                 margin: 15px auto;
+//                 font-size: 11px;
+//             }
+//         }
+//     }
+//     #search-form2 {
+//         display: block;
+//         }
+// }
+ // LANDSCAPE
+//  @media(max-height: $resTabletBreakPoint) and (orientation : landscape)  {
+//     .container{
+//         &Content {
+//             //margin-top: 10vh;
+//             &Button{
+//                 width: 80%;
+//             }
+//         }
+//     }
+//   }

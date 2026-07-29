@@ -1,0 +1,42 @@
+$path: 'https://d28z8i57b3adv3.cloudfront.net/cdn/toyota-fonts/';
+
+$fonts: (
+  ToyotaType-Black: 'ToyotaType-Black',
+  ToyotaType-BlackIt: 'ToyotaType-BlackIt',
+  ToyotaType-Bold: 'ToyotaType-Bold',
+  ToyotaType-BoldIt: 'ToyotaType-BoldIt',
+  ToyotaType-Italic: 'ToyotaType-Italic',
+  ToyotaType-Light: 'ToyotaType-Light',
+  ToyotaType-LightIt: 'ToyotaType-LightIt',
+  ToyotaType-Regular: 'ToyotaType-Regular',
+  ToyotaType-Semibold: 'ToyotaType-Semibold',
+  ToyotaType-SemiboldIt: 'ToyotaType-SemiboldIt'
+);
+
+$ff_light: map-get($fonts, opensans-light);
+$ff_regular: map-get($fonts, opensans-regular);
+$ff_bold: map-get($fonts, opensans-bold);
+
+ @mixin font-face($font-name, $file-name) {
+   /* relative path to the fonts folder */
+   //$filepath: 'https://d28z8i57b3adv3.cloudfront.net/cdn/toyota-fonts/' + $file-name;
+   $filepath: $path + $file-name;
+  
+   @font-face {
+    font-family: #{$font-name};
+     src: url($filepath+'.eot');
+     src: url($filepath+'.eot?#iefix') format('embedded-opentype'),
+          url($filepath+'.woff2') format('woff2'),
+          url($filepath+'.woff') format('woff'),
+          url($filepath+'.ttf') format('truetype'),
+          url($filepath+'.svg') format('svg');
+     font-weight: normal;
+     font-style: normal;
+  }
+  }
+
+ /* Font face declaring */
+ @each $file-name, $font-name in $fonts {
+   @include font-face($font-name, $file-name);
+}
+

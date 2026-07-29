@@ -1,0 +1,688 @@
+@import '../../../assets/style/variables';
+
+$dropDown:'https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/Survey/ba-toyota-dropDown.png';
+$btnNext_arrow: 'https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/Survey/ba-toyota-btn_arrow.png';
+$btnBack_arrow: 'https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/Survey/ba-toyota-btn-back-arrow.png';
+
+@font-face {
+    font-family: HelveticaLT;
+    // src: url(./Fonts/HelveticaLT.ttf);
+    src: url(https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/Survey/Fonts/HelveticaLT.ttf);
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: HelveticaLTBold;
+    //src: url(./Fonts/HelveticaLTBold.ttf);
+    src: url(https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/Survey/Fonts/HelveticaLTBold.ttf);
+    font-weight: bold;
+  }
+.required{color: red;display: inline;}
+.Container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    font-family:'HelveticaLT';
+    @media only screen and (max-height: $resMobileBreakPoint)  {
+        height: 90vh;
+     }
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &Landing{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        top:70px;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+           top:6vh;
+        }
+        img {
+            width: 30%;
+            height: auto;
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                width: 21%;
+            }
+        }
+        &Button {
+            width: 100%;
+            //border: 1px solid black;
+            button {
+                font-family:'HelveticaLTBold'; 
+                margin-top:80px;
+                width: 30%;
+                height: 100px;
+                border: 1px solid black;
+                cursor: pointer;
+                font-size: 1.15rem;
+                background:none;
+                @media only screen and (max-height: $resMobileBreakPoint)  {
+                    margin-top: 5vh;
+                    height: 70px;
+                }
+            }
+        }
+    }
+    &Head{
+        position: relative;
+        width: 100%;
+        height: auto;
+        float: left;
+        padding:30px 0 0 30px;
+        //background: green;
+
+        img{
+            width: 15%;
+            height: auto;
+        }
+    }
+    &Email {
+        position: relative;
+        width: 100%;
+        height: auto;
+        float: left;
+        font-size:25px;
+      
+        
+        &Input {
+            width: 70%;
+            height: auto;
+            margin: calc(100% - 90vw) auto;
+            //background: yellow;
+
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                width: 80%;
+                margin: calc(100% - 96vw) auto; 
+             }
+
+            input{
+                color: black;
+                width: 50%;
+                height: 50px;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                background-color: #ebebeb;
+                font-size:25px;
+                padding-left: 20px;
+                margin-left: 3vw;
+            }
+            label{
+                display:block;
+                margin-left: 3vw;
+            }
+            
+            select{
+                width: 40%;
+                height: 50px;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                background-color: #868585;
+                font-size:25px;
+                
+                background: url($dropDown) no-repeat right #a1a1a1;
+                background-position-x: calc(100% - 2vw);
+                -webkit-appearance: none;
+            }
+          
+            p{
+                text-align: center;
+                font-size: 1vw;
+                padding: 20px 0 0 0;
+                @media only screen and (max-height: $resMobileBreakPoint)  {
+                   font-size: 0.95vw;
+                 }
+                a{
+                    color: black;
+                    text-decoration: underline;
+                }
+            }
+        }
+        
+    }
+   
+    &AgeRange {
+        position: relative;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin:auto;
+        p{
+            font-size: 3vw;
+        }
+    }
+
+    &Form {
+        position: relative;
+        width: 100%;
+        height: auto;
+        float: left;
+        margin: 0px auto;
+        font-size:25px;
+       
+
+        &Input {
+            width: 70%;
+            height: auto;
+            margin: calc(100% - 95vw) auto;
+            //background: yellow;
+
+            span{
+                float: right;
+                font-size: 15px;
+            }
+
+            &General{
+                input{
+                    margin-top: 10px;
+                    color: black;
+                    width: 90%;
+                    height: 50px;
+                    border-radius: 20px;
+                    background-color: #ebebeb;
+                    font-size:25px;
+                    padding-left: 20px;
+                }
+               
+                label{
+                    display:block;
+                    padding: 20px 0 0 0; 
+                }
+            }
+           
+
+            &Email {
+                input{
+                    color: black;
+                    width: 50%;
+                    height: 50px;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    background-color: #ebebeb;
+                    font-size:25px;
+                    padding-left: 20px;
+                }
+               
+                label{
+                    display:block;
+                    padding: 20px 0 0 0; 
+                }
+                
+                select{
+                    width: 40%;
+                    height: 50px;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    background-color: #868585;
+                    font-size:25px;
+                    
+                    background: url($dropDown) no-repeat right #a1a1a1;
+                    background-position-x: calc(100% - 2vw);
+                    -webkit-appearance: none;
+                }
+            }
+           
+          
+            p{
+                text-align: center;
+                font-size: 1vw;
+                padding: 20px 0 0 0;
+                a{
+                    color: black;
+                    text-decoration: underline;
+                }
+            }
+        }
+        
+    }
+
+    &Vehicles {
+        position: relative;
+        width: 100%;
+        height: auto;
+        float: left;
+        margin: 50px auto;
+        font-size:25px;
+
+        p{margin-left: 30px; font-family: 'HelveticaLT';}
+
+        &Acordion {
+            width: 70%;
+            height: auto;
+            margin: calc(100% - 95vw) auto;
+            //background: yellow;
+            ul {
+                list-style: none;
+                li{
+                    padding-left:20px;
+                    list-style:none;
+                    background:#a1a1a1;
+                    border:1px solid #d2d5d9;
+                    font-family:'HelveticaLT';
+                    font-size: 1rem;
+                    padding: 15px;
+                }
+            }
+            &Expand{
+                    float: right;
+                    cursor: pointer;
+                    &Text {
+                        p{
+                            text-decoration: underline;
+                            float: left;
+                        }
+                        img{
+                            width: 10%;
+                            height: auto;
+                            margin-left: 10px;
+                            transform: rotate(-90deg);
+                            transition: transform .7s ease-in-out;
+                        }
+                        img:hover{
+                            transform: rotate(0deg);
+                        } 
+                       
+                        p:hover,&img:hover{
+                            transform: rotate(0deg);
+                        }
+                    }                 
+            }
+            &Privacy{
+                p{
+                    text-align: center;
+                    font-size: 1vw;
+                    padding: 20px 0 0 0;
+                    a{
+                        color: black;
+                        text-decoration: underline;
+                    }
+                } 
+            }
+            
+          
+        }
+       
+        
+    }
+    &SubmitForm{
+        position: relative;
+        width: 100%;
+        height: auto;
+        float: left;
+        margin: 50px auto;
+        font-size:35px;
+
+        p{margin-left: 30px; font-family: 'HelveticaLT';}
+        &Input {
+            width: 70%;
+            height: auto;
+            margin: calc(100% - 95vw) auto;
+            //background: yellow;
+
+           &Owner{
+            padding: 4vh 0 0 10vw;
+           }
+           &Contact{
+               width: 90%;
+               height: auto;
+               margin: auto;
+                //background: pink;
+
+               @media only screen and (max-height: $resMobileBreakPoint)  {
+                    width: 100%; 
+                    margin: 15vh 5vw;
+                }
+
+               label{
+                   font-size: 25px;
+               }
+               .customcheckbox label.outer {
+                margin-left: 50px;
+                width: 250px;
+                display: inline-block;
+                font-size: 28px;
+              }
+              &Telephone{
+                input{
+                    margin-top: 10px;
+                    color: black;
+                    width: 90%;
+                    height: 50px;
+                    border-radius: 20px;
+                    background-color: #ebebeb;
+                    font-size:25px;
+                    padding-left: 20px;
+                }
+              }
+             
+            &Email {
+                input{
+                    color: black;
+                    width: 50%;
+                    height: 50px;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    background-color: #ebebeb;
+                    font-size:25px;
+                    padding-left: 20px;
+                }
+               
+                label{
+                    display:block;
+                    padding: 20px 0 0 0; 
+                }
+                
+                select{
+                    width: 40%;
+                    height: 50px;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    background-color: #868585;
+                    font-size:25px;
+                    
+                    background: url($dropDown) no-repeat right #a1a1a1;
+                    background-position-x: calc(100% - 2vw);
+                    -webkit-appearance: none;
+                }
+            }
+
+           }
+             
+        }
+    }
+    &ThankYou{
+        position: relative;
+        width: 70%;
+        height: auto;
+        margin: auto;
+        text-align: center;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+            width: 100%; 
+        }
+        h3{
+            padding: 30vh 0 0 0;
+            font-family: 'HelveticaLTBold';
+            font-size: 60px;
+        }
+        p{
+            padding: 5vh 0 0 0;
+            font-size: 25px;
+        }
+    }
+}
+
+.Next {
+    position: relative;
+    width: 100%;
+    height: auto;
+    //background:red;
+    padding: 1%;
+    text-align: right;
+    float:right;
+
+    &ButtonIcon {
+        cursor: pointer;
+        font-size: 2vw;
+        border: none;
+        background: url($btnNext_arrow) no-repeat top right;
+        width: 15%;
+        height: 50px;
+        background-size: 50px;
+        text-transform: uppercase;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+            width: 21%;
+        }
+        label{
+            cursor: pointer;
+        }
+    }
+    &ButtonBack {
+        cursor: pointer;
+        font-size: 2vw;
+        border: none;
+        background: url($btnBack_arrow) no-repeat top left;
+        float: left;
+        margin-left: 30px;
+        width: 15%;
+        height: 50px;
+        background-size: 50px;
+        text-transform: uppercase;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+            width: 21%;
+        }
+        label{
+            cursor: pointer; 
+        }
+    }
+   
+}
+.Back {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background:red;
+    padding: 1%;
+    text-align: left;
+
+    &ButtonIcon {
+        cursor: pointer;
+        margin-right: 50px;
+        font-size: 2vw;
+        border: none;
+        background: url($btnNext_arrow) no-repeat top right;
+        width: 15%;
+        height: 50px;
+        background-size: 50px;
+        label{
+            cursor: pointer;
+        }
+    }
+}
+
+/*********************************
+* CUSTOM CHECKBOX DISPLAY VERTICAL
+**********************************/
+.customcb {
+    height: 35px;
+    width: 35px;
+    margin-top: 20px;
+
+
+    background: #ddd;
+    border-radius: 100%;
+    position: relative;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+  }
+  .customcb label.inner {
+    display: block;
+    width: 20px;
+    height: 20px; 
+    border-radius: 100px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    left: 7px;
+    z-index: 1;
+    background: #eee;
+  }
+  .customcb label.outer {
+    margin-left: 40px;
+    width: 250px;
+    display: inline-block;
+    font-size: 30px;
+   
+  }
+ 
+ 
+  .customcb [type=checkbox] {
+    display: none
+  }
+  .red.customcb input[type=checkbox]:checked+label.inner {
+    background: red;
+  }
+
+.AgeBox {
+    position: relative;
+    width: 30%;
+    height: auto;
+    margin:auto;
+    //background: greenyellow;
+}
+.YesNoBox {
+    position: relative;
+    width: 45%;
+    height: auto;
+    margin:auto;
+    //background: peru;
+}
+/***********************************
+* CUSTOM CHECKBOX DISPLAY INLINE
+************************************/
+.customcheck {
+    display: inline-flex;
+    margin: auto 5vw;
+    height: 35px;
+    width: 35px;
+    margin-top: 20px;
+
+    background: #ddd;
+    border-radius: 100%;
+    position: relative;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+  }
+  .customcheck label.inner {
+    display: block;
+    width: 20px;
+    height: 20px; 
+    border-radius: 100px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    left: 7px;
+    z-index: 1;
+    background: #eee;
+  }
+  .customcheck label.outer {
+    margin-left: 50px;
+    width: 100px;
+  }
+ 
+ 
+  .customcheck [type=checkbox] {
+    display: none
+  }
+  .Red.customcheck input[type=checkbox]:checked+label.inner {
+    background: red;
+  }
+
+/***********************************
+* CUSTOM CHECKBOX DISPLAY INLINE
+************************************/
+.customcheckbox {
+    height: 35px;
+    width: 35px;
+    margin-top: 20px;
+
+
+    background: #ddd;
+    position: relative;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+  }
+  .customcheckbox label.inner {
+    display: block;
+    width: 20px;
+    height: 20px; 
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    left: 7px;
+    z-index: 1;
+    background: #eee;
+  }
+  .customcheckbox label.outer {
+    margin-left: 50px;
+    width: 900px;
+    display: inline-block;
+    font-size: 28px;
+    @media only screen and (max-height: $resMobileBreakPoint)  {
+        width: 600px;
+     }
+   
+  }
+ 
+ 
+  .customcheckbox [type=checkbox] {
+    display: none
+  }
+  .Redbox.customcheckbox input[type=checkbox]:checked+label.inner {
+    background: red;
+  }
+
+  /****************************
+  * ROW COLUM
+  *****************************/
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    
+  }
+.gridItem {
+    background-color: rgba(255, 255, 255, 0.8);
+    //border: 1px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    label{
+        font-size: 15px;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+            font-size: 10px;
+        }
+    } 
+    span {
+        padding: 20px;
+        font-size: 15px;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+           font-size: 7px;
+        }
+    }
+  }
+  .InnerBox {
+    color: black; 
+    text-align: center;  
+            
+    img {
+        position: relative;
+        width: 100%;
+        height:auto;
+        cursor: pointer;
+    }  
+} 
+
+.selected{
+    border: 2px solid #d71921;
+    box-shadow: inset 0 0 30px #8d8d8d;
+}

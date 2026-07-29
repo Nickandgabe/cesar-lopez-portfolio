@@ -1,0 +1,829 @@
+@import '../.././../assets/style/variables';
+
+$BreakPoint1: '1060px';
+$BreakPoint2: '1024px';
+
+
+@keyframes cameraFlash {
+  from {box-shadow: 0;}
+  to {box-shadow: inset 0 0 0 100px #fff;}
+}
+
+// .TeamToyota{
+//   width: 60%;
+//   height: auto;
+//   float: right;
+// }
+// .ToyotaRacing{
+//   width: 60%;
+//   height: auto;
+//   float: right;
+// }
+
+.TeamToyota {
+  .box {
+   
+    &Close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+    &Photo{
+      position: absolute;
+      width: 100%;
+      height: 95vh;
+      text-align: center;
+      top: 5%; //2%;
+      right: 0px!important;//5%;
+      overflow-y: auto;
+      //background: saddlebrown;
+      // @media only screen and (max-height: $BreakPoint3) {
+      //   overflow-y: auto;
+      //   height: 90vh;
+      //  }
+  
+      &Background {
+        // transition: all 30ms ease-in;/* Shutter speed */
+        width: 100%;
+        height: auto;
+        float: right;
+        margin: auto 5vw;
+
+        @media only screen and (max-height:$resMobileBreakPoint){
+          margin: auto 5.1vw;
+         }
+         &Canvas {
+           //margin: auto 53vw;//50vw;
+           //transform: scale(0.5);
+           transform: scale(0.5,0.5);
+           float: right;
+           //margin: -25vh 4vw;
+           //margin: -40vh calc(100% - 100vw);
+           //padding-bottom: 10vh;
+           margin-top: -250px;
+           margin-right: 100px;
+
+          //  @media only screen and (max-height:$resTabletBreakPoint){
+          //   transform: scale(0.4);
+          //   margin: -50vh -16vw;
+          //  }
+          //  @media only screen and (max-height:$resMobileBreakPoint){
+          //   // margin: -122vh calc(100% - 129vw);
+          //   // transform: scale(0.2);
+          //  }
+
+         
+          @media only screen and (max-height: $BreakPoint1) {
+            margin-top: -300px;
+            margin-right: -2vw;//0px;
+            height: 50vh;
+           }
+          
+              // Between 920 and 720
+           @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+            background: pink;
+           }
+            // 720
+           @media only screen and (max-height: $BreakPoint3) {
+            //background: purple;
+            //margin-right: -200px;
+            //margin: -44vh calc(100% - 90vw);
+           }
+           @media only screen and (max-height: $BreakPoint4) {
+            //background: blue;
+            transform: scale(0.4,0.4);
+           }
+           @media only screen and (max-height: $BreakPoint5) {
+             //background: brown;
+             margin: -110vh calc(100% - 130vw);
+             transform: scale(0.2);
+           }
+
+
+         }
+      }
+      @media only screen and (max-height:$resMobileBreakPoint){
+        top: 10vh;//3%;
+        // right: 2%;
+       }
+    
+      &Icon{
+        width: 100%;
+        height: auto;
+      }
+        
+      &scrollmenu {
+        width: 100%;
+        height: auto;
+        text-align: right;
+        overflow-x: auto; 
+        overflow-y: hidden; 
+        white-space: nowrap; 
+        // margin: auto -1%;
+        margin: auto;
+        //background: royalblue;
+      
+    
+        video{
+          margin: auto 6vw;
+        }
+       
+        @media only screen and (max-height:$resMobileBreakPoint){
+
+          video{
+            margin: auto 13vw;
+          }
+         }
+         &Child{
+           width: 70%;
+           float: right;
+           margin: auto 5vw;
+           @media only screen and (max-height: $resMobileBreakPoint) {
+            width: 55%;
+          }
+         }
+  
+        // @media only screen and (max-height:$resMobileBreakPoint){
+        //   //background: yellowgreen;
+        //   width: calc(100% - (31vh + 31vw));
+        //   margin: auto;
+        //  }
+      }
+      // &TextContent {
+      //   width: 60%;
+      //   height: 16%;
+      //   float: right;
+       
+      //   @media only screen and (max-height:$resMobileBreakPoint){
+      //     //background: purple;
+      //     // margin:auto -3%;
+      //     margin:auto;
+      //     width: 55%;
+      //    }
+  
+      //    &Finish{
+      //      width: 100%;
+      //      @media only screen and (max-height:$resMobileBreakPoint){
+      //        button{
+      //         width: 35%;
+      //        }
+      //      }
+      //    }
+      // }
+      &Footer{
+        position: absolute;
+        bottom: 0;
+        //background: blue;
+              
+         &Box {
+          
+          @media only screen and (max-height:$resTabletBreakPoint){
+            width: 70%;
+           }
+           @media only screen and (max-height:$resMobileBreakPoint){
+              width: 60%;
+            }
+          &Finish{
+            width: 100%;
+            @media only screen and (max-height:$resMobileBreakPoint){
+              button{
+               width: 35%!important;
+              }
+            }
+          }
+         }     
+        
+      }
+
+  
+    }
+    &CameraIcon{
+      position: absolute;
+      right: 0;
+      margin: 25vh calc(100% - 68vw);
+      background: red;
+      width: 5vw;
+      height: 5vw;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 5px;
+      @media only screen and (max-height:$resFontSizeBreakPoint){
+        margin: 25vh calc(100% - 68vw);
+      }
+      @media only screen and (max-height:$resMobileBreakPoint){
+        // margin: 18vh 27vw;
+        margin: 18vh 28vw;
+       }
+      img{
+        width: 50%;
+        height: auto;
+        //margin: 1vw auto;
+        padding: 20px 0 0 0;
+        @media only screen and (max-height:$resTabletBreakPoint){
+          padding: 10px 0 0 0;
+         }
+         @media only screen and (max-height:$resMobileBreakPoint){
+          padding: 5px 0 0 0;
+         }
+       
+      }
+      p{
+        color:#FFFFFF;
+        font-size: 0.7vw;
+        //margin: -1vw auto;
+        padding: 0 0 0 0;
+        @media only screen and (max-height:$resMobileBreakPoint){
+          padding: 0px 0 0 0;
+         }
+        
+      }
+    }
+  }
+  .bgSelection {
+    height: auto;
+    padding: 0 !important;
+    width: 15.8%;
+    margin-left: 1.5%;
+    cursor: pointer;
+    @media only screen and (max-height: $resFontSizeBreakPoint) {
+        width: 15.8%;
+    }
+    @media only screen and (max-height: $resMobileBreakPoint) {
+      width: calc(100% - 45vw);
+    }
+  
+  }
+
+}
+
+.ToyotaRacing {
+  .box {
+   
+    &Close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+    &Photo{
+      // position: absolute;
+      // width: 100%;
+      // height: auto;
+      // text-align: center;
+      // top: 10%; //2%;
+      // right: 5%;
+      @media only screen and (max-height:$resMobileBreakPoint){
+       //margin: auto 0!important;
+      }
+      //background: green;
+     
+      &Background {
+      
+        margin-right: 19%;
+        // margin-right: calc(100% - 95vw);
+        // margin-right: calc(100% - 82vw);
+        //margin: auto calc(100% - 85vw);
+
+        // @media only screen and (max-width:$resFontSizeBreakPoint){
+        //   margin-right: calc(100% - 90vw);
+        // }
+        // @media only screen and (max-height:$resTabletBreakPoint){
+        //   margin-right: calc(100% - 90vw);
+        // }
+        
+        // @media only screen and (max-height:$resMobileBreakPoint){
+        //   margin-right: calc(100% - 79vw);
+        // }
+        // transform: scale(1.05)
+
+        @media only screen and (min-height: $BreakPoint1) {
+         // background: yellow;
+          margin-right: 19%;
+        }
+       
+           // Between 920 and 720
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          //background: pink;
+          // margin-right: 19%;
+          margin-right: calc(100% - 86vw);
+        }
+         // 720
+        @media only screen and (max-height: $BreakPoint3) {
+         // background: purple;
+          margin-right: 12%;
+        }
+        @media only screen and (max-height: $BreakPoint4) {
+          //background: blue;
+          margin-right: 19%;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background: brown;
+          margin-right: 20%;
+          margin-top: 10vh;
+        }
+ 
+
+      }
+     
+    
+      &Icon{
+        width: 100%;
+        height: auto;
+      }
+        
+      &scrollmenu {
+  
+        @media only screen and (max-height:$resMobileBreakPoint){
+          //background: yellowgreen;
+          width: calc(100% - (31vh + 23vw));
+          margin: auto;
+         }
+      }
+      // &TextContent {
+      //   position: relative;
+      //   width: 100%;
+      //   height: 16%;
+      //   text-align: center;
+      //   //float: right;
+       
+      //   @media only screen and (max-height:$resMobileBreakPoint){
+      //     //background: purple;
+      //     // margin:auto -3%;
+      //     margin:auto;
+      //     width: 55%;
+      //    }
+  
+      //    &Finish{
+      //      width: 100%;
+      //      @media only screen and (max-height:$resMobileBreakPoint){
+      //        button{
+      //         width: 35%;
+      //        }
+      //      }
+      //    }
+      // }
+      &Footer{
+       
+        @media only screen and (max-height:$resMobileBreakPoint){
+          width: 100%;
+          height: 16%;
+          //background: yellowgreen;
+         }
+         &Box {
+          &Finish{
+            width: 100%;
+            @media only screen and (max-height:$resMobileBreakPoint){
+              button{
+               width: 35%!important;
+              }
+            }
+          }
+        }
+      }
+    }
+    &CameraIcon{
+      // position: absolute;
+      // right: 0;
+      // margin: 25vh calc(100% - 74.8vw);
+      // background: red;
+      // width: 5vw;
+      // height: 5vw;
+      // border-radius: 50%;
+      // cursor: pointer;
+      // padding: 5px;
+      // @media only screen and (max-height:$resFontSizeBreakPoint){
+      //   margin: 24vh calc(100% - 76vw);
+      // }
+
+      // @media only screen and (max-height:$resTabletBreakPoint){
+      //   margin: 25vh calc(100% - 70vw);
+      // }
+      margin-right: 29%;
+      @media only screen and (max-height: $BreakPoint1) {
+        margin-right: 29%;
+        //background: yellow;
+      }
+      
+         // Between 920 and 720
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        //background: pink;
+        //margin-right: 60vw;
+      }
+
+       // 720
+      @media only screen and (max-height: $BreakPoint3) {
+        //background: purple;
+        //margin-right: 20vw;
+        margin-right: calc(100% - 79vw);
+      }
+      @media only screen and (max-height: $BreakPoint4)  {
+        //background: blue;
+        margin-right: calc(100% - 73vw);
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        //background: brown;
+        margin-right: 25%;
+        margin-top: 25vh;
+      }
+   
+      @media only screen and (max-height: $BreakPoint5) {
+        //background: brown;
+        margin-right: 25%;
+        margin-top: 25vh;
+      }
+      //tablet only
+      @media only screen 
+      and (min-device-width : 768px) 
+      and (max-device-width : 1024px) 
+      and (orientation : landscape) 
+      and (-webkit-min-device-pixel-ratio: 2) {
+        //background: orange;
+        margin-right: calc(100% - 73vw);
+      }
+      
+      // margin: 25vh 25vw;
+      // @media only screen and (max-height:$BreakPoint1){ 
+      //   background: green;
+      //  margin:  13vw 25vw;
+      // }
+      // @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      //  background: blue;
+      //  margin:  12vw 25vw;
+      //  }
+      //  @media only screen and (max-height: $BreakPoint3) {
+      //   background: yellow;
+      //   margin: 11vw 22vw;
+      //  }
+      //  @media only screen and (max-height: $BreakPoint4) { 
+      //    background: purple;
+      //    margin: 7vw 18vw;
+      //  }
+      //  @media only screen and (max-height: $BreakPoint5) { 
+      //   background: pink;
+      //   margin: 8vw calc(100% - 73vw);
+      // }
+      img{
+        width: 50%;
+        height: auto;
+        //margin: 1vw auto;
+        padding: 20px 0 0 0;
+        @media only screen and (max-height:$resTabletBreakPoint){
+          padding: 10px 0 0 0;
+         }
+         @media only screen and (max-height:$resMobileBreakPoint){
+          padding: 5px 0 0 0;
+         }
+       
+      }
+      p{
+        color:#FFFFFF;
+        font-size: 0.7vw;
+        //margin: -1vw auto;
+        padding: 0 0 0 0;
+        @media only screen and (max-height:$resMobileBreakPoint){
+          padding: 0px 0 0 0;
+         }
+        
+      }
+    }
+  }
+}
+
+/**** Global *****/
+.box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    color: #747474;
+    background-color: #F2F2F2;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    &Close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+    &Photo{
+      position: absolute;
+      width: 100%;
+      height: auto;
+      // overflow: scroll;
+      // border: solid 1px red;
+      // height: 3000px;
+      text-align: center;
+      //margin: 12vh -5vw; //12em -5vw;
+      top: 10%; //2%;
+      right: 5%;
+
+      // -webkit-box-shadow: 0px 10px 28px 0px rgba(196, 203, 245, 1);
+      // -moz-box-shadow: 0px 10px 28px 0px rgba(196, 203, 245, 1);
+      // box-shadow: 0px 10px 28px 0px rgba(196, 203, 245, 1);
+      // max-width: 50%;
+      // position: relative;
+
+      // @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+      //   margin: calc(100% - 90vw) -4.6vw;
+      // }
+      // @media only screen and (max-height:$BreakPoint1){
+      //   margin: calc(100% - 90vw) -2.5vw;
+      // }
+      // @media only screen and (max-height:$BreakPoint2){
+      //   margin: calc(100% - 90vw) -2.5vw!important;
+      // }
+      // @media only screen and (max-height:$resMobileBreakPoint){
+      //  margin-top: 15px!important;
+      // }
+      //  @media only screen and (max-height:$resMobileBreakPoint){
+      //   canvas {
+      //     width: calc(100% - (27vh + 27vw))!important;
+      //   }
+      //  }
+      &Background {
+        // transition: all 30ms ease-in;/* Shutter speed */
+        width: 100%;
+        // width: 60vw;
+        // border: solid 1px red;
+        // max-height: 60vh;
+        height: auto;
+        float: right;
+      }
+      @media only screen and (max-height:$resMobileBreakPoint){
+        top: 10vh;//3%;
+        right: 2%;
+       }
+      .TeamToyota{
+        @media only screen and (max-height:$resMobileBreakPoint){
+          width: 50%;
+          margin: auto 45px;
+         }
+      }
+      .ToyotaRacing{}
+    
+      &Icon{
+        width: 100%;
+        height: auto;
+      }
+      &TeamToyota{
+        //background: green;
+      }
+      
+      &scrollmenu {
+        width: 65%;
+        height: 16%;
+        float: right;
+        overflow-x: auto; 
+        overflow-y: hidden; 
+        white-space: nowrap; 
+        // margin: auto -1%;
+        margin: auto -2%;
+
+        @media only screen and (max-height:$resMobileBreakPoint){
+          //background: yellowgreen;
+          width: calc(100% - (31vh + 31vw));
+          margin: auto;
+         }
+        
+      }
+
+      //remove later
+      // &TextContent {
+      //   width: 100%;
+      //   height: 16%;
+      //   float: right;
+       
+      //   @media only screen and (max-height:$resMobileBreakPoint){
+      //     //background: purple;
+      //     // margin:auto -3%;
+      //     margin:auto;
+      //     width: 55%;
+      //    }
+
+      //    &Finish{
+      //      width: 100%;
+      //      @media only screen and (max-height:$resMobileBreakPoint){
+      //        button{
+      //         width: 35%;
+      //        }
+      //      }
+      //    }
+      // }
+      &Footer{
+        width: 100%;
+        height: 16%;
+        float: right;
+        &Box {
+          width: 60%;
+          height: auto;
+          float: right;
+          &Finish{
+            width: 100%;
+            height: auto;
+            @media only screen and (max-height:$resMobileBreakPoint){
+              button{
+               width: 35%;
+              }
+            }
+          }
+        }
+       
+      }
+
+    }
+
+    // &Footer {
+    //   position: relative;
+    //   width: 100%;
+    //   height: 16%;
+    //   text-align: center;
+    //   background: yellowgreen;
+
+    //   &box {
+    //     width: 50%;
+    //     height: auto;
+    //   }
+
+     
+    //   @media only screen and (max-height:$resMobileBreakPoint){
+    //     //background: purple;
+    //     // margin:auto -3%;
+    //     margin:auto;
+    //     width: 55%;
+    //    }
+
+    //    &Finish{
+    //      width: 100%;
+    //      @media only screen and (max-height:$resMobileBreakPoint){
+    //        button{
+    //         width: 35%;
+    //        }
+    //      }
+    //    }
+    // }
+    &CameraIcon{
+      position: absolute;
+      right: 0;
+      // margin: 15vw 27vw;
+      margin: 25vh calc(100% - 74.8vw);
+      background: red;
+      width: 5vw;
+      height: 5vw;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 5px;
+      @media(max-height:$resFontSizeBreakPoint){
+        // width: 6vw;
+        // height: 6vw;
+        margin: 25vh calc(100% - 74.5vw);
+      }
+      @media only screen and (max-height:$resMobileBreakPoint){
+        // margin: 18vh 27vw;
+        margin: 18vh 22vw;
+       }
+      img{
+        width: 50%;
+        height: auto;
+        //margin: 1vw auto;
+        padding: 20px 0 0 0;
+        @media only screen and (max-height:$resTabletBreakPoint){
+          padding: 10px 0 0 0;
+         }
+         @media only screen and (max-height:$resMobileBreakPoint){
+          padding: 5px 0 0 0;
+         }
+       
+      }
+      p{
+        color:#FFFFFF;
+        font-size: 0.7vw;
+        //margin: -1vw auto;
+        padding: 0 0 0 0;
+        @media only screen and (max-height:$resMobileBreakPoint){
+          padding: 0px 0 0 0;
+         }
+        
+      }
+    }
+   
+   
+    
+  }
+
+
+// Photobooth App
+.photoBoothCanvas {
+  width: 50%;
+  height: 50%;
+  // width: 236px;
+  // height: 352px;
+  margin: 0 auto;
+}
+  
+  
+// @media (max-width: 800px) {
+//   .box{
+//     &CameraIcon{
+//       p{display: none;}
+//     }
+//   }
+// }
+
+  /*****************************************/
+  /* MOBILE LANDSCAPTE
+  /****************************************/
+  // @media(max-height: $resMobileBreakPoint) and (orientation : landscape)  {
+  //   .box {
+  //     width: 100vw;
+  //     height: 100vh;
+  //     &Photo{
+  //       margin: 9vh -5vw; //1
+  //     }
+  //   }
+  // }
+
+
+// .Loader {
+//   position: absolute;
+//   z-index: 3;
+//   right: 0;
+//   height: auto;
+//   img {
+//     width: 75vw;
+//     height: 75vh;
+//   }
+// }
+.Loader{
+  position: absolute;
+  height: auto;
+  z-index: 999; 
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  img{
+    width: 60vw;
+    height: 75vh;
+    object-fit: cover;
+    float: right;
+    @media only screen and (max-height:$resMobileBreakPoint){
+      width: calc(100% - 40vw);
+     }
+  }
+}
+
+
+.bgSelection {
+  // width: 200px;
+  height: auto;
+  padding: 0 !important;
+  width: 17%;//18%;
+  margin-left: 1.5%;
+  // padding: 2px;
+  // height: auto;
+  // box-sizing:content-box;
+  // padding: 2% 0 0 4%;//1.5%;
+  cursor: pointer;
+  // border: solid 3px #eb0a1e;
+
+  @media only screen and (max-height:$resMobileBreakPoint){
+    //width: calc(100% - 56vw);
+    margin-left: 1.75%;
+    width: 18%;
+   }
+}
+
+.countDownContainer {}
+
+.countDown {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 5;
+  color: white;
+  font-size: 300px;
+  margin-left: 40%;
+  @media only screen and (max-height:$resMobileBreakPoint){
+    font-size: 15vw;
+    margin-left: 38%;
+   }
+}
+
+
+.cameraFlash {
+  width: 60vw;
+  height: 80vh;
+  position: absolute;
+  right: 0;
+  background: white;
+  // border: 1px solid red;
+}
+
+// .boxPhoto {
+//   height: 100vh;
+// }
