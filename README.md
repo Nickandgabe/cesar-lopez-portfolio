@@ -1,27 +1,28 @@
-This is a Next.js portfolio built with TypeScript, Tailwind CSS v4, and Material Design 3 token architecture (custom brand palette, not stock M3 colors).
+Cesar Lopez's portfolio — a static site (no build step, no framework) serving
+real case studies, live interactive demos, and an interactive resume.
 
-## Getting Started
+## Structure
 
-```bash
-npm run dev
-```
+- `CesarPortfolioWeb/` — the site itself (plain HTML/CSS/JS + nginx). This is
+  what's live at [iamcesarlopez.com](https://iamcesarlopez.com).
+- `immersicom-demo-build/` — standalone live demo linked from the Immersicom
+  case study, its own Dockerfile/Cloud Run service.
+- `toyota-demo-build/` — standalone live demo linked from the Toyota case
+  study, its own Dockerfile/Cloud Run service.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-- Design tokens (color roles, type scale, elevation, shape): `src/app/globals.css`
-- UI primitives (Button, Card, Chip, FAB): `src/components/ui`
-- Case study content (edit here to swap in real project data): `src/content/projects.ts`
-- Case study page template: `src/app/work/[slug]/page.tsx`
-
-## Deploy to Google Cloud Run
-
-Pushes to `main` auto-deploy via a Cloud Build trigger (see `cloudbuild.yaml`
-and `PROJECT_LOG.md` for the full CI/CD setup). To deploy manually instead:
+## Deploy
 
 ```bash
+cd CesarPortfolioWeb
 gcloud run deploy cesar-lopez-portfolio --source . --region=us-central1
 ```
 
-The `Dockerfile` uses the Next.js `standalone` output (enabled in `next.config.ts`) so the container image only ships the production server and its resolved dependencies.
+There is no CI/CD trigger on `main` — deploys are manual, run from inside
+`CesarPortfolioWeb/`. See `PROJECT_LOG.md` for fuller history.
 
-See `PROJECT_LOG.md` for full project context, design system notes, and open items.
+## Earlier Next.js redesign
+
+An earlier React/Next.js redesign (and a separate "Products Hub" dashboard
+feature built on top of it) lived at the repo root through mid-2026. Both
+were retired in favor of the static site above and are preserved, untouched,
+on the `archive/nextjs-redesign` branch if ever needed again.

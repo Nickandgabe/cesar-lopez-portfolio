@@ -234,3 +234,20 @@ gcloud builds list --region=us-central1 --limit=5
   project it maps to.
 - If picking up infra work: confirm the CI/CD trigger has fired cleanly on
   a real (non-manual) push at least once, then close out items 4–6 above.
+
+---
+
+## 2026-08-11 — Redesign retired, static site is now the permanent portfolio
+
+The Next.js redesign documented above (and the "Products Hub" dashboard
+feature added on top of it in late July) has been retired. The static site
+under `CesarPortfolioWeb/` — originally spun up as a stopgap while this
+redesign was paused — grew into a complete, real portfolio over the course
+of that work (flagship case studies with live demos, an interactive 2D/3D
+asset showcase, brand manuals, an interactive resume, password-gated areas)
+and is now the permanent site. It has been live in production the whole
+time; this change just makes the repo match that reality.
+
+Both the Next.js app and the Products Hub dashboard are preserved exactly as
+they were, untouched, on the `archive/nextjs-redesign` branch — nothing was
+deleted outright. `main` no longer builds or deploys either.

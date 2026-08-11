@@ -1,5 +1,8 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Static site, no build step
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+`CesarPortfolioWeb/` is plain HTML/CSS/JS served by nginx — no framework, no
+bundler, no `npm install`. Edit files directly; there's nothing to build.
+Deploys are manual (`gcloud run deploy` from inside `CesarPortfolioWeb/`),
+not triggered by pushes to `main`.
+
+See `README.md` for structure and `PROJECT_LOG.md` for history.
