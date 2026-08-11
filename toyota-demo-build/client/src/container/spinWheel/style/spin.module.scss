@@ -1,0 +1,126 @@
+
+@import '../../../assets//style/_variables';
+
+  .container {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      //background: green;
+    //margin: 10rem auto;
+    // margin: auto -18vw;
+    canvas {
+      position: absolute;
+      z-index: 1;
+      top:0;
+      left: 20px; 
+      top: 2.5vh;
+      width:42%;
+       
+         @media (max-height: $resTabletBreakPoint) {
+          top:2vh;
+          left: 10px;
+         }
+    }
+   
+
+    &Wheel {
+        width: 50%;
+        position: relative;
+        margin: 0vw -13vw;
+        float: left;
+        &Needle {
+
+            width: 8vw;
+            height: auto;
+            position: absolute;
+            z-index: 2;
+            
+            right: calc(100% - 44vw);
+            top: calc(100% - 28vw);
+
+            @media only screen and (max-height: $BreakPoint1) {
+              top: calc(100% - 29vw);
+            }
+            @media only screen and (max-height: $resTabletBreakPoint) {
+              top: calc(100% - 30vw);
+            }
+
+            @media only screen and (max-height: $resMobileBreakPoint) {
+              top: calc(100% - 30.5vw);
+            }
+        }
+        &bigWheel {
+            position: absolute;
+            width: 45vw;
+            height: auto;
+            position: relative;
+            top: 0px;
+        } 
+        &Center{
+          position: absolute;
+          z-index: 2;
+          left: 0;
+          width: 45%;
+          height: auto;
+        } 
+    }
+    &Box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: auto;
+        color: black;
+        font-weight: normal;
+        letter-spacing: 1.5px;
+        &Description{
+            position: relative;
+            float: right;
+            right: 2vw;
+            &Title{font-size: 2.5vw;}
+            p{
+                padding: 15px 0px 0px 0px;
+                font-size: 1.3vw;
+            } 
+        } 
+    }
+    &Controller{
+      width: 100%;
+      height: auto;
+
+
+    }
+    &ButtonSpin{
+        position: absolute;
+        top: 30vh;
+        right: 0px; //-24.5vw;
+        z-index: 1;
+        width: 25%;
+        height: auto;
+        margin: auto 8.5vw;
+        cursor: pointer;
+    }
+    &ButtonReset{
+      position: absolute;
+      top: 50vh;
+      right: 0px;//-24.5vw;
+      z-index: 1;
+      width: 25%;
+      height: auto;
+      margin: auto 8.5vw;
+      cursor: pointer;
+  } 
+    // @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+    //     .container {
+    //         &ButtonSpin{
+    //             width: 30%;
+    //             top: calc(100% - 25vw);
+    //         }
+    //     }
+    //  }
+    
+  }
+
+  
+  

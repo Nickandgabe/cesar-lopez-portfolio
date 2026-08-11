@@ -1,0 +1,80 @@
+@import '../../../assets//style/_variables';
+
+  .container {
+      position: relative;
+      width: 100%;
+      height: auto;
+      float: left;
+    //   margin: 10rem auto;
+    margin: auto -18vw;
+    &Wheel {
+        width: 50%;
+        position: relative;
+        margin: 0vw -13vw;
+        float: left;
+        &Needle {
+            // width: 80%;
+            // height: 34%;
+            // position: absolute;
+            // z-index: 0;
+            // left: calc(100% - 14.4vw);
+            
+            width: 8vw;
+            height: auto;
+            position: absolute;
+            z-index: 1;
+            //transform: rotate(74deg);
+            //right: calc(100% - 40.8vw);
+            right: calc(100% - 44vw);
+            top: calc(100% - 28vw);
+        }
+        &bigWheel {
+            position: absolute;
+            width: 45vw;
+            height: auto;
+            position: relative;
+        }  
+    }
+    &Box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: auto;
+        color: black;
+        font-weight: normal;
+        letter-spacing: 1.5px;
+        &Description{
+            position: relative;
+            float: right;
+            right: 2vw;
+            &Title{font-size: 2.5vw;}
+            p{
+                padding: 15px 0px 0px 0px;
+                font-size: 1.3vw;
+            } 
+        } 
+    }  
+    &ButtonSpin{
+        position: absolute;
+        top: 30vh;
+        right: -24.5vw;
+        z-index: 1;
+        width: 25%;
+        height: auto;
+        margin: auto 8.5vw;
+        cursor: pointer;
+    } 
+    @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+        .container {
+            &ButtonSpin{
+                width: 30%;
+                top: calc(100% - 25vw);
+            }
+        }
+     }
+    
+  }
+
+  
+

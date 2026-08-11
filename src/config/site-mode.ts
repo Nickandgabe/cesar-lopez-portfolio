@@ -4,4 +4,4 @@
  * gathered. Flip to false and redeploy once real content has replaced the
  * placeholders in src/content/projects.ts.
  */
-export const MAINTENANCE_MODE = true;
+export const MAINTENANCE_MODE = false;

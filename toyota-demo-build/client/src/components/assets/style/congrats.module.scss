@@ -1,0 +1,126 @@
+@import '../../../assets//style/_variables';
+
+.container{
+    position: relative;
+    width: 100%;
+    height: auto;
+    color: black;
+&Content {
+    width: 80%;
+    height: auto;
+    margin-top: 10vh;  //6rem;
+    padding: 2vw 0 0 7vw; //8vw;
+    &Title{
+        font-size: 70px;
+        letter-spacing: 1px;
+        padding-bottom: 10px;
+        font-family: 'ToyotaType-SemiBold';
+        @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+            font-size: 4vw;
+        }
+    }
+    p{
+        font-family: 'ToyotaType-Regular';
+        width: 90%; //80%;
+        font-size: 32px;
+        @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+            font-size: 1.5vw;
+        }
+    }
+    &Form {
+        width: 80%;
+        height: auto;
+        padding: 3vh 0 0 0;
+        p{ 
+            font-family: 'ToyotaType-Regular';
+            font-size: 20px; padding: 30px 0 0 0px;
+            @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                font-size: 1vw;
+            }
+        }
+        input {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            border-bottom: 1px solid #747474;
+            width: 100%;
+            padding: 10px;
+          }
+      
+        input[type=checkbox]{
+            display: inline-block;
+            margin-top: 5vh;
+            border: 1px solid #b3b3b3;
+            border-radius: 2px;
+            width: 2.5em;
+            height: 1.5em;
+            margin-left: -1vw;
+        }
+        label{
+            font-size: 20px; 
+            @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                font-size: 1vw;
+            }
+            a{
+                color: black;
+                text-decoration: underline;
+            }
+        }
+          
+    }
+    &SubmitButton {
+        // margin: 3rem auto;
+        margin-top: 3vh;
+        cursor: pointer;
+        width: 35%;
+        height: auto;
+    }
+    &Next{
+        width: 35%;
+        height: auto;
+        display: none;
+        margin-top: 3vh ;
+    }
+
+}
+    
+}
+
+  /*****************************************/
+  /* MOBILE LANDSCAPTE
+  /****************************************/
+  @media(max-height: $resMobileBreakPoint) and (orientation : landscape)  {
+    .container{
+       
+        &Content {
+            //padding: 6vh 0 0 2vw; //8vw;
+            padding: 2vh 0 0 2vw;
+           
+
+            p{
+                font-size: 2vw;//20px;
+            }
+            &Form {
+                width: 100%;
+                padding: 0 0 0 0;
+                display: none;
+                p{
+                    font-size: 15px; //16px
+                    padding: 10px 0 0 0px;
+                }
+                input {
+                    padding: 0px; //10px;
+                  }
+                label{
+                    font-size: 1.5vw;  
+                }
+            }
+            &SubmitButton {
+                margin-top: 2vh; //5vh;
+            }
+            &Next{
+                display: block;
+            }
+        }
+    }
+  }

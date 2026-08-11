@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cesar Lopez — Head of Design &amp; Product</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233A;
+    --navy:#1B3A5C;
+    --signal:#3E7CB1;
+    --sky:#E4EEF7;
+    --sky-line:#AFCBE3;
+    --paper:#FAF9F6;
+    --graphite:#6B7280;
+    --font-display:'Fraunces', serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--signal);}
+  .wrap{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .rail{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    padding:56px 36px 40px 40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border-right:1px solid #E4E1D8;
+  }
+  .rail-top .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--signal);
+    margin:0 0 10px;
+  }
+  .rail-top h1{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:32px;
+    line-height:1.08;
+    margin:0 0 6px;
+    color:var(--navy);
+  }
+  .rail-top .role{
+    font-size:14px;
+    color:var(--graphite);
+    line-height:1.5;
+    margin:0 0 32px;
+  }
+  .nav{list-style:none;padding:0;margin:0 0 40px;}
+  .nav li{margin-bottom:14px;}
+  .nav a{
+    text-decoration:none;
+    color:var(--ink);
+    font-size:14px;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    opacity:0.55;
+    transition:opacity .2s ease;
+  }
+  .nav a:hover, .nav a.active{opacity:1;color:var(--navy);}
+  .nav .dash{width:16px;height:1px;background:currentColor;display:inline-block;}
+  .rail-bottom{font-size:12.5px;color:var(--graphite);line-height:1.8;}
+  .rail-bottom a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--sky-line);}
+  .rail-bottom .dl{
+    display:inline-block;
+    margin-top:14px;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    letter-spacing:0.03em;
+    color:var(--navy);
+    border:1px solid var(--navy);
+    padding:8px 14px;
+    border-radius:2px;
+    text-decoration:none;
+  }
+  .rail-bottom .dl:hover{background:var(--navy);color:#fff;}
+
+  main{padding:64px 56px 120px;}
+  section{margin-bottom:88px;}
+  section h2{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--signal);
+    margin:0 0 20px;
+  }
+
+  .hero p.lede{
+    font-family:var(--font-display);
+    font-weight:300;
+    font-size:26px;
+    line-height:1.42;
+    color:var(--ink);
+    margin:0 0 44px;
+    max-width:640px;
+  }
+  .hero p.lede b{font-weight:600;color:var(--navy);}
+
+  .flowviz{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:28px 32px;
+    background:var(--sky);
+    border-radius:4px;
+    flex-wrap:wrap;
+  }
+  .flowviz .nodes{display:flex;align-items:center;gap:6px;}
+  .node{
+    width:14px;height:14px;border-radius:50%;
+    background:var(--sky-line);
+    transition:background .5s ease, transform .5s ease;
+  }
+  .node.on{background:var(--navy);}
+  .node.gone{opacity:0;transform:scale(0.2);}
+  .arrow{font-family:var(--font-mono);color:var(--navy);font-size:14px;margin:0 14px;}
+  .flowviz .caption{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--navy);
+    margin-left:auto;
+    letter-spacing:0.01em;
+  }
+  .flowviz .caption b{font-size:15px;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  .skillgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px;}
+  .skillgroup h3{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:13.5px;
+    color:var(--navy);
+    margin:0 0 10px;
+  }
+  .pills{display:flex;flex-wrap:wrap;gap:6px;}
+  .pill{
+    font-size:12px;
+    padding:5px 11px;
+    background:var(--sky);
+    color:var(--navy);
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .tool-cats{display:flex;flex-direction:column;gap:16px;}
+  .tool-label{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--graphite);
+    margin:0 0 6px;
+  }
+
+  .timeline{position:relative;padding-left:28px;}
+  .timeline::before{
+    content:"";
+    position:absolute;left:5px;top:6px;bottom:6px;
+    width:1px;background:var(--sky-line);
+  }
+  .job{position:relative;margin-bottom:40px;}
+  .job::before{
+    content:"";
+    position:absolute;left:-28px;top:5px;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--navy);
+  }
+  .job .meta{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--graphite);
+    margin:0 0 4px;
+  }
+  .job h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:18px;
+    margin:0 0 8px;
+    color:var(--ink);
+  }
+  .job h3 span{color:var(--graphite);font-weight:400;font-size:15px;}
+  .job ul{margin:0;padding-left:18px;}
+  .job li{
+    font-size:14px;
+    line-height:1.6;
+    color:#374151;
+    margin-bottom:6px;
+  }
+  .job li b{color:var(--ink);}
+  .job.condensed p{font-size:14px;line-height:1.6;color:#374151;margin:0;}
+
+  .stat-row{display:flex;gap:32px;margin:8px 0 36px;flex-wrap:wrap;}
+  .stat{font-family:var(--font-mono);}
+  .stat .num{font-family:var(--font-display);font-size:30px;font-weight:600;color:var(--navy);display:block;line-height:1.1;}
+  .stat .label{font-size:11.5px;color:var(--graphite);text-transform:uppercase;letter-spacing:0.04em;}
+
+  .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;margin-bottom:24px;}
+  .edu-item h3{font-size:14.5px;margin:0 0 3px;color:var(--ink);}
+  .edu-item p{font-size:13px;color:var(--graphite);margin:0;}
+  .cert-list{list-style:none;padding:0;margin:0;font-size:13px;color:#374151;line-height:2;}
+  .cert-list b{color:var(--navy);}
+
+  @media (max-width:820px){
+    .wrap{grid-template-columns:1fr;}
+    .rail{position:relative;height:auto;padding:32px 24px;border-right:none;border-bottom:1px solid #E4E1D8;}
+    main{padding:40px 24px 80px;}
+    .skillgrid,.edu-grid{grid-template-columns:1fr;}
+    .flowviz{flex-direction:column;align-items:flex-start;}
+    .flowviz .caption{margin-left:0;margin-top:10px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal, .node{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <aside class="rail">
+    <div class="rail-top">
+      <p class="eyebrow">Resume — interactive</p>
+      <h1>Cesar Lopez</h1>
+      <p class="role">Head of Design &amp; Product<br>AI-driven organizational transformation</p>
+      <ul class="nav" id="nav">
+        <li><a href="#summary"><span class="dash"></span>Summary</a></li>
+        <li><a href="#experience"><span class="dash"></span>Experience</a></li>
+        <li><a href="#skills"><span class="dash"></span>Skills</a></li>
+        <li><a href="#education"><span class="dash"></span>Education</a></li>
+      </ul>
+      <a href="../index.html#portfolio" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--graphite);text-decoration:none;">&larr; Back to Portfolio</a>
+    </div>
+    <div class="rail-bottom">
+      Atlanta, GA<br>
+      <a href="mailto:ce.lopezrodriguez@gmail.com">ce.lopezrodriguez@gmail.com</a><br>
+      <a href="https://www.linkedin.com/in/ceslop/" target="_blank" rel="noopener">linkedin.com/in/ceslop</a><br>
+      <a class="dl" href="Cesar-Lopez-Resume.pdf" target="_blank" rel="noopener">Download PDF ↓</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero" id="summary">
+      <h2>Summary</h2>
+      <p class="lede">Design executive with <b>18+ years</b> leading end-to-end digital transformation. Direct people-management experience leading teams of up to <b>10</b>, including a current team of <b>5</b> at AT&amp;T, where I personally designed <b>50+ service flows</b> across internet, wireless, and account, billing, and support activities.</p>
+
+      <div class="flowviz reveal" id="flowviz">
+        <div class="nodes" id="nodesBefore"></div>
+        <span class="arrow">→</span>
+        <div class="nodes" id="nodesAfter"></div>
+        <span class="caption"><b>7 steps → 3</b><br>~57% reduction, 50+ flows redesigned</span>
+      </div>
+
+      <div class="stat-row reveal">
+        <div class="stat"><span class="num">50+</span><span class="label">Flows designed</span></div>
+        <div class="stat"><span class="num">2.5yr</span><span class="label">On Salesforce C360</span></div>
+        <div class="stat"><span class="num">5</span><span class="label">Direct reports</span></div>
+        <div class="stat"><span class="num">18+</span><span class="label">Years experience</span></div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+
+        <div class="job reveal">
+          <p class="meta">Jan 2026 — Present · Atlanta, GA</p>
+          <h3>Lead Sr UX Designer <span>· AT&amp;T</span></h3>
+          <ul>
+            <li><b>AI-driven experience architecture:</b> integrated AI and agentic models into the product ecosystem, designing intelligent interfaces that personalize user journeys and automate workflows.</li>
+            <li><b>People leadership:</b> directly manage a team of 5 designers, mentoring on the intersection of UX and generative AI.</li>
+          </ul>
+        </div>
+
+        <div class="job reveal">
+          <p class="meta">May 2024 — Jan 2026 · Atlanta, GA</p>
+          <h3>Sr UX Designer <span>· AT&amp;T</span></h3>
+          <ul>
+            <li><b>Flow simplification:</b> personally designed 50+ flows spanning internet, wireless, and related account, billing, and support activities — reducing the average flow from 7 steps to 3, a ~57% reduction in effort.</li>
+            <li><b>Program scale:</b> part of the AT&amp;T Customer Connect transformation team that moved agents off 50+ legacy systems onto a unified Salesforce platform supporting 9,000 agents and 180M customers.</li>
+          </ul>
+        </div>
+
+        <div class="job reveal">
+          <p class="meta">Jan 2023 — Apr 2024 · Orlando, FL</p>
+          <h3>UX Architect <span>· AT&amp;T Business</span></h3>
+          <ul>
+            <li><b>Information architecture:</b> engineered the foundational structure of complex digital environments — sitemaps, product maps, user flows.</li>
+          </ul>
+        </div>
+
+        <div class="job condensed reveal">
+          <p class="meta">2020 — 2023 · Orlando, FL</p>
+          <h3>Sr. Product Designer Consultant / Senior UX-UI Designer &amp; Developer <span>· Integris Group, Immersicom, Globe Check</span></h3>
+          <p>Directed design lifecycles end-to-end across enterprise design systems, teleophthalmology SaaS platforms, and product consulting engagements.</p>
+        </div>
+
+        <div class="job reveal">
+          <p class="meta">Jan 2013 — Jul 2020 · Bogotá / Orlando</p>
+          <h3>Sr UX/UI Designer <span>· Brain Group LLC</span></h3>
+          <ul>
+            <li><b>Team management:</b> led cross-functional teams of up to 10 designers and developers across a diverse agency client portfolio.</li>
+          </ul>
+        </div>
+
+        <div class="job condensed reveal">
+          <p class="meta">2008 — 2013 · Bogotá, Colombia</p>
+          <h3>Digital Marketing Manager / Sr Digital Designer <span>· Trade Line, Cloudsters</span></h3>
+          <p>Early career in digital strategy, marketing execution, and multimodal instructional design.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Leadership &amp; core skills</h2>
+      <div class="skillgrid">
+        <div class="skillgroup reveal">
+          <h3>Leadership &amp; soft skills</h3>
+          <div class="pills">
+            <span class="pill">Stakeholder management</span>
+            <span class="pill">Mentorship</span>
+            <span class="pill">Cross-functional collaboration</span>
+            <span class="pill">Data-driven decisions</span>
+            <span class="pill">Executive communication</span>
+          </div>
+        </div>
+        <div class="skillgroup reveal">
+          <h3>Product strategy &amp; business</h3>
+          <div class="pills">
+            <span class="pill">Design thinking</span>
+            <span class="pill">KPIs / OKRs</span>
+            <span class="pill">Competitive analysis</span>
+            <span class="pill">Market positioning</span>
+            <span class="pill">AI orchestrator</span>
+          </div>
+        </div>
+        <div class="skillgroup reveal">
+          <h3>Advanced craft &amp; execution</h3>
+          <div class="pills">
+            <span class="pill">Systemic design</span>
+            <span class="pill">AI prototyping</span>
+            <span class="pill">Information architecture</span>
+            <span class="pill">Accessibility (WCAG)</span>
+          </div>
+        </div>
+        <div class="skillgroup reveal">
+          <h3>Research &amp; discovery</h3>
+          <div class="pills">
+            <span class="pill">User research</span>
+            <span class="pill">Usability testing</span>
+            <span class="pill">Journey mapping</span>
+            <span class="pill">Data analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="skillgroup reveal" style="margin-top:32px;">
+        <h3>Tools</h3>
+        <div class="tool-cats">
+          <div class="tool-cat">
+            <p class="tool-label">AI</p>
+            <div class="pills">
+              <span class="pill">Claude</span>
+              <span class="pill">Claude Design</span>
+              <span class="pill">Lovable</span>
+              <span class="pill">Gemini</span>
+              <span class="pill">Google AI Suite / Labs</span>
+              <span class="pill">Make</span>
+            </div>
+          </div>
+          <div class="tool-cat">
+            <p class="tool-label">Design &amp; prototyping</p>
+            <div class="pills">
+              <span class="pill">Figma</span>
+              <span class="pill">Adobe XD</span>
+              <span class="pill">Illustrator</span>
+              <span class="pill">Photoshop</span>
+              <span class="pill">InDesign</span>
+              <span class="pill">After Effects</span>
+              <span class="pill">Sketch</span>
+              <span class="pill">Mural</span>
+              <span class="pill">3ds Max</span>
+            </div>
+          </div>
+          <div class="tool-cat">
+            <p class="tool-label">Development</p>
+            <div class="pills">
+              <span class="pill">HTML</span>
+              <span class="pill">SASS</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">Vue</span>
+              <span class="pill">React</span>
+              <span class="pill">Python</span>
+              <span class="pill">Node.js</span>
+              <span class="pill">Git</span>
+            </div>
+          </div>
+          <div class="tool-cat">
+            <p class="tool-label">Agile &amp; PM</p>
+            <div class="pills">
+              <span class="pill">Jira</span>
+              <span class="pill">SAFe</span>
+              <span class="pill">Scrum</span>
+              <span class="pill">ServiceNow</span>
+              <span class="pill">LucidChart</span>
+            </div>
+          </div>
+          <div class="tool-cat">
+            <p class="tool-label">Analytics &amp; marketing</p>
+            <div class="pills">
+              <span class="pill">Google Ads</span>
+              <span class="pill">Google Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="edu-grid">
+        <div class="edu-item reveal">
+          <h3>Universidad de los Andes</h3>
+          <p>B.S., Industrial Design · 2003–2008</p>
+        </div>
+        <div class="edu-item reveal">
+          <h3>Universidad de los Andes</h3>
+          <p>Mechanical Engineering (Pending) · 2005–2007</p>
+        </div>
+      </div>
+      <ul class="cert-list reveal">
+        <li><b>SAFE</b> — AI Product Management Certificate, Aug 2026</li>
+        <li><b>Udemy</b> — Master en JavaScript: JS, jQuery, Angular, NodeJS, 2023</li>
+        <li><b>Vue Mastery</b> — Vue, 2021</li>
+        <li><b>Cymetria</b> — Social Networks For Business, 2025</li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.15});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  var before = document.getElementById('nodesBefore');
+  var after = document.getElementById('nodesAfter');
+  for(var i=0;i<7;i++){
+    var n = document.createElement('span');
+    n.className = 'node on';
+    before.appendChild(n);
+  }
+  for(var j=0;j<3;j++){
+    var n2 = document.createElement('span');
+    n2.className = 'node on';
+    after.appendChild(n2);
+  }
+
+  var navLinks = document.querySelectorAll('#nav a');
+  var sections = ['summary','experience','skills','education'].map(function(id){return document.getElementById(id);});
+  function onScroll(){
+    var pos = window.scrollY + 140;
+    var current = sections[0];
+    sections.forEach(function(s){ if(s.offsetTop <= pos) current = s; });
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

@@ -2,9 +2,9 @@ import type { HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 const VARIANT_CLASSES = {
-  elevated: "bg-surface-container-low shadow-elevation-1",
-  filled: "bg-surface-container-highest",
-  outlined: "bg-surface border border-outline-variant",
+  elevated: "bg-panel shadow-hud-1",
+  filled: "bg-panel-high",
+  outlined: "bg-charcoal border border-hud-line",
 } as const;
 
 type Variant = keyof typeof VARIANT_CLASSES;
@@ -27,10 +27,10 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-m3-lg transition-shadow duration-200",
+        "rounded-hud transition-shadow duration-200",
         padding && "p-6",
         VARIANT_CLASSES[variant],
-        interactive && "state-layer cursor-pointer hover:shadow-elevation-2",
+        interactive && "state-layer cursor-pointer hover:shadow-hud-2",
         className,
       )}
       {...props}

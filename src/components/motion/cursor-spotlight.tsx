@@ -50,7 +50,7 @@ export function CursorSpotlight({ className, size = 480 }: CursorSpotlightProps)
           x: "-50%",
           y: "-50%",
           background:
-            "radial-gradient(circle, color-mix(in srgb, var(--md-primary) 18%, transparent), transparent 70%)",
+            "radial-gradient(circle, color-mix(in srgb, var(--color-cyan) 22%, transparent), transparent 70%)",
         }}
         className="absolute rounded-full blur-2xl"
       />

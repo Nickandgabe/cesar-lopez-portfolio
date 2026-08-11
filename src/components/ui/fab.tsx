@@ -12,7 +12,7 @@ export function Fab({ icon, label, size = "regular", className, ...props }: FabP
     <button
       type="button"
       className={cn(
-        "state-layer inline-flex items-center justify-center gap-3 rounded-m3-lg bg-primary-container text-on-primary-container shadow-elevation-3 transition-shadow hover:shadow-elevation-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+        "state-layer inline-flex items-center justify-center gap-3 rounded-hud bg-cyan-glow text-cyan border border-hud-line shadow-hud-3 transition-shadow hover:shadow-hud-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan",
         size === "regular" ? "h-14 min-w-14" : "h-10 min-w-10",
         label ? "px-5" : size === "regular" ? "w-14" : "w-10",
         className,

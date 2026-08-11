@@ -23,7 +23,7 @@ export function TiltCard({ children, className, maxTilt = 8 }: TiltCardProps) {
   const glowX = useTransform(px, (v) => `${v * 100}%`);
   const glowY = useTransform(py, (v) => `${v * 100}%`);
   const glowBackground = useTransform([glowX, glowY], ([x, y]) =>
-    `radial-gradient(360px circle at ${x} ${y}, color-mix(in srgb, var(--md-primary) 16%, transparent), transparent 70%)`,
+    `radial-gradient(360px circle at ${x} ${y}, color-mix(in srgb, var(--color-cyan) 20%, transparent), transparent 70%)`,
   );
 
   function handlePointerMove(e: PointerEvent<HTMLDivElement>) {

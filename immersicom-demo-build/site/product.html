@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="assets\Logo\favicon-32x32.png" type="image/png" />
+    <title>Immersicom</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta content=" Immersive, Immersive content, Immersive theaters, Real-time 3D, Digital content creation, Digital content creation, Digital content , Animation, 3D animation, 2D animation, Visual effects, Motion graphics, Interactive, Interactive touch screens, Mobile applications, Virtual products, Virtual events, Virtual equipment, Virtual, tradeshows, Virtual reality, Virtual training, Virtual reality training, Computer based training, Augmented reality, Augmented reality training, Real-time 3D, WebGL, Web 3D
+    Internet 3D, Gamification, Multi-player tradeshow games, Serious games, Touch walls, Interactive touch walls, Briefing centers, Customer engagement centers, Executive briefing centers, 3D Animation, 3D Interactive models, Web-based interactive demos, Interactive product demonstrations, Projection mapping, Gesture recognition, Gesture applications, Touchless interactive, Digital experiences, Experiential media, Experiential applications, HoloLens applications, HTC Vive applications, Unreal engine interactive
+    Unity applications, Oculus VR, iPhone apps, iPad applications, Android apps, Phone based AR, AR, VR, Tablet applications, Touch table interactive, Interactive floors, LED animation, Training, Visualization, Data visualization, medical animation, Healthcare, applications, Mechanism of disease animation, Mechanism of action animation, Medical device animation, Patient education, Physician education, Technical animation
+    " name="keywords">
+
+    <!--Styles-->
+    <link rel="stylesheet" type="text/css" href="css\style.css" />
+    <link rel="stylesheet" type="text/css" href="css\product.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+    <script src='lib/modernizr-custom.js' type='text/javascript'></script>
+
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
+</head>
+
+<body>
+
+    <!--
+        Start Preloader
+	    ==================================== -->
+    <div id="preloader">
+        <div class="preloader">
+            <div class="sk-cube-grid">
+                <div class="sk-cube sk-cube1"></div>
+            </div>
+            <div class="bar">
+                <h2 class="textLoader">LOADING...</h2>
+                <br>
+                <div class="loader_bar" id="loader_bar"></div>
+            </div>
+        </div>
+    </div>
+    <!--
+            End Preloader
+            ==================================== -->
+
+    <!--
+        Landscape warning message
+	    ==================================== -->
+
+    <div id="warning-message">
+        <p>Welcome to</p>
+        <div id="logo"></div>
+        <h2 class="warningMsg">For optimal viewing at this time, please view the website on your desktop. The mobile
+            version is still under construction.</h2>
+        <div id="device"></div>
+    </div>
+
+    <div id="wrapper">
+        <!--Menu -->
+        <section>
+            <!-- ======= Header ======= -->
+            <header id="headerTwo">
+                <div class="d-flex align-items-center  justify-content-between">
+
+                    <div class="enterLogo">
+                        <a onclick="window.location.href='index.html#Lobby'">
+                            <img id="logo2" src="assets\Logo\Immersicom_Logo_Black.svg" alt="Immersicom">
+                        </a>
+                    </div>
+                    <nav id="navBarTwo" class="nav-menu d-none d-lg-block mt-2 mr-4">
+                        <ul>
+                            <li style="cursor: pointer;"><div  onclick="showNews()">News</div></li>
+                            <li  style="cursor: pointer;" class="drop-down"><a>Capabilities</a>
+                                <ul class="dropdown-content">
+                                    <li><a href="index.html#Animation" onclick="playVideo('Animation')"
+                                            id="animation">Animation</a></li>
+                                    <li><a href="index.html#Gamification"
+                                            onclick="playVideo('Gamification')">Gamification</a></li>
+                                    <li><a href="/product.html" onclick="playVideo('VirtualProduct')">Virtual
+                                            Products</a></li>
+                                    <li><a href="index.html#Interactive"
+                                            onclick="playVideo('Interactive')">Interactive</a></li>
+                                    <li><a href="index.html#EngagementCenters"
+                                            onclick="playVideo('EngagementCenters')">Engagement Centers</a></li>
+                                    <li><a href="index.html#VirtualExhibits"
+                                            onclick="playVideo('VirtualExhibits')">Virtual Exhibits</a></li>
+                                    <li><a href="index.html#VirtualReality"
+                                            onclick="playVideo('VirtualReality')">Virtual Reality</a></li>
+                                    <li><a href="index.html#AugmentedReality"
+                                            onclick="playVideo('AugmentedReality')">Augmented
+                                            Reality</a></li>
+                                </ul>
+                            </li>
+                            <li ><a href="index.html#Contact" onclick="playVideo('Contact')">Contact</a></li>
+                            <li><a href="https://cesar-lopez-portfolio-284662609384.us-central1.run.app/#portfolio">&larr; Back to Portfolio</a></li>
+                            <!-- <li><a id="mute-video"><i id="icon" class="fa fa-volume-up" aria-hidden="true"></i></a></li> -->
+                        </ul>
+                    </nav><!-- .nav-menu -->
+                </div>
+            </header><!-- End Header -->
+        </section>
+        <section>
+            <div>
+                <!--Video Player -->
+                <div id="videoPlayer">
+                    <video autoplay muted playsinline preload="auto" id="myVideo">
+                        <source src="assets/Virtual_Product/webm/Virtual_Product_Camera_Move.webm" type="video/webm">
+                        <source src="assets/Virtual_Product/HEVC/Virtual_Product_Camera_Move.mov"
+                            type="video/mp4; codecs=" hvc1"">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <!--Product Video Player -->
+                <div id="videoPlayerDos">
+                    <video autoplay muted playsinline preload="auto" id="myVideoDos">
+                        <source src="assets/Virtual_Product/Products/Supra_Dissolve/webm/Supra_Dissolve.webm"
+                            type="video/webm">
+                        <source src="assets/Virtual_Product/Products/Supra_Dissolve/HEVC/Supra_Dissolve.mov"
+                            type="video/mp4; codecs=" hvc1"">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+
+
+                <!--Spins-->
+                <div id="spinOne">
+                    <div class="maskHeader"></div>
+                    <div class="maskFooter"></div>
+                    <div class="maskLeftSide"></div>
+                    <div class="maskRightSide"></div>
+                    <div id="spin" class="spritespinCar" responsive="true"></div>
+                </div>
+
+                <div id="spinTwo">
+                    <div class="maskHeader"></div>
+                    <div class="maskFooter"></div>
+                    <div class="maskLeftSide"></div>
+                    <div class="maskRightSide"></div>
+                    <div id="spin" class="spritespinHealth">
+                    </div>
+                </div>
+
+                <div id="spinThree">
+                    <div class="maskHeader"></div>
+                    <div class="maskFooter"></div>
+                    <div class="maskLeftSide"></div>
+                    <div class="maskRightSide"></div>
+                    <div id="spin" class="spritespinDef">
+                    </div>
+                </div>
+
+                <div class="buttons" id="buttons">
+                    <button id="buttonCar" class="buttonSection"
+                        onclick="playVideoDos('Automotive')">Automotive</button>
+                    <button id="buttonHealth" class="buttonSection"
+                        onclick="playVideoDos('Healthcare')">Healthcare</button>
+                    <button id="buttonDef" class="buttonSection" onclick="playVideoDos('Defense')">Defense</button>
+                </div>
+
+                <!--Content Card-->
+                <div id="card-section">
+                    <div class="card_item">
+                        <!-- <img src="../assets/Virtual_Product/Products/Product_Specs/Menu_Base_Blk.webp" alt="card" /> -->
+                        <img src="../assets/Virtual_Product/Products/Product_Specs/CardBase/Menu_Base_Blk_Title.webp" alt="card" />
+                        <h1 id="cardTitle" class="textCardTitle"></h1>
+                        <p id="card" class="textCard"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="controlsProduct">
+            <div>
+
+                <!--Dots Buttons-->
+
+                <a id="mOne">
+                    <!-- <img id="dotDescriptionOne" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                    <div id="dotDescriptionOne">
+                        <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                        <div class="side-menu__label">Dimensions</div>
+                    </div>
+                </a>
+                <a id="mTwo">
+                    <!-- <img id="dotDescriptionTwo" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                    <div id="dotDescriptionTwo">
+                        <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                        <div class="side-menu__label">Toyota GR Supra A91 Edition</div>
+                    </div>
+                </a>
+                <a id="mFour">
+                    <!-- <img id="dotDescriptionFour" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                    <div id="dotDescriptionFour">
+                        <div id="side-menu">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Gallery</div>
+                        </div>
+                    </div>
+                </a>
+                <img id="turnIcon" src="assets\Icons\product\360_Icon.svg" alt="">
+
+
+
+                <!--Content Card Price-->
+                <div id="cardsSupra">
+                    <div id="card_Price" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\Supra_Dimensions.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <!--Content Card Specs -->
+                    <div id="card_Specs" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\Supra_Price.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Gallery Modal -->
+                <div id="ModalGallery" class="modalGallery">
+
+                    <div class="modal-content-gallery">
+                        <span class="close cursor" onclick="closeModal()">&times;</span>
+                        <div class="mySlides">
+                            <div class="numbertext">1 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 2.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">2 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 1.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">3 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 3.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">4 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 4.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">5 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 6.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">6 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 7.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">7 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 8.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">8 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 9.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">9 / 9</div>
+                            <img src="assets\Virtual_Product\Products\Supra_Gallery\Supra 10.jpg" style="width:100%">
+                        </div>
+
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="controlsMRI">
+
+            <div>
+                <div>
+                    <a id="mOneMRI">
+                        <!-- <img id="dotDescriptionOneMRI" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionOneMRI">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Features</div>
+                        </div>
+                    </a>
+                    <a id="mTwoMRI">
+                        <!-- <img id="dotDescriptionTwoMRI" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionTwoMRI">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Ingenia MR System</div>
+                        </div>
+                    </a>
+                    <a id="mThreeMRI">
+                        <!-- <img id="dotDescriptionThreeMRI" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionThreeMRI">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Specifications</div>
+                        </div>
+                    </a>
+                    <a id="mFourMRI">
+                        <!-- <img id="dotDescriptionFourMRI" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionFourMRI">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Gallery</div>
+                        </div>
+                    </a>
+                    <img id="turnIconMRI" src="assets\Icons\product\360_Icon.svg" alt="">
+                </div>
+
+
+                <div id="cardsMRI">
+                    <!--Content Card Features-->
+                    <div id="card_Info" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\MRI_Features.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <!--Content Card Info -->
+                    <div id="card_MRI" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\MRI_Information.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <!--Content Card Specs -->
+
+                    <div id="card_SpecsMRI" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\MRI_Specs.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Gallery Modal -->
+                <div id="ModalGalleryTwo" class="modalGalleryTwo">
+
+                    <div class="modal-content-MRI">
+                        <span class="close cursor" onclick="closeModal()">&times;</span>
+                        <div class="mySlidesMRI">
+                            <div class="numbertext">1 / 6</div>
+                            <img src="assets\Virtual_Product\Products\MRI_Gallery\MRI1.webp" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesMRI">
+                            <div class="numbertext">2 / 6</div>
+                            <img src="assets\Virtual_Product\Products\MRI_Gallery\MRI2.webp" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesMRI">
+                            <div class="numbertext">3 / 6</div>
+                            <img src="assets\Virtual_Product\Products\MRI_Gallery\MRI3.webp" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesMRI">
+                            <div class="numbertext">4 / 6</div>
+                            <img src="assets\Virtual_Product\Products\MRI_Gallery\MRI4.webp" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesMRI">
+                            <div class="numbertext">5 / 6</div>
+                            <img src="assets\Virtual_Product\Products\MRI_Gallery\MRI5.webp" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesMRI">
+                            <div class="numbertext">6 / 6</div>
+                            <img src="assets\Virtual_Product\Products\MRI_Gallery\MRI6.webp" style="width:100%">
+                        </div>
+
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="controlsDefense">
+
+            <div>
+                <div>
+                    <a id="mOneDef">
+                        <!-- <img id="dotDescriptionOneDef" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionOneDef">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Multi-Role</div>
+                        </div>
+                    </a>
+                    <a id="mTwoDef">
+                        <!-- <img id="dotDescriptionTwoDef" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionTwoDef">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">UH-60M BLACKHAWK</div>
+                        </div>
+                    </a>
+                    <a id="mFourDef">
+                        <!-- <img id="dotDescriptionFourDef" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionFourDef">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Gallery</div>
+                        </div>
+                    </a>
+                    <a id="mThreeDef">
+                        <!-- <img id="dotDescriptionThreeDef" src="assets\Icons\product\Hover_Dot.svg" alt=""> -->
+                        <div id="dotDescriptionThreeDef">
+                            <img src="assets\Icons\product\Hover_Dot.svg" alt="">
+                            <div class="side-menu__label">Capabilities/Performance</div>
+                        </div>
+                    </a>
+                    <img id="turnIconDef" src="assets\Icons\product\360_Icon.svg" alt="">
+                </div>
+
+
+                <div id="cardsDefense">
+
+                    <!--Content Card Capabilities-->
+                    <div id="card_Capa" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\Blackhawk_Capabilities.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <!--Content Card Hawki Specs -->
+                    <div id="card_HawkSpec" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\Blackhawk_Description.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <!--Content Card Capabilities / Performance-->
+
+                    <div id="card_Performance" class="card-section-product">
+                        <div class="card_item_products">
+                            <img class="product-decription-image"
+                                src="assets\Virtual_Product\Products\Product_Specs\Blackhawk_Specs.webp" alt="">
+                            <a id="btnClose" onclick="closeCards()"><img class="closeIcon"
+                                    src="assets\Icons\product\Close_Icon_grey.svg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Modal -->
+                <div id="ModalGalleryThree" class="modalGalleryThree">
+
+                    <div class="modal-content-def">
+                        <span class="close cursor" onclick="closeModal()">&times;</span>
+                        <div class="mySlidesDef">
+                            <div class="numbertext">1 / 6</div>
+                            <img src="assets\Virtual_Product\Products\BlackHawk_Gallery\Hawk1.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesDef">
+                            <div class="numbertext">2 / 6</div>
+                            <img src="assets\Virtual_Product\Products\BlackHawk_Gallery\Hawk2.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesDef">
+                            <div class="numbertext">3 / 6</div>
+                            <img src="assets\Virtual_Product\Products\BlackHawk_Gallery\Hawk3.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesDef">
+                            <div class="numbertext">4 / 6</div>
+                            <img src="assets\Virtual_Product\Products\BlackHawk_Gallery\Hawk4.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesDef">
+                            <div class="numbertext">5 / 6</div>
+                            <img src="assets\Virtual_Product\Products\BlackHawk_Gallery\Hawk5.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlidesDef">
+                            <div class="numbertext">6 / 6</div>
+                            <img src="assets\Virtual_Product\Products\BlackHawk_Gallery\Hawk2.jpg" style="width:100%">
+                        </div>
+
+                        <!-- Next/previous controls -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <!--Back or Next buttons-->
+        <div class="backOrNext">
+            <button class="btnBack" onclick="backScenario()">Back</button>
+            <button class="btnNext" onclick="nextScenario()">Next</button>
+        </div>
+
+        <footer id="footer">
+            <p id="copyImmersicom" class="immersicom">Immersicom 2021 &COPY;</p>
+            <div id="news" class="news">
+                <!-- <div class="thumbnail">1</div>
+                <div class="thumbnail">2</div>
+                <div class="thumbnail">3</div>
+                <div class="thumbnail">4</div>
+                <div class="flex-container">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                    <div class="flex-item">4</div>
+                </div> -->
+                <!-- Images used to open the lightbox -->
+                <div id="newsThumb" class="rowNews">
+                    <div class="columnNews">
+                        <img src="assets\Icons\news\News-01.webp" onclick="openModalNews();currentSlideNews(1)" class="hover-shadow thumbnailImage">
+                    </div>
+                    <div class="columnNews">
+                        <img src="assets\Icons\news\News-02.webp" onclick="openModalNews();currentSlideNews(2)" class="hover-shadow thumbnailImage">
+                    </div>
+                    <div class="columnNews">
+                        <img src="assets\Icons\news\News-03.webp" onclick="openModalNews();currentSlideNews(3)" class="hover-shadow thumbnailImage">
+                    </div>
+                    <div class="columnNews">
+                        <img src="assets\Icons\news\News-04.webp" onclick="openModalNews();currentSlideNews(4)" class="hover-shadow thumbnailImage">
+                    </div>
+                    <div class="columnNews">
+                        <img src="assets\Icons\news\News-05.webp" onclick="openModalNews();currentSlideNews(5)" class="hover-shadow thumbnailImage">
+                    </div>
+                </div>
+                
+                <!-- The Modal/Lightbox -->
+                <div id="myModalNews" class="modalNews">
+                    <div class="modal-content-news">
+
+                        <!-- <span class="close-news cursor" onclick="closeModalNews()">&times;</span> -->
+                        <span class="close-news cursor" onclick="closeModalNews()"></span>
+                
+                        <div class="mySlidesNews">
+                            <div class="numberNews">1 / 5</div>
+                            <img src="assets\Icons\news\News-1080-01.webp" style="width:100%">
+                            <a href="https://web.cvent.com/event/28af2598-567f-4157-9f5e-3c104048c43e/summary "  target="_blank"><h2 class="linkNews">Read More &gt;</h2></a>
+                        </div>
+                    
+                        <div class="mySlidesNews">
+                            <div class="numberNews">2 / 5</div>
+                            <img src="assets\Icons\news\News-1080-02.webp" style="width:100%">
+                            <a href="https://toyotaautoshow.com/ " target="_blank"><h2 class="linkNews">Read More &gt;</h2></a>
+                        </div>
+                    
+                        <div class="mySlidesNews">
+                            <div class="numberNews">3 / 5</div>
+                            <img src="assets\Icons\news\News-1080-03.webp" style="width:100%">
+                            <a href="http://www.exhibitoronline.com/findit/listing.asp?ID=2112" target="_blank"><h2 class="linkNews">Read More &gt;</h2></a>
+                        </div>
+                    
+                        <div class="mySlidesNews">
+                            <div class="numberNews">4 / 5</div>
+                            <img src="assets\Icons\news\News-1080-04.webp" style="width:100%">
+                            <a href="https://milsim.dsigroup.org/ " target="_blank"><h2 class="linkNews">Read More &gt;</h2></a>
+                        </div>
+
+                        <div class="mySlidesNews">
+                            <div class="numberNews">5 / 5</div>
+                            <img src="assets\Icons\news\News-1080-05.webp" style="width:100%">
+                            <a href="https://www.seriousplayconf.com/ " target="_blank"><h2 class="linkNews">Read More &gt;</h2></a>
+                        </div>
+                    
+                        <!-- Next/previous controls -->
+                        <a class="prev-news" onclick="plusSlidesNews(-1)">&#10094;</a>
+                        <a class="next-news" onclick="plusSlidesNews(1)">&#10095;</a>
+                
+                    </div>
+
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/spritespin@4.0.11/release/spritespin.js" type="text/javascript"></script>
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+
+
+    <!-- <script src="lib/spritespin.js" type="text/javascript"></script> -->
+
+    <script src="config/product.js" type="text/javascript"></script>
+    <script src='js/product.js' type='text/javascript'></script>
+
+
+</body>
+
+</html>

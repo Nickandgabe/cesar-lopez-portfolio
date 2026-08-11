@@ -15,12 +15,12 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="border-t border-outline-variant bg-surface-container-low">
+    <footer id="contact" className="border-t border-hud-line bg-charcoal">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <Reveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="font-display text-headline-md text-on-surface">Let&apos;s build something unified.</h2>
-            <p className="mt-2 max-w-md text-body-lg text-on-surface-variant">
+            <h2 className="font-display text-headline-md text-ink">Let&apos;s build something unified.</h2>
+            <p className="mt-2 max-w-md text-body-lg text-ink-dim">
               Open to conversations about design leadership, systems architecture, and
               enterprise product strategy.
             </p>
@@ -30,7 +30,7 @@ export function Footer() {
             <Magnetic strength={0.4}>
               <Link
                 href="mailto:hello@example.com"
-                className="state-layer glass inline-flex h-12 w-12 items-center justify-center rounded-m3-full text-on-surface-variant"
+                className="state-layer hud-glass inline-flex h-12 w-12 items-center justify-center rounded-hud text-ink-dim hover:text-cyan"
                 aria-label="Email"
               >
                 <Mail size={20} aria-hidden />
@@ -39,7 +39,7 @@ export function Footer() {
             <Magnetic strength={0.4}>
               <Link
                 href="https://www.linkedin.com"
-                className="state-layer glass inline-flex h-12 w-12 items-center justify-center rounded-m3-full text-on-surface-variant"
+                className="state-layer hud-glass inline-flex h-12 w-12 items-center justify-center rounded-hud text-ink-dim hover:text-cyan"
                 aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -50,8 +50,8 @@ export function Footer() {
           </div>
         </Reveal>
 
-        <p className="mt-12 text-body-sm text-on-surface-variant">
-          © {year} Cesar Lopez. Built with Next.js, Tailwind CSS, and Material Design 3 principles.
+        <p className="mt-12 font-mono text-hud-xs text-ink-dim uppercase">
+          © {year} Cesar Lopez — SYSTEM_STATUS: ONLINE
         </p>
       </div>
     </footer>

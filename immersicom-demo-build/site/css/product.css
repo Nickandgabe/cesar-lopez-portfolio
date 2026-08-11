@@ -1,0 +1,1679 @@
+@media only screen and (max-height: 600px) {
+  html,body{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+  
+  /***************************
+  * PRODUCT TURNABLE SECTION CONTENT
+  *****************************/ 
+
+  /*****Videos*******/
+  #videoPlayer{
+    position: fixed!important;
+    z-index: -3!important;
+    overflow: hidden!important;
+    
+  } 
+
+  #myVideo{
+    position: fixed!important;
+    z-index: -3!important;
+    overflow: hidden!important;
+  } 
+
+
+  #videoPlayerDos{
+    position: fixed;
+    z-index: 4;
+    overflow: hidden;
+    
+  } 
+  
+  #myVideoDos{
+    position: fixed;
+    z-index: 4;
+    overflow: hidden;
+    display:none;
+    
+  } 
+  @media (min-aspect-ratio: 16/9) {
+    #myVideo{
+      width: 100vw!important;
+      height: auto!important;
+    } 
+  }
+  
+  @media (min-aspect-ratio: 16/9) {
+       
+    #myVideoDos {
+      width: 100vw;
+      height: auto;
+    }; 
+    #videoPlayerDos {
+      width: 100vw;
+      height: auto;
+    };
+  }
+  @media (max-aspect-ratio: 16/9) {
+    /* #myVideoDos {
+      width: auto;
+      height: 100vh;
+    };
+    #videoPlayerDos {
+      width: auto;
+      height: 100vh;
+    }; */
+    #myVideoDos {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    };
+    #videoPlayerDos {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    };
+  }
+
+  /************************************
+  * BOTTONS FOOTER SECTION
+  ************************************/
+  
+  .buttons{
+    position: fixed;
+    margin-top: 90vh; /*87vh;*/
+    margin-left: 25vw;
+    z-index: 10;
+    display: none;
+  }
+  
+  .buttonSection {
+    background-color: #058AE8;
+    width: 8.5vw;
+    height: 4vh;
+    border: none;
+    color: white;
+    margin-right: 2vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    padding-top: 0.5vh;
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+
+  @media only screen and (max-height: 600px){
+    .buttons{
+      top: -55vh;
+      margin-left: 0;
+      width: 6em;
+    }
+    .buttonSection {
+      width: 10vw;
+      height: 6vh;
+      border-radius: 0;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      margin-top: 8px;
+    }
+  }
+
+/************************************
+* OVERWRITING BACK OR NEXT BUTTOS
+*************************************/ 
+  .backOrNext {
+    z-index: 12!important;
+  }
+
+/************************************
+* OVERWRITING FOOTER
+*************************************/ 
+  #footer{
+    z-index: 8;
+  }
+  canvas{
+    cursor: grab;
+  }
+   /*****Videos*******/
+
+   #spinOne,#spinTwo,#spinThree{
+    position: fixed;
+    overflow: hidden;
+    z-index: 8;
+    /* visibility: hidden; */
+    display: none; 
+
+    /* border: solid red 1px; */
+  }
+   
+  /**automotive***/
+  @media (min-aspect-ratio: 16/9) {
+    #spinOne canvas {
+      width: 100vw!important;
+      height: auto!important;
+    };
+      #spinOne canvas {
+      width: 100vw!important;
+      height: auto!important;
+    };
+  }
+  @media (max-aspect-ratio: 16/9) {
+      /* #spinOne canvas {
+      width: auto!important;
+      height: 100vh!important;
+    };
+      #spinOne canvas {
+      width: auto!important;
+      height: 100vh!important;
+    } */
+    #spinOne canvas {
+      width: 100vw!important;
+      height: 100vh!important;
+      object-fit: cover;
+    }
+  }
+
+   /**healcare***/
+  @media (min-aspect-ratio: 16/9) {
+    #spinTwo canvas {
+      width: 100vw!important;
+      height: auto!important;
+    };
+    #spinTwo canvas {
+    width: 100vw!important;
+    height: auto!important;
+  };
+
+}
+@media (max-aspect-ratio: 16/9) {
+    /* #spinTwo canvas {
+      width: auto!important;
+      height: 100vh!important;
+    };
+    #spinTwo canvas {
+    width: auto!important;
+    height: 100vh!important;
+  }; */
+  #spinTwo canvas {
+    width: 100vw!important;
+    height: 100vh!important;
+    object-fit: cover;
+  }
+}
+
+  /**defense***/
+  @media (min-aspect-ratio: 16/9) {
+      #spinThree canvas {
+        width: 100vw!important;
+        height: auto!important;
+      };
+      #spinThree canvas {
+      width: 100vw!important;
+      height: auto!important;
+    };
+  
+  }
+  @media (max-aspect-ratio: 16/9) {
+      /* #spinThree canvas {
+        width: auto!important;
+        height: 100vh!important;
+      };
+      #spinThree canvas {
+      width: auto!important;
+      height: 100vh!important;
+    }; */
+    #spinThree canvas {
+      width: 100vw!important;
+      height: 100vh!important;
+      object-fit: cover;
+    }
+  }
+
+/************4K 360 SCALE ************************/
+
+@media only screen and (min-width: 2000px) {
+  .spritespinCar {
+    width: 100vw!important;
+    height: 100vh!important;
+  }
+  .spritespinHealth {
+    width: 100vw!important;
+    height: 100vh!important;
+  }
+  .spritespinDef {
+    width: 100vw!important;
+    height: 100vh!important;
+  }
+}
+
+
+
+/**********************************************************
+*   CREATING MASK TO AVOID THE DRAG FOR THE ENTIRE PAGE
+***********************************************************/
+#spinOne .maskHeader{
+  position: absolute;
+  z-index: 9;
+  /* background: red; */
+  width: 1720px;
+  height: 150px;
+  top:0;
+}
+#spinOne .maskFooter{
+  position: absolute;
+  z-index: 9;
+  /* background: black; */
+  width: 1720px;
+  height: 250px;
+  top: 80vh;
+}
+#spinOne .maskLeftSide{
+  position: absolute;
+  z-index: 9;
+  /* background: blue; */
+  width: 45vw;
+  height: 40vh;
+  top: 40vh;
+  left: 60vw;
+}
+#spinOne .maskRightSide{
+  position: absolute;
+  z-index: 9;
+  /* background: green; */
+  width: 15vw;
+  height: 40vh;
+  top: 40vh;
+  left: 0;
+}
+
+#spinTwo .maskHeader{
+  position: absolute;
+  z-index: 9;
+  /* background: red; */
+  width: 1720px;
+  height: 150px;
+  top:0;
+}
+#spinTwo .maskFooter{
+  position: absolute;
+  z-index: 9;
+  /* background: black; */
+  width: 1720px;
+  height: 250px;
+  top: 80vh;
+}
+#spinTwo .maskLeftSide{
+  position: absolute;
+  z-index: 9;
+  /* background: blue; */
+  width: 40vw;
+  height: 66vh;
+  top: 14vh;
+  left: 60vw;
+}
+#spinTwo .maskRightSide{
+  position: absolute;
+  z-index: 9;
+  /* background: green; */
+  width: 15vw;
+  height: 66vh;
+  top: 14vh;
+}
+
+#spinThree .maskHeader{
+  position: absolute;
+  z-index: 9;
+  /* background: red; */
+  width: 1720px;
+  height: 150px;
+  top:0;
+}
+#spinThree .maskFooter{
+  position: absolute;
+  z-index: 9;
+  /* background: black; */
+  width: 1720px;
+  height: 250px;
+  top: 80vh;
+}
+#spinThree .maskLeftSide{
+  position: absolute;
+  z-index: 9;
+  /* background: blue; */
+  width: 45vw;
+  height: 40vh;
+  top: 40vh;
+  left: 60vw;
+}
+#spinThree .maskRightSide{
+  position: absolute;
+  z-index: 9;
+  /* background: green; */
+  width: 15vw;
+  height: 40vh;
+  top: 40vh;
+  left: 0;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  /**spinOne**/
+  #spinOne .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  };
+  #spinOne .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  };
+
+/**spinTwo**/
+  #spinTwo .maskHeader {
+    width: 100vw!important;
+    height: 20vh!important;
+  };
+  #spinTwo .maskHeader {
+    width: 100vw!important;
+    height: 20vh!important;
+  };
+
+   /**spinThree**/
+  #spinThree .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  };
+  #spinThree .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  };
+
+}
+@media (max-aspect-ratio: 16/9) {
+   /**spinOne**/
+  #spinOne .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  };
+  #spinOne .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  }
+  /**spinTwo**/
+  #spinTwo .maskHeader {
+    width: 100vw!important;
+    height: 15vh!important;
+  };
+  #spinTwo .maskHeader {
+    width: 100vw!important;
+    height: 15vh!important;
+  }
+   /**spinThree**/
+  #spinThree .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  };
+  #spinThree .maskHeader {
+    width: 100vw!important;
+    height: 40vh!important;
+  }
+
+}
+
+/***Footers****/
+@media (min-aspect-ratio: 16/9) {
+  /**spinOne**/
+ #spinOne .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  };
+  #spinOne .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  };
+
+  /**spinTwo**/
+  #spinTwo .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  };
+  #spinTwo .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  };
+
+   /**spinThree**/
+ #spinThree .maskFooter {
+  width: 100vw!important;
+  /* height: auto!important; */
+  };
+  #spinThree .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  };
+
+}
+
+@media (max-aspect-ratio: 16/9) {
+  /**spinOne**/
+ #spinOne .maskFooter {
+   width: 100vw!important;
+   /* height: auto!important; */
+ };
+ #spinOne .maskFooter {
+   width: 100vw!important;
+   /* height: auto!important; */
+ }
+
+   /**spinTwo**/
+  #spinTwo .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  };
+
+  #spinTwo .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  }
+
+   /**spinThree**/
+  #spinThree .maskFooter {
+  width: 100vw!important;
+  /* height: auto!important; */
+  };
+  #spinThree .maskFooter {
+    width: 100vw!important;
+    /* height: auto!important; */
+  }
+
+}
+
+
+/***Left or Right Side Mask****/
+@media (min-aspect-ratio: 16/9) {
+  /**spinOne**/
+  /* #spinOne .maskLeftSide {
+    width: 40vw!important;
+    height: 40vh!important;
+  };
+  #spinOne .maskLeftSide {
+    width: 40vw!important;
+    height: 40vh!important;
+  }; */
+
+   /**spinTwo**/
+  /* #spinTwo .maskLeftSide {
+    width: 40vw!important;
+    height: 40vh!important;
+  };
+  #spinTwo .maskLeftSide {
+    width: 40vw!important;
+    height: 40vh!important;
+  }; */
+
+}
+@media (max-aspect-ratio: 16/9) {
+  /**spinOne**/
+  #spinOne .maskLeftSide {
+    width: 45vw!important;
+    height: 40vh!important;
+    left: 61vw!important;
+  };
+  #spinOne .maskLeftSide {
+    width: 45vw!important;
+    height: 40vh!important;
+    left: 61vw!important;
+  }
+
+   /**spinTwo**/
+   #spinTwo .maskLeftSide {
+    width: 40vw!important;
+    height: 66vh!important;
+    left: 60vw!important;
+   };
+   #spinTwo .maskLeftSide {
+    width: 40vw!important;
+    height: 66vh!important;
+    left: 60vw!important;
+   }
+
+  /**spinThree**/
+  #spinThree .maskLeftSide {
+    width: 45vw!important;
+    height: 40vh!important;
+    left: 61vw!important;
+  };
+  #spinThree .maskLeftSide {
+    width: 45vw!important;
+    height: 40vh!important;
+    left: 61vw!important;
+  }
+
+}
+
+  
+  /****************************
+  * CARD SECTION CONTENT
+  *****************************/ 
+  
+  #card-section{
+    display:none;
+    z-index: 10;
+  }
+  
+    
+  /* .card_item {
+    display: flex;
+    position: absolute;
+    width: 25vw;
+    height: 43vh;
+    opacity: 0.95;
+    top: 40%;
+    right:2.5em;
+    transform: rotate3d(0, 3, 1.5, 0deg);
+    z-index: 10;
+  } */
+
+  .card_item {
+    /* display: flex;*/
+     position: absolute;
+     width: 27vw;
+     height: 43vh;
+     opacity: 1;/*0.8;*/
+     top: 13%; /*20%;*/
+     right:2.7em;
+     transform: rotate3d(0, 3, 1.5, 0deg);
+   }
+   .card_item img{
+     width: 100%;
+     height: auto;
+   }
+   @media only screen and (max-height: 600px){
+    .card_item {
+      position: fixed;
+    }
+  }
+  
+  .textCard{  
+    /* width: 75%; */
+    width: 80%;
+    font-family: muli, sans-serif;
+    font-weight: bold;
+    line-height: 2em;
+    color: #ffffff;
+    margin-top: 3em;
+    margin-left: 3em;
+    z-index: 10;
+  }
+
+  .card_item .textCardTitle{
+    top:0.2em!important;
+    left: 1.2em!important;
+  }
+
+  .titleCardProd{
+    margin-top: 1.5em;
+    margin-left: 2em;
+    z-index: 10;
+  }
+
+  .textCardProd{  
+    /* width: 75%; */
+    width: 80%;
+    font-family: muli, sans-serif;
+    font-weight: bold;
+    line-height: 2em;
+    color: Black;
+    margin-top: 0.5em;
+    margin-left: 3em;
+    z-index: 10;
+  }
+
+
+  .iconsProdCard{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3em;
+    align-items: center;
+  }
+
+  .pdfIcon{
+    width: 2.5em;
+    margin-right: 1em;
+  }
+
+  .playIcon{
+    width: 2.5em;
+  }
+
+  .VirtualProduct .card_item .textCard {
+    width: 76%;
+  }
+  .VirtualProduct .card_item {
+    width: 33vw;
+  }
+
+  /****************************************
+  * Overwritting Text card by section
+  ****************************************/
+  .VirtualProduct .card_item  {
+    z-index: 8;
+  }
+  @media only screen and (max-height: 480px){
+    .VirtualProduct .card_item {
+      top:15%;/*21vh;*/
+    }
+  }
+  /****************************
+  * CARD PRODUCTS
+  *****************************/ 
+  #controlsProduct{
+    z-index:10;
+  }
+
+  #controlsMRI{
+    z-index:10;
+  }
+
+  #controlsDefense{
+    z-index:10;
+  }
+
+ 
+
+
+  .card-section-product{
+    display: none;
+    z-index: 10;
+  }
+  
+  
+  .card_item_products {
+    position: absolute;
+    width: 35vw;
+    height: 35vh;
+    opacity: 0.95;/*0.8;*/
+    top: 20vh;
+    right: 3em;
+    z-index: 12;
+  }
+  @media only screen and (max-height: 600px){
+    .card_item_products {
+      right: 2vw;
+      top: 21vh; /*23vh;*/
+    }
+  }
+
+  .product-decription-image{
+    width: 100%;
+    
+  }
+  
+
+  .closeIcon{
+    position: absolute;
+    width: 20px;
+    margin-top: 6%;
+    right: 7%;
+    cursor: pointer;
+    z-index: 12;
+  }
+  @media only screen and (max-height: 600px){
+    .closeIcon{
+      margin-top: 4.5%;
+    }
+  }
+
+  .iconsProdCard{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3em;
+    align-items: center;
+  }
+
+  .pdfIcon{
+    width: 2.5em;
+    margin-right: 1em;
+  }
+
+  .playIcon{
+    width: 2.5em;
+  }
+
+
+   /****************************
+  * PRODUCT BUTTONS
+  *****************************/ 
+
+
+
+  /* #dotDescriptionOne , #dotDescriptionOneMRI ,#dotDescriptionOneDef{  
+    position: absolute;
+    float:left;  
+    margin-top:58vh;
+    margin-left: 10vw;
+    width: 3em; 
+    display: none;
+    cursor: pointer;
+    z-index: 8;
+    box-shadow: 0 0 0 0 white;
+    animation: pulse-white 1.5s infinite;
+  } */
+  
+  
+
+ /************SIDE MENU DESCRIPTION ONE****************/
+  
+ #dotDescriptionOne, #dotDescriptionOneMRI ,#dotDescriptionOneDef {
+  position: absolute;
+  float:left;  
+  margin-top:58vh;
+  margin-left: 10vw;
+  width: 3em;
+  cursor: pointer;
+  z-index: 8;
+  display: none;
+
+  color: #1692ea;
+  list-style: none;
+  transition: ease-in-out all .2s;
+  border-radius: 32px;
+
+}
+
+#dotDescriptionOne img{
+  width: 3em;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+  animation: pulse-white 1.5s infinite;
+}
+
+
+.side-menu__label {
+  display: none;
+  padding: 15px 0 0 35px;
+  opacity: 0;
+  position: absolute;
+  
+  /* transition: ease-in-out all .4s; */
+}
+
+
+/* #dotDescriptionOne img:hover{
+  width: 280px;
+  background-color: white;
+} */
+#dotDescriptionOne:hover {
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.809);
+}
+
+#dotDescriptionOne:hover .side-menu__label {
+  display: inline-block;
+  opacity: 1;
+  transition: ease-in-out all .8s;
+  height: 50px;
+}
+
+#dotDescriptionOne:hover img{
+  visibility: visible;
+}
+
+@media only screen and (max-height: 600px){
+  #dotDescriptionOne{
+    position: fixed;
+  }
+  #dotDescriptionOne:hover {
+    width: unset;
+    background-color: unset;
+  }
+  #dotDescriptionOne:hover img{
+    visibility: visible;
+  }
+  .side-menu__label {
+    visibility: hidden;
+  }
+}
+
+@keyframes pulse-white {
+  0% {
+    transform: scale(0.95);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.95);
+  }
+}
+
+
+
+/*******************************
+*  One- MRI ANIMATION DOTS
+********************************/
+#dotDescriptionOneMRI img{
+  width: 3em;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+  animation: pulse-white 1.5s infinite;
+}
+#dotDescriptionOneMRI img{
+  width: 3em;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+  animation: pulse-white 1.5s infinite;
+}
+
+/* #dotDescriptionOneMRI img:hover{
+  width: 280px;
+  background-color: white;
+} */
+#dotDescriptionOneMRI:hover {
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.809);
+}
+
+#dotDescriptionOneMRI:hover .side-menu__label {
+  display: inline-block;
+  opacity: 1;
+  transition: ease-in-out all .8s;
+}
+
+#dotDescriptionOneMRI:hover img{
+  visibility: visible;
+}
+
+@media only screen and (max-height: 600px){
+  #dotDescriptionOneMRI{
+    position: fixed;
+  }
+  #dotDescriptionOneMRI:hover {
+    width: unset;
+    background-color: unset;
+  }
+  #dotDescriptionOneMRI:hover img{
+    visibility: visible;
+  }
+}
+
+/***********************************
+*  One- Defense ANIMATION DOTS
+***********************************/
+#dotDescriptionOneDef img{
+  width: 3em;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+  animation: pulse-white 1.5s infinite;
+}
+#dotDescriptionOneDef img{
+  width: 3em;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+  animation: pulse-white 1.5s infinite;
+}
+/* #dotDescriptionOneDef img:hover{
+  width: 280px;
+  background-color: white;
+} */
+#dotDescriptionOneDef:hover {
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.809);
+}
+#dotDescriptionOneDef:hover .side-menu__label {
+  display: inline-block;
+  opacity: 1;
+  transition: ease-in-out all .8s;
+}
+#dotDescriptionOneDef:hover img{
+  visibility: visible;
+}
+
+@media only screen and (max-height: 600px){
+  #dotDescriptionOneDef{
+    position: fixed;
+  }
+  #dotDescriptionOneDef:hover {
+    width: unset;
+    background-color: unset;
+  }
+  #dotDescriptionOneDef:hover img{
+    visibility: visible;
+  }
+}
+
+
+/***********************/
+
+#dotDescriptionTwo{
+  position: absolute;
+  margin-top: 35vh;
+  margin-left: 35vw;
+  width: 3em;
+  display: none;
+  cursor: pointer;
+  z-index: 8;
+
+
+  color: #1692ea;
+  list-style: none;
+  transition: ease-in-out all .2s;  
+  border-radius: 32px;
+}
+
+/********** Dot-dotDescriptionTwo ANIMATION **************/
+  #dotDescriptionTwo img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionTwo img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  
+  /* #dotDescriptionTwo img:hover{
+    width: 400px;
+    background-color: white;
+  } */
+  #dotDescriptionTwo:hover {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  
+
+  #dotDescriptionTwo:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  
+  #dotDescriptionTwo:hover img{
+    visibility: visible;
+  }
+
+  @media only screen and (max-height: 600px){
+    #dotDescriptionTwo{
+      position: fixed;
+    }
+    #dotDescriptionTwo:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionTwo:hover img{
+      visibility: visible;
+    }
+  }
+ 
+
+#dotDescriptionTwoMRI{
+  position: absolute;
+  margin-top: 25vh;
+  margin-left: 35vw;
+  width: 3em;
+  display: none;
+  cursor: pointer;
+  z-index: 8;
+
+  color: #1692ea;
+  list-style: none;
+  transition: ease-in-out all .2s;
+  border-radius: 32px;
+
+}
+
+/***************************
+*  Two- MRI ANIMATION DOTS
+***************************/
+  #dotDescriptionTwoMRI img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionTwoMRI img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  /* #dotDescriptionTwoMRI img:hover{
+    width: 280px;
+    background-color: white;
+  } */
+  #dotDescriptionTwoMRI:hover {
+    width: 280px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  #dotDescriptionTwoMRI:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  #dotDescriptionTwoMRI:hover img{
+    visibility: visible;
+  }
+
+  @media only screen and (max-height: 600px){
+    #dotDescriptionTwoMRI{
+      position: fixed;
+    }
+    #dotDescriptionTwoMRI:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionTwoMRI:hover img{
+      visibility: visible;
+    }
+  }
+
+
+#dotDescriptionTwoDef{
+  position: absolute;
+  margin-top: 14vh;
+  margin-left: 35vw;
+  width: 3em;
+  display: none;
+  cursor: pointer;
+  z-index: 8;
+  
+  color: #1692ea;
+  list-style: none;
+  transition: ease-in-out all .2s;
+  border-radius: 32px;
+
+}
+
+/***********************************
+*  Two- Defense ANIMATION DOTS
+***********************************/
+  #dotDescriptionTwoDef img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionTwoDef img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  /* #dotDescriptionTwoDef img:hover{
+    width: 300px;
+    background-color: white;
+  } */
+  #dotDescriptionTwoDef:hover {
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  #dotDescriptionTwoDef:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  #dotDescriptionTwoDef:hover img{
+    visibility: visible;
+  }
+
+  @media only screen and (max-height: 600px){
+    #dotDescriptionTwoDef{
+      position: fixed;
+    }
+    #dotDescriptionTwoDef:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionTwoDef:hover img{
+      visibility: visible;
+    }
+  }
+
+
+
+#dotDescriptionThreeMRI , #dotDescriptionThreeDef{
+  position: absolute;
+  margin-top: 80vh;
+  margin-left: 35vw;
+  width: 3em;
+  display: none;
+  cursor: pointer;
+  z-index: 8;
+  
+  color: #1692ea;
+  list-style: none;
+  transition: ease-in-out all .2s;
+  border-radius: 32px;
+}
+
+/*******************************
+*  Three- MRI ANIMATION DOTS
+******************************/
+  #dotDescriptionThreeMRI img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionThreeMRI img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  /* #dotDescriptionThreeMRI img:hover{
+    width: 280px;
+    background-color: white;
+  } */
+  #dotDescriptionThreeMRI:hover {
+    width: 280px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  #dotDescriptionThreeMRI:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  #dotDescriptionThreeMRI:hover img{
+    visibility: visible;
+  }
+
+  @media only screen and (max-height: 600px){
+    #dotDescriptionThreeMRI{
+      position: fixed;
+      margin-top: 70vh;
+    }
+    #dotDescriptionThreeMRI:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionThreeMRI:hover img{
+      visibility: visible;
+    }
+  }
+
+/***********************************
+*  Three- Defense ANIMATION DOTS
+***********************************/
+  #dotDescriptionThreeDef img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionThreeDef img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  /* #dotDescriptionThreeDef img:hover{
+    width: 350px;
+    background-color: white;
+  } */
+  #dotDescriptionThreeDef:hover {
+    width: 350px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  #dotDescriptionThreeDef:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  #dotDescriptionThreeDef:hover img{
+    visibility: visible;
+  }
+
+  @media only screen and (max-height: 600px){
+    #dotDescriptionThreeDef{
+      position: fixed;
+      margin-top: 70vh;
+    }
+    #dotDescriptionThreeDef:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionThreeDef:hover img{
+      visibility: visible;
+    }
+  }
+
+
+
+#dotDescriptionFour , #dotDescriptionFourMRI , #dotDescriptionFourDef{
+  position: relative;
+  float:right;
+  margin-top: 56vh;
+  margin-right: 39vw; 
+  width: 3em;
+  display: none;
+  cursor: pointer;
+  z-index: 8;   
+
+  color: #1692ea;
+  list-style: none;
+  transition: ease-in-out all .2s;
+
+  border-radius: 32px;
+}
+
+/********** Dot-dotDescriptionFour  ANIMATION **************/
+  #dotDescriptionFour img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionFour img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+     
+  /* #dotDescriptionFour img:hover{
+    width: 200px;
+    background-color: white;
+  } */
+  #dotDescriptionFour:hover {
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  
+  #dotDescriptionFour:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  
+  #dotDescriptionFour:hover img{
+    visibility: visible;
+   }
+
+   @media only screen and (max-height: 600px){
+    #dotDescriptionFour{
+      position: fixed;
+      right: 0;
+    }
+    #dotDescriptionFour:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionFour:hover img{
+      visibility: visible;
+    }
+  }
+
+/***************************
+*  Four- MRI ANIMATION DOTS
+***************************/
+  #dotDescriptionFourMRI img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionFourMRI img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  /* #dotDescriptionFourMRI img:hover{
+    width: 280px;
+    background-color: white;
+  } */
+  #dotDescriptionFourMRI:hover {
+    width: 280px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  #dotDescriptionFourMRI:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  #dotDescriptionFourMRI:hover img{
+    visibility: visible;
+  }
+
+  @media only screen and (max-height: 600px){
+    #dotDescriptionFourMRI{
+      position: fixed;
+      right: 0;
+    }
+    #dotDescriptionFourMRI:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionFourMRI:hover img{
+      visibility: visible;
+    }
+  }
+
+/***********************************
+*  Four- Defense ANIMATION DOTS
+***********************************/
+  #dotDescriptionFourDef img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  #dotDescriptionFourDef img{
+    width: 3em;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.809);
+    animation: pulse-white 1.5s infinite;
+  }
+  /* #dotDescriptionFourDef img:hover{
+    width: 280px;
+    background-color: white;
+  } */
+  #dotDescriptionFourDef:hover {
+    width: 280px;
+    background-color: rgba(255, 255, 255, 0.809);
+  }
+  #dotDescriptionFourDef:hover .side-menu__label {
+    display: inline-block;
+    opacity: 1;
+    transition: ease-in-out all .8s;
+  }
+  #dotDescriptionFourDef:hover img{
+    visibility: visible;
+  }
+
+  @media only screen and (max-height: 600px){
+    #dotDescriptionFourDef{
+      position: fixed;
+      right: 0;
+    }
+    #dotDescriptionFourDef:hover {
+      width: unset;
+      background-color: unset;
+    }
+    #dotDescriptionFourDef:hover img{
+      visibility: visible;
+    }
+  }
+
+  /***************************************
+  * TURN ICON
+  ***************************************/
+  #turnIcon{
+    position: relative;
+    width: 8em;
+    margin-top: 42vh;
+    margin-left: 37vw;/*35vw;*/
+    display:none; 
+    animation: pulse-turn 2s infinite;
+    
+  }
+
+  #turnIconMRI{
+    position: absolute;
+    width: 8em;
+    margin-top: 31vh;
+    margin-left: 37vw;/*35vw;*/
+    
+    display: none;
+    animation: pulse-turn 2s infinite;
+  }
+
+  #turnIconDef{
+    position: absolute;
+    width: 8em;
+    margin-top: 20vh;
+    margin-left: 37vw;/*35vw;*/
+    display: none;
+    animation: pulse-turn 2s infinite;
+  }
+  
+  @media only screen and (max-height: 600px){
+    #turnIcon{
+      position: fixed;
+    }
+    #turnIconMRI{
+      position: fixed;
+    }
+    #turnIconDef{
+      position: fixed;
+    }
+  }
+
+  @keyframes pulse-turn {
+    0% {
+      transform: scale(0.95);
+    }
+  
+    70% {
+      transform: scale(1.5);
+    }
+  
+    100% {
+      transform: scale(0.95);
+    }
+  }
+
+  /****************************
+  * modal
+  *****************************/ 
+
+
+/* Gallery Modal */
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Create four equal columns that floats next to eachother */
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modalGallery {
+  display:none;
+  position: fixed;
+  z-index: 200;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /*background-color: rgba(0,0,0,0.9);*/
+}
+@media only screen and (max-height: 600px){
+  .modalGallery {
+    padding-top: 15vh;
+  }
+}
+
+.modalGalleryTwo {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /*background-color: rgba(0,0,0,0.9);*/
+}
+@media only screen and (max-height: 600px){
+  .modalGalleryTwo {
+    padding-top: 15vh;
+  }
+}
+
+
+.modalGalleryThree {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /*background-color: rgba(0,0,0,0.9);*/
+}
+@media only screen and (max-height: 600px){
+  .modalGalleryThree {
+    padding-top: 15vh;
+  }
+}
+
+
+
+
+
+/* Modal Content */
+.modal-content-gallery {
+  position: relative;
+  background-color: #000000;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+@media only screen and (max-height: 600px){
+  .modal-content-gallery {
+    width: 50%;
+  }
+}
+
+.modal-content-MRI {
+  position: relative;
+  background-color: #000000;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+@media only screen and (max-height: 600px){
+  .modal-content-MRI {
+    width: 50%;
+  }
+}
+
+.modal-content-def {
+  position: relative;
+  background-color: #000000;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+@media only screen and (max-height: 600px){
+  .modal-content-def {
+    width: 50%;
+  }
+}
+/* The Close Button */
+.close {
+  position: relative;
+  color: #ffffff!important;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 3px;
+  margin-right: 1em;
+  opacity: 0.85!important;
+}
+
+
+.close:hover,
+.close:focus {
+  color: rgb(43, 43, 43);
+  text-decoration: none;
+  cursor: pointer;
+}
+@media only screen and (max-height: 600px){
+  .close {
+    color: white!important;
+    opacity: 0.85!important;
+  }
+}
+
+
+/* Hide the slides by default */
+.mySlides {
+  display: none;
+}
+
+.mySlidesMRI {
+  display: none;
+}
+
+.mySlidesDef{
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: rgb(189, 188, 188) !important;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+@media only screen and (max-height: 600px){
+  .prev,
+  .next {
+    background-color: #01aaffb6;
+
+  }
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: #01aaffb6;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Caption text */
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+img.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+  

@@ -1,0 +1,442 @@
+@import '../../../assets/style/variables';
+.Box{
+    position: relative;
+    width:100%;
+    height:auto;//100vh;
+    overflow:hidden;
+    
+    &QuizStart{
+        width: 100%;
+        height: auto;
+        position: relative;
+        text-align: center;
+       
+        img{
+            width: 100%;
+            height: auto;
+             @media only screen and (max-height: $resMobileBreakPoint)  {
+                 width: 800px;
+                height: 360px;
+                object-fit: cover;
+            }
+        }
+               
+        &Background{
+            //can be fixed by new asset 
+            background-image: url('https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/T360-Theatre/png/T360 Theater- Game Show Start2.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height:100vh;  /* responsive height */
+            background-attachment: fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;  
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                background-image: url('https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/T360-Theatre/png/T360 Theater- Quiz Start.png') no-repeat;
+                height:90vh;  /* responsive height */
+            }
+        }
+        &Title{
+            width: 51%;
+            position: absolute;
+            top: 8vh;
+            right: 25vw;
+            font-size: 115px;
+            font-family: 'ToyotaType-Bold';
+            color: white;
+            @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                font-size: 6vw;
+            }
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                font-size: 40px;
+                top: 50px;
+            }           
+        }
+        &Button {
+            position: absolute;
+            bottom:50px;
+            width: 100%;
+            height: auto;
+            font-size: 16px;
+            font-family: 'ToyotaType-Semibold';
+            text-align: center;
+            button{
+                position: relative;
+                width: 10%;
+                height: auto;
+                //margin: 8vh auto;
+                @media only screen and (max-height: $resMobileBreakPoint)  {
+                    //margin: 100px auto;
+                    width: 15%;
+                }
+            }
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                bottom: 0px;
+            }
+        }
+        &LeftHoop{
+            position: absolute;
+            z-index: 11;
+            height: 15vw;
+            width: 15vw;
+            //top: 12vh;
+            top:calc(100% - 90vh);
+            left: -7vw;
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                top: 70px;
+                left: -80px;
+            }
+        }
+        &RightHoop{
+            position: absolute;
+            z-index: 11;
+            height: 28vw;//50%;
+            width: 28vw;
+            right: -15vw;
+            bottom: -24vh;
+            // @media only screen and (max-height: $resMobileBreakPoint)  {
+            //     bottom: 60px;//-100px;
+            //     right: -140px;
+            // }
+        }
+    }
+
+    &Quiz {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        padding: 15vh 0 0 0;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+            padding: 40px 0 0 0;
+            height: auto;
+        }
+        &Title {
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding: 0 0 0 0;
+            text-align: center;
+           
+            b {
+                color:#747474;
+                font-size: 22px;
+                font-family: 'ToyotaType-Semibold';
+                @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                    font-size: 1vw;
+                }
+                @media only screen and (max-height: $resMobileBreakPoint)  {
+                    font-size: 10px;
+                }
+                span {
+                    font-size: 66px;
+                    @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                        font-size: 3.1vw;
+                    }
+                    @media only screen and (max-height: $resMobileBreakPoint)  {
+                        font-size: 26px;
+                    }
+                } 
+            }
+        }
+        &Footer{
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding:0 0 0 0;
+            margin-top: 10vh;
+        
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                margin-top: 0;
+            }
+           
+            &Box {
+                width: 14%;
+                height: auto;
+                position: relative;
+                margin: auto;
+                &Left{
+                    width: 50%;
+                    height: auto;
+                    float: left; 
+                }
+                &Right{
+                    width: 50%;
+                    height: auto;
+                    float: left;
+                }
+            }
+            p {
+                text-decoration: underline;
+                color:#747474;
+                font-size: 22px;
+                font-family: 'ToyotaType-Semibold';
+                cursor: pointer;
+                text-align: center;
+                //margin: auto 2vw;
+                @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                    font-size: 1.5vw;
+                  } 
+            }
+            p:hover{
+                color:black;
+            }
+            &ArrowL {
+                border: solid #747474;
+                border-width: 0 4px 4px 0;
+                border-radius: 3px;
+                display: inline-block;
+                //padding: 3px;
+                cursor: pointer;
+                z-index:1;
+                position: relative;
+                width: 0.8vw;
+                height: 0.8vw;
+    
+                transform: rotate(135deg);
+                -webkit-transform: rotate(135deg);
+                &:hover{
+                    border: solid black;
+                    border-width: 0 4px 4px 0;
+                }
+            }
+            &ArrowR {
+                border: solid #747474;
+                border-width: 0 4px 4px 0;
+                border-radius: 3px;
+                display: inline-block;
+                cursor: pointer;
+                //right: -1vw;
+                z-index:1;
+                position: relative;
+                width: 0.8vw;
+                height: 0.8vw;
+    
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+    
+                &:hover{
+                    border: solid black;
+                    border-width: 0 4px 4px 0;
+                }
+            }
+        }
+        &Row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 90%;//100%;
+            margin: auto;
+            padding: 10vh 0 0 0; //12vh 0 0 0;
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                padding: 30px 0 0 0;
+            }
+          }
+          
+          &Column {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+          }
+          &InnerBox {
+            flex: 0 0 18%;
+            color: black; 
+            text-align: center;          
+            img {
+                position: relative;
+                width: 68%;
+                height:auto;
+                @media only screen and (max-height: $resMobileBreakPoint)  {
+                    width: 60%;
+                }
+            } 
+            &Button{
+                width: 70%;
+                font-size: 22.5px;
+                margin: 3vh auto;
+                @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                    font-size: 1vw;
+                }
+              
+            }
+            
+        }  
+    } 
+    &Results {
+        width: 70%;
+        position: absolute;
+        right: 0;
+        @media only screen and (max-height:$BreakPoint3) {
+            overflow-y: scroll;
+          }
+        //background: gray;
+            background-image: url('https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/T360-Theatre/png/T360Theater-GameShowResults.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 70%;
+            height:100vh;  /* responsive height */
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+           
+            // @media only screen and (max-height:$resMobileBreakPoint) {
+            //     //height: 90vh;
+            //     //background-image: url('https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Images/T360-Theatre/png/T360 Theater 90 - Quiz Results.png') no-repeat;
+            // }
+           
+        &Head{
+            width: 100%;
+            height: auto;
+            position: relative;
+            color: white;
+            text-align: center;
+           
+            margin: 6vh auto;
+            
+            p{
+                font-family: 'ToyotaType-Bold';
+                font-size: 50px;
+                @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+                    font-size: 2vw;
+                }
+                span{
+                    font-size: 110px;
+                    font-family: 'ToyotaType-Bold';
+                    @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+                        font-size: 6vw;
+                    }
+                }
+            }
+        }
+        &Footer{
+            width: 100%;
+            height: auto;
+            position: relative;
+       
+            text-align: center;
+            color: #747474;
+            margin: -3vw auto;
+           
+            p{
+                margin: auto;
+                width: 60%;
+                font-size: 30px;
+                font-family: 'ToyotaType-SemiBold';
+                @media only screen and (max-width:$resFontSizeBreakPoint) {
+                    font-size: 1.5vw;
+                }
+            }
+            &Button{
+                width: 15%;
+                position: relative;
+                font-size: 16px;
+                margin: 1vh auto;
+                @media(max-width:$resFontSizeBreakPoint) and (orientation: landscape){
+                    width: 20%;
+                    font-size: 1vw;
+                }
+            }
+        }
+        img{
+            width: 100%;
+            height: auto;
+            @media only screen and (max-height: $maxFontSizeBreakPoint)  {
+                width: 95%;
+            }
+            @media only screen and (max-height:$resMobileBreakPoint) {
+                width: 65%;
+                padding: 30px 0 0 80px;
+            }
+        }
+      
+            
+    }
+}
+.SmallButton{
+    width: 70%;
+    font-size: 22.5px;
+    margin: 3vh auto;
+    @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+        font-size: 1vw;
+      } 
+}
+.LongButton{
+    width: 80%;
+    font-size: 22.5px;
+    margin: 3vh auto;
+    @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+        font-size: 1vw;
+      } 
+}
+.CloseButton {
+    position: absolute;
+    z-index: 14;
+    right: 1vw;
+    width: 50px;
+    height: auto;
+    top: 1vh;
+}
+.active{
+    background-color: #747474;
+    text-decoration: underline;
+    color: white;
+  }
+.LeftHoop{
+    position: absolute;
+    z-index: 11;
+    height: 15vw;
+    width: 15vw;
+    top: 12vh;
+    left: -7vw;
+    @media only screen and (max-height: $resMobileBreakPoint)  {
+        top: 70px;
+        left: -80px;
+    }
+}
+.RightHoop{
+    position: absolute;
+    z-index: 1;
+    height: 28vw;//50%;
+    width: 28vw;
+    right: -15vw;
+    bottom: -15vh;
+   
+    @media only screen and (max-height: $resMobileBreakPoint)  {
+        bottom: -150px;
+        right: -20vw;  
+    }
+}
+
+.Circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at     center, 
+    rgba(255,113,12,0) 65%,
+    rgba(#CC1920,1) 65.95%);
+  }
+  
+  .btnClose{
+    position: absolute;
+    z-index: 1;
+    right: 1vw;
+    top:1vh;
+  }
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top:5vh;
+    @media only screen and (max-width: $resFontSizeBreakPoint) {
+     top:1vh;
+    }
+  }
+

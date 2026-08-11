@@ -1,0 +1,293 @@
+@import '../../../assets//style/_variables';
+
+
+/***************************
+* NAVIGATION 
+***************************/
+
+.traditionalNav {
+  //background-color: #eb0a1e;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 14; //1
+  color: #FFFFFF;
+  overflow: hidden;
+}
+.cardNav {
+  //background-color: #ffff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 13;
+  color: #747474;
+  &Close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+}
+.navigator {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  z-index: 1;
+  overflow: auto;
+  overflow-x: hidden;
+  margin: 10vw auto;//10em auto;
+}
+
+.navOptions {
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  //background-color: red;
+  //border: 2px solid red;
+  position: fixed;
+  z-index: 10;
+  color: #ffffff;
+
+  &Left {
+    float: left;
+    margin-left: 20px;
+    p {
+      float: right;
+      padding: 20px 0px 0px 0px;
+      // color: white;
+    }
+  }
+  &Right {
+    width: 400px;
+    float: right;
+    margin-right: -30px;
+    padding: 10px 0px 0px 10px;
+    svg {
+      width: 30px;
+      margin-left: 20px;
+      color: white;
+      cursor: pointer;
+    }
+    p {
+      width: 40px;
+      display: inline-block;
+      padding: 0px 0px 0px 20px;
+      position: relative;
+      top: -12px;
+      // color: white;
+      cursor: pointer;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .navOptions {
+    &Left {
+      p {
+        display: block;
+      }
+    }
+  }
+  .navigator {
+    height: 85vh;
+    //overflow: auto;
+  }
+  .traditionalNav {
+    width: 100vw;
+  }
+}
+
+/***************
+  * GRID MENU BOX
+  ****************/
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-family: 'ToyotaType-Semibold';
+  font-size: 48px;
+  padding: 0 0 0 1.35em;
+  line-height: 2em;
+  @media (max-width: $resFontSizeBreakPoint) {
+    font-size: 2.8vw; 
+  } 
+}
+
+.flexItemLeft {
+  //line-height: 2em;//5rem;
+  flex: 56.33%; //33.33%;
+  p {
+    width: 100%;
+    height: auto;
+    //padding-left: 1.3em;//5rem;
+  }
+  &Icon{
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: auto 1vw;
+    cursor: pointer;
+    &PlusIcon{
+      width: 5%;
+      height: auto;
+      padding: 5% 0 0 0;
+      background: url(https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Icons/Toogle/TOY_VIRTUAL_Toogle1_Plus_White.svg) no-repeat;
+      display: inline-block;
+    }
+    &PlusIcon:hover{
+      background: url(https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Icons/Toogle/TOY_VIRTUAL_Toogle1_Plus_black.svg) no-repeat;
+    }
+    &LessIcon{
+      width: 5%;
+      height: auto;
+      padding: 3% 0 0 8%;
+      background: url(https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Icons/Toogle/TOY_VIRTUAL_Toogle1_Less_white.svg) no-repeat;
+      display: inline-block;
+      background-size: 40%;
+    }
+    &LessIcon:hover{
+      background: url(https://d28z8i57b3adv3.cloudfront.net/cdn/Toyota_VirtualShow_Assets/Icons/Toogle/TOY_VIRTUAL_Toogle1_Less_black.svg) no-repeat;
+      background-size: 40%;
+    }
+
+    &Plus{
+      width: 5%;
+      height: auto;
+    }
+   
+    &Less{
+      width: 5%;
+      height: auto;
+      margin: 0.69vw auto;
+    }
+  }
+}
+
+.flexItemCenter {
+  flex: 43.33%; //33.33%;
+  //line-height: 2em;//4.70rem;
+  p {
+    width: 100%;
+    height: auto;
+    //padding-left: 5rem;
+  }
+}
+.flexItemRight {
+  //line-height: 5vw;//5rem;
+  flex: 43.33%;//33.33%;
+  p {
+    //padding-left: 1.3em;
+  }
+}
+
+/************************
+  * SUB-MENU
+  *************************/
+.flexSubContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  font-family: 'ToyotaType-Semibold';
+  font-size: 20px;
+  @media (max-width: $resFontSizeBreakPoint) {
+    font-size: 1.1vw;
+  } 
+}
+
+.flexSubItemLeft {
+  line-height: 2.4em;
+  flex: 25.33%;
+  a:hover {
+    text-decoration: underline;
+  }
+  &Link:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+.flexSubItemCenter {
+  line-height: 2.4em;
+  flex: 25%.33;
+  a {
+    //font-size: 0.9rem;
+    //padding-left: 5px;
+  }
+}
+.flexSubItemRight {
+  line-height: 2.4em;
+  flex: 25.33%;
+  a {
+    //font-size: 0.9rem;
+    //padding-left: 5px;
+  }
+}
+.flexSubSingleItem {
+  line-height: 2.4em;
+  padding: 1px;
+  flex: 50%;
+  a {
+    //font-size: 0.9rem;
+    //padding-left: 5px;
+  }
+}
+
+/*********************
+  * Accordion content
+  **********************/
+.panel {
+  //padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  p {
+    font-size: 1rem;
+   }
+  }
+
+
+  /*****************************************/
+  /* MOBILE 
+  /****************************************/
+  // LANDSCAPE
+  @media(max-width: $resMobileBreakPoint) and (orientation : landscape)  {
+    
+    .navigator {
+      overflow-x: hidden;
+    }
+  
+  }
+
+  /*****************************************/
+  /* TABLET PORTRAIT
+  /****************************************/
+  $parentFlexLineHeight: 4em;
+  $childFlexLineHeight: 5em;
+  @media(max-width: $resTabletBreakPoint) and (orientation : portrait)  {
+    
+    .navigator {
+      margin: 20vw auto;
+    }
+    .flexItemLeft {
+      line-height: $parentFlexLineHeight;
+    }
+    
+    .flexItemCenter {
+      line-height: $parentFlexLineHeight;
+    }
+    .flexItemRight {
+      line-height: $parentFlexLineHeight;
+    }
+    //child
+    .flexSubItemLeft {
+      line-height: $childFlexLineHeight;
+    }
+    .flexSubItemCenter {
+      line-height: $childFlexLineHeight;
+    }
+    .flexSubItemRight {
+      line-height: $childFlexLineHeight;
+    }
+    .flexSubSingleItem {
+      line-height: $childFlexLineHeight;
+    }
+    
+  }

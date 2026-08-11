@@ -1,0 +1,89 @@
+@import '../../../assets//style/_variables';
+
+$cdnUrl: 'https://d28z8i57b3adv3.cloudfront.net';
+
+
+.box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 13;
+  //color: #747474;
+  &Close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+
+  &container {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 15vh auto;
+    left: 0;
+    canvas{
+      width: 84%!important;
+    }
+    &Wheel{
+      
+      &Center{
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        width: 88%;
+        height: auto;
+        padding: 1vh 0 0 0;
+      } 
+    }
+  
+  &Box {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: auto;
+      color: black;
+      font-weight: normal;
+      text-align: right;
+      
+      &Description{
+          position: relative;
+          float: right;
+          right: 2vw; //2rem;
+          &Title{
+            font-family: 'ToyotaType-SemiBold';
+            font-size: 70px;
+            letter-spacing: 1.5px;
+            @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+              font-size: 3.5vw;
+            }
+          }
+          p{
+            font-family: 'ToyotaType-Regular';
+              padding: 15px 0px 0px 0px;
+              font-size: 32px;
+              width: 75%;
+              float: right;
+              @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                font-size: 1.7vw;
+              }
+          } 
+          &Button{
+            width: 50%;
+            height: auto;
+            margin:3vh auto;
+          }
+      } 
+     
+  }   
+}
+
+
+}
+
+
+
+

@@ -12,12 +12,12 @@ export function Chip({ variant = "assist", selected, glass, className, children,
   return (
     <span
       className={cn(
-        "state-layer inline-flex items-center gap-1.5 rounded-m3-sm px-3 py-1.5 text-label-lg",
+        "state-layer inline-flex items-center gap-1.5 rounded-hud px-3 py-1.5 text-label-lg font-mono tracking-wide",
         glass
-          ? "glass text-on-surface"
+          ? "hud-glass text-ink"
           : selected
-            ? "border border-transparent bg-secondary-container text-on-secondary-container"
-            : "border border-outline-variant bg-surface-container-low text-on-surface-variant",
+            ? "border border-hud-line-strong bg-purple-glow text-purple"
+            : "border border-hud-line bg-panel text-ink-dim",
         variant === "filter" && "cursor-pointer",
         className,
       )}

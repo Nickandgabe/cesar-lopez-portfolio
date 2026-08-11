@@ -1,0 +1,346 @@
+@import '../../../assets/style/variables';
+/***************************
+* NAVIGATION 
+***************************/
+
+.Box {
+  background-color: #FFFF; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;//1;
+  color: #747474;
+}
+.Button{
+  position: absolute;
+  right: 1vw;
+  z-index: 1;
+  top: 1vh;
+}
+
+// .navigator {
+//     position: relative;
+//     width: 100%;
+//     height: 85vh;
+//     z-index: 1;
+//     overflow: auto;
+//   }
+
+//   .modalmainBody {
+//     background-color: #FFFF; 
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 10;//1;
+//     color: #747474;
+//   }
+    
+//   .navOptions {
+//     width: 100%;
+//     height: 50px;
+//     margin-top: 15px;
+//     position: relative;
+//     z-index: 10;
+  
+//     &Left {
+//       float: left;
+//       margin-left: 20px;
+//       p {
+//         float: right;
+//         padding: 20px 0px 0px 0px;
+//       }
+//     }
+//     &Right {
+//         position: absolute;
+//         z-index: 15;
+//         right: 0;
+//         top:-4.5rem;
+//         margin-right: 2rem; 
+//       svg {
+//         width: 30px;
+//         margin-left: 20px;
+//         color: white;
+//         cursor: pointer;
+//       }
+//       p {
+//         width: 40px;
+//         display: inline-block;
+//         padding: 0px 0px 0px 20px;
+//         position: relative;
+//         top: -12px;
+//         cursor: pointer;
+//       }
+//     }
+//     &RightMenu {
+//       width: 400px;
+//       float: right;
+//       margin: auto -10em;
+//       padding: 30px 0px 0px 30px;
+//       svg {
+//         width: 30px;
+//         margin-left: 20px;
+//         color: white;
+//         cursor: pointer;
+//       }
+//       p {
+//         width: 40px;
+//         display: inline-block;
+//         padding: 0px 0px 0px 20px;
+//         position: relative;
+//         top: -12px;
+//         cursor: pointer;
+//       }
+//       a {
+//         display: inline-block;
+//         padding: 0px 0px 0px 20px;
+//         position: relative;
+//         top: -12px;
+//       }
+//     }
+//   }
+//   @media (max-width: 800px) {
+//     .navOptions {
+//       &Left {
+//         p {
+//           display: none;
+//         }
+//       }
+//     }
+//     .modalchangeBodyColor{
+//         overflow: hidden;
+//     }
+  
+//   }
+  
+  // .footer {
+  //   position: absolute;
+  //   text-align: center;
+  //   margin: 1.5rem auto;
+  //   width: 100%;
+  //   height: auto;
+  //   bottom: 0px;
+   
+  //   .explore {
+  //     width: 100%;
+  //     height: auto;
+  //     position: relative;
+  //     margin: -3rem auto;
+  //     @media (max-width: 800px) and (orientation : landscape) {
+  //       margin: -1rem auto;
+  //      }
+  //     &Button{
+  //       width: 16vw;
+  //       height: auto;
+  //       padding-left: 20px; 
+  //       cursor: pointer;
+  //     }
+      
+  //   }
+
+  //   .accesoriesBox {
+  //       width: 100%;
+  //       height: auto;
+  //       position: absolute;
+  //       bottom: 5em;
+  //       margin: auto 24vw;
+  //       @media (max-width: 800px) and (orientation : landscape) {
+  //         bottom: 1em;
+  //       }
+
+  //       .flexContainerButton {
+  //           display: flex;
+  //           flex-direction: row;
+  //           width: 50%;
+  //         }
+          
+  //         .flexItemLeftButton {
+  //           flex: 33.33%;
+  //           text-align: center;
+  //         }
+  //   }
+  //   p{
+  //       margin: -2rem auto;
+  //   }
+    
+  
+  // }
+
+  .Footer{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    text-align: center;
+    &Disclamer{
+      width: 65%;
+      color: #747474;
+      font-size: 11px;
+      font-family: 'ToyotaType-Regular';
+      margin: auto;
+      justify-content: center;
+      @media (max-width: $resFontSizeBreakPoint) {
+        font-size: 0.5vw;
+      }
+      
+    }
+    &Button{
+      width: 30%;
+      margin: 2vh auto;
+      cursor: pointer;
+    }
+    .flexContainerButton {
+      display: flex;
+      flex-direction: row;
+    }
+    
+    .flexItemLeftButton {
+      flex: 33.33%;
+      text-align: center;
+    }
+  
+  }
+
+/*****************************
+* BUTTONS 
+*******************************/
+// .btnLearn {
+//     width: 70%;
+//     height: auto;
+//     font-size: 16px;
+//     float: right;
+//     font-family: 'ToyotaType-Semibold';
+//     @media (max-width: $resFontSizeBreakPoint) {
+//       font-size: 1vw;
+//       width: 80%;
+//     }
+// }
+// .btnBuild {
+//     width: 70%;
+//     height: auto;
+//     font-size: 16px;
+//     font-family: 'ToyotaType-Semibold';
+//     @media (max-width: $resFontSizeBreakPoint) {
+//       font-size: 1vw;
+//       width: 80%;
+//     }
+// }
+// .btnView {
+//   width: 70%;
+//   height: auto;
+//   font-size: 16px;
+//   float: left;
+//   font-family: 'ToyotaType-Semibold';
+//   @media (max-width: $resFontSizeBreakPoint) {
+//     font-size: 1vw;
+//     width: 80%;
+//   }
+// }
+.btnLearn {
+  width: 70%;
+  height: auto;
+  font-size: 16px;
+  float: right;
+  font-family: 'ToyotaType-Semibold';
+  @media (max-width: $resFontSizeBreakPoint) {
+    font-size: 1vw;
+    width: 80%;
+  }
+}
+.btnBuild {
+  width: 70%;
+  height: auto;
+  font-size: 16px;
+  font-family: 'ToyotaType-Semibold';
+  @media (max-width: $resFontSizeBreakPoint) {
+    font-size: 1vw;
+    width: 80%;
+  }
+}
+.btnView {
+width: 70%;
+height: auto;
+font-size: 16px;
+float: left;
+font-family: 'ToyotaType-Semibold';
+@media (max-width: $resFontSizeBreakPoint) {
+  font-size: 1vw;
+  width: 80%;
+}
+}
+  
+  /***********************
+  * DYNAMIC HOOPS
+  ***********************/
+  .hoops {
+   
+    &Left{
+      position: absolute;
+      z-index: 11;
+      height: 500px;
+      width: 500px;
+      //top:calc(100% - 10vw);
+      left: -18em;
+      bottom: -20em;
+      @media only screen and (max-height: $resMobileBreakPoint) {
+        height: 250px;
+        width: 250px;
+        bottom: -20vw;
+        left: -20vw;
+      }
+      
+    }
+    &Right{
+      position: absolute;
+      z-index: 11;
+      height: 250px;
+      width: 250px;
+      // top: calc(100% - 49vw);
+      top: calc(100% - 75vh);
+      right: -8em;
+      @media only screen and (max-height: $resMobileBreakPoint) {
+        height: 150px;
+        width: 150px;
+        top: calc(100% - 35vw);
+        right: -5em;
+      }
+      @media screen and (orientation : portrait) {
+        top: calc(100% - 120vw);
+      }
+    }
+
+    &Circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      color: #fff;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at     center, 
+        rgba(255,113,12,0) 65%,
+        rgba(#CC1920,1) 51.5%);
+    }
+    
+  }
+  
+   /*****************************************/
+  /* MOBILE LANDSCAPE
+  /****************************************/
+  @media(max-height: $resMobileBreakPoint) and (orientation : landscape)  {
+    .Footer{
+      bottom: 5vh;
+      &Button{
+        margin: auto;
+        svg{
+          text{
+            font-size: 2.3vw;
+          }
+        }
+      }
+    }
+
+  }
+
+ 

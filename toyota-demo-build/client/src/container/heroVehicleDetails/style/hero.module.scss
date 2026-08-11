@@ -1,0 +1,4876 @@
+@import '../.././../assets/style/variables';
+
+$BreakPoint1: '1060px';
+$BreakPoint2: '920px';
+$BreakPoint3: '780px';
+
+$BreakPoint4: '699px';
+$BreakPoint5: '440px'; //'699px';
+
+body {
+  background: black;
+}
+
+
+@keyframes layerTransitionToShow {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+  }
+}
+
+@keyframes layerTransitionToHide {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.layerInative {
+  visibility: hidden;
+  // transition-property: both;
+  // animation: layerTransitionToHide .5s both;
+}
+
+.layerCar360Active {
+  animation: layerTransitionToShow .1s all;
+}
+.layerCar360Inactive {
+  animation: layerTransitionToHide .1s all;
+}
+
+.layerActive {
+  // transition-property: both;
+  // animation: layerTransitionToShow .5s both;
+  // display: block;
+  visibility: visible;
+}
+
+
+@keyframes removeTransition {
+  0% {
+    width:200vw;
+    height:200vw;
+    display: block;
+    opacity: 1;
+  }
+
+  100% {
+    width:0px;
+    height:0px;
+    opacity: 0;
+    display: none;
+  }
+}
+
+.SiennaB2Active {
+  top: -35px !important;
+}
+.car360Wrapper {
+  // position: relative;
+  // width: 100%;
+  // height: 100vh;
+  // position: absolute;
+  // border: 1px solid blue;
+}
+
+// .EnterTransition {
+//   position: absolute;
+//   width:200vw;
+//   height:200vw;
+//   top:0px;//50%;
+//   left:0px;//15%;
+//   padding: 0 0 0 0;
+//   // left:20%;
+//   // margin-left:-1000px;
+//   // margin-top:-1000px;
+//   background: #ed1b2f;
+//   border-radius: 50%;
+//   z-index: 999;
+//   // display: none;
+//   animation: removeTransition 2s both;
+//   animation-delay: 1s;
+// }
+
+//to stop flickering on videos for car vehicules.
+.fadeOut{
+  opacity: 0;
+  visibility: hidden;
+  transition-duration: 1s, 0s;
+  transition-delay: 0s, 2s;
+  transition-property: both;
+  @media only screen and (max-height: $BreakPoint5) {
+    transition-duration: 0s, 1s;
+    transition-delay: 0s, 1s;
+
+    // -moz-transition: all .4s ease;
+    // -webkit-transition: all .4s ease;
+    // -ms-transition: all .4s ease;
+    // -o-transition: all .4s ease;
+    // transition: all .4s ease;
+  }
+}
+.fadeIn{
+  opacity: 100;
+  visibility: visible;
+  transition-duration: 0s, 2s;
+  transition-property: both;
+  @media only screen and (max-height: $BreakPoint5) {
+    transition-duration: 0s, 1s;
+  }
+}
+
+
+
+
+@mixin scrollContainerMixin {
+  width: 3900px;
+  @media only screen and (max-height: $BreakPoint1) {
+    width: 2800px;
+  }
+}
+
+@mixin autoShowCanvas {
+  width: 100%;
+  // height: 720px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+@mixin sceneIconxMixin {
+  width: 4%;
+  height: 6%;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #ed1b2f;
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
+  animation: pulse-red 1.5s infinite;
+  z-index: 12;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out!important;
+  &:hover{
+    transform: scale(1.2)!important;
+  }
+
+  svg,
+  img {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    padding: 13px 0 0;
+    transition: transform 0.2s ease-in-out;
+    // &:hover {
+    //   transform: scale(1.2);
+    // }
+  }
+}
+
+
+@mixin sceneIconPlusMixin {
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  left: 20px;//210px;
+  top: 45%;//420px;
+  box-shadow: 0 0 0 0 white; //0 0 0 0 rgba(255, 82, 82, 1);
+  animation: pulse-white 1.5s infinite;
+  z-index: 12;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out!important;
+  &:hover{
+    transform: scale(1.2)!important;
+  }
+  
+  svg,
+  img {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    padding: 14px 0 0;
+    transition: transform 0.2s ease-in-out;
+  }
+
+      @media only screen and (max-height: $BreakPoint1) {
+        top:40%;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top:37%;
+        img,
+        svg {
+          padding: 10px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top:38%;
+        img,
+        svg {
+          padding: 10px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        top:40%;
+      }
+
+      @media only screen and (max-height: $BreakPoint5) {
+        width: 40px;
+        height: 40px;
+        top:35%;
+        img,
+        svg {
+          width: 50%;
+          padding: 10px 0 0 0;
+        }
+      }
+
+  
+}
+
+@mixin sceneIconPlusRightMixin {
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  right: 20px;
+  top: 45%;//420px;
+  box-shadow: 0 0 0 0 white; //0 0 0 0 rgba(255, 82, 82, 1);
+  animation: pulse-white 1.5s infinite;
+  z-index: 12;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out!important;
+  &:hover{
+    transform: scale(1.2)!important;
+  }
+  
+  svg,
+  img {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    padding: 14px 0 0;
+    transition: transform 0.2s ease-in-out;
+  }
+      @media only screen and (max-height: $BreakPoint1) {
+        top:40%;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top:37%;
+        img,
+        svg {
+          padding: 10px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top:38%;
+        img,
+        svg {
+          padding: 10px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        top:40%;
+      }
+
+      @media only screen and (max-height: $BreakPoint5) {
+        width: 40px;
+        height: 40px;
+        top:35%;
+        img,
+        svg {
+          width: 50%;
+          padding: 10px 0 0 0;
+        }
+      }
+}
+
+.car360 {
+} // init only
+
+
+.scrollContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scrollContainerWrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
+.scrollContainerFlex {
+  display: inline-flex;
+  height: 100%;
+  background-color: black;
+ 
+  .scrollContainerFlexWrapper {
+    cursor: grab;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+  }
+
+}
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(237, 27, 47, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(237, 27, 47, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(237, 27, 47, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes pulse-white {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(237, 27, 47, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(237, 27, 47, 0);
+  }
+}
+
+.centerVehicle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 999;
+}
+
+.sceneOverFlow {
+  &Left {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ed1b2f;
+    position: fixed;
+    left: 0;
+    z-index: 4;
+  }
+  &Right {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ed1b2f;
+    position: fixed;
+    right: 0;
+    z-index: 4;
+  }
+}
+
+@keyframes animateCloud {
+  0% {
+    margin-left: -1000px;
+  }
+  100% {
+    margin-left: 50%;
+  }
+}
+
+.autoShow {
+  // position: relative;
+  // width: 3034px !important;
+  // overflow-x: hidden;
+  // height: 100vh;
+  cursor: grab;
+  ::-webkit-scrollbar {
+    width: 1px;
+    height: 0px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #b30000;
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+  }
+  :first-child {
+    overflow-x: hidden visible !important;
+  }
+  &Background {
+    @include autoShowCanvas();
+    height: 100vh;
+    // height: 1880px;
+    z-index: 1;
+    background-repeat: repeat-x !important;
+    // @media only screen and (max-height: $BreakPoint1) {
+    //   height: 1400px;
+    // }
+  }
+
+  &Background2 {
+    @include autoShowCanvas();
+    z-index: 3;
+    background-repeat: repeat-x;
+    -webkit-transition: opacity 1s;
+    transition: all 1s ease-in-out;
+    // height: 1080px;
+  }
+
+  &Background_set2 {
+    @include autoShowCanvas();
+    height: 1080px !important;
+    background-repeat: repeat-x;
+    z-index: 1;
+  }
+
+  &Background2_set2 {
+    @include autoShowCanvas();
+    z-index: 3;
+    background-repeat: repeat-x;
+    // height: 1080px !important;
+  }
+
+  &Cloud {
+    position: absolute;
+    z-index: 1;
+    width: 50000px;
+    height: 600px !important;
+    background-repeat: repeat-x;
+    left: -90%;
+    animation: animateCloud 200s linear infinite;
+  }
+
+  &Cloud_set2 {
+    @include autoShowCanvas();
+    height: 1080px !important;
+    z-index: 1;
+    width: 500% !important;
+    background-repeat: repeat-x;
+    left: -70%;
+    animation: animateCloud 200s linear infinite;
+  }
+
+  // AutoGround
+  &Ground {
+    position: absolute;
+    z-index: 2;
+    height: 100vh;
+    z-index: 1;
+    background: no-repeat;
+  }
+}
+
+.Image360 {
+  width: 1720px;
+  // min-height: 800px;
+  position: relative;
+  z-index: 5;
+  left: 1400px;
+  top: 30px;
+ 
+
+  video {
+    position: absolute;
+    // width: 1000px;
+    // height: 1000px;
+  }
+
+  // 360 Rotation Icon
+  &Icon {
+    width: 250px !important;
+    position: absolute;
+    z-index: 12;
+    left: 500px;
+    top: 600px;
+    box-sizing: border-box;
+    padding: 30px;
+    animation: pulse 1.5s infinite;
+    // border-radius: 50%;
+    // opacity: 0.7;
+
+    @media only screen and (max-height: $BreakPoint1) {
+      width: 200px !important;
+      top: 450px;
+      left: 350px;
+    }
+  }
+  &GlassIcon {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #ed1b2f;
+    position: absolute;
+    left: 400px;
+    top: 280px;
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
+    animation: pulse-red 1.5s infinite;
+    z-index: 12;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    &:hover{
+      transform: scale(1.2)!important;
+    }
+
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 80px;
+      height: 80px;
+      top: 380px;
+      left: 550px;
+    }
+    svg,
+    img {
+      display: block;
+      width: 30px;
+      margin: 0 auto;
+      padding: 15px;
+      transition: transform 0.2s ease-in-out;
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 35px;
+        padding: 21px;
+      }
+      // &:hover {
+      //   transform: scale(1.3);
+      // }
+    }
+    
+  }
+
+  &PlayIcon {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #ed1b2f;
+    position: absolute;
+    left: 210px;
+    top: 420px;
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
+    animation: pulse-red 1.5s infinite;
+    z-index: 12;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    &:hover{
+      transform: scale(1.2)!important;
+    }
+
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 80px;
+      height: 80px;
+      top: 570px;
+      left: 280px;
+    }
+    svg,
+    img {
+      display: block;
+      width: 20px;
+      margin: 0 auto;
+      padding: 17px;
+      transition: transform 0.2s ease-in-out;
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 27px;
+        padding: 21px;
+      }
+      // &:hover {
+      //   transform: scale(1.3);
+      // }
+    }
+  }
+
+  &DrivesIcon {
+    left: 220px;
+    top: 390px;
+    @include sceneIconxMixin;
+  }
+
+  &MedalIcon {
+    @include sceneIconxMixin;
+  }
+
+  &RacingPhotoBoth {
+    left: 575px;
+    top: 450px;
+    @include sceneIconxMixin;
+  }
+
+  &RacingExternal {
+    left: 1300px;
+    top: 160px;
+    @include sceneIconxMixin;
+    img,
+    svg {
+      width: 80%;
+    }
+  }
+
+  &GlasPlusIconLeft {
+     @include sceneIconPlusMixin;
+  }
+ 
+  &GlasPlusIconRight {
+    @include sceneIconPlusRightMixin;
+  }
+   
+
+  &Block {
+    position: relative;
+    z-index: 7;
+    &Top {
+      width: 100%;
+      height: 300px;
+      position: absolute;
+      top: 0px;
+      z-index: 10;
+     // background-color: rgb(160, 160, 160); //block 
+
+      @media only screen and (min-height: $BreakPoint1) {
+        top: 0px;
+        height: 400px;
+      }
+
+      // car logo
+      svg,
+      img {
+        position: absolute;
+        display: block;
+        max-width: 450px;
+        top: 140px;
+        left: 680px;
+
+        @media only screen and (max-height: $BreakPoint1) {
+          width: 300px;
+          top: 100px;
+          left: 490px;
+        }
+      }
+    }
+
+    &Bottom {
+      width: 100%;
+      height: 350px;
+      position: absolute;
+      z-index: 10;
+      bottom: -200px;
+      //background-color: red; //bottom
+      @media only screen and (min-height: $BreakPoint1) {
+        height: 500px;
+      }
+    }
+
+
+    &All {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: -100px;
+      z-index: 10;
+    }
+
+    &Left {
+      width: 330px;
+      height: 300px;
+      position: absolute;
+      z-index: 10;
+      bottom: 150px;
+      //background-color: black; //left
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 400px;
+        height: 600px;
+      }
+      
+    }
+
+    &Right {
+      width: 300px;
+      height: 300px;
+      left: 980px;
+      position: absolute;
+      z-index: 10;
+      bottom: 150px;
+      //background-color: blue; //right
+
+      @media only screen and (min-height: $BreakPoint1) {
+        height: 600px;
+        width: 400px;
+        left: 1320px;
+      }
+    }
+  }
+
+  &OverFlow {
+    width: 1200px;
+    height: 720px;
+  }
+
+  &Button {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #ed1b2f;
+    position: absolute;
+    left: 834px;
+    top: 580px;
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
+    animation: pulse-red 1.5s infinite;
+    z-index: 12;
+    overflow: hidden;
+
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 80px;
+      height: 80px;
+      top: 770px;
+      left: 1150px;
+    }
+    svg {
+      display: block;
+      width: 35px;
+      margin: 0 auto;
+      padding: 11px;
+      transition: transform 0.4s ease-in-out;
+
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 35px;
+        padding: 21px;
+      }
+      &:hover {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  .cloudimage-360 {
+    position: relative;
+    z-index: 5;
+  }
+}
+
+.letsGoToPlaces {
+  position: relative;
+  width: 550px;
+  margin: 0 auto;
+  // margin-top: 50px;
+  // margin-right: 250px;
+  // @media only screen and (min-height: $BreakPoint1) {
+  //   margin-top: 170px;
+  //   margin-right: 470px;
+  // }
+  label {
+    position: relative;
+    top: -47px;
+    left: -50px;
+  }
+
+  @media only screen and (max-height: $BreakPoint4) {
+    label{
+        top: -20px;
+        left: -20px;
+    }
+    svg{
+      width: 35%; //35%
+      height: auto;
+    }
+    span{
+      width: 55px;
+      height: 25px;
+      &::before{
+        width: 20px;
+        height: 20px;
+        top: 2.5px;
+      }
+    }
+  }
+
+  @media only screen and (max-height: $BreakPoint5) {
+    label{
+        top: -20px;
+        left: -20px;
+    }
+    svg{
+      width: 35%;
+      height: auto;
+    }
+    span{
+      width: 55px;
+      height: 25px;
+      &::before{
+        width: 20px;
+        height:20px;
+        top: 2.5px;
+      }
+    }
+  }
+}
+
+.fadeFooter {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(to top, #0000005e, transparent);
+  bottom: 0;
+}
+
+.GlasPlusIconLeft {
+  @include sceneIconPlusMixin;
+}
+.GlasPlusIconRight {
+  @include sceneIconPlusRightMixin;
+}
+
+// Specifics to each car
+.Toyota_Racing {
+  .GlasPlusIconLeft {
+    display: none;
+  }
+  .letsGoToPlaces {
+    top: 195px;
+    margin-left: 45%;
+    @media only screen and (min-height: $BreakPoint1) {
+    }
+    @media only screen and (max-height: $BreakPoint1) {
+      top: 0px;
+      margin-left: 40%;
+      //
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      margin-left: 40%;
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      margin-left: 350px;
+      top:30px;
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      margin-left: 200px;
+      top:35px;
+    }
+  }
+  .Image360Icon,
+  .Image360PlayIcon {
+    display: none;
+  }
+  .cloudimage-360 {
+  }
+  .Image360 {
+    left: 32%;
+    top: 0;
+    
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 1720px;
+      top: -20px;
+      height: 1080px;
+    }
+    @media only screen and (max-height: $BreakPoint1) {
+      width: 1500px;
+      height: 970px;
+      top: 10px;
+    }
+    @media only screen and (max-height: $BreakPoint2) {
+      width: 1200px;
+      height: 780px;
+      top: 10px;
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 1200px;
+      height: 780px;
+    }
+    @media only screen and (max-height: $BreakPoint4) { 
+      width: 1000px;
+      height: 550px;
+      //background: green;
+    }
+    @media only screen and (max-height: $BreakPoint5) { 
+      width: 600px; //1650px;
+      height: 350px;
+      //background: green;
+    }
+    
+ 
+    &MedalIcon,
+    &GlassIcon,
+    &GlasPlusIconLeft, &GlasPlusIconRight{
+      display: none;
+    }
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &RacingExternal,
+    &RacingExternalLabel {
+      display: block;
+    }
+
+    
+    &RacingExternal {
+      @media only screen and (max-height: $BreakPoint1) {
+        left: 870px;
+        top: 70px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        left: 870px;
+        top: 70px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        left: 1145px;
+        top: 115px;
+        img,
+        svg {
+          padding: 15px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        left: 660px;
+        top: 0px;
+        width: 6%;
+        height: 10.5%;
+        img{
+          padding: 15px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        left: 420px;
+        top: 0px;
+        width: 6%;
+        height: 10.3%;
+        img{
+          padding: 10px 0 0 0;
+        }
+      }
+    }
+
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {  
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+        }
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 300px!important;
+          height: 550px!important;
+          width: 530px!important;
+        }
+        @media only screen and (min-height: $BreakPoint2)   {
+          bottom: 150px!important;
+          height: 550px!important;
+          width: 450px!important;
+        }
+        @media only screen and (min-height: $BreakPoint3)  {
+          width: 350px;
+          height: 350px;
+          bottom: 150px;
+        }
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 150px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 50px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 50px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+  
+      &Right {
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 300px;
+          height: 400px;
+          width: 520px;
+          left: 1200px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1100px;
+          bottom: 150px;
+          height: 550px;
+          width: 400px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 300px;
+          height: 350px;
+          left: 900px;
+          bottom: 150px;;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 300px;
+          height: 350px;
+          bottom: 150px;
+          left: 900px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 950px;
+          width: 50px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //left
+          width: 50px;
+          left: 550px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+    }
+
+    &RacingExternalLabel {
+      font-size: 14px;
+      width: 12%;
+      float: right;
+      margin: 8em 9.5em; //6.5em 7.5em;
+      @media only screen and (max-height: $BreakPoint1) {
+        margin: 2em 4em;
+        width: 18%;
+        float: right;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        margin: 2em 4em;
+        width: 18%;
+        float: right;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        width: 14%;
+        float: right;
+        margin: 4.5em 5em;
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        margin: -3.5em 6.5em;
+        float: right;
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        margin: -4em 4em;
+        float: right;
+        font-size: 8px;
+      }
+    }
+
+    &RacingPhotoBoth {
+      left: 890px;
+      top: 690px;
+      img,
+      svg {
+        margin-top: 2%;
+      }
+      @media only screen and (max-height: $BreakPoint1) {
+        left: 575px;
+        top: 430px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        left: 575px;
+        top: 430px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        left: 770px;
+        top: 570px;
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        top:310px;
+        left: 440px;
+        width: 6%;
+        height: 10%;
+        img{
+          padding: 10px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        top:190px;
+        left: 285px;
+        width: 6%;
+        height: 10%;
+        img{
+          padding: 8px 0 0 0;
+        }
+      }
+    }
+
+    &DrivesIcon {
+      top: 650px;
+      left: 330px;
+      @media only screen and (max-height: $BreakPoint1) {
+        top: 410px;
+        left: 230px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top: 410px;
+        left: 230px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        top: 520px;
+        left: 300px;
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        top:300px;
+        left: 180px;
+        width: 6%;
+        height: 10%;
+        img{
+          padding: 10px 0 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        top:190px;
+        left: 108px;
+        width: 6%;
+        height: 10%;
+        img{
+          padding: 7px 0 0 0;
+        }
+      }      
+    }
+  }
+  
+  .Image360BlockTop img {
+    position: relative;
+    left: 300px;
+    top: 100px;
+    @media only screen and (max-height: $BreakPoint1) {
+      left: 150px;
+      top: 70px;
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      left: 20px;
+      top: 30px;
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      left: 100px;
+      top: 30px;
+      width: 20%;
+    }
+  }
+  
+  @media only screen and (max-height: $BreakPoint5)  { 
+    .Image360BlockTop{
+      //border: 1px solid red; //border frame to center layer2 image
+      width: 600px;
+    }
+  }
+
+}
+
+.TRD_Pro {
+  .Image360Icon,
+  .Image360PlayIcon {
+    display: none;
+  }
+  .Image360PlayIcon {
+    position: relative;
+    top: 500px;
+  }
+
+  .Image360 {
+    height: 1040px;
+    //border:1px solid red;
+
+    video {
+      width: 1920px;
+      top: -33px;
+      left: 200px;
+    }
+    @media only screen and (max-height: $BreakPoint1) {
+      height: 890px;
+      
+      video {
+        width: 1700px;
+        left: -40px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      height: 670px;
+      // width: 1300px;//new
+      // left: 1030px;//new
+      left:1040px;
+      
+      video {
+        width: 1300px;
+        left:0px;//-360px;
+        top: -30px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      height: 670px;
+      
+      
+      video {
+        width: 1300px;
+        left: -360px;
+        top: -30px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint4) { 
+      //border: 1px solid red;
+      width: 1000px;
+      height: 550px;
+      left: 800px;
+      //background: green;
+      video{
+        width: 100%;
+        left: -10px;
+        top:-30px
+      }
+    }
+   
+    @media only screen and (max-height: $BreakPoint5) {
+      left: 530px;
+      width: 600px;
+      height: 350px;
+      //background: green;
+      video{
+        width: 100%;
+        left: 0px;
+        top: -10px;
+      }
+    }
+
+    &Block {
+      position: relative;
+      z-index: 7;
+  
+      &Top {  
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+        }
+      }
+
+      &Bottom {
+       
+        @media only screen and (min-height: $BreakPoint1)  {
+          width: 1400px!important;
+          left: 400px!important;
+        }
+        @media only screen and (min-height: $BreakPoint2)   { 
+          //width: 1200px!important;
+          left: 200px;
+        }
+        @media only screen and (min-height: $BreakPoint3)  {
+          width: 1200px;
+        }
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          //width: 320px;
+        }
+
+      
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+       
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 300px!important;
+          height: 550px!important;
+          width: 530px!important;
+          left: 400px!important;
+        }
+        @media only screen and (min-height: $BreakPoint2)   {
+          bottom: 150px!important;
+          height: 550px!important;
+          width: 300px!important;
+          left: 200px;
+        }
+        @media only screen and (min-height: $BreakPoint3)  {
+          width: 350px;
+          height: 350px;
+          bottom: 150px;
+        }
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 150px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 50px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 50px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+  
+      &Right {
+       
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 300px;
+          height: 400px;
+          width: 300px;
+          left: 1500px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1100px;
+          bottom: 150px;
+          height: 550px;
+          width: 300px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 350px;
+          height: 350px;
+          left: 850px;
+          bottom: 100px;;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 370px;
+          height: 350px;
+          bottom: 150px;
+          left: 850px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 950px;
+          width: 50px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //left
+          width: 50px;
+          left: 550px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+    }
+
+    &Icon,
+    &Image360Icon,
+    &Image360Play,
+    &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    &GlassIcon {
+      position: relative;
+      top: 59%;
+      left: 51%;
+
+      @media only screen and (max-height: $BreakPoint1) {
+        top: 59%;
+        left: 35%;
+      }
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 59%;
+        left: 29%;//8%;
+
+        img,
+        svg {
+          padding: 9px;
+        }
+      }
+
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 59%;
+        left: 8%;
+
+        img,
+        svg {
+          padding: 9px;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint4)  {
+        //width: 25px;
+        //height: 25px;
+        left: 35%;
+        top: 300px;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 25px;
+        height: 25px;
+        left: 37%;
+        top: 190px;
+        img,
+        svg {
+          width: 50%;
+          padding: 6px 0 0 0;
+        }
+      }
+    }
+
+  }
+
+  
+  .letsGoToPlaces {
+    margin-top: 170px;
+    margin-left: 600px;//950px;
+
+    @media only screen and (max-height: $BreakPoint1) {
+      margin-top: 50px;
+      margin-left: 35%;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      margin-top: 80px;
+      margin-left: 35%;
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      margin-top: 80px;
+      margin-left: 5%;
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      margin-left: 35%;
+      top: -70px;
+      
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      margin-left: 35%;
+      top: -70px;//-50px;
+    }
+   
+  }
+
+  .Image360BlockTop {
+    width: 1400px;
+    left: 400px;
+
+    // border: solid 1px red;
+
+    img {
+      position: relative;
+      top: 80px;
+      left: 28.7%;
+      max-width: 670px;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) {
+      width: 1200px;
+      left: 200px;
+
+      img {
+        width: 500px;
+        left: 29.5%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      width: 800px;
+      //left: -120px;
+      
+      img {
+        width: 400px;
+        top: 20px;
+        left: 25%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 800px;
+      left: -120px;
+      img {
+        width: 400px;
+        top: 20px;
+        left: 25%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      //border: 1px solid red; //to center car
+      width: 1000px;
+      left:0px;
+      img{
+        width: 35%;
+        left: 30%;
+        top: 10px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px;
+      left:0px;
+      img{
+        width: 35%;
+        left: 30%;
+        top: 10px;
+      }
+    }
+  }
+}
+
+.Supra {
+  
+  .Image360BlockTop {
+    width: 100%; //1000px;
+    // width: 1000px;
+    height: 300px; //800px;
+    //left: 650px;
+    
+    // border: solid 1px blue;
+    // background-color: red;
+
+    img {
+      position: relative;
+      top: 10px;//150px;
+      left: 45%;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) {
+      left: 0px; //380px;
+     
+
+      img {
+        position: relative;
+        top: 10px;//150px;
+        left: 36%;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      top: -10px;//-50px;
+      left: 0px;//-100px;
+    }
+
+    @media only screen and (max-height: $BreakPoint3) {
+      top: -10px;//-50px;
+      left: 0px; //-100px;
+    }
+    @media only screen and (max-height: $BreakPoint5)  { 
+       //border: 1px solid red; //border frame to center layer2 image
+       width: 600px;
+    }
+  }
+
+  .Image360 {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+  
+
+    //1080 Or Higher
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 1920px;
+      left: 30%;
+    }
+    // Between 920 and 720
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      width: 1720px;
+      left: 30%;
+    }
+    // 720
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 1220px;
+      left: 32%;
+    }
+
+    @media only screen and (max-height: $BreakPoint4) { 
+      width: 1000px!important;
+      height: 550px!important;
+      left: 32%;
+      //background: green;
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 600px!important;
+      height: 350px!important;
+      left: 35%;
+      //top: ;
+      //background: green;
+    }
+  
+    video {
+      // position: relative;
+      top: -30px;
+      left: 50px;
+      width: 1900px;
+      z-index: 2;
+      // opacity: 0.2;
+
+      
+
+      @media only screen and (max-height: $BreakPoint4) {
+        width: 100%!important;
+        top:-39px!important;
+        left: -35px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5) {
+        width: 100%!important;
+        top:-25px!important;
+        left: -60px!important;
+      }
+    }
+  
+    .car360 img {
+      // display: none;
+      // img {
+        position: relative;
+        top: 360px;
+        left: 670px;
+        width: 1010px;
+      // }
+      
+    }
+
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {  
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          top:0px;
+          left: 0;
+          img{
+            width: 25%;
+            top: -10px;
+           }
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          img{
+            width: 35%;
+            top: 0px;//55px;
+            left: 180px;
+           }
+        }
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 70px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 280px!important;
+          height: 500px!important;
+          width: 300px!important;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          bottom: 150px;
+          height: 450px;
+          width: 300px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 350px;
+          height: 350px;
+          bottom: 150px;;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 200px;
+          height: 350px;
+          bottom: 150px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 50px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 50px;
+          height: 200px;
+          bottom: 50px;
+        }
+      }
+  
+      &Right {
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 280px;
+          height: 500px;
+          width: 300px;
+          left: 1620px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1620px!important;
+          bottom: 150px;
+          height: 450px;
+          width: 300px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 350px;
+          height: 350px;
+          left: 1370px!important;
+          bottom: 150px;;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 200px;
+          height: 350px;
+          bottom: 150px;
+          left: 1020px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 950px;
+          width: 50px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //left
+          width: 50px;
+          left: 550px;
+          height: 200px;
+          bottom: 50px;
+        }
+      }
+    }
+    .letsGoToPlaces {
+      margin-top: 150px;
+      margin-left: 900px;
+
+      @media only screen and (max-height: $BreakPoint4) {
+        margin-top: 0px!important;
+        margin-left: 350px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5) {
+        margin-top: -4vh!important; 
+        margin-left: 190px!important;
+      }
+    }
+   
+
+    @media only screen and (max-height: $BreakPoint1) {
+      height: 890px;
+
+
+      video {
+        // position: relative;
+        top: -40px;
+        left: -20px;
+        width: 1700px;
+        z-index: 2;
+        // opacity: 0.2;
+      }
+
+      .car360 {
+        img {
+          position: relative;
+          top: 320px;
+          left: 400px;
+          width: 900px;
+        }
+      }
+
+      .letsGoToPlaces {
+        margin-top: 50px;
+        margin-left: 700px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      // width: 890px;
+      height: 700px;
+
+      video {
+        top: -30px;
+        left: 50px;//-350px;
+        width: 1300px;
+        z-index: 2;
+      }
+
+      .car360 {
+        img {
+          position: relative;
+          top: 235px;
+          left: -20px;
+          width: 675px;
+        }
+      }
+
+      .letsGoToPlaces {
+        margin-top: 50px;
+        margin-left: 35%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      height: 700px;
+
+      video {
+        top: -30px;
+        left: 0px;//-350px;
+        width: 1300px;
+        z-index: 2;
+      }
+
+      .car360 {
+        img {
+          position: relative;
+          top: 235px;
+          left: -20px;
+          width: 675px;
+        }
+      }
+
+      .letsGoToPlaces {
+        margin-top: 50px;
+        margin-left: 40%;
+      }
+    }
+
+    &Icon,
+    &Image360Icon,
+    &Image360Play,
+    &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    &RacingExternal, &GlasPlusIconRight {
+      display: none;
+    }
+    
+    &GlassIcon {
+      position: relative;
+      top: 46%;//40%;
+      left: 68%;//75%;
+
+      @media only screen and (max-height: $BreakPoint1) {
+        top: 50%;//43%;
+        left: 58%;//62%;
+      }
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 49%;//40%;
+        left: 54%;//56%;
+
+        img,
+        svg {
+          padding: 9px;
+        }
+      }
+
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 49%;//40%;
+        left: 71%;//73%;
+
+        img,
+        svg {
+          padding: 9px;
+        }
+      }
+
+      @media only screen and (max-height: $BreakPoint4) {
+        top:44%;//190px;
+        left: 64%;//68%;
+      }
+
+      @media only screen and (max-height: $BreakPoint5) {
+        width: 40px;
+        height: 40px;
+        top:38%;//105px;
+        left: 57%;//63%;
+        img,
+        svg {
+          width: 50%;
+          padding: 10px 0 0 0;
+        }
+      }
+    }
+
+  }
+}
+
+.Highlander {
+  .Image360BlockTop {
+    img {
+      max-width: 580px;
+      width: 360px;
+      top: 180px;
+      left: 480px;
+
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 580px;
+        left: 700px;
+        top: 250px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        width: 470px;
+        left: 580px;
+        top: 210px;
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 360px;
+        top: 180px;
+        left: 480px;
+      }
+    }
+   
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px;
+    }
+  
+  }
+  
+  .Image360 {
+    margin-top: 80px;
+    &Icon,
+    &Image360Play,
+    &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    &Block {
+      position: relative;
+      z-index: 7;
+  
+      &Top {  
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 200px;
+          img{
+            width: 29%;
+            top: 130px;
+            left:365px;
+          }
+          
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          img{
+            left: 220px;
+            top: 70px
+          }
+        }
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          //height: 100px;
+          //bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+         height: 200px;
+         bottom: -100px;
+        }
+      }
+  
+      &Left {
+        @media only screen and (min-height: $BreakPoint2)   {
+          bottom: 150px!important;
+          height: 550px!important;
+          width: 450px!important;
+        }
+        @media only screen and (min-height: $BreakPoint3)  {
+          width: 350px;
+          height: 350px;
+          bottom: 150px;
+        }
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 150px;
+        }
+        
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 300px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 170px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+  
+      &Right {
+       
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 150px;
+          height: 550px;
+          width: 530px;
+          left: 1420px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1220px;
+          bottom: 150px;
+          height: 550px;
+          width: 430px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 350px;
+          height: 350px;
+          left: 1000px;
+          bottom: 150px;;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 150px;
+          left: 1030px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 700px;
+          width: 300px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //left
+          width: 170px;
+          left: 430px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+    }
+
+    .letsGoToPlaces {
+      margin-top: 30px;
+      margin-left: 500px;
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        top: 60px;
+        left: -100px;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+          top: -15px;//15px;
+          left: -300px;
+      }
+    }
+    &GlassIcon {
+      left: 800px;
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 620px;//565px;
+        top:195px;//200px;
+    }
+
+      @media only screen and (max-height: $BreakPoint5)  {
+          width: 40px;
+          height: 40px;
+          left: 370px;//350px;
+          top:115px;//120px;
+          img,
+          svg {
+            width: 50%;
+            padding: 10px 0 0 0;
+          }
+      }
+    }
+
+    // &GlasPlusIconLeft{
+    //   top: 41%;
+    //   left: 270px;
+    //   @media only screen and (max-height: $BreakPoint1) {
+    //     left: 190px;
+    //   }
+    //   @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+    //     width: 50px;
+    //     height: 50px;
+    //     top: 42%;
+    //     left: 14%;
+
+    //     img,
+    //     svg {
+    //       padding: 10px 0 0 0;
+    //     }
+    //   }
+    //   @media only screen and (max-height: $BreakPoint3) {
+    //     width: 50px;
+    //     height: 50px;
+    //     top: 42%;
+    //     left: 14%;
+
+    //     img,
+    //     svg {
+    //       padding: 10px 0 0 0;
+    //     }
+    //   }
+    //   @media only screen and (max-height: $BreakPoint4) {
+    //     top:42%;
+    //     left:15%;
+    //   }
+
+    //   @media only screen and (max-height: $BreakPoint5) {
+    //     width: 40px;
+    //     height: 40px;
+    //     top:35%;
+    //     left:11%;
+    //     img,
+    //     svg {
+    //       width: 50%;
+    //       padding: 10px 0 0 0;
+    //     }
+    //   }
+
+    // }
+
+    // &GlasPlusIconRight{
+    //   top: 33%;
+    //   left: 1500px;
+    //   @media only screen and (max-height: $BreakPoint1) {
+    //     left: 1250px;
+    //   }
+    //   @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+    //     width: 50px;
+    //     height: 50px;
+    //     top: 33%;
+    //     left: 73%;
+
+    //     img,
+    //     svg {
+    //       padding: 10px 0 0 0;
+    //     }
+    //   }
+    //   @media only screen and (max-height: $BreakPoint3) {
+    //     width: 50px;
+    //     height: 50px;
+    //     top: 33%;
+    //     left: 73%;
+
+    //     img,
+    //     svg {
+    //       padding: 10px 0 0 0;
+    //     }
+    //   }
+    //   @media only screen and (max-height: $BreakPoint4) {
+    //     top:35%;
+    //     left:76%;
+    //   }
+
+    //   @media only screen and (max-height: $BreakPoint5) {
+    //     width: 40px;
+    //     height: 40px;
+    //     top:32%;
+    //     left:76%;
+    //     img,
+    //     svg {
+    //       width: 50%;
+    //       padding: 10px 0 0 0;
+    //     }
+    //   }
+
+    // }
+
+    .Image360Icon{
+      display: block;
+      top: 480px;
+      left: 780px;
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top: 545px!important;
+        left: 550px!important;
+      }
+      @media only screen and (max-height: $BreakPoint4)  {
+        top: 380px!important;
+        left: 410px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5)  {
+        top: 195px!important;
+        left: 250px!important;//332px!important;
+        width: 20%!important;
+          img {
+            width: 50%!important;
+          }
+      }
+    }
+
+    // Mobile default
+    width: 1350px;
+    top: -100px;
+    margin-left: -380px;
+    // opacity: 0.5;
+    // background-color: red;
+    // opacity: 0.5;
+
+    //1080 Or Higher
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 1950px;
+      top: -100px;
+      margin-left: 130px;
+      // opacity: 0.5;
+
+      &GlassIcon {
+        left: 1200px;//1170px;
+        top: 410px; //440px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 800px;//720px;
+        left: 850px; //1150px;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 150px;
+        margin-left: 800px;
+      }
+    }
+    // Between 920 and 720
+    @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+      width: 1650px;
+      top: -80px;
+      margin-left: -20px;
+      // background-color: blue;
+      // opacity: 0.5;
+
+      &GlassIcon {
+        left: 1020px;//980px;
+        top: 360px;//370px;
+      }
+      .Image360Icon{
+        display: block;
+        top: 680px;//610px;
+        left: 730px;//970px;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 30px;
+        margin-left: 670px;
+      }
+    }
+    // 720
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 1350px;
+      top: -100px;
+      margin-left: -380px;
+      // opacity: 0.5;
+      //background-color: purple;
+      // opacity: 0.5;
+
+      .Image360Icon{
+        display: block;
+        top: 545px; //470px;
+        left: 550px;//780px;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 30px;
+        margin-left: 500px;
+      }
+    }
+    
+    //698
+    @media only screen and (max-height: $BreakPoint4) { 
+      //border: 1px solid red;;
+      width: 1000px;
+      height: 550px;
+      left: 1155px;
+      top:-90px
+      //background: green;
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 600px;//1350px;
+      height: 350px;
+      top: -75px;
+      left: 893px;//-875px;
+      //background: green;
+    }
+   
+
+    // @media only screen and (min-height: $BreakPoint1) {
+    //   background-color: red;
+    //   opacity: 0.5;
+    // }
+    // // @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) {
+    // //   width: 1220px;
+    // //   top: -20px;
+    // //   margin-left: -500px;
+    // //   // border: solid 1px blue;
+    // //   // background-color: red;
+    // //   background-color: blue;
+    // //   opacity: 0.5;
+    // // }
+    // @media only screen and (max-height: $BreakPoint3) {
+    //   width: 1220px;
+    //   top: -20px;
+    //   margin-left: -500px;
+    //   // border: solid 1px red;
+    //   background-color: blue;
+    //   opacity: 0.5;
+    // }
+  }
+}
+
+.RAV4_Hybrid {
+  .Image360BlockTop {
+    img {
+      max-width: 600px;
+      width: 350px;
+      top: 100px;
+      left: 435px;
+
+      @media only screen and (min-height: $BreakPoint1) {
+        left: 680px;
+        top: 180px;
+        width: 500px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        width: 450px;
+        left: 600px;
+        top: 150px;
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        top: 100px;
+        width: 350px;
+      }
+      
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px;
+      //height: 100px;
+    }
+  }
+  .Image360 {
+    margin-top: 80px;
+    &Icon,
+    // &Image360Icon,
+    // &Image360Play,
+    &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    // &GlassIcon,
+    &RacingExternal {
+      display: none;
+    }
+    
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {
+          @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+            height: 250px;
+          }
+          @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+            height: 220px;
+          }
+          @media only screen and (max-height: $BreakPoint4) {
+            //background-color: rgb(160, 160, 160); //head 
+            height: 160px;
+            // car logo
+            svg,
+            img {
+                width: 30%;
+                top: 80px;
+                left: 350px;
+            }
+          }  
+          @media only screen and (max-height: $BreakPoint5) {
+            //background-color: rgb(160, 160, 160); //head 
+            height: 100px;
+            // car logo
+            svg,
+            img {
+                width: 30%;
+                top: 45px;
+                left: 200px;
+            }
+          }
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 300px!important;
+          height: 550px!important;
+          width: 530px!important;
+        }
+        @media only screen and (min-height: $BreakPoint2)   {
+          bottom: 150px!important;
+          height: 550px!important;
+          width: 450px!important;
+        }
+        @media only screen and (min-height: $BreakPoint3)  {
+          width: 350px;
+          height: 350px;
+          bottom: 150px;
+        }
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 150px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 250px;
+          bottom: 100px;
+          height: 350px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 150px;
+          bottom: 0;
+        }
+      }
+  
+      &Right {
+        
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 300px;
+          height: 400px;
+          width: 530px;
+          left: 1390px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1220px;
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 350px;
+          height: 350px;
+          left: 900px;
+          bottom: 150px;;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 370px;
+          height: 350px;
+          bottom: 150px;
+          left: 850px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 700px;
+          width: 300px;
+          bottom: 100px;
+          height: 350px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //right
+          left: 450px;
+          width: 150px;
+          bottom: 0;
+        }
+      }
+    }
+
+    &GlassIcon {
+      left: 730px;
+      top: 280px;
+      // display: none;
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top: 250px!important;
+        left: 750px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 585px!important;
+        top:190px!important;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 360px!important;
+        top:120px!important;
+        img,
+        svg {
+          width: 50%;
+          padding: 8px 0 0 0;
+        }
+      }
+    }
+
+   
+    .Image360Icon{
+      display: block;
+      top: 440px;
+      left: 220px;
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top: 465px!important;
+        left: 520px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        top: 350px!important;
+        left: 410px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5)  {
+        top: 200px!important;
+        left: 220px!important;
+        width: 22%!important;
+      }
+    }
+    .letsGoToPlaces {
+      margin-top: 85px;
+      margin-left: 430px;
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        margin-left: 450px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        margin-top: 50px!important;
+        margin-left: 400px!important;
+        
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        margin-top: 20px!important;
+        margin-left: 200px!important;
+      }
+
+    }
+
+    // Mobile default
+    width: 1250px;
+    top: -65px;
+    margin-left: -320px;
+    // opacity: 0.5;
+
+    //1080 Or Higher
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 1920px;
+      top: -80px;
+      margin-left: 200px;
+      // opacity: 0.3;
+      // background-color: yellow;
+      // opacity: 0.5;
+
+      .letsGoToPlaces {
+        margin-top: 190px;
+        margin-left: 800px;//760px;
+      }
+      &GlassIcon {
+        left: 1150px;//1110px;
+        top: 400px; //440px;
+      }
+      .Image360Icon{
+        display: block;
+        top: 750px; //700px;
+        left: 820px; //350px;
+      }
+    }
+    // Between 920 and 720
+    @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+      width: 1720px;
+      top: -90px;
+      margin-left: -20px;
+      // background-color: blue;
+      // opacity: 0.5;
+
+      .letsGoToPlaces {
+        margin-top: 30px;
+        margin-left: 670px;
+      }
+      &GlassIcon {
+        left: 1020px; //1000px;
+        top: 350px; //400px;
+        // display: none;
+      }
+      .Image360Icon{
+        display: block;
+        top: 670px;//620px;
+        left: 720px;//350px;
+      }
+    }
+    // 720
+    @media only screen and (max-height: $BreakPoint3)  {
+      width: 1220px;
+      top: -70px;
+      margin-left: -320px;
+      // background-color: purple;
+      // opacity: 0.5;
+
+      .letsGoToPlaces {
+        margin-top: 85px;
+        margin-left: 470px;//430px;
+      }
+      &GlassIcon {
+        left: 740px;//730px;
+        top: 250px; //280px;
+        // display: none;
+      }
+      .Image360Icon{
+        display: block;
+        top: 455px;//440px;
+        left: 520px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint4) {
+      width: 1000px;
+      height: 550px;
+      left: 1120px;
+      top:-85px
+      //background: green;
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 600px;
+      height: 350px;
+      left: 855px;
+      //background: green;
+    }
+
+  
+
+    // @media only screen and (min-height: $BreakPoint1) {
+    //   background-color: red;
+    //   opacity: 0.5;
+    // }
+    // // @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) {
+    // //   width: 1220px;
+    // //   top: -20px;
+    // //   margin-left: -500px;
+    // //   // border: solid 1px blue;
+    // //   // background-color: red;
+    // //   background-color: blue;
+    // //   opacity: 0.5;
+    // // }
+    // @media only screen and (max-height: $BreakPoint3) {
+    //   width: 1220px;
+    //   top: -20px;
+    //   margin-left: -500px;
+    //   // border: solid 1px red;
+    //   background-color: blue;
+    //   opacity: 0.5;
+    // }
+  }
+}
+
+.Sienna {
+  .Image360BlockTop {
+   
+    img {
+      max-width: 400px;
+      width: 250px;
+      left: 535px;
+      top: 120px;
+
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 400px;
+        left: 800px;
+        top: 180px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        width: 300px;
+        left: 720px;
+        top: 160px;
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 250px;
+        left: 535px;
+        top: 120px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px;
+      height: 100px;
+    }
+  }
+  .Image360 {
+    margin-top: 80px;
+
+    &Icon,
+    //&Image360Icon,
+    &Image360Play,
+    // &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    // &GlassIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    .letsGoToPlaces {
+      margin-top: 70px;
+      margin-left: 500px;
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        left: 20px!important;
+      }
+    }
+
+    .Image360Icon{
+      display: block;
+      top: 460px;
+      left: 290px;//780px;
+   
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top: 480px!important;
+        left: 570px!important;
+      }
+     
+      @media only screen and (max-height: $BreakPoint4)  {
+        top: 350px!important;
+        left: 400px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5)  {
+        top: 190px!important;
+        left: 245px!important;
+        width: 20%!important;
+      }
+    }
+
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {
+        @media only screen and (min-height: $BreakPoint1) {
+          height: 400px;
+        }
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          // car logo
+          svg,
+          img {
+              top: 76px;
+              left: 380px!important;
+          }
+          
+        }  
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          // car logo
+          svg,
+          img {
+              width: 20%;
+              top: 50px;
+              left: 240px!important;
+          }
+        }
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        @media only screen and (min-height: $BreakPoint1) {
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+        }
+        @media only screen and (min-height: $BreakPoint2)   {
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+        }
+        
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 200px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 150px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+  
+      &Right {
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+          left: 1420px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1220px;
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 320px;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 100px;
+        }
+       
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 800px;
+          width: 200px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //right
+          left: 450px;
+          width: 150px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+    }
+
+    &GlassIcon {
+      top: 280px;
+      left: 480px;
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        left: 450px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 355px!important;
+        top:200px!important;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 200px!important;
+        top:125px!important;
+        img,
+        svg {
+          width: 50%;
+          padding: 8px 0 0 0;
+        }
+      }
+
+    }
+
+    &PlayIcon{
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 150px!important;
+        top:345px!important;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 95px!important;
+        top:208px!important;
+        img,
+        svg {
+          width: 40%;
+          padding: 6.5px 0 0 0;
+        }
+      }
+    }
+
+
+
+    video {
+      width: 1300px;
+      top: -24px;
+    }
+    .SiennaB2Active {
+      top: -24px !important;
+    }
+
+    // Mobile default
+    width: 1300px;
+    top: -90px;
+    margin-left: -330px;
+    
+
+    //1080 Or Higher
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 1920px;
+      top: -85px;
+      margin-left: 210px;
+    
+      video { 
+        width:1920px;
+        top: -35px;
+      }
+      .SiennaB2Active {
+        top: -35px !important;
+        // background-color: greenyellow;
+        // opacity: 0.5;
+      }
+
+      // .cloudimage-360 {
+      //   // cloudimage
+      //   border: solid 1px red;
+      // }
+
+      .letsGoToPlaces {
+        margin-top: 200px;
+        margin-left: 850px;//800px;
+      }
+      .Image360Icon{
+        display: block;
+        top: 720px; //690px;
+        left: 860px;//450px;
+      }
+
+      &GlassIcon {
+        top: 420px; //460px;
+        left: 650px;//700px;
+      }
+      &PlayIcon {
+        top: 660px;
+        left: 330px;
+      }
+    }
+    // Between 920 and 720
+    @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      width: 1720px;
+      top: -100px;
+      margin-left: -20px;
+
+      video { 
+        width: 1720px;
+        top:-32px;
+      }
+
+      .SiennaB2Active {
+        top: -32px !important;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 30px;
+        margin-left: 750px; //700px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 650px;//620px;
+        left: 780px//420px;
+      }
+
+      &GlassIcon {
+        top: 420px;
+        left: 630px;
+      }
+      &PlayIcon {
+        top: 600px;
+        left: 310px;
+      }
+    }
+    // 720
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 1300px;
+      top: -100px;
+      margin-left: -330px;
+  
+      video { 
+        width:1300px;
+        top: -24px;
+      }
+
+      .SiennaB2Active {
+        top: -24px !important;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 70px;
+        margin-left: 500px;
+      }
+      .Image360Icon{
+        display: block;
+        top: 475px; //450px;
+        left: 570px;//290px;
+      }
+      &GlassIcon {
+        top: 280px;
+        left: 450px;//480px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint4) {
+      width: 1000px;
+      height: 550px;
+      left: 1140px;
+      top:-80px;
+      //background: green;
+      video { 
+        width: 1000px;
+        top:-18px;
+      }
+
+      .SiennaB2Active {
+        top: -18px !important;
+      }
+
+      .letsGoToPlaces{
+        top: -40px;
+        left: -100px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 600px;
+      height: 350px;
+      left: 855px; 
+      top:-70px;
+      //background: green;
+
+      video { 
+        width: 600px;
+        top:-12px;
+      }
+
+      .SiennaB2Active {
+        top: -12px !important;
+      }
+
+      .letsGoToPlaces{
+        top: -60px;//-30px;//-20px;
+        left: -300px;
+      }
+    }
+
+  }
+}
+
+.Venza {
+  //turn off animation cloud
+  .autoShow {
+    &Cloud {
+      animation: none;
+    }
+  }
+  .Image360BlockTop {
+    img {
+      max-width: 400px;
+      width: 250px;
+      left: 535px;
+      top: 120px;
+
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 400px;
+        left: 800px;
+        top: 180px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        width: 300px;
+        left: 720px;
+        top: 160px;
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 250px;
+        left: 535px;
+        top: 120px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px;
+      height: 100px;
+    }
+  }
+  .Image360 {
+    margin-top: 80px;
+    &Icon,
+    //&Image360Icon,
+    &Image360Play,
+    // &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    // &GlassIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    .letsGoToPlaces {
+      margin-top: 70px;
+      margin-left: 500px;
+    }
+
+    .Image360Icon{
+      display: block;
+      top: 460px;
+      left: 290px;//780px;
+   
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top:480px!important;
+        left:580px!important;
+      }
+     
+      @media only screen and (max-height: $BreakPoint4)  {
+        top: 350px!important;
+        left: 420px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5)  {
+        top: 190px!important;
+        left: 250px!important;
+        width: 20%!important;
+      }
+    }
+
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 180px;
+          // car logo
+          svg,
+          img {
+              top: 76px;
+              left: 380px!important;
+          }
+          
+        }  
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          // car logo
+          svg,
+          img {
+              width: 20%;
+              top: 50px;
+              left: 240px!important;
+          }
+        }
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        @media only screen and (min-height: $BreakPoint1) {
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+        }
+        @media only screen and (min-height: $BreakPoint2)   {
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 300px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 150px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+  
+      &Right {
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+          left: 1420px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1220px;
+          bottom: 150px;
+          height: 550px;
+          width: 500px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 320px;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 100px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 700px;
+          width: 300px;
+          height: 350px;
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //right
+          left: 450px;
+          width: 150px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+    }
+
+    &GlassIcon {
+      top: 280px;
+      left: 480px;
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top:300px!important;
+        left:470px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 355px!important;
+        top:200px!important;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 220px!important;
+        top:125px!important;
+        img,
+        svg {
+          width: 50%;
+          padding: 8px 0 0 0;
+        }
+      }
+
+    }
+
+    
+
+    &PlayIcon{
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 150px!important;
+        top:345px!important;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 95px!important;
+        top:208px!important;
+        img,
+        svg {
+          width: 40%;
+          padding: 6.5px 0 0 0;
+        }
+      }
+    }
+
+    video {
+      width: 1300px;
+    }
+
+    // Mobile default
+    width: 1300px;
+    top: -90px;
+    margin-left: -330px;
+
+    //1080 Or Higher
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 1920px;
+      top: -85px;
+      margin-left: 210px;
+
+      video { 
+        width:1920px;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 200px;
+        margin-left: 850px;//800px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 720px; //690px;
+        left: 880px;//450px;
+      }
+
+      &GlassIcon {
+        top: 460px;
+        left: 700px;
+      }
+      &PlayIcon {
+        top: 660px;
+        left: 330px;
+      }
+    }
+    // Between 920 and 720
+    @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+      width: 1720px;
+      top: -100px;
+      margin-left: -20px;
+
+      video { 
+        width: 1720px;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 30px;
+        margin-left: 720px; //700px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 650px; //620px;
+        left: 800px;//420px;
+      }
+
+      &GlassIcon {
+        top: 420px;
+        left: 630px;
+      }
+      &PlayIcon {
+        top: 600px;
+        left: 310px;
+      }
+    }
+    // 720
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 1300px;
+      top: -90px;
+      margin-left: -330px;
+
+      video { 
+        width:1300px;
+      }
+
+      .letsGoToPlaces {
+        margin-top: 70px;
+        margin-left: 500px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 480px;//450px;
+        left: 580px;//290px;
+      }
+
+      &GlassIcon {
+        top: 280px;
+        left: 480px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint4) {
+      width: 1000px;
+      height: 550px;
+      left: 1140px;
+      top:-80px;
+      //background: green;
+      video { 
+        width: 1000px;
+      }
+
+      .letsGoToPlaces{
+        top: -40px;
+        left: -100px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 600px;
+      height: 350px;
+      left: 855px; 
+      top:-70px;
+      //background: green;
+
+      video { 
+        width: 600px;
+      }
+
+      .letsGoToPlaces{
+        top: -60px;//-30px;//-20px;
+        left: -300px;
+      }
+    }
+
+  }
+}
+
+.Mobility {
+  .Image360Icon,
+  .Image360PlayIcon {
+    display: none;
+  }
+  .Image360PlayIcon {
+    position: relative;
+    top: 500px;
+  }
+
+  .Image360 {
+    height: 1080px;
+    //border: solid 1px green;
+    left: 1800px;
+
+    video {
+      height: 1080px;
+      top: -25px;
+      //left: 367px;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) {
+      //width: 1200px;
+      height: 890px;
+      left: 1560px;
+      
+      video {
+        top: -25px;
+        //left: 137px;
+        height: 940px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      height: 670px;
+      left: 1200px;
+      video {
+        height: 720px;
+        top: -25px;
+        //left: -225px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      height: 670px;
+      width: 1200px;
+      left: 1200px;
+
+      video {
+        height: 720px;
+        top: -25px;
+        //left: -225px;
+      }
+    }
+    
+    @media only screen and (max-height: $BreakPoint4) {
+      width: 1000px;
+      height: 550px;
+      left: 900px; 
+      top:25px;
+      //background: green;
+      //border: 1px solid red;
+      video { 
+        height: 550px;
+        left: 0px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 625px;
+      height: 350px;
+      left: 570px; 
+
+      video { 
+        width: 625px;
+        height: 550px;
+        left: 0px;
+        top:-125px;
+      }
+
+    }
+    
+    &Icon,
+    &Image360Icon,
+    &Image360Play,
+    &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    &GlassIcon {
+      position: relative;
+      top: 36%; //59%;
+      left: 52%; //51%;
+      //display: none;
+
+      @media only screen and (max-height: $BreakPoint1) {
+        //top: 59%;
+        left: 46%;//54%;
+      }
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 36%;
+        left: 35%;//22%;
+
+        img,
+        svg {
+          padding: 9px 0 0;
+        }
+      }
+
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 36%;
+        left: 50%;//22%;
+
+        img,
+        svg {
+          padding: 9px 0 0;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        top:34%;
+        left: 45%;
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        width: 30px;
+        height: 30px;
+        top:31%;
+        left: 46%;
+        img,
+        svg {
+          width: 50%;
+          padding: 8px 0 0;
+        }
+      }
+    }
+
+
+    &Block {
+      position: relative;
+      z-index: 7;
+  
+      &Top {  
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          width: 1000px!important;
+          img{
+            left: 400px!important;
+          }
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          width: 630px!important;
+          // car logo
+            svg,
+            img {
+                width: 20%!important;
+                top: 0px!important;
+                left: 250px!important;
+            }
+
+        }
+  
+        
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint2) {
+         width: 1280px;
+        }
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint4) {
+          width: 1000px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+          width: 630px!important;
+        }
+      }
+  
+      &Left {
+        @media only screen and (max-height: $BreakPoint1) {
+          bottom: 150px;
+          height: 450px;
+        }
+        @media only screen and (max-height: $BreakPoint4) {
+          bottom: 100px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 50px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+  
+      &Right {
+        @media only screen and (max-height: $BreakPoint1) {
+          left: 1420px;
+          bottom: 150px;
+          height: 450px;
+        }
+        @media only screen and (max-height: $BreakPoint2) {
+          left: 980px;
+         }
+         @media only screen and (max-height: $BreakPoint4) {
+          bottom: 100px;
+          left:700px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //right
+          left: 580px;
+          width: 50px;
+          height: 150px;
+          bottom: 100px;
+        }
+      }
+    }
+
+  }
+
+  .letsGoToPlaces {
+    margin-top: 170px;
+    margin-left: 780px;//1230px;
+
+    @media only screen and (max-height: $BreakPoint1) {
+      margin-top: 50px;
+      margin-left: 38%;//48%;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      margin-top: 80px;
+      margin-left: 37%//14%;
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      margin-top: 80px;
+      margin-left: 37%;//14%;
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      margin-top: 0px;
+      margin-left: 400px;
+  }
+    @media only screen and (max-height: $BreakPoint5) {
+        margin-top: 10px;
+        margin-left: 200px;
+    }
+
+  }
+
+  .Image360BlockTop {
+    //width: 1400px;
+    //left: 700px;
+
+    //border: solid 1px red;
+
+    img {
+      position: relative;
+      top: 30px;
+      left: 44%;//34%;
+      width: 300px;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) {
+      //width: 1200px;
+      //left: 400px;
+
+      img {
+        width: 250px;
+        left: 39%;//33%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      width: 1280px;//800px;
+      left: 0px;
+      img {
+        width: 180px;
+        top: 10px;
+        left: 40%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 1200px;//800px;
+      left: 0px;
+      img {
+        width: 180px;
+        top: 10px;
+        left: 42%;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px;
+      height: 100px;
+    }
+  }
+}
+
+.Mirai {
+
+  .Image360BlockTop {
+    img {
+      max-width: 200px;
+      width: 360px;
+      margin-top: 180px;
+      margin-left: 100px;
+
+      @media only screen and (min-height: $BreakPoint1) {
+        max-width: 300px;
+        width: 360px;
+        margin-top: 270px;
+        margin-left: 100px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        max-width: 230px;
+        width: 360px;
+        margin-top: 230px;
+        margin-left: 100px;
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        max-width: 200px;
+        width: 360px;
+        margin-top: 180px;
+        margin-left: 100px;
+      }
+      
+    }
+  }
+
+  .Image360Icon,
+  .Image360PlayIcon {
+    display: none;
+  }
+  .Image360PlayIcon {
+    position: relative;
+    top: 500px;
+  }
+
+  .Image360 {
+    height: 1040px;
+    //border: green solid 1px;
+    left: 1550px;
+
+    video {
+      width: 1920px;
+      top: -30px;
+      //left: 200px;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) {
+      height: 890px;
+      left: 1330px;
+      //width: 1200px;
+      video {
+        width: 1700px;
+        top: -40px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      height: 670px;
+      left: 700px;//1015px;
+
+      video {
+        width: 1300px;
+        top: -40px;
+        left: 250px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      height: 670px;
+      left: 800px;
+      
+      video {
+        width: 1300px;
+        top: -40px;
+        left: 250px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint4) {
+      width: 1000px;
+      height: 550px;
+      left: 765px;
+      //border: solid 1px red;
+      //background: green;
+      video {
+        width: 1000px;
+        left: 30px;
+        top: -40px;
+      }
+    }
+
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 650px;
+      height: 350px;
+      left: 480px;
+      //background: green;
+      video {
+        width: 650px;
+        //left: 0px;
+        top: -40px;
+      }
+    }
+
+    &Icon,
+    &Image360Icon,
+    &Image360Play,
+    &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    &GlassIcon {
+      position: relative;
+      top: 45%;
+      left: 68%;//79%;
+      // display: none;
+
+      @media only screen and (max-height: $BreakPoint1) {
+        top: 44%;
+        left: 60%;
+      }
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 45%;
+        left: 60%;
+
+        img,
+        svg {
+          padding: 9px;
+        }
+      }
+
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 45%;
+        left: 60%;
+
+        img,
+        svg {
+          padding: 9px;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 620px;
+        top:210px;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 420px;
+        top:125px;
+        img,
+        svg {
+          width: 50%;
+          padding: 8px 0 0 0;
+        }
+      }
+    }
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {  
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          left: 0px!important;
+          // car logo
+          svg,img{
+            width: 15%!important;
+            left: 370px!important;
+            top:-75px!important;
+          }
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          // car logo
+          height: 100px;
+          svg,
+          img {
+              width: 15%!important;
+              top: -120px!important;
+              left: 220px!important;
+          }
+        }
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        @media only screen and (max-height: $BreakPoint1) {
+          bottom: 100px;
+          height: 500px;
+        }
+        @media only screen and (max-height: $BreakPoint4) {
+          width: 50px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 50px;
+          height: 250px;
+          bottom: 100px;
+        }
+      }
+  
+      &Right {
+        @media only screen and (max-height: $BreakPoint1) {
+          bottom: 100px;
+          height: 500px;
+          left: 1420px;
+        }
+        @media only screen and (max-height: $BreakPoint4) {
+          left: 950px;
+          width: 50px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //right
+          left: 600px;
+          width: 50px;
+          height: 250px;
+          bottom: 100px;
+        }
+      }
+    }
+
+  }
+
+  .letsGoToPlaces {
+    margin-top: 170px;
+    margin-left: 850px;//950px;
+
+    @media only screen and (max-height: $BreakPoint1) {
+      margin-top: 50px;
+      margin-left: 43%;//35%;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      margin-top: 80px;
+      margin-left: 48%;
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      margin-top: 80px;
+      margin-left: 48%;
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      top: -75px;
+      left: -15px; 
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      top: -60px;//-50px;
+      left:0px; 
+    }
+   
+  }
+
+  .Image360BlockTop {
+    //width: 1400px;
+    //left: 400px;
+
+    // border: solid 1px red;
+
+    img {
+      position: relative;
+      top: -20px;//50px;
+      left: 45%;//34%;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) {
+      //width: 1200px;
+      //left: 200px;
+
+      img {
+        width: 400px;
+        left: 40%;//33%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      //width: 800px;
+      //left: -120px;
+      img {
+        width: 330px;
+        top: -30px;
+        left: 48%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      //width: 800px;
+      //left: -120px;
+      img {
+        width: 170px;
+        top: -30px;
+        left: 43%;
+      }
+    }
+    
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px!important;
+    }
+  }
+}
+
+.CamryHybrid {
+   //turn off animation cloud
+   .autoShow {
+    &Cloud {
+      animation: none;
+    }
+  }
+  .Image360BlockTop {
+    img {
+      max-width: 750px;
+      width: 400px;
+      left: 450px;
+      top: 180px;
+
+      @media only screen and (min-height: $BreakPoint1) {
+        width: 600px;
+        left: 720px;
+        top: 300px;
+      }
+      @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+        width: 520px;
+        left: 580px;
+        top: 250px;
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 400px;
+        left: 450px;
+        top: 180px;
+      }
+     
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      //border: 1px solid red; //to center car
+      width: 600px;
+    }
+  }
+  .Image360 {
+    margin-top: 80px;
+    //border: green solid 1px;
+    &Icon,
+    //&Image360Icon,
+    &Image360Play,
+    &PlayIcon,
+    &DrivesIcon,
+    &RacingPhotoBoth,
+    &MedalIcon,
+    // &GlassIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    .letsGoToPlaces {
+      margin-top: 30px;
+      margin-left: 520px;
+
+      @media only screen and (max-height: $BreakPoint4) {
+        margin-left: 400px!important;
+        margin-top: 60px!important;
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        margin-top: 10px!important;//40px!important;
+        margin-left: 200px!important;
+      }
+    }
+
+    .Image360Icon{
+      display: block;
+      top: 460px;
+      left: 210px;
+   
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top:480px!important;
+        left:580px!important;
+      }
+     
+      @media only screen and (max-height: $BreakPoint4)  {
+        top: 340px!important;
+        left: 420px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5)  {
+        top: 190px!important;
+        left: 250px!important;
+        width: 20%!important;
+      }
+    }
+
+
+    &GlassIcon {
+      top: 280px;
+      left: 480px;
+
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 360px!important;
+        top:205px!important;
+      }
+
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 220px!important;
+        top:125px!important;
+        img,
+        svg {
+          width: 50%;
+          padding: 8px 0 0 0;
+        }
+      }
+    }
+
+    
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {
+       
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          img{
+            width: 32%;
+            top:135px;
+            left: 360px;
+          }
+        }  
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          // car logo
+            svg,
+            img {
+              width: 32%;
+              top: 75px;
+              left: 215px;
+            }
+        }
+  
+        
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: red; //bottom
+          height: 150px;
+          bottom: 0px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        // @media only screen and (min-height: $BreakPoint1) {
+        //   width: 600px!important;
+        //   bottom: 300px!important;
+        // }
+        // @media only screen and (min-height: $BreakPoint2) {
+        //   bottom: 150px;
+        //   height: 500px;
+        // }
+        
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 280px!important;
+          height: 450px!important;
+          width: 600px!important;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          bottom: 150px!important;
+          height: 500px!important;
+          width: 450px!important;
+        }
+        @media only screen and (min-height: $BreakPoint3)  {
+          width: 350px;
+          height: 350px;
+          bottom: 150px;
+        }
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 320px;
+          height: 350px;
+          bottom: 150px;
+        }
+
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: black; //left
+          width: 250px;
+          height: 300px;
+          bottom: 150px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 150px;
+          height: 200px;
+          bottom: 50px;
+        }
+      }
+  
+      &Right {
+        // @media only screen and (min-height: $BreakPoint1) {
+        //   width: 600px!important;
+        //   left: 1400px!important;
+        //   bottom: 300px!important;
+        // }
+        // @media only screen and (min-height: $BreakPoint2) {
+        //   width: 450px;
+        //   left: 1200px;
+        //   bottom: 150px;
+        //   height: 500px;
+        // }
+        
+        @media only screen and (min-height: $BreakPoint1)  {
+          bottom: 280px;
+          height: 450px;
+          width: 600px;
+          left: 1400px;
+        }
+        @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) and (min-height: $BreakPoint3){
+          left: 1150px;
+          bottom: 150px;
+          height: 500px;
+          width: 500px;
+        }
+               
+        @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+          width: 350px;
+          height: 350px;
+          left: 950px;
+          bottom: 150px;;
+        }
+
+        @media only screen and (max-height: $BreakPoint3) and (min-height: $BreakPoint4) {
+          width: 400px;
+          height: 350px;
+          bottom: 150px;
+          left: 900px;
+        }
+
+        
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: blue; //right
+          left: 700px;
+          width: 300px;
+          height: 300px;
+          bottom: 150px;
+        }
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //right
+          left: 430px;
+          width: 170px;
+          height: 200px;
+          bottom: 50px;
+        }
+      }
+    }
+
+    // Mobile default
+    width: 1300px;
+    top: -80px;
+    margin-left: -350px;
+    // background-color: red;
+    // opacity: 0.5;
+
+    //1080 Or Higher
+    @media only screen and (min-height: $BreakPoint1) {
+      width: 2000px;
+      top: -100px;
+      margin-left: 150px;
+      // display: none;
+      // border: solid 1px red;
+      // background-color: yellow;
+      // opacity: 0.5;
+
+      .letsGoToPlaces {
+        margin-top: 150px;
+        margin-left: 850px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 750px; //730px;
+        left: 880px; //350px;
+      }
+
+      &GlassIcon {
+        top: 450px;
+        left: 750px;
+      }
+    }
+    // Between 920 and 720
+    @media only screen and (max-height: $BreakPoint1) and (min-height: $BreakPoint2) {
+      width: 1650px;
+      top: -80px;
+      margin-left: 0px;
+      // background-color: blue;
+      //opacity: 0.5;
+
+      .letsGoToPlaces {
+        margin-top: 30px;
+        margin-left: 680px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 620px;//610px;
+        left: 750px; //300px;
+      }
+
+      &GlassIcon {
+        top: 375px;
+        left: 615px;
+      }
+    }
+    // 720
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 1300px;
+      top: -80px;
+      margin-left: -350px;
+      // background-color: purple;
+      // opacity: 0.5;
+
+      .letsGoToPlaces {
+        margin-top: 30px;
+        margin-left: 520px;
+      }
+
+      .Image360Icon{
+        display: block;
+        top: 470px; //460px;
+        left: 580px; //210px;
+      }
+
+      &GlassIcon {
+        top: 280px;
+        left: 480px;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      //border: 1px solid red; //to center car
+      width: 1000px;
+      height: 550px;
+      left: 1140px;
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 600px;
+      height: 350px;
+      top:-70px;
+      left: 865px;
+      //background: green;
+    }
+  }
+}
+
+.Team_Toyota {
+  .GlasPlusIconRight {
+    display: none;
+  }
+  .letsGoToPlaces {
+    margin-top: 130px;//170px;
+    margin-left: 950px;
+
+    @media only screen and (max-height: $BreakPoint1) {
+      margin-top: -5px; //50px;
+      margin-left: 35%;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      margin-top: 10px;//40px;
+      margin-left: 5%;
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      margin-top: 5px;//40px;
+      margin-left: 5%;
+    }
+   
+    @media only screen and (max-height: $BreakPoint4) {
+      margin-top: 40px;//60px;
+      margin-left: 330px!important; 
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      margin-top: 35px;//50px;
+      margin-left: 200px!important;
+    }
+  }
+  .Image360 {
+    //border: green 1px solid;
+    &Icon,
+    &Image360Icon,
+    &Image360Play,
+    &PlayIcon,
+    &GlassIcon,
+    &GlasPlusIconRight,
+    &DrivesIcon,
+    &RacingExternal {
+      display: none;
+    }
+
+    &RacingExternalLabel{
+      display: block;
+    }
+
+    &Block {
+      position: relative;
+      z-index: 7;
+
+      &Top {
+        @media only screen and (max-height: $BreakPoint4) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          // car logo
+          svg,
+          img {
+              width: 20%!important;
+              top: 0px!important;
+              left: 450px!important;
+          }
+        }  
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: rgb(160, 160, 160); //head 
+          height: 100px;
+          // car logo
+          svg,
+          img {
+              width: 12%!important;
+              top: 0px!important;
+              left: 315px!important;
+          }
+        }
+  
+        
+      }
+  
+      &Bottom {
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: red; //bottom
+          height: 100px;
+          bottom: 0px;
+        }
+      }
+  
+      &Left {
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: black; //left
+          width: 50px;
+          height: 200px;
+          bottom: 50px;
+        }
+      }
+  
+      &Right {
+        @media only screen and (max-height: $BreakPoint5) {
+          //background-color: blue; //right
+          left: 550px;
+          width: 50px;
+          height: 200px;
+          bottom: 50px;
+        }
+      }
+    }
+
+    &RacingExternalLabel {
+      font-size: 14px;
+      width: 10%;
+      position: absolute;
+      top: 21%;
+      right: -1%;
+      @media only screen and (max-height: $BreakPoint1) {
+        top:20%;
+        right:21%;
+      }
+      @media only screen and (max-height: $BreakPoint2) {
+        top: 18.5%!important;
+        right: 55%!important;
+      }
+      @media only screen and (max-height: $BreakPoint4) {
+        top: 14%!important;
+        right: 12% !important;
+        width: 15%!important;
+      }
+      @media only screen and (max-height: $BreakPoint5) {
+        top: 15% !important;
+        right: 11% !important;
+        width: 15% !important;
+        font-size: 8px;
+      }
+    }
+
+    &MedalIcon {
+      position: absolute;
+      top: 20%;
+      left: 87%;
+      width: 60px;
+      height: 60px;
+
+      img,
+      svg {
+        width: 50%;
+        padding: 10px;
+      }
+
+      @media only screen and (max-height: $BreakPoint1) {
+        top: 19%;
+        left: 65%;
+      }
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 18%;
+        left: 31.5%;
+      }
+
+      @media only screen and (max-height: $BreakPoint3) {
+        width: 50px;
+        height: 50px;
+        top: 18%;
+        left: 31.5%;
+      }
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 67%;;
+        top:13%;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 68%;;
+        top:15%;
+        img,
+        svg {
+          width: 40%;
+          padding: 6px 0 0 0;
+        }
+      }
+    }
+
+    &RacingPhotoBoth {
+      position: absolute;
+      top: 24%;
+      left: 46%;
+
+      @media only screen and (max-height: $BreakPoint1) {
+        top: 27%;
+        left: 30%;
+        width: 60px;
+        height: 60px;
+        img,
+        svg {
+          padding: 13px;
+        }
+      }
+
+      @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+        top: 28.3%;
+        left: 3.5%;
+        width: 40px;
+        height: 40px;
+        img,
+        svg {
+          padding: 8px;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint3) {
+        top: 28.3%;
+        left: 3.5%;
+        width: 40px;
+        height: 40px;
+        img,
+        svg {
+          padding: 8px;
+        }
+      }
+      @media only screen and (max-height: $BreakPoint4)  {
+        left: 325px;
+        top:100px;
+      }
+      @media only screen and (max-height: $BreakPoint5)  {
+        width: 30px;
+        height: 30px;
+        left: 185px;
+        top:70px;
+        img,
+        svg {
+          width: 50%;
+          padding: 8px 0 0 0;
+        }
+      }
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      //border: solid 1px red;
+      width: 1000px;
+      height: 550px;
+      top:60px;
+      left: 800px;
+      //background: green;
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 600px;
+      height: 350px;
+      top:30px;
+      left: 510px;
+      //background: green;
+    }
+  }
+
+  .Image360BlockTop {
+    width: 1600px;
+    left: 300px;
+
+    img {
+      position: relative;
+      top: 50px;
+      left: 33%;
+    }
+
+    @media only screen and (max-height: $BreakPoint1) {
+      width: 1200px;
+      left: 200px;
+      img {
+        width: 250px;
+        left: 30%;
+        top:0;//new
+      }
+    }
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      width: 800px;
+      left: -120px;
+      img {
+        width: 230px;
+        //top: 20px;
+        left: 20%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint3) {
+      width: 800px;
+      left: -120px;
+      img {
+        width: 230px;
+        //top: 20px;
+        left: 20%;
+      }
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      width: 800px;
+    }
+  }
+
+  .teamVideo {
+    position: relative;
+    width: 2000px;
+    height: 100%;
+    top: -50px;//-30px;
+    left: 140px;
+
+    @media only screen and (max-height: $BreakPoint1) {
+      top: -50px;//-30px;
+      left: -65px;
+      width: 1740px;
+    }
+    @media only screen and (max-height: $BreakPoint1) and (max-height: $BreakPoint2) and (min-height: $BreakPoint3) {
+      top: -50px;//-40px;
+      left: -370px;
+      width: 1350px;
+    }
+
+    @media only screen and (max-height: $BreakPoint2) {
+      top: -50px; //-40px;
+      left: -370px;
+      width: 1350px;
+    }
+    @media only screen and (max-height: $BreakPoint4) {
+      top: -50px; //-40px;
+      left: -50px;
+      width: 1100px;
+      //background: green;
+    }
+    @media only screen and (max-height: $BreakPoint5) {
+      top: -29px;//-25px;
+      left: -50px;
+      width: 700px;
+      //background: green;
+    }
+  
+  }
+}
+

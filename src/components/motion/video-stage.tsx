@@ -9,18 +9,24 @@ type VideoStageProps = {
   poster?: string;
   alt: string;
   className?: string;
+  /** Use a taller, full-bleed frame (no rounded corners/aspect cap) for a case-study hero. */
+  hero?: boolean;
 };
 
 /** Looping muted background clip. Falls back to a gradient placeholder if the source fails to load. */
-export function VideoStage({ src, poster, alt, className }: VideoStageProps) {
+export function VideoStage({ src, poster, alt, className, hero }: VideoStageProps) {
   const [errored, setErrored] = useState(false);
 
   if (errored) {
-    return <GradientPlaceholder seed={alt} label={alt} className={className} />;
+    return <GradientPlaceholder seed={alt} label={alt} className={className} hero={hero} />;
   }
 
+  const frameClass = hero
+    ? "relative h-[70vh] min-h-[480px] w-full overflow-hidden"
+    : "relative aspect-[4/3] w-full overflow-hidden rounded-hud";
+
   return (
-    <div className={cn("relative aspect-[4/3] w-full overflow-hidden rounded-m3-lg bg-surface-container-highest", className)}>
+    <div className={cn(frameClass, "bg-charcoal", className)}>
       <video
         autoPlay
         muted

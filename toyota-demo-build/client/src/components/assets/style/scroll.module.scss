@@ -1,0 +1,295 @@
+@import '../../../assets//style/_variables';
+
+.container{
+    width: 100%;
+    height: auto;
+    position: relative;
+    color: #000000;
+    text-align: center;
+    @media only screen and (max-height: $BreakPoint2){
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 90vh;
+    }
+    @media only screen and (max-height: $BreakPoint5){
+      overflow:hidden;
+    }
+
+    &BtnClose{
+        position: absolute;
+        //float: right;
+        right: 0;
+        z-index: 1;
+        margin: 2vh auto;
+        button{
+            cursor: pointer;
+        }
+    }
+    
+    &Row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 5vw 0 0 0;
+        @media only screen and (max-height: $resMobileBreakPoint){
+            padding:10vh 0 0 0;
+        }
+      }
+      
+      &Column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+      }
+    &Head{
+        width: 100%;
+        height: auto;
+        position: relative;
+        text-align: center;
+        
+        &Image{
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding: 8em 0 0 0px;
+            @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                padding: 6vw 0 0 0;
+            }
+           
+            &Left{
+                position: relative;
+                img{
+                    width: 30%;
+                    height: auto;
+                    margin-left: 5vw;
+                    @media only screen and (max-height: $resMobileBreakPoint){
+                        width: 20%;
+                        padding: 0 0 0 0;
+                        float: right;
+                        margin-top: -25px;
+                    }
+                }                
+            }
+           
+            &Right{
+                position: relative;
+                img{
+                    width: 40%;
+                    height: auto;
+                    margin-right: 5vw;
+                    @media only screen and (max-height: $resMobileBreakPoint){
+                        width: 25%;
+                        padding: 0 0 0 0;
+                        float: left;
+                        margin-top: -25px;
+                    }
+                }  
+            }          
+        }
+       
+       
+        &Text{
+            width: 100%;
+            height: auto;
+            color: #747474;
+            position: relative;
+            
+            b{
+                font-size: 40px;//1.8vw;
+                width: 100%;
+                height: auto;
+                font-family: 'ToyotaType-Semibold';
+                @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape)  {
+                    font-size: 1.8vw;
+                }
+                @media only screen and (max-height: $resMobileBreakPoint){
+                    font-size: 16px;
+                }
+                span{
+                    font-family: 'ToyotaType-Bold';
+                    font-size: 200px;
+                    float: left;
+                    margin: -3vw auto;
+                    width: 100%;
+                    @media only screen and (max-width: $resFontSizeBreakPoint)  {
+                        font-size: 10vw;
+                    }
+                    @media only screen and (max-height: $resMobileBreakPoint){
+                        font-size: 48px;//50px;
+                    }
+                }
+            }
+            
+        }
+
+    }
+   
+    &Slider{
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 3vh;//3vw;
+        font-family: 'ToyotaType-Regular';
+    
+        &outer {
+            display: flex;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            transition: transform .5s ease-in;
+            width: 92%;
+            margin: auto 4vw;
+          }
+         
+         &inner {
+            flex: 0 0 18%;
+            margin-left: 1.55vw;
+            color: black; 
+                                  
+            img {
+                position: relative;
+                width: 100%;
+                height:auto;//80%;
+                background: #F2F2F2;
+                @media only screen and (max-height: $resMobileBreakPoint){
+                    width: 80px;
+                }
+            } 
+            span{
+                width: 100%;
+                font-size: 1.4vw;
+                p{
+                    font-weight: normal;
+                    font-size: 1vw;
+                }
+            }    
+        }        
+       //name-footers
+        &outerFooter {
+            display: flex;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            transition: transform .5s ease-in;
+            width: 92%;
+            margin: auto 4vw;
+            font-family: 'ToyotaType-Regular';
+            &Names {
+                flex: 0 0 18%;
+                margin-left: 1.55vw;
+                color: black; 
+                &Text{
+                    font-family: 'ToyotaType-Semibold';
+                    font-size: 30px;
+                    @media only screen and (max-width: $resFontSizeBreakPoint) {
+                        font-size: 1.4vw;
+                    }
+                    @media only screen and (max-height: $resMobileBreakPoint){
+                        font-size:px;
+                    }
+                    &Serie{
+                        font-family: 'ToyotaType-Regular';
+                        font-size: 18px;//1vw;
+                        letter-spacing: 3px;//10px;//to normalize
+                        @media only screen and (max-width: $resFontSizeBreakPoint){
+                            font-size: 1vw;
+                            letter-spacing: 0.05px;
+                        }
+                        @media only screen and (max-height: $resMobileBreakPoint){
+                            font-size: 8px;
+                        }
+                    }
+                }  
+            }
+          }  
+      
+        &ArrowL {
+            border: solid #747474;
+            border-width: 0 4px 4px 0;
+            border-radius: 3px;
+            display: inline-block;
+            padding: 3px;
+            cursor: pointer;
+            left: 1.5vw;
+            z-index:1;
+            position: absolute;
+            top: 9vw;//40px;
+            bottom: 0;
+            width: 1.5vw;
+            height: 1.5vw;
+
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+            &:hover{
+                border: solid black;
+                border-width: 0 4px 4px 0;
+            }
+           
+            @media only screen and (max-height: $resMobileBreakPoint){
+                top:50px
+             }
+        }
+        &ArrowR {
+            border: solid #747474;
+            border-width: 0 4px 4px 0;
+            border-radius: 3px;
+            display: inline-block;
+            padding: 3px;
+            cursor: pointer;
+            right: 1.5vw;
+            z-index:1;
+            position: absolute;
+            top: 9vw;//40px;
+            bottom: 0;
+            width: 1.5vw;
+            height: 1.5vw;
+
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+
+            &:hover{
+                border: solid black;
+                border-width: 0 4px 4px 0;
+            }
+
+            @media only screen and (max-height: $resMobileBreakPoint){
+                top:50px
+             }
+        }
+        
+           
+    }
+    &Footer{
+        position: relative;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin: -2em auto;
+        
+        @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+            margin:-4px auto;
+        }
+        &BtnInformation{
+            font-family: 'ToyotaType-Semibold';
+            width: 12%;
+            height: auto;
+            font-size: 16px;
+            @media only screen and (max-width: $resFontSizeBreakPoint) {
+                width: 15%;
+                font-size: 1.1vw;
+            }
+            @media only screen and (max-height: $resTabletBreakPoint){
+                //font-size: 11px;
+            }
+            @media only screen and (max-height: $resMobileBreakPoint){
+               width: 13%;
+               font-size: 9px;
+               padding:7px 0;
+            }
+           
+        }
+    }
+  
+}
+
+

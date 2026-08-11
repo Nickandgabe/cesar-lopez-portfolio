@@ -1,0 +1,107 @@
+@import '../../../assets/style/variables';
+.Box{
+    position: relative;
+    width:100%;
+    height:100vh;//auto;
+    background: black;
+    &LogoBox {
+        position: absolute;
+        width: 75%;
+        height: auto;
+        top: calc(100% - 85vh);
+        
+        &Text {
+            color:#747474;
+            font-size: 80px;
+            font-family: 'ToyotaType-Bold';
+            line-height: 1;
+            padding: 15px 0 0;
+            @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                font-size: 4.1vw;
+              } 
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                padding: 0 0 0 0;
+            } 
+        }
+        img {
+            position: relative;
+            top:4vh!important;
+            width: 70%!important;
+            height:auto;
+            @media only screen and (max-height: $resMobileBreakPoint)  {
+                top:0!important;
+             } 
+        }
+    }
+    &Selection{
+        position: absolute;
+        width: 75%;
+        height: auto;
+        top: calc(100% - 55vh);
+        //background: green;
+        @media only screen and (max-height: $resMobileBreakPoint)  {
+            top:35vh;//155px
+        } 
+    }
+    &Row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 90%;//100%;
+        margin: auto;
+        padding: 0 0 0 0; //12vh 0 0 0;
+      }
+      
+      &Column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+      }
+      &InnerBox {
+        flex: 0 0 18%;
+        color: black; 
+        text-align: center;          
+        img {
+            position: relative;
+            width: 90%;
+            height:auto;
+        } 
+        &Button{
+            width: 70%;
+            font-size: 16px;
+            margin: 3vh auto;
+            @media (max-width: $resFontSizeBreakPoint) and (orientation : landscape) {
+                font-size: 1vw;
+              } 
+        }
+        
+    } 
+}
+.Button{
+    position: fixed;
+    right: 0;
+    z-index: 15;
+    top:3vh;
+    width: 40px;
+    button {
+        padding: 0 0 0 0;
+    }
+    @media only screen and (max-height: $resFontSizeBreakPoint) {
+        top: 3.5vh
+    }
+}
+@media(max-height: $resMobileBreakPoint) and (orientation : landscape)  {
+    .Box{
+        &InnerBox {
+            &Button{
+                width: 90%;
+            }
+            
+        } 
+
+    }
+    .Button{
+        top:5vh;
+    }
+}

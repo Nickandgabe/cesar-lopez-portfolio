@@ -1,12 +1,16 @@
 export type ProjectVariant = "elevated" | "outlined";
 
+/** PRACTICE_MODE = client/employer case studies. R&D_MODE = independent product ventures. */
+export type ProjectMode = "practice" | "rd";
+
 export type Project = {
   slug: string;
   name: string;
   client: string;
   category: string;
   year: string;
-  flagship?: boolean;
+  /** Defaults to "practice" — set "rd" for self-directed product ventures. */
+  mode?: ProjectMode;
   summary: string;
   tags: string[];
   role: string;
@@ -20,6 +24,10 @@ export type Project = {
   video?: string;
   /** Static hero/preview image, used when no frame sequence is set. */
   poster?: string;
+  /** Real .glb model — highest priority in ProjectMedia. Renders an interactive drag-to-orbit viewer instead of a flat image/video. */
+  model3d?: string;
+  /** Supporting stills shown below the case study text, distinct from the hero media stage. */
+  gallery?: string[];
 };
 
 export const projects: Project[] = [
@@ -29,7 +37,6 @@ export const projects: Project[] = [
     client: "AT&T",
     category: "Enterprise Systems Architecture",
     year: "2023–2025",
-    flagship: true,
     summary:
       "Unified fragmented retail, care, and self-service experiences into a single omni-channel design system spanning web, mobile, and in-store touchpoints.",
     tags: ["Design Systems", "SAFe", "Omni-Channel CX", "SLDS"],
@@ -75,15 +82,22 @@ export const projects: Project[] = [
     category: "Immersive Web Experience",
     year: "2021",
     summary:
-      "Built an immersive, browser-based virtual auto show experience translating a physical event into a scalable digital showroom.",
+      "Built an immersive, browser-based virtual auto show translating a physical event into a scalable digital showroom, in response to COVID-19 making in-person shows impossible.",
     tags: ["Immersive Web", "3D/WebGL", "Front-End Engineering"],
     role: "Front-End Engineer & Product Designer",
-    challenge: "Placeholder: constraints of translating a physical, spatial event into the browser at scale.",
+    challenge:
+      "When COVID-19 made in-person auto shows impossible, Toyota needed a digital alternative that felt as immersive as walking a show floor — usable across technical skill levels, devices, and accessibility needs, with high-quality 3D vehicle exhibits and none of the cost or logistics of a physical event.",
     approach: [
-      "Placeholder: the technical approach to 3D/WebGL performance across devices.",
-      "Placeholder: the UX model for wayfinding in a virtual space.",
+      "Ran a full double-diamond process — discovery research and stakeholder alignment, synthesis into a defined problem space, ideation and prototyping, then iterative testing before implementation.",
+      "Designed a spatial, top-down showroom hub where each vehicle sits at its own interactive station, translating a physical show floor's wayfinding into browser navigation.",
+      "Built real-time 3D vehicle viewers — 360° turntables, hotspots, environment toggles — alongside embedded video for launches like the GR Supra and Sienna.",
+      "Optimized 3D assets and interactive scenes for performance across devices, balancing visual fidelity against load time and accessibility constraints.",
     ],
-    outcome: "Placeholder: engagement and reach outcomes.",
+    outcome:
+      "Shipped a fully interactive virtual auto show spanning the RAV4, Highlander, Camry, Sienna, Venza, Tacoma, GR Supra, and Toyota's e-Palette mobility concept — giving Toyota a scalable, always-on alternative to in-person events.",
+    model3d: "/models/supra.glb",
+    poster: "/images/toyota/supra_reveal.jpg",
+    gallery: ["/images/toyota/overview_hub.jpg", "/images/toyota/highlander_360.jpg", "/images/toyota/mobility_epalette.jpg"],
   },
 ];
 

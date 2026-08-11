@@ -14,11 +14,16 @@ type ImageSequenceViewerProps = {
   poster?: string;
   alt: string;
   className?: string;
+  /** Use a taller, full-bleed frame (no rounded corners/aspect cap) for a case-study hero. */
+  hero?: boolean;
 };
 
 const SENSITIVITY = 6;
 
-export function ImageSequenceViewer({ frames = [], poster, alt, className }: ImageSequenceViewerProps) {
+export function ImageSequenceViewer({ frames = [], poster, alt, className, hero }: ImageSequenceViewerProps) {
+  const frameClass = hero
+    ? "relative h-[70vh] min-h-[480px] w-full overflow-hidden"
+    : "relative aspect-[4/3] w-full overflow-hidden rounded-hud";
   const [frameIndex, setFrameIndex] = useState(0);
   const [dragging, setDragging] = useState(false);
   const dragStartX = useRef(0);
@@ -53,11 +58,7 @@ export function ImageSequenceViewer({ frames = [], poster, alt, className }: Ima
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerLeave={handlePointerUp}
-        className={cn(
-          "relative aspect-[4/3] w-full touch-none select-none overflow-hidden rounded-m3-lg bg-surface-container-highest",
-          dragging ? "cursor-grabbing" : "cursor-grab",
-          className,
-        )}
+        className={cn(frameClass, "touch-none select-none bg-charcoal", dragging ? "cursor-grabbing" : "cursor-grab", className)}
       >
         <Image
           src={frames[frameIndex]}
@@ -67,7 +68,7 @@ export function ImageSequenceViewer({ frames = [], poster, alt, className }: Ima
           className="pointer-events-none object-cover"
           sizes="(min-width: 1024px) 33vw, 100vw"
         />
-        <div className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-m3-full bg-scrim/60 px-3 py-1.5 text-label-sm text-white">
+        <div className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-hud bg-scrim/60 px-3 py-1.5 font-mono text-label-sm text-cyan">
           <RotateCw size={14} aria-hidden />
           Drag to rotate
         </div>
@@ -77,11 +78,11 @@ export function ImageSequenceViewer({ frames = [], poster, alt, className }: Ima
 
   if (poster) {
     return (
-      <div className={cn("relative aspect-[4/3] w-full overflow-hidden rounded-m3-lg bg-surface-container-highest", className)}>
+      <div className={cn(frameClass, "bg-charcoal", className)}>
         <Image src={poster} alt={alt} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />
       </div>
     );
   }
 
-  return <GradientPlaceholder seed={alt} label={alt} className={className} />;
+  return <GradientPlaceholder seed={alt} label={alt} className={className} hero={hero} />;
 }

@@ -1,0 +1,12 @@
+<svg id="Component_90_1" data-name="Component 90 – 1" xmlns="http://www.w3.org/2000/svg" width="120" height="120.431" viewBox="0 0 120 120.431">
+  <path id="Path_40468" data-name="Path 40468" d="M1227.978,471.636a60.216,60.216,0,1,1-60,60.216A60.109,60.109,0,0,1,1227.978,471.636Z" transform="translate(-1167.978 -471.636)" fill="#ed1b2f"/>
+  <g id="Group_1583" data-name="Group 1583" transform="translate(-1167.978 -471.636)">
+    <g id="Group_348" data-name="Group 348">
+      <path id="Path_40454" data-name="Path 40454" d="M1227.984,511.256a9.038,9.038,0,0,0-9,8.994,8.97,8.97,0,1,0,9-9Z" fill="#fff"/>
+      <path id="Path_40455" data-name="Path 40455" d="M1249.232,502.356h-7.261a6.862,6.862,0,0,0-6.792-6.038h-14.4a6.861,6.861,0,0,0-6.792,6.038h-7.264a5.361,5.361,0,0,0-5.342,5.346v25.2a5.361,5.361,0,0,0,5.342,5.343h42.511a5.361,5.361,0,0,0,5.346-5.343V507.7A5.36,5.36,0,0,0,1249.232,502.356ZM1227.974,533.9a13.6,13.6,0,1,1,13.6-13.607v0a13.606,13.606,0,0,1-13.6,13.6Zm22.163-24.072a1.173,1.173,0,0,1-1.171,1.171h-6.015a1.174,1.174,0,0,1-1.171-1.171v-1.965a1.171,1.171,0,0,1,1.169-1.172h6.024a1.169,1.169,0,0,1,1.17,1.169v0Z" fill="#fff"/>
+    </g>
+    <g id="Submit" style="isolation: isolate">
+      <text id="Begin" transform="translate(1227.978 563.672)" fill="#fff" font-size="16" font-family="Helvetica" style="isolation: isolate"><tspan x="-20.461" y="0">Begin</tspan></text>
+    </g>
+  </g>
+</svg>
