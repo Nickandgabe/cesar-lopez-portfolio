@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISERGO Group — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p1:#001642; --p2:#1B2E55; --p3:#91BDE5; --p4:#67748D;
+  --ink:#161616;
+  --ink-soft:rgba(22,22,22,.62);
+  --ink-dim:rgba(22,22,22,.4);
+  --paper:#faf9f7;
+  --line:rgba(22,22,22,.1);
+  --head:'Manrope',sans-serif;
+  --body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+h1,h2,h3,h4{font-family:var(--head);font-weight:700;letter-spacing:-.015em;color:var(--ink);}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;} .d4{transition-delay:.32s;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:24px 0;transition:background .3s ease,padding .3s ease,box-shadow .3s ease;}
+nav.scrolled{background:rgba(250,249,247,.88);backdrop-filter:blur(14px);padding:15px 0;box-shadow:0 4px 24px -18px rgba(0,0,0,.25);}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:1rem;}
+.nav-brand .sw{width:12px;height:12px;border-radius:50%;background:var(--p1);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;transition:color .2s ease;}
+.nav-links a:hover{color:var(--p1);}
+@media(max-width:820px){.nav-links{display:none;}}
+
+/* ---- cover ---- */
+.cover{
+  position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:linear-gradient(150deg, #001642 0%, #1B2E55 100%);overflow:hidden;padding:60px 30px;isolation:isolate;
+}
+.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 0%, rgba(255,255,255,.22), transparent 70%);z-index:0;}
+.cover-ghost{position:absolute;z-index:0;width:min(1400px,180vw);opacity:.08;filter:brightness(0) invert(1);top:50%;left:50%;transform:translate(-50%,-46%) rotate(-6deg);pointer-events:none;}
+.cover-tag{position:relative;z-index:2;font-size:.76rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:40px;}
+.cover-logo{
+  position:relative;z-index:2;background:rgba(255,255,255,.97);border-radius:36px;
+  padding:64px min(120px,9vw);box-shadow:0 50px 110px -30px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.6);
+  margin-bottom:44px;max-width:min(760px,88vw);
+}
+.cover-logo img{max-height:min(260px,22vw);width:auto;max-width:100%;margin:0 auto;}
+.cover h1{position:relative;z-index:2;color:#fff;font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:16px;text-shadow:0 4px 30px rgba(0,0,0,.15);}
+.cover p{position:relative;z-index:2;color:rgba(255,255,255,.88);font-size:1.08rem;max-width:520px;}
+.cover-meta{position:relative;z-index:2;margin-top:60px;display:flex;gap:44px;color:rgba(255,255,255,.75);font-size:.74rem;letter-spacing:.06em;font-weight:600;}
+.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.scroll-cue .line{width:1px;height:34px;background:rgba(255,255,255,.65);animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.25;}50%{opacity:1;}}
+
+/* ---- manifesto ---- */
+.manifesto{position:relative;background:var(--ink);padding:150px 0;overflow:hidden;isolation:isolate;}
+.manifesto-tile{
+  position:absolute;inset:-15%;z-index:0;opacity:.06;background-repeat:repeat;background-size:240px auto;
+  filter:brightness(0) invert(1);transform:rotate(-8deg) scale(1.25);
+}
+.manifesto::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%, #00164255, transparent 70%);z-index:0;opacity:.5;}
+.manifesto-inner{position:relative;z-index:2;max-width:920px;margin:0 auto;padding:0 40px;text-align:center;}
+.manifesto-kicker{font-size:.74rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--p2);margin-bottom:30px;}
+.manifesto h2{color:#fff;font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.18;letter-spacing:-.02em;}
+.manifesto h2 em{font-style:normal;color:var(--p2);}
+
+/* ---- sections ---- */
+section{padding:130px 0;position:relative;overflow:hidden;}
+.ghost-num{
+  position:absolute;top:-.12em;right:-.02em;font-family:var(--head);font-weight:700;
+  font-size:min(26vw,320px);line-height:1;color:var(--p1);opacity:.045;z-index:0;pointer-events:none;
+  letter-spacing:-.04em;
+}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--p1);margin-bottom:20px;}
+.kicker .n{width:28px;height:28px;border-radius:50%;background:var(--p1);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:.72rem;}
+.section-head{max-width:700px;margin-bottom:64px;}
+.section-head h2{font-size:clamp(2.1rem,4vw,3.1rem);margin-bottom:18px;line-height:1.08;}
+.section-head p{color:var(--ink-soft);font-size:1.04rem;}
+
+/* overview */
+.overview-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start;}
+.overview-grid p{color:var(--ink-soft);font-size:1.04rem;margin-bottom:20px;}
+.trait-list{display:flex;flex-direction:column;gap:0;}
+.trait{padding:22px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:20px;}
+.trait:first-child{padding-top:0;}
+.trait b{font-family:var(--head);font-size:1.08rem;white-space:nowrap;}
+.trait span{font-size:.86rem;color:var(--ink-dim);text-align:right;}
+
+/* ---- logo section ---- */
+.logo-showcase{
+  position:relative;background:linear-gradient(160deg, #00164214, #1B2E551c);
+  border:1px solid var(--line);border-radius:32px;padding:150px 40px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:30px;overflow:hidden;
+}
+.logo-showcase::before{content:'';position:absolute;width:70%;padding-bottom:70%;border-radius:50%;background:radial-gradient(circle, #00164222, transparent 70%);z-index:0;}
+.logo-showcase img{position:relative;z-index:1;max-height:min(300px,26vw);width:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.12));}
+.logo-variants{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:64px;}
+.variant-card{border-radius:24px;padding:70px 30px;display:flex;align-items:center;justify-content:center;min-height:230px;}
+.variant-card.light{background:#fff;border:1px solid var(--line);}
+.variant-card.dark{background:var(--ink);}
+.variant-card img{max-height:130px;width:auto;}
+.variant-card.dark img{filter:brightness(0) invert(1);}
+.variant-label{text-align:center;font-size:.76rem;color:var(--ink-dim);margin-top:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+.clearspace-block{background:#fff;border:1px solid var(--line);border-radius:24px;padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:30px;}
+.clearspace-box{border:1.5px dashed var(--p1); border-radius:10px;padding:50px;display:flex;align-items:center;justify-content:center;position:relative;}
+.clearspace-box img{max-height:110px;}
+.clearspace-box::before,.clearspace-box::after{content:'X';position:absolute;font-size:.66rem;color:var(--p1);opacity:.65;font-family:var(--head);font-weight:700;}
+.clearspace-box::before{top:8px;left:8px;}
+.clearspace-box::after{bottom:8px;right:8px;}
+.clearspace-note{font-size:.88rem;color:var(--ink-soft);text-align:center;max-width:440px;}
+.min-size-row{display:flex;align-items:flex-end;gap:56px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
+.min-size-item{text-align:center;}
+.min-size-item img{margin:0 auto 12px;}
+.min-size-item span{font-size:.74rem;color:var(--ink-dim);font-weight:600;}
+
+/* ---- color ---- */
+.palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.swatch{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.swatch:hover{transform:translateY(-8px);}
+.swatch .block{height:180px;position:relative;}
+.swatch .meta{padding:18px 20px;}
+.swatch .meta .name{font-family:var(--head);font-size:1rem;margin-bottom:10px;}
+.swatch .meta .code{font-size:.74rem;color:var(--ink-dim);display:flex;justify-content:space-between;padding:4px 0;border-top:1px solid var(--line);}
+.swatch .meta .code:first-of-type{border-top:none;padding-top:0;}
+@media(max-width:900px){.palette-grid{grid-template-columns:1fr 1fr;}}
+
+/* ---- typography ---- */
+.type-specimen{background:#fff;border:1px solid var(--line);border-radius:26px;padding:56px 50px;margin-bottom:26px;}
+.type-specimen .tag{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p1);margin-bottom:20px;}
+.type-specimen .big{font-family:var(--head);font-size:clamp(3rem,8vw,5.4rem);line-height:1;margin-bottom:26px;color:var(--ink);}
+.type-specimen.body-specimen .big{font-family:var(--body);font-weight:600;}
+.alphabet{font-family:var(--head);font-size:1.4rem;color:var(--ink-soft);word-spacing:6px;margin-bottom:28px;line-height:1.8;}
+.body-specimen .alphabet{font-family:var(--body);}
+.weight-row{display:flex;gap:36px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px;}
+.weight-row div{font-family:var(--head);font-size:1.4rem;}
+.body-specimen .weight-row div{font-family:var(--body);}
+.weight-row span{display:block;font-family:var(--body);font-size:.7rem;color:var(--ink-dim);margin-top:6px;letter-spacing:.05em;text-transform:uppercase;}
+
+/* ---- usage / donts ---- */
+.donts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.dont-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 22px;text-align:center;position:relative;}
+.dont-card .stage{height:130px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.dont-card .stage img{max-height:92px;max-width:85%;}
+.dont-badge{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;background:#e34b3c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.86rem;font-weight:700;}
+.dont-card p{font-size:.8rem;color:var(--ink-soft);}
+@media(max-width:900px){.donts-grid{grid-template-columns:1fr 1fr;}}
+
+/* ---- applications ---- */
+.apps-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;}
+.app-card{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#fff;}
+.biz-card{aspect-ratio:1.75/1;background:linear-gradient(135deg,var(--p1),var(--p2));display:flex;flex-direction:column;justify-content:space-between;padding:30px;position:relative;}
+.biz-card img{max-height:46px;width:auto;filter:brightness(0) invert(1);}
+.biz-card .lines{color:rgba(255,255,255,.94);}
+.biz-card .lines b{display:block;font-family:var(--head);font-size:1rem;}
+.biz-card .lines span{display:block;font-size:.72rem;color:rgba(255,255,255,.72);margin-top:4px;}
+.icon-card{aspect-ratio:1/1;background:var(--p1);display:flex;align-items:center;justify-content:center;border-radius:30px;}
+.icon-card img{max-height:52%;max-width:52%;filter:brightness(0) invert(1);}
+.avatar-card{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:#fff;}
+.avatar-circle{width:80%;height:80%;border-radius:50%;background:linear-gradient(135deg,var(--p2),var(--p1));display:flex;align-items:center;justify-content:center;}
+.avatar-circle img{max-height:48%;filter:brightness(0) invert(1);}
+.app-label{padding:14px 20px;font-size:.74rem;color:var(--ink-dim);border-top:1px solid var(--line);letter-spacing:.04em;text-transform:uppercase;font-weight:600;}
+@media(max-width:900px){.apps-grid{grid-template-columns:1fr 1fr;}.apps-grid .app-card:first-child{grid-column:1/-1;}}
+
+footer{padding:80px 0 46px;border-top:1px solid var(--line);position:relative;}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.foot-inner .nav-brand{font-size:1.05rem;}
+.foot-copy{font-size:.76rem;color:var(--ink-dim);margin-top:24px;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="sw"></span>ISERGO Group</div>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#logo">Logo</a></li>
+      <li><a href="#color">Color</a></li>
+      <li><a href="#type">Type</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#apps">Applications</a></li>
+          <li><a href="../../earlier-work/">&larr; Back to Earlier Work</a></li>
+</ul>
+  </div>
+</nav>
+
+<header class="cover" id="top">
+  <img class="cover-ghost" src="media/img-1.png" alt="">
+  <div class="cover-tag">Brand Guidelines</div>
+  <div class="cover-logo"><img src="media/img-2.png" alt="ISERGO Group logo"></div>
+  <h1>ISERGO Group</h1>
+  <p>Structural integrity, at every scale.</p>
+  <div class="cover-meta">
+    <span>v1.0 — 2026</span>
+    <span>Prepared by Cesar Lopez</span>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</header>
+
+<div class="manifesto">
+  <div class="manifesto-tile" style="background-image:url('media/img-3.png');"></div>
+  <div class="manifesto-inner reveal in">
+    <div class="manifesto-kicker">The Brand, In One Line</div>
+    <h2>One mark. Every division. <em>No</em> exceptions.</h2>
+  </div>
+</div>
+
+<section id="overview">
+  <div class="ghost-num">01</div>
+  <div class="wrap">
+    <div class="kicker reveal"><span class="n">01</span>Overview</div>
+    <div class="section-head reveal d1">
+      <h2>Corporate weight, engineered clarity.</h2>
+    </div>
+    <div class="overview-grid">
+      <div class="reveal d1">
+        <p>ISERGO Group's hexagon-and-droplet mark reads like a technical diagram — because it's meant to. The identity is built for a multi-division industrial group that needs to feel unified across engineering, resources, and operations.</p>
+        <p>Deep navy carries the authority of a group-level parent brand, while a single light-blue accent keeps the system from feeling heavy — reserved for the word "group" and key highlights only.</p>
+      </div>
+      <div class="trait-list reveal d2">
+        <div class="trait"><b>Tone</b><span>Corporate, precise, unified</span></div>
+        <div class="trait"><b>Voice</b><span>Formal, structured, confident</span></div>
+        <div class="trait"><b>Best for</b><span>Industrial groups, holding companies, B2B</span></div>
+        <div class="trait"><b>Avoid</b><span>Multiple accent colors, informal type</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="logo" style="background:#fff;">
+  <div class="ghost-num">02</div>
+  <div class="wrap">
+    <div class="kicker reveal"><span class="n">02</span>Logo</div>
+    <div class="section-head reveal d1">
+      <h2>The mark, protected.</h2>
+      <p>The primary logo should always appear exactly as shown — never redrawn, recolored outside this guide, or altered in proportion.</p>
+    </div>
+    <div class="logo-showcase reveal d1"><img src="media/img-4.png" alt="ISERGO Group primary logo"></div>
+    <div class="logo-variants reveal d2">
+      <div><div class="variant-card light"><img src="media/img-5.png" alt="Logo on light"></div><div class="variant-label">On Light</div></div>
+      <div><div class="variant-card dark"><img src="media/img-6.png" alt="Logo on dark"></div><div class="variant-label">On Dark</div></div>
+    </div>
+    <div class="clearspace-block reveal d3">
+      <div class="clearspace-box"><img src="media/img-7.png" alt="Clearspace"></div>
+      <p class="clearspace-note">Maintain clear space around the logo equal to the height of the mark's icon on all sides. Never let text, imagery, or the edge of a layout enter this zone.</p>
+      <div class="min-size-row">
+        <div class="min-size-item"><img src="media/img-8.png" style="height:34px;"><span>Digital min · 90px</span></div>
+        <div class="min-size-item"><img src="media/img-9.png" style="height:52px;"><span>Print min · 0.6in</span></div>
+        <div class="min-size-item"><img src="media/img-10.png" style="height:80px;"><span>Recommended</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="color">
+  <div class="ghost-num">03</div>
+  <div class="wrap">
+    <div class="kicker reveal"><span class="n">03</span>Color</div>
+    <div class="section-head reveal d1">
+      <h2>The palette.</h2>
+      <p>Deep navy anchors the group identity; a single sky-blue accent is reserved for the 'group' mark and key emphasis.</p>
+    </div>
+    <div class="palette-grid reveal d2">
+      <div class="swatch">
+        <div class="block" style="background:#001642;"></div>
+        <div class="meta">
+          <div class="name">Deep Navy</div>
+          <div class="code"><span>HEX</span><span>#001642</span></div>
+          <div class="code"><span>RGB</span><span>0, 22, 66</span></div>
+          <div class="code"><span>CMYK</span><span>100, 67, 0, 74</span></div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#1B2E55;"></div>
+        <div class="meta">
+          <div class="name">Navy</div>
+          <div class="code"><span>HEX</span><span>#1B2E55</span></div>
+          <div class="code"><span>RGB</span><span>27, 46, 85</span></div>
+          <div class="code"><span>CMYK</span><span>68, 46, 0, 67</span></div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#91BDE5;"></div>
+        <div class="meta">
+          <div class="name">Sky Blue</div>
+          <div class="code"><span>HEX</span><span>#91BDE5</span></div>
+          <div class="code"><span>RGB</span><span>145, 189, 229</span></div>
+          <div class="code"><span>CMYK</span><span>37, 17, 0, 10</span></div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#67748D;"></div>
+        <div class="meta">
+          <div class="name">Steel Blue</div>
+          <div class="code"><span>HEX</span><span>#67748D</span></div>
+          <div class="code"><span>RGB</span><span>103, 116, 141</span></div>
+          <div class="code"><span>CMYK</span><span>27, 18, 0, 45</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="type" style="background:#fff;">
+  <div class="ghost-num">04</div>
+  <div class="wrap">
+    <div class="kicker reveal"><span class="n">04</span>Typography</div>
+    <div class="section-head reveal d1">
+      <h2>Two typefaces, one voice.</h2>
+      <p>Manrope's confident geometry suits corporate headlines; Inter carries reports and interface copy with total clarity.</p>
+    </div>
+    <div class="type-specimen reveal d2">
+      <div class="tag">Display — Manrope</div>
+      <div class="big">Aa Bb Cc</div>
+      <div class="alphabet">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ</div>
+      <div class="weight-row">
+        <div style="font-weight:500;">Medium<span>500</span></div>
+        <div style="font-weight:600;">SemiBold<span>600</span></div>
+        <div style="font-weight:700;">Bold<span>700</span></div>
+      </div>
+    </div>
+    <div class="type-specimen body-specimen reveal d3">
+      <div class="tag">Body — Inter</div>
+      <div class="big">Aa Bb Cc</div>
+      <div class="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz</div>
+      <div class="weight-row">
+        <div style="font-weight:400;">Regular<span>400</span></div>
+        <div style="font-weight:500;">Medium<span>500</span></div>
+        <div style="font-weight:700;">Bold<span>700</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="usage">
+  <div class="ghost-num">05</div>
+  <div class="wrap">
+    <div class="kicker reveal"><span class="n">05</span>Usage</div>
+    <div class="section-head reveal d1">
+      <h2>What not to do.</h2>
+      <p>Small distortions compound fast. These four mistakes are the most common — and the easiest to avoid.</p>
+    </div>
+    <div class="donts-grid reveal d2">
+      <div class="dont-card"><div class="dont-badge">✕</div><div class="stage"><img src="media/img-11.png" style="transform:scaleX(1.6);"></div><p>Don't stretch or distort the proportions.</p></div>
+      <div class="dont-card"><div class="dont-badge">✕</div><div class="stage"><img src="media/img-12.png" style="filter:hue-rotate(140deg) saturate(2);"></div><p>Don't recolor outside the approved palette.</p></div>
+      <div class="dont-card"><div class="dont-badge">✕</div><div class="stage"><img src="media/img-13.png" style="transform:rotate(-18deg);"></div><p>Don't rotate or tilt the logo.</p></div>
+      <div class="dont-card"><div class="dont-badge">✕</div><div class="stage" style="background:var(--p1);border-radius:12px;"><img src="media/img-14.png" style="opacity:.28;"></div><p>Don't place on low-contrast backgrounds.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="apps" style="background:#fff;">
+  <div class="ghost-num">06</div>
+  <div class="wrap">
+    <div class="kicker reveal"><span class="n">06</span>Applications</div>
+    <div class="section-head reveal d1">
+      <h2>The system, in the wild.</h2>
+      <p>A quick look at how the mark and palette hold up across common touchpoints.</p>
+    </div>
+    <div class="apps-grid reveal d2">
+      <div class="app-card">
+        <div class="biz-card">
+          <img src="media/img-15.png" alt="Business card logo">
+          <div class="lines"><b>Fernando Ariza</b><span>Group Director</span></div>
+        </div>
+        <div class="app-label">Business Card</div>
+      </div>
+      <div class="app-card">
+        <div class="icon-card"><img src="media/img-16.png" alt="App icon"></div>
+        <div class="app-label">App Icon</div>
+      </div>
+      <div class="app-card">
+        <div class="avatar-card"><div class="avatar-circle"><img src="media/img-17.png" alt="Social avatar"></div></div>
+        <div class="app-label">Social Avatar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="nav-brand"><span class="sw"></span>ISERGO Group</div>
+      <div style="font-size:.84rem;color:var(--ink-soft);">Brand Guidelines · v1.0</div>
+    </div>
+    <div class="foot-copy">Prepared by Cesar Lopez — UX/UI Designer &amp; Developer. ISERGO Group and its logo are trademarks of their respective owners.</div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
