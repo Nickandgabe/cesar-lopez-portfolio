@@ -54,7 +54,7 @@
                 box-shadow:inset 0 0 80px rgba(0,0,0,.5), 0 20px 50px -20px rgba(0,0,0,.6);
             }
             .turntable-stage-lg.dragging { cursor:grabbing; }
-            .turntable-img-lg { max-width:82%; max-height:78%; object-fit:contain; display:block; pointer-events:none; filter:drop-shadow(0 24px 30px rgba(0,0,0,.5)); }
+            .turntable-img-lg { width:82%; height:78%; object-fit:contain; display:block; pointer-events:none; filter:drop-shadow(0 24px 30px rgba(0,0,0,.5)); }
             .turntable-hint { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(255,255,255,.1); backdrop-filter:blur(6px); color:#fff; font-size:11px; letter-spacing:1px; text-transform:uppercase; padding:7px 16px; border-radius:20px; opacity:.9; transition:opacity .3s ease; white-space:nowrap; border:1px solid rgba(255,255,255,.15); }
             .turntable-stage-lg.interacted .turntable-hint { opacity:0; }
             .turntable-tabs { display:flex; gap:14px; justify-content:center; margin-top:22px; }
@@ -83,7 +83,17 @@
 
             .transition-row { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; }
             .transition-item { width:340px; }
-            .transition-video { width:100%; height:190px; object-fit:cover; border-radius:6px; background:#000; display:block; }
+            .transition-scrub-stage { position:relative; width:100%; height:190px; border-radius:6px; overflow:hidden; background:#14171c; cursor:pointer; box-shadow:0 14px 30px -16px rgba(0,0,0,.6); }
+            .transition-scrub-stage::after {
+                content:""; position:absolute; inset:0; margin:auto; width:52px; height:52px; border-radius:50%;
+                background:rgba(20,22,26,.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") no-repeat center/20px;
+                border:1px solid rgba(255,255,255,.3); opacity:0; transition:opacity .25s ease; pointer-events:none;
+            }
+            .transition-scrub-stage:hover::after { opacity:1; }
+            .transition-scrub-stage.playing::after { opacity:0; }
+            .transition-scrub-img { width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+            .transition-hint { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); background:rgba(255,255,255,.1); backdrop-filter:blur(6px); color:#fff; font-size:10.5px; letter-spacing:1px; text-transform:uppercase; padding:6px 13px; border-radius:20px; opacity:.9; transition:opacity .3s ease; white-space:nowrap; border:1px solid rgba(255,255,255,.15); }
+            .transition-scrub-stage.interacted .transition-hint { opacity:0; }
             .transition-item p { text-align:center; color:#8f9aa5; font-size:13px; margin-top:12px; }
 
             @media(max-width:768px){
@@ -211,6 +221,31 @@ Start Earlier Work Section
 								<p>Real production assets, live in the browser — drag to rotate, toggle environments. Built from actual Toyota Auto Show and Immersicom deliverables, not staged demos.</p>
 							</div>
 
+							<h4 class="showcase-3d-subhead">Scene Transitions — Across the Show Floor</h4>
+							<div class="transition-row">
+								<div class="transition-item">
+									<div class="transition-scrub-stage" data-basepath="media/toyota/supra-transition-frames/" data-frames="162">
+										<img class="transition-scrub-img" alt="Supra showroom transition" draggable="false">
+										<span class="transition-hint">Click to play</span>
+									</div>
+									<p>Supra — Showroom Transition</p>
+								</div>
+								<div class="transition-item">
+									<div class="transition-scrub-stage" data-basepath="media/toyota/trd-transition-frames/" data-frames="257">
+										<img class="transition-scrub-img" alt="TRD showroom transition" draggable="false">
+										<span class="transition-hint">Click to play</span>
+									</div>
+									<p>TRD — Showroom Transition</p>
+								</div>
+								<div class="transition-item">
+									<div class="transition-scrub-stage" data-basepath="media/toyota/mobility-transition-frames/" data-frames="179">
+										<img class="transition-scrub-img" alt="Mobility day/night transition" draggable="false">
+										<span class="transition-hint">Click to play</span>
+									</div>
+									<p>Mobility — Day &harr; Night</p>
+								</div>
+							</div>
+
 							<h4 class="showcase-3d-subhead">360&deg; Turntables</h4>
 							<div class="turntable-hero">
 								<div class="turntable-stage-lg" id="turntableStage">
@@ -239,10 +274,6 @@ Start Earlier Work Section
 
 							<h4 class="showcase-3d-subhead">Environment Layers — Toyota Auto Show</h4>
 							<div class="panorama-scene" id="panoramaScene">
-								<div class="vehicle-tabs" id="vehicleTabs">
-									<button type="button" class="vehicle-tab active" data-vehicle="supra">Supra</button>
-									<button type="button" class="vehicle-tab" data-vehicle="trd">TRD Off-Road</button>
-								</div>
 								<div class="panorama-viewport" id="panoramaViewport">
 									<div class="panorama-track" id="panoramaTrack">
 										<img class="panorama-sky" id="panoramaSky" alt="">
@@ -251,35 +282,6 @@ Start Earlier Work Section
 									<img class="panorama-car" id="panoramaCar" alt="Isolated vehicle cutout">
 								</div>
 								<div class="panorama-controls" id="panoramaControls"></div>
-							</div>
-
-							<h4 class="showcase-3d-subhead">Scene Transitions — Across the Show Floor</h4>
-							<div class="transition-row">
-								<div class="transition-item">
-									<video class="transition-video" muted loop playsinline preload="none"
-										data-src-mp4="media/toyota/supra-landing-to-lgp.mp4" data-src-webm="media/toyota/supra-landing-to-lgp.webm"></video>
-									<p>Supra — Entering the showroom</p>
-								</div>
-								<div class="transition-item">
-									<video class="transition-video" muted loop playsinline preload="none"
-										data-src-mp4="media/toyota/supra-lgp-to-landing.mp4" data-src-webm="media/toyota/supra-lgp-to-landing.webm"></video>
-									<p>Supra — Leaving the showroom</p>
-								</div>
-								<div class="transition-item">
-									<video class="transition-video" muted loop playsinline preload="none"
-										data-src-mp4="media/toyota/trd-landing-to-lgp.mp4" data-src-webm="media/toyota/trd-landing-to-lgp.webm"></video>
-									<p>TRD — Entering the showroom</p>
-								</div>
-								<div class="transition-item">
-									<video class="transition-video" muted loop playsinline preload="none"
-										data-src-mp4="media/toyota/trd-lgp-to-landing.mp4" data-src-webm="media/toyota/trd-lgp-to-landing.webm"></video>
-									<p>TRD — Leaving the showroom</p>
-								</div>
-								<div class="transition-item">
-									<video class="transition-video" muted loop playsinline preload="none"
-										data-src-mp4="media/toyota/mobility-sphereloop.mp4" data-src-webm="media/toyota/mobility-sphereloop.webm"></video>
-									<p>Mobility — Sphere loop</p>
-								</div>
 							</div>
 						</section>
 					</div>
@@ -661,23 +663,9 @@ Start Earlier Work Section
 			});
 
 			function loadShowcaseAssets() {
-				// Safari can't play WebM at all — offer H.264 MP4 first (universal),
-				// WebM second for browsers that prefer/only ship VP8/9.
-				section.querySelectorAll('video[data-src-mp4]').forEach(function (video) {
-					var mp4 = document.createElement('source');
-					mp4.src = withVersion(video.getAttribute('data-src-mp4'));
-					mp4.type = 'video/mp4';
-					var webm = document.createElement('source');
-					webm.src = withVersion(video.getAttribute('data-src-webm'));
-					webm.type = 'video/webm';
-					video.appendChild(mp4);
-					video.appendChild(webm);
-					video.load();
-					video.play().catch(function () {});
-				});
-
 				initPanorama();
 				initTurntableHero();
+				initTransitionScrubbers();
 			}
 
 			function initTurntableHero() {
@@ -783,14 +771,6 @@ Start Earlier Work Section
 						{ key: 'country', label: 'Country Club', sky: 'media/toyota/supra-country-sky', ground: 'media/toyota/supra-country-ground' },
 						{ key: 'night', label: 'Night', sky: 'media/toyota/supra-night-sky', ground: 'media/toyota/supra-night-ground' }
 					]
-				},
-				trd: {
-					label: 'TRD Off-Road',
-					car: 'media/toyota/trd-car',
-					scenes: [
-						{ key: 'desert', label: 'Desert', sky: 'media/toyota/trd-desert-sky', ground: 'media/toyota/trd-desert-ground' },
-						{ key: 'winter', label: 'Winter', sky: 'media/toyota/trd-winter-sky', ground: 'media/toyota/trd-winter-ground' }
-					]
 				}
 			};
 
@@ -845,6 +825,64 @@ Start Earlier Work Section
 
 				renderSceneButtons();
 				renderScene();
+			}
+
+			function initTransitionScrubbers() {
+				var stages = Array.prototype.slice.call(document.querySelectorAll('.transition-scrub-stage'));
+
+				stages.forEach(function (stage) {
+					var basePath = stage.getAttribute('data-basepath');
+					var frameCount = parseInt(stage.getAttribute('data-frames'), 10);
+					var img = stage.querySelector('.transition-scrub-img');
+					var hint = stage.querySelector('.transition-hint');
+					var currentFrame = 1;
+					var preloaded = false;
+					var playTimer = null;
+
+					function setFrame(n) {
+						currentFrame = Math.max(1, Math.min(frameCount, n));
+						img.src = withVersion(basePath + 'frame-' + currentFrame + '.' + IMG_EXT);
+					}
+					setFrame(1);
+
+					// Click-triggered, not auto/drag — so the full sequence only ever
+					// loads when someone actually wants to watch it. No preload burst,
+					// no request-storm risk regardless of how many cards are on the page.
+					function preloadSequence(onReady) {
+						if (preloaded) { onReady(); return; }
+						preloaded = true;
+						var loaded = 0;
+						for (var i = 1; i <= frameCount; i++) {
+							var p = new Image();
+							p.onload = p.onerror = function () {
+								loaded++;
+								if (loaded === frameCount) onReady();
+							};
+							p.src = withVersion(basePath + 'frame-' + i + '.' + IMG_EXT);
+						}
+					}
+
+					function stopPlay() {
+						if (playTimer) { clearInterval(playTimer); playTimer = null; }
+						stage.classList.remove('playing');
+					}
+					function play() {
+						stopPlay();
+						stage.classList.add('playing', 'interacted');
+						if (hint) hint.textContent = 'Playing…';
+						var f = 1;
+						setFrame(1);
+						playTimer = setInterval(function () {
+							f += 2;
+							if (f >= frameCount) { setFrame(frameCount); stopPlay(); if (hint) hint.textContent = 'Click to replay'; return; }
+							setFrame(f);
+						}, 35);
+					}
+
+					stage.addEventListener('click', function () {
+						preloadSequence(play);
+					});
+				});
 			}
 		})();
 		</script>
