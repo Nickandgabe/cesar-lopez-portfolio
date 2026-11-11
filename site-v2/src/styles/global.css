@@ -175,30 +175,33 @@ a {
   background: linear-gradient(to bottom, var(--color-night) 0%, var(--color-page) 100%);
 }
 
-/* Hero mask: strong on the text side, lighter over the artwork.
-   Phones: a light mask so the video shows, plus a soft dark band (.hero-scrim)
-   behind the small text only, sized to the text so it holds on any phone height. */
-.hero-mask {
-  background:
-    linear-gradient(to bottom, rgba(5, 7, 14, var(--hero-mask-top, 0.4)) 0%, rgba(5, 7, 14, var(--hero-mask-mid, 0.45)) 50%, rgba(5, 7, 14, 0.9) 100%);
+/* Hero media.
+   Phones/tablets: the video is a band at the top, cropped so the whole double diamond
+   fits the screen width, fading into the dark background; the text sits below it.
+   Desktop: full-bleed behind the text, with the mask below. */
+:root {
+  --hero-media-h: min(100vw, 520px, 60svh);
 }
 @media (max-width: 1023.98px) {
-  .hero-scrim {
-    position: relative;
+  .hero-media {
+    top: 56px;
+    height: var(--hero-media-h);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 55%, transparent 90%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 55%, transparent 90%);
   }
-  .hero-scrim::before {
-    content: '';
-    position: absolute;
-    inset: -24px calc(-1 * var(--gutter));
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      transparent 0,
-      rgba(5, 7, 14, var(--scrim, 0.5)) 24px,
-      rgba(5, 7, 14, var(--scrim, 0.5)) calc(100% - 24px),
-      transparent 100%
-    );
+  .hero-media > * {
+    object-position: 94% 50%;
+  }
+  .hero-text {
+    padding-top: calc(56px + var(--hero-media-h) * 0.9);
+  }
+}
+@media (min-width: 1024px) {
+  .hero-media {
+    inset: 0;
+  }
+  .hero-media > * {
+    object-position: 70% 50%;
   }
 }
 /* 1024–1279: the text block covers more of the artwork, so the mask stays darker further right (AA contrast). */
