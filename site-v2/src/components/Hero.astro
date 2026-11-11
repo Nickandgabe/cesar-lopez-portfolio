@@ -21,21 +21,21 @@ const hasVideo = Boolean(hero.video.mp4 || hero.video.webm);
   />
   {hasVideo && <VideoOverlay video={hero.video} poster={hero.image.src} class="absolute inset-0 h-full w-full object-cover" />}
   </div>
-  <div class="hero-mask absolute inset-0 -z-10 hidden lg:block" aria-hidden="true"></div>
+  <div class="hero-mask absolute inset-0 -z-10" aria-hidden="true"></div>
 
   <div class="hero-text flex items-start px-[var(--gutter)] pb-16 lg:min-h-[clamp(640px,100svh,960px)] lg:items-center lg:pt-[104px] lg:pb-12">
     <div class="w-full max-w-[680px]">
-      <p class="mono m-0 mb-[26px] text-mist lg:mb-[clamp(14px,2.6svh,26px)]">{hero.eyebrow}</p>
+      <p class="hero-scrim [--scrim:0.55] mono m-0 mb-[26px] text-mist lg:mb-[clamp(14px,2.6svh,26px)]">{hero.eyebrow}</p>
       <h1 class="t-display m-0 lg:text-[clamp(2.6rem,min(5.84vw,8.6svh),5.25rem)]">
         {hero.headline.main} <span class="accent-light text-accent-soft">{hero.headline.accent}</span>
       </h1>
-      <p class="mt-[30px] mb-0 max-w-[580px] lg:mt-[clamp(16px,3.2svh,30px)] text-[17px] leading-[1.6] text-mist md:text-[19px]">{hero.body}</p>
+      <p class="hero-scrim [--scrim:0.6] mt-[30px] mb-0 max-w-[580px] lg:mt-[clamp(16px,3.2svh,30px)] text-[17px] leading-[1.6] text-mist md:text-[19px]">{hero.body}</p>
 
-      <ul class="m-0 mt-11 grid list-none grid-cols-2 gap-x-6 gap-y-6 p-0 lg:mt-[clamp(20px,4.6svh,44px)] lg:flex lg:flex-nowrap lg:gap-x-7">
+      <ul class="hero-scrim [--scrim:0.6] m-0 mt-11 grid list-none grid-cols-2 gap-x-6 gap-y-6 p-0 lg:mt-[clamp(20px,4.6svh,44px)] lg:flex lg:flex-nowrap lg:gap-x-7">
         {
           hero.stats.map((s) => (
             <li class="lg:max-w-[180px]">
-              <p class="m-0 flex items-baseline gap-x-1.5 leading-none whitespace-nowrap">
+              <p class="m-0 flex flex-wrap items-baseline gap-x-1.5 gap-y-1 leading-none sm:flex-nowrap sm:whitespace-nowrap">
                 {s.prefix && <span class="text-sm font-medium text-mist">{s.prefix}</span>}
                 <span class="num text-[clamp(2rem,2.64vw,2.375rem)] font-semibold tracking-[-0.05em] text-white">
                   <span data-count={s.value}>{s.value}</span>{s.suffix}

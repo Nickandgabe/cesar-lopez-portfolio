@@ -3,12 +3,12 @@ import { Image } from 'astro:assets';
 import { nav } from '../content';
 ---
 
-<header class="fixed inset-x-0 top-4 z-50 flex justify-center px-3 md:top-6">
+<header class="fixed inset-x-0 top-4 z-50 flex justify-center px-2 sm:px-3 md:top-6">
   <nav
     aria-label="Main"
     class="glass relative flex items-center gap-1 rounded-full py-[7px] pr-[7px] pl-2"
   >
-    <a href="#top" class="mr-2 inline-flex items-center gap-2.5 rounded-full text-[15px] font-semibold tracking-[-0.01em] md:mr-[18px]">
+    <a href="#top" class="mr-1 inline-flex items-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold sm:mr-2 sm:gap-2.5 sm:text-[15px] tracking-[-0.01em] md:mr-[18px]">
       <Image
         src={nav.portrait.src}
         alt={nav.portrait.alt}
@@ -34,7 +34,7 @@ import { nav } from '../content';
 
     <button
       type="button"
-      class="inline-flex min-h-[44px] items-center rounded-full px-3.5 text-sm text-ink-2 hover:text-ink md:hidden"
+      class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-2.5 text-sm text-ink-2 hover:text-ink sm:px-3.5 md:hidden"
       aria-expanded="false"
       aria-controls="nav-menu"
       data-menu-toggle
@@ -44,7 +44,7 @@ import { nav } from '../content';
 
     <a
       href={nav.resume.href}
-      class="ml-1 inline-flex min-h-[44px] items-center rounded-full bg-ink px-[18px] text-sm font-medium text-white transition-colors hover:bg-[#2a2b33] md:ml-2.5"
+      class="ml-1 inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full bg-ink px-3.5 text-sm sm:px-[18px] font-medium text-white transition-colors hover:bg-[#2a2b33] md:ml-2.5"
     >
       {nav.resume.label}
     </a>

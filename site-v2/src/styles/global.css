@@ -182,24 +182,46 @@ a {
 }
 
 /* Hero media.
-   Phones/tablets: the video is a band at the top, cropped so the whole double diamond
-   fits the screen width, fading into the dark background; the text sits below it.
+   Phones/tablets: the video sits behind the text, scaled so the whole double diamond
+   fits the screen width, placed behind the headline. A light mask plus soft dark bands
+   (.hero-scrim) behind the small text keep it readable (AA) over the bright diamond.
    Desktop: full-bleed behind the text, with the mask below. */
 :root {
-  --hero-media-h: min(100vw, 520px, 60svh);
+  --hero-media-h: min(100vw, 560px, 62svh);
 }
 @media (max-width: 1023.98px) {
   .hero-media {
-    top: 56px;
+    top: 64px;
     height: var(--hero-media-h);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 55%, transparent 90%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 55%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
   }
   .hero-media > * {
     object-position: 94% 50%;
   }
   .hero-text {
-    padding-top: calc(56px + var(--hero-media-h) * 0.9);
+    min-height: max(640px, 100svh);
+    padding-top: 7rem;
+  }
+  .hero-mask {
+    background: rgba(5, 7, 14, var(--hero-mask, 0.43));
+  }
+  .hero-scrim {
+    position: relative;
+  }
+  .hero-scrim::before {
+    content: '';
+    position: absolute;
+    inset: -20px calc(-1 * var(--gutter));
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgba(5, 7, 14, var(--scrim, 0.5)) 20px,
+      rgba(5, 7, 14, var(--scrim, 0.5)) calc(100% - 20px),
+      transparent 100%
+    );
   }
 }
 @media (min-width: 1024px) {
