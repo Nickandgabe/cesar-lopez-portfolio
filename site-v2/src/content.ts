@@ -37,7 +37,7 @@ export const site = {
   url: 'https://www.iamcesarlopez.com',
   title: 'Cesar Lopez — AI Experience Design Leader',
   description:
-    'I lead AI experience design that turns complex enterprise systems into measurable business results — with an operating model that rebuilds the Double Diamond for AI. 18 years across product design, product management, UX and front-end.',
+    'I lead AI experience design that turns complex enterprise systems into measurable business results — with an operating model where agents explore and build, and people decide. 18 years across product design, product management, UX and front-end.',
   ogImage: '/og.jpg',
   ogImageAlt: 'Two glass diamonds with streams of blue light flowing through a glowing core',
   person: {
@@ -53,7 +53,6 @@ export const nav = {
   name: 'Cesar Lopez',
   portrait: { src: portraitImage, alt: '' } satisfies Img,
   links: [
-    { label: 'Model', href: '/#model' },
     { label: 'Work', href: '/#work' },
     { label: 'Leadership', href: '/#leadership' },
     { label: '3D & range', href: '/#range' },
@@ -71,13 +70,13 @@ export const hero = {
     accent: 'Agents build. People decide.',
   } satisfies SplitText,
   body:
-    'I lead AI experience design that turns complex enterprise systems into measurable business results — with an operating model that rebuilds the Double Diamond for AI. Shaped over 18 years across industrial design, 3D, enterprise platforms and the ventures I founded.',
+    'I lead AI experience design that turns complex enterprise systems into measurable business results — with an operating model where agents explore and build, people decide, and guardrails protect what ships. Shaped over 18 years across industrial design, 3D, enterprise platforms and the ventures I founded.',
   stats: [
     { value: 18, label: 'years in product & design' },
     { value: 5, label: 'designers I lead at AT&T' },
     { value: 3, label: 'ventures founded' },
   ],
-  primary: { label: 'See the model ↓', href: '#model' } satisfies Link,
+  primary: { label: 'See the work ↓', href: '#work' } satisfies Link,
   secondary: { label: 'Get in touch', href: '#contact' } satisfies Link,
   image: {
     src: heroImage,
@@ -100,23 +99,6 @@ export const metrics = {
     { prefix: '~', value: 2, suffix: 'M', lines: ['work hours saved a year — 9,000', 'agents, 180M customers'] },
   ],
   note: '50+ flows: my own design work · 8×, 75%, ~2M: AT&T Customer Connect program results',
-};
-
-/** The AI operating model — the idea the whole site is built around. */
-export const model = {
-  eyebrow: 'The operating model',
-  title: { main: 'The Double Diamond,', accent: 'rebuilt for AI.' } satisfies SplitText,
-  intro: 'How I lead design teams now. Agents take on the exploring and the building; people keep the decisions; the system keeps quality as speed goes up.',
-  // In diamond order: each diamond opens (agents) and closes (people).
-  steps: [
-    { n: '01', who: 'agents', title: 'Agents explore', detail: 'Research, options and first directions come from AI agents, in parallel.' },
-    { n: '02', who: 'people', title: 'People decide', detail: 'Designers and leaders make the judgment call: what is worth building.' },
-    { n: '03', who: 'agents', title: 'Agents build', detail: 'Agents turn the decision into build-ready work: specs, flows, prototypes.' },
-    { n: '04', who: 'people', title: 'Guardrails protect what ships', detail: 'People review against standards and AI governance before anything reaches customers.' },
-  ] as { n: string; who: 'agents' | 'people'; title: string; detail: string }[],
-  base: 'The design system holds it together',
-  legend: { agents: 'AI agents', people: 'People' },
-  proof: 'In practice: AI Product Journey, presented to VPs and AVPs at AT&T — and Pulse, the OKR platform I own.',
 };
 
 /* ---------------- Case studies ---------------- */
@@ -172,7 +154,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     decisions: [
       {
-        title: 'Rebuilt the Double Diamond for AI',
+        title: 'Designed an operating model for AI agents',
         why: 'Agents explore and build, people decide, the design system holds it together, and guardrails protect what ships — a model leaders can adopt, not a single screen.',
       },
       {

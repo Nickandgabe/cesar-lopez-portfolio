@@ -19,7 +19,6 @@ Every word, number and image choice lives in **`src/content.ts`**. Components on
 
 - **Hero:** `hero.headline`, `hero.body`, `hero.stats` (the count-up numbers).
 - **Metrics band:** `metrics` — `value` is the counted number, `prefix`/`suffix` wrap it (`~`, `+`, `×`, `%`, `M`).
-- **Operating model section:** `model` — title, intro, the 4 steps of the diamond, and the "in practice" line.
 - **Case rows on the homepage:** `work.cases` (short version of each case).
 - **Case pages** (`/work/<slug>/`): `caseStudies` — results band, problem, role, decisions, visual slots, takeaway.
   - `published: false` hides a page from the deployed site (it still shows in `npm run dev`, with a "Draft" badge). Nexus is held this way until the patent is filed.
