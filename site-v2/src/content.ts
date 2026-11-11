@@ -111,6 +111,8 @@ export const career = {
     { value: 12, suffix: '+', label: 'industries — from telecom, healthcare and fintech to NGOs, political campaigns and manufacturing' },
     { value: 30, suffix: '+', label: 'brands — including Toyota, Bavaria and AT&T' },
     { value: 2, suffix: '', label: 'countries — products built in Colombia and the US' },
+    // The 8 disciplines: 3D, industrial design, UX, front-end code, VR/AR, product management,
+    // AI orchestration, photography. Change the number if any is removed.
     { value: 8, suffix: '', label: 'disciplines — from 3D and industrial design to digital product design, code and AI orchestration' },
   ] satisfies Stat[],
   industries:
