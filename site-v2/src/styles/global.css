@@ -179,7 +179,7 @@ a {
    Phones get a flatter, darker mask because text covers the whole image. */
 .hero-mask {
   background:
-    linear-gradient(to bottom, rgba(5, 7, 14, 0.55) 0%, rgba(5, 7, 14, 0.82) 45%, rgba(5, 7, 14, 0.94) 100%);
+    linear-gradient(to bottom, rgba(5, 7, 14, 0.74) 0%, rgba(5, 7, 14, 0.84) 45%, rgba(5, 7, 14, 0.94) 100%);
 }
 /* 1024–1279: the text block covers more of the artwork, so the mask stays darker further right (AA contrast). */
 @media (min-width: 1024px) {

@@ -32,17 +32,20 @@ Text in `[brackets]` is a deliberate visible placeholder.
 
 To swap an image: put the new file in `src/assets/`, change the import at the top of `content.ts`, and update its `alt`. Astro makes the WebP sizes at build time.
 
-## Swap the hero image for a video
+## Hero video
 
-1. Export a short, seamless loop (H.264 MP4, and optionally WebM). Aim for under ~4 MB, 1920×1080 or smaller, no audio track.
-2. Put the files in `public/video/`, e.g. `public/video/hero.mp4` and `hero.webm`.
-3. In `src/content.ts` set:
-   ```ts
-   video: { mp4: '/video/hero.mp4', webm: '/video/hero.webm' },
+The hero plays `public/video/hero.webm` (with `hero.mp4` as fallback); `src/assets/hero-poster.jpg` is its first frame, shown while it loads and to visitors with reduced motion or data saver on. It pauses when scrolled off screen.
+
+To replace it with a new video:
+
+1. Re-encode the new clip without audio. A ping-pong loop (forward then backward) avoids a jump if the camera moves:
+   ```bash
+   ffmpeg -i in.mp4 -filter_complex "[0:v]split[a][b];[b]reverse,trim=start_frame=1,setpts=PTS-STARTPTS[r];[a][r]concat=n=2:v=1:a=0[v]" -map "[v]" -an -c:v libx264 -crf 24 -preset slow -pix_fmt yuv420p -movflags +faststart public/video/hero.mp4
+   ffmpeg -i in.mp4 -filter_complex "<same>" -map "[v]" -an -c:v libvpx-vp9 -crf 38 -b:v 0 public/video/hero.webm
+   ffmpeg -i in.mp4 -frames:v 1 -q:v 2 src/assets/hero-poster.jpg
    ```
-4. Optionally replace `src/assets/hero-concept.png` with the video's first frame, so the poster matches the first frame of the video.
-
-The video is muted, looped and inline. It starts only when the visitor hasn't asked for reduced motion; otherwise they see the poster image. The image is still the first thing that paints, so load speed holds.
+2. Paths are set in `hero.video` in `src/content.ts`; set both to `''` to go back to a still image.
+3. Check that the hero text still reads clearly over the brightest frames.
 
 ## Deploy
 

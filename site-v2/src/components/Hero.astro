@@ -3,7 +3,7 @@ import { Picture, getImage } from 'astro:assets';
 import { hero } from '../content';
 
 const hasVideo = Boolean(hero.video.mp4 || hero.video.webm);
-const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', width: 1024 }) : null;
+const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', width: 1280 }) : null;
 ---
 
 <section id="top" class="on-dark relative isolate overflow-hidden bg-hero text-white">
@@ -12,16 +12,16 @@ const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', 
     alt={hero.image.alt}
     formats={['webp']}
     fallbackFormat="jpg"
-    widths={[640, 1024]}
+    widths={[640, 1024, 1280]}
     sizes="100vw"
     loading="eager"
     fetchpriority="high"
-    class="absolute inset-0 -z-20 h-full w-full object-cover object-[78%_50%]"
+    class="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_50%]"
   />
   {
     hasVideo && (
       <video
-        class="absolute inset-0 -z-20 h-full w-full object-cover object-[78%_50%]"
+        class="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_50%]"
         muted
         loop
         playsinline
@@ -68,22 +68,21 @@ const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', 
 </section>
 <div class="hero-to-page h-[80px] lg:h-[120px]" aria-hidden="true"></div>
 
-{
-  hasVideo && (
-    <script>
-      const video = document.querySelector<HTMLVideoElement>('[data-hero-video]');
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if (video) {
-        const sync = () => {
-          if (reduce.matches) {
-            video.pause();
-          } else {
-            video.play().catch(() => {});
-          }
-        };
-        sync();
-        reduce.addEventListener('change', sync);
-      }
-    </script>
-  )
-}
+<script>
+  // Hero video: play only when motion is allowed, data saver is off and the hero is on screen.
+  const video = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  if (video) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
+    let onScreen = true;
+    const sync = () => {
+      if (reduce.matches || saveData || !onScreen) video.pause();
+      else video.play().catch(() => {});
+    };
+    new IntersectionObserver((entries) => {
+      onScreen = entries[0]?.isIntersecting ?? true;
+      sync();
+    }).observe(video);
+    reduce.addEventListener('change', sync);
+  }
+</script>

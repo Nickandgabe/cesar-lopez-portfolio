@@ -7,7 +7,7 @@
  */
 import type { ImageMetadata } from 'astro';
 
-import heroImage from './assets/hero-concept.png';
+import heroImage from './assets/hero-poster.jpg';
 import portraitImage from './assets/portrait.png';
 import apjImage from './assets/apj.png';
 import ccImage from './assets/cc.png';
@@ -88,7 +88,8 @@ export const hero = {
    *   mp4: '/video/hero.mp4', webm: '/video/hero.webm'
    * The hero image above stays as the poster frame and as the reduced-motion fallback.
    */
-  video: { mp4: '', webm: '' },
+  // Source: gemini_generated_video_0dcd3f46.mp4, played forward then backward so the loop has no jump.
+  video: { mp4: '/video/hero.mp4', webm: '/video/hero.webm' },
 };
 
 export const metrics = {
