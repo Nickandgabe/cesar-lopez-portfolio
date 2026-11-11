@@ -37,15 +37,15 @@ const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', 
   }
   <div class="hero-mask absolute inset-0 -z-10" aria-hidden="true"></div>
 
-  <div class="flex min-h-[max(640px,100svh)] items-start px-[var(--gutter)] pt-28 pb-16 sm:pt-36 lg:min-h-[clamp(760px,100svh,960px)] lg:pt-[230px]">
+  <div class="flex min-h-[max(640px,100svh)] items-start px-[var(--gutter)] pt-28 pb-16 sm:pt-36 lg:min-h-[clamp(640px,100svh,960px)] lg:items-center lg:pt-[104px] lg:pb-12">
     <div class="w-full max-w-[680px]">
-      <p class="mono m-0 mb-[26px] text-mist">{hero.eyebrow}</p>
-      <h1 class="t-display m-0">
+      <p class="mono m-0 mb-[26px] text-mist lg:mb-[clamp(14px,2.6svh,26px)]">{hero.eyebrow}</p>
+      <h1 class="t-display m-0 lg:text-[clamp(2.6rem,min(5.84vw,8.6svh),5.25rem)]">
         {hero.headline.main} <span class="accent-light text-accent-soft">{hero.headline.accent}</span>
       </h1>
-      <p class="mt-[30px] mb-0 max-w-[580px] text-[17px] leading-[1.6] text-mist md:text-[19px]">{hero.body}</p>
+      <p class="mt-[30px] mb-0 max-w-[580px] lg:mt-[clamp(16px,3.2svh,30px)] text-[17px] leading-[1.6] text-mist md:text-[19px]">{hero.body}</p>
 
-      <dl class="m-0 mt-11 flex flex-wrap gap-x-10 gap-y-6">
+      <dl class="m-0 mt-11 lg:mt-[clamp(20px,4.6svh,44px)] flex flex-wrap gap-x-10 gap-y-6">
         {
           hero.stats.map((s) => (
             <div class="flex flex-col-reverse">
@@ -59,7 +59,7 @@ const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', 
         }
       </dl>
 
-      <div class="mt-11 flex max-w-[580px] flex-wrap justify-end gap-2.5">
+      <div class="mt-11 lg:mt-[clamp(20px,4.6svh,44px)] flex max-w-[580px] flex-wrap justify-end gap-2.5">
         <a href={hero.secondary.href} class="btn btn-ghost glass-dark">{hero.secondary.label}</a>
         <a href={hero.primary.href} class="btn btn-light">{hero.primary.label}</a>
       </div>
