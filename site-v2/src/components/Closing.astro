@@ -1,0 +1,28 @@
+---
+import { Picture } from 'astro:assets';
+import { closing } from '../content';
+---
+
+<footer id="contact" class="on-dark relative isolate mt-28 flex min-h-[560px] flex-col justify-end overflow-hidden bg-close text-white lg:mt-40">
+  <Picture
+    src={closing.image.src}
+    alt={closing.image.alt}
+    formats={['webp']}
+    fallbackFormat="jpg"
+    widths={[640, 1024]}
+    sizes="100vw"
+    loading="lazy"
+    class="fade-y absolute inset-0 -z-10 h-full w-full object-cover object-[70%_50%]"
+  />
+
+  <div data-reveal class="flex flex-col gap-8 px-[var(--gutter)] pb-24 lg:flex-row lg:items-end lg:justify-between">
+    <h2 class="t-close m-0">
+      {closing.title.main} <span class="accent-light">{closing.title.accent}</span>
+    </h2>
+    <div class="flex flex-wrap justify-end gap-2.5">
+      <a href={closing.secondary.href} class="btn btn-ghost glass-dark" rel="me">{closing.secondary.label}</a>
+      <a href={closing.primary.href} class="btn btn-light">{closing.primary.label}</a>
+    </div>
+  </div>
+  <p class="absolute bottom-8 left-[var(--gutter)] m-0 pr-[var(--gutter)] text-[13px] text-[#8A8FA8]">{closing.footer}</p>
+</footer>

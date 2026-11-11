@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Metrics from '../components/Metrics.astro';
+import CaseScene from '../components/CaseScene.astro';
+import Leadership from '../components/Leadership.astro';
+import RangeStrip from '../components/RangeStrip.astro';
+import Closing from '../components/Closing.astro';
+import { work } from '../content';
+
+const [first, second, third] = work.cases;
+---
+
+<Base>
+  <Nav />
+  <main id="main" tabindex="-1" class="mx-auto max-w-[1920px] overflow-x-clip">
+    <Hero />
+    <Metrics />
+    <div id="work">
+      <CaseScene item={first} eyebrow={work.eyebrow} />
+      <CaseScene item={second} />
+      <div class="to-dark h-[140px] lg:h-[220px]" aria-hidden="true"></div>
+      <CaseScene item={third} />
+      <div class="to-light h-[140px] lg:h-[220px]" aria-hidden="true"></div>
+    </div>
+    <Leadership />
+    <RangeStrip />
+  </main>
+  <Closing />
+</Base>

@@ -1,0 +1,89 @@
+---
+import { Picture } from 'astro:assets';
+import type { CaseItem } from '../content';
+import { work } from '../content';
+
+interface Props {
+  item: CaseItem;
+  /** Section label shown above the first case ("Selected work — …"). */
+  eyebrow?: string;
+  sectionId?: string;
+}
+
+const { item, eyebrow, sectionId } = Astro.props;
+const dark = item.layout === 'right-dark';
+const headingId = `${item.id}-title`;
+
+// Desktop geometry per layout, matching the 1440 px comp.
+const sectionCls = {
+  full: 'lg:h-[640px]',
+  right: 'lg:h-[680px] lg:mt-10',
+  'right-dark': 'lg:h-[720px] bg-night text-white on-dark',
+}[item.layout];
+
+const imgWrapCls = {
+  full: 'lg:absolute lg:inset-0',
+  right: 'lg:absolute lg:right-0 lg:top-10 lg:h-[640px] lg:w-[62.5%]',
+  'right-dark': 'lg:absolute lg:right-[var(--gutter)] lg:-top-[60px] lg:h-[800px] lg:w-[min(600px,42%)]',
+}[item.layout];
+
+const imgCls = {
+  full: 'fade-y aspect-[1024/434] lg:aspect-auto object-[50%_50%]',
+  right: 'fade-b lg:fade-l aspect-[4/3] lg:aspect-auto object-[60%_40%]',
+  'right-dark': 'fade-b lg:fade-l aspect-[4/5] max-h-[560px] lg:max-h-none lg:aspect-auto',
+}[item.layout];
+
+const textCls = {
+  full: 'lg:pt-[170px] lg:max-w-[560px]',
+  right: 'lg:pt-[170px] lg:max-w-[520px]',
+  'right-dark': 'lg:pt-[180px] lg:max-w-[560px]',
+}[item.layout];
+---
+
+<section
+  id={sectionId ?? item.id}
+  aria-labelledby={headingId}
+  class:list={['relative flex flex-col', sectionCls]}
+>
+  {
+    eyebrow && (
+      <p class="mono relative z-10 m-0 mb-6 px-[var(--gutter)] text-ink-2 lg:absolute lg:top-0 lg:left-0 lg:mb-0">
+        {eyebrow}
+      </p>
+    )
+  }
+
+  <div class:list={['w-full', item.layout === 'right-dark' && 'flex justify-center pt-12 lg:pt-0', imgWrapCls]}>
+    <Picture
+      src={item.image.src}
+      alt={item.image.alt}
+      formats={['webp']}
+    fallbackFormat="jpg"
+      widths={[480, 768, 1024]}
+      sizes={item.layout === 'full' ? '100vw' : '(min-width: 1024px) 62vw, 100vw'}
+      loading="lazy"
+      class:list={['block h-auto w-full object-cover lg:h-full', imgCls]}
+    />
+  </div>
+
+  <div data-reveal class:list={['relative z-10 px-[var(--gutter)] pt-6 pb-16 lg:px-0 lg:ml-[var(--gutter)] lg:pb-0', textCls]}>
+    <p class:list={['mono m-0 mb-4', dark ? 'text-[#A9B1CF]' : 'text-ink-2']}>{item.label}</p>
+    <h2 id={headingId} class="t-h2 m-0">
+      {item.title.main}
+      {item.title.accent && <span class="accent-light"> {item.title.accent}</span>}
+    </h2>
+    <p class:list={['t-lead mt-5 mb-0', dark ? 'text-[#C9CEE3]' : 'text-ink-2']}>
+      {item.body.main}
+      {item.body.accent && <span class:list={['accent-light', dark ? 'text-white' : 'text-ink']}> {item.body.accent}</span>}
+    </p>
+    {
+      item.href ? (
+        <a href={item.href} class="text-link mt-8">
+          {item.linkLabel}
+        </a>
+      ) : (
+        <p class:list={['mono mt-8 mb-0', dark ? 'text-[#A9B1CF]' : 'text-ink-2']}>{work.pendingLabel}</p>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import { Picture } from 'astro:assets';
+import { leadership } from '../content';
+---
+
+<section id="leadership" aria-labelledby="leadership-title" class="relative flex flex-col lg:block lg:h-[760px]">
+  <div class="w-full lg:absolute lg:top-0 lg:left-0 lg:h-[760px] lg:w-[44.5%]">
+    <Picture
+      src={leadership.image.src}
+      alt={leadership.image.alt}
+      formats={['webp']}
+    fallbackFormat="jpg"
+      widths={[480, 825]}
+      sizes="(min-width: 1024px) 45vw, 100vw"
+      loading="lazy"
+      class="fade-b lg:fade-r block aspect-[4/3] h-auto w-full object-cover object-[50%_30%] lg:aspect-auto lg:h-full"
+    />
+  </div>
+
+  <div data-reveal class="px-[var(--gutter)] pt-6 lg:absolute lg:top-10 lg:right-[var(--gutter)] lg:left-[45.8%] lg:px-0 lg:pt-0">
+    <h2 id="leadership-title" class="t-h2 m-0 mb-8">
+      {leadership.title.main} <span class="accent-light">{leadership.title.accent}</span>
+    </h2>
+    <ol class="m-0 list-none p-0">
+      {
+        leadership.chapters.map((c) => (
+          <li class="grid grid-cols-[44px_minmax(0,1fr)] gap-3.5 border-t border-[rgba(11,11,15,0.12)] py-[22px] sm:grid-cols-[56px_minmax(0,1fr)]">
+            <span class="num text-lg text-accent" aria-hidden="true">{c.n}</span>
+            <div>
+              <h3 class="m-0 text-lg font-semibold sm:text-xl">{c.role}</h3>
+              <p class="mt-1.5 mb-0 text-base text-ink-2">{c.detail}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

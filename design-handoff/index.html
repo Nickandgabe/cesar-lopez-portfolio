@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Cesar Lopez — Portfolio preview</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0B0B0F;text-decoration:none}
+a:hover{color:#0B0B0F}
+.glass{background:rgba(255,255,255,0.5);-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,0.75);box-shadow:inset 0 1px 0 rgba(255,255,255,0.9)}
+.glassDark{background:rgba(255,255,255,0.08);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,0.18)}
+.fadeB{-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,#000 70%,transparent 100%)}
+.fadeL{-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 30%);mask-image:linear-gradient(to right,transparent 0%,#000 30%)}
+.fadeR{-webkit-mask-image:linear-gradient(to left,transparent 0%,#000 30%);mask-image:linear-gradient(to left,transparent 0%,#000 30%)}
+.fadeY{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 82%,transparent 100%)}
+.toPage{background:linear-gradient(to bottom,#2E2F30 0%,#F3F4F7 100%)}
+.heroShade{background:linear-gradient(to bottom,rgba(46,47,48,0) 0%,#2E2F30 100%)}
+.f1{background:radial-gradient(closest-side,rgba(11,61,255,0.42),rgba(11,61,255,0))}
+.f2{background:radial-gradient(closest-side,rgba(0,190,230,0.32),rgba(0,190,230,0))}
+.particle{position:absolute;left:0;top:0;width:5px;height:5px;border-radius:99px;background:#0B3DFF;offset-anchor:center;offset-rotate:0deg;animation:flow 7s linear infinite;opacity:0}
+@keyframes flow{0%{offset-distance:0%;opacity:0}6%{opacity:1}94%{opacity:1}100%{offset-distance:100%;opacity:0}}
+.core{animation:pulse 3.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:0.9}50%{transform:scale(1.25);opacity:1}}
+@media (prefers-reduced-motion: reduce){.particle{animation:none;opacity:0.6;offset-distance:50%}.core{animation:none}}
+.heroMask{background:linear-gradient(90deg,rgba(5,7,14,0.92) 0%,rgba(5,7,14,0.78) 38%,rgba(5,7,14,0.35) 70%,rgba(5,7,14,0.25) 100%),linear-gradient(to bottom,rgba(5,7,14,0) 70%,#07090F 100%)}
+.heroToPage{background:linear-gradient(to bottom,#07090F 0%,#F3F4F7 100%)}
+.toDark{background:linear-gradient(to bottom,#F3F4F7 0%,#070B1A 100%)}
+.toLight{background:linear-gradient(to bottom,#070B1A 0%,#F3F4F7 100%)}
+.mono{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.09em;text-transform:uppercase}
+.serif{font-family:'Geist',system-ui,sans-serif;font-style:normal;font-weight:300;letter-spacing:-0.05em}
+.num{font-variant-numeric:tabular-nums}
+</style>
+<style>html,body{background:#F3F4F7}</style>
+</head>
+<body>
+
+<div style="width: 1440px; height: 6400px; margin: 0 auto; box-sizing: border-box; background: #F3F4F7; color: #0B0B0F; font-family: 'Geist', system-ui, sans-serif; position: relative; overflow: hidden; display: flex; flex-direction: column">
+
+<nav aria-label="Main" class="glass" style="position: absolute; top: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; padding: 7px 7px 7px 20px; border-radius: 999px; z-index: 5">
+<a href="#top" style="font-weight: 600; font-size: 15px; letter-spacing: -0.01em; margin-right: 18px; margin-left: -12px; display: inline-flex; align-items: center; gap: 10px"><img src="media/portrait.png" alt="" style="width: 30px; height: 30px; border-radius: 999px; object-fit: cover">Cesar Lopez</a>
+<a href="#work" style="font-size: 14px; color: #3A3B44; padding: 10px 14px">Work</a>
+<a href="#leadership" style="font-size: 14px; color: #3A3B44; padding: 10px 14px">Leadership</a>
+<a href="#range" style="font-size: 14px; color: #3A3B44; padding: 10px 14px">3D &amp; range</a>
+<a href="#contact" style="font-size: 14px; color: #3A3B44; padding: 10px 14px">Contact</a>
+<a href="#resume" style="font-size: 14px; font-weight: 500; color: #FFFFFF; background: #0B0B0F; padding: 12px 18px; border-radius: 999px; margin-left: 10px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Résumé ↓</a>
+</nav>
+
+<section id="top" style="position: relative; height: 960px; flex-shrink: 0; background: #07090F; color: #FFFFFF; overflow: hidden">
+<img src="media/hero-concept.png" alt="Concept image: two glass diamonds with streams of blue light flowing through a glowing core" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 50%">
+<div class="heroMask" aria-hidden="true" style="position: absolute; inset: 0"></div>
+<div style="position: absolute; left: 80px; top: 230px; width: 680px">
+<p class="mono" style="margin: 0 0 26px; display: inline-flex; align-items: center; gap: 10px; color: #C9CEDD"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 99px; background: #22C55E"></span>Cesar Lopez · Open to Director / VP roles</p>
+<h1 style="margin: 0; font-weight: 600; font-size: 84px; line-height: 0.95; letter-spacing: -0.05em">AI Product Design Management. <span class="serif" style="color: #9DB4FF">The new E2E operating model.</span></h1>
+<p style="margin: 30px 0 0; font-size: 19px; line-height: 1.6; color: #C9CEDD; max-width: 580px">The Double Diamond, rebuilt for AI: agents explore and build, people decide, the design system holds it together, and guardrails protect what ships. It is how I lead — shaped over 18 years across industrial design, 3D, enterprise platforms and the ventures I founded.</p>
+<div style="display: flex; gap: 40px; margin-top: 44px">
+<div><div class="num" style="font-size: 44px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">18</div><p style="margin: 6px 0 0; font-size: 13px; color: #AEB4C6">years in product &amp; design</p></div>
+<div><div class="num" style="font-size: 44px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">10</div><p style="margin: 6px 0 0; font-size: 13px; color: #AEB4C6">designers &amp; developers led</p></div>
+<div><div class="num" style="font-size: 44px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">3</div><p style="margin: 6px 0 0; font-size: 13px; color: #AEB4C6">ventures founded</p></div>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 44px; max-width: 580px">
+<a href="#contact" class="glassDark" style="font-size: 15px; font-weight: 500; color: #FFFFFF; padding: 14px 22px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+<a href="#work" style="font-size: 15px; font-weight: 500; color: #0B0B0F; background: #FFFFFF; padding: 14px 22px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">See the model in action ↓</a>
+</div>
+</div>
+</section>
+<div class="heroToPage" aria-hidden="true" style="flex-shrink: 0; height: 200px"></div>
+
+<section aria-label="Results" style="flex-shrink: 0; padding: 60px 80px 120px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px">
+<div><div class="num" style="font-size: 96px; font-weight: 600; line-height: 1; letter-spacing: -0.055em">50<span style="color: #0B3DFF">+</span></div><p style="margin: 14px 0 0; font-size: 16px; line-height: 1.5; color: #3A3B44">service flows redesigned,<br>from 7 steps to 3</p></div>
+<div><div class="num" style="font-size: 96px; font-weight: 600; line-height: 1; letter-spacing: -0.055em">8<span style="color: #0B3DFF">×</span></div><p style="margin: 14px 0 0; font-size: 16px; line-height: 1.5; color: #3A3B44">faster time to market,<br>Customer Connect</p></div>
+<div><div class="num" style="font-size: 96px; font-weight: 600; line-height: 1; letter-spacing: -0.055em">75<span style="color: #0B3DFF">%</span></div><p style="margin: 14px 0 0; font-size: 16px; line-height: 1.5; color: #3A3B44">API reuse<br>across the program</p></div>
+<div><div class="num" style="font-size: 96px; font-weight: 600; line-height: 1; letter-spacing: -0.055em">~2<span style="color: #0B3DFF">M</span></div><p style="margin: 14px 0 0; font-size: 16px; line-height: 1.5; color: #3A3B44">hours saved a year — 9,000<br>agents, 180M customers</p></div>
+</section>
+
+<section id="work" style="flex-shrink: 0; position: relative; height: 640px">
+<p class="mono" style="position: absolute; left: 80px; top: 0; margin: 0; color: #3A3B44; z-index: 1">Selected work — AI orchestration first</p>
+<img class="fadeY" src="media/apj.png" alt="A frosted glass sphere with smaller glass spheres orbiting on lines of blue light" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+<div style="position: absolute; left: 80px; top: 170px; width: 560px">
+<p class="mono" style="margin: 0 0 16px; color: #3A3B44">01 / 03 · AT&amp;T · Under NDA</p>
+<h2 style="margin: 0; font-size: 64px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">AI Product Journey, <span class="serif">Pulse &amp; Plexus</span></h2>
+<p style="margin: 20px 0 0; font-size: 22px; line-height: 1.45; color: #3A3B44">An AI-agent operating model presented to VPs and AVPs — and the tools that run it: Pulse for OKRs, and Plexus, 25 agents that turn a Jira epic into a build-ready package.</p>
+<a href="#case-2" style="margin-top: 32px; font-size: 15px; font-weight: 500; display: inline-flex; align-items: center; gap: 10px; border-bottom: 1px solid #0B0B0F; padding-bottom: 4px">Read the case →</a>
+</div>
+</section>
+
+<section style="flex-shrink: 0; position: relative; height: 680px; margin-top: 40px">
+<img class="fadeL" src="media/cc.png" alt="Seven small glass blocks merging into larger blue-lit glass blocks" style="position: absolute; right: 0; top: 40px; width: 900px; height: 640px; object-fit: cover; object-position: 60% 40%">
+<div style="position: absolute; left: 80px; top: 170px; width: 520px">
+<p class="mono" style="margin: 0 0 16px; color: #3A3B44">02 / 03 · AT&amp;T · Under NDA</p>
+<h2 style="margin: 0; font-size: 64px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">Customer Connect</h2>
+<p style="margin: 20px 0 0; font-size: 22px; line-height: 1.45; color: #3A3B44">8x faster to market for 9,000 agents serving 180M customers. <span class="serif" style="color: #0B0B0F">Seven steps became three.</span></p>
+<a href="#case-1" style="margin-top: 32px; font-size: 15px; font-weight: 500; display: inline-flex; align-items: center; gap: 10px; border-bottom: 1px solid #0B0B0F; padding-bottom: 4px">Read the case →</a>
+</div>
+</section>
+
+<div class="toDark" aria-hidden="true" style="flex-shrink: 0; height: 220px"></div>
+
+<section style="flex-shrink: 0; position: relative; height: 720px; background: #070B1A; color: #FFFFFF">
+<img class="fadeL" src="media/nexus.png" alt="A glass phone on a stone pedestal with a glowing blue chevron inside" style="position: absolute; right: 80px; top: -60px; width: 600px; height: 800px; object-fit: cover">
+<div style="position: absolute; left: 80px; top: 180px; width: 560px">
+<p class="mono" style="margin: 0 0 16px; color: #A9B1CF">03 / 03 · Founder · Fintech</p>
+<h2 style="margin: 0; font-size: 64px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">Nexus</h2>
+<p style="margin: 20px 0 0; font-size: 22px; line-height: 1.45; color: #C9CEE3">A fintech platform I founded, designed and built around verified human identity. <span class="serif" style="color: #FFFFFF">Passkeys, not passwords.</span></p>
+<a href="#case-3" style="margin-top: 32px; font-size: 15px; font-weight: 500; color: #FFFFFF; display: inline-flex; align-items: center; gap: 10px; border-bottom: 1px solid #FFFFFF; padding-bottom: 4px">Read the case →</a>
+</div>
+</section>
+
+<div class="toLight" aria-hidden="true" style="flex-shrink: 0; height: 220px"></div>
+
+<section id="leadership" style="flex-shrink: 0; position: relative; height: 760px">
+<img class="fadeR" src="media/team.png" alt="Six abstract glass figures standing together, one glowing blue in front" style="position: absolute; left: 0; top: 0; width: 640px; height: 760px; object-fit: cover">
+<div style="position: absolute; left: 660px; right: 80px; top: 40px">
+<h2 style="margin: 0 0 32px; font-size: 64px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">Leadership, <span class="serif">by chapter</span></h2>
+<div style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.12)"><span class="num" style="font-size: 18px; color: #0B3DFF">01</span><div><p style="margin: 0; font-size: 20px; font-weight: 600">AT&amp;T — Lead Sr UX Designer</p><p style="margin: 6px 0 0; font-size: 16px; color: #3A3B44">Leading 5 designers on AI-driven and agentic experiences.</p></div></div>
+<div style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.12)"><span class="num" style="font-size: 18px; color: #0B3DFF">02</span><div><p style="margin: 0; font-size: 20px; font-weight: 600">AT&amp;T — Sr UX Designer · UX Architect</p><p style="margin: 6px 0 0; font-size: 16px; color: #3A3B44">50+ service flows, Customer Connect, AI Product Journey.</p></div></div>
+<div style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.12)"><span class="num" style="font-size: 18px; color: #0B3DFF">03</span><div><p style="margin: 0; font-size: 20px; font-weight: 600">Brain Group</p><p style="margin: 6px 0 0; font-size: 16px; color: #3A3B44">Led up to 10 designers and developers.</p></div></div>
+<div style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.12)"><span class="num" style="font-size: 18px; color: #0B3DFF">04</span><div><p style="margin: 0; font-size: 20px; font-weight: 600">Founder — Nexus, Together, SwapZone</p><p style="margin: 6px 0 0; font-size: 16px; color: #3A3B44">Strategy, design and code, end to end.</p></div></div>
+</div>
+</section>
+
+<section id="range" style="flex-shrink: 0; position: relative; padding: 140px 0 0 80px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; padding-right: 80px; margin-bottom: 36px">
+<h2 style="margin: 0; font-size: 64px; font-weight: 600; letter-spacing: -0.05em; line-height: 1">Where I come from: <span class="serif" style="color: #0B3DFF">3D.</span></h2>
+<p style="margin: 0; max-width: 360px; font-size: 16px; line-height: 1.55; color: #3A3B44; text-align: right">Industrial designer by training. Years of building products you can turn around in your hands.</p>
+</div>
+<div style="display: flex; gap: 24px; width: 1800px; align-items: flex-end">
+<figure style="margin: 0; width: 720px; flex-shrink: 0">
+<img src="media/supra.jpg" alt="3D render of a blue Toyota Supra on a glowing platform" style="width: 720px; height: 420px; object-fit: cover; border-radius: 28px; display: block; background: #FFFFFF">
+<figcaption style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 14px"><span style="font-weight: 600">Toyota — 3D product experience</span><span class="mono" style="color: #3A3B44">Drag to rotate · 360°</span></figcaption>
+</figure>
+<figure style="margin: 0; width: 520px; flex-shrink: 0">
+<img src="media/track.jpg" alt="3D render of a race track with two stock cars" style="width: 520px; height: 340px; object-fit: cover; border-radius: 28px; display: block">
+<figcaption style="margin-top: 14px; font-size: 14px; font-weight: 600">Toyota Virtual Auto Show</figcaption>
+</figure>
+<figure style="margin: 0; width: 460px; flex-shrink: 0">
+<img src="media/together.jpg" alt="A parent using the Together platform on a laptop at home" style="width: 460px; height: 300px; object-fit: cover; border-radius: 28px; display: block">
+<figcaption style="margin-top: 14px; font-size: 14px; font-weight: 600">Together — founder</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="contact" style="flex: 1; position: relative; margin-top: 160px; background: #050608; color: #FFFFFF; min-height: 560px">
+<img class="fadeY" src="media/close.png" alt="A clear glass cube refracting a beam of blue light in a dark studio" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%">
+<div style="position: absolute; left: 80px; right: 80px; bottom: 96px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px">
+<h2 style="margin: 0; font-weight: 600; font-size: 104px; line-height: 0.95; letter-spacing: -0.055em">Let's build <span class="serif">what wins.</span></h2>
+<div style="display: flex; gap: 10px">
+<a href="https://linkedin.com/in/ceslop" class="glassDark" style="font-size: 15px; font-weight: 500; color: #FFFFFF; padding: 14px 22px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">LinkedIn</a>
+<a href="#email" style="font-size: 15px; font-weight: 500; color: #0B0B0F; background: #FFFFFF; padding: 14px 22px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">[Email Cesar]</a>
+</div>
+</div>
+<p style="position: absolute; left: 80px; bottom: 32px; margin: 0; font-size: 13px; color: #8A8FA8">© 2026 Cesar Augusto Lopez Rodriguez · iamcesarlopez.com</p>
+</section>
+
+</div>
+
+</body>
+</html>
