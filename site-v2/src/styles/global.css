@@ -176,10 +176,30 @@ a {
 }
 
 /* Hero mask: strong on the text side, lighter over the artwork.
-   Phones get a flatter, darker mask because text covers the whole image. */
+   Phones: a light mask so the video shows, plus a soft dark band (.hero-scrim)
+   behind the small text only, sized to the text so it holds on any phone height. */
 .hero-mask {
   background:
-    linear-gradient(to bottom, rgba(5, 7, 14, 0.74) 0%, rgba(5, 7, 14, 0.84) 45%, rgba(5, 7, 14, 0.94) 100%);
+    linear-gradient(to bottom, rgba(5, 7, 14, var(--hero-mask-top, 0.4)) 0%, rgba(5, 7, 14, var(--hero-mask-mid, 0.45)) 50%, rgba(5, 7, 14, 0.9) 100%);
+}
+@media (max-width: 1023.98px) {
+  .hero-scrim {
+    position: relative;
+  }
+  .hero-scrim::before {
+    content: '';
+    position: absolute;
+    inset: -24px calc(-1 * var(--gutter));
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgba(5, 7, 14, var(--scrim, 0.5)) 24px,
+      rgba(5, 7, 14, var(--scrim, 0.5)) calc(100% - 24px),
+      transparent 100%
+    );
+  }
 }
 /* 1024–1279: the text block covers more of the artwork, so the mask stays darker further right (AA contrast). */
 @media (min-width: 1024px) {
