@@ -107,16 +107,17 @@ export interface Stat {
 export const career = {
   title: 'Range across a career',
   subtitle: 'Eighteen years, two countries, and every layer of a product, from physical objects to AI agents.',
+  // Big number + accent suffix, then `unit` as a small label and `detail` below it.
   items: [
-    { value: 12, suffix: '+', label: 'industries — from telecom, healthcare and fintech to NGOs, political campaigns and manufacturing' },
-    { value: 30, suffix: '+', label: 'brands — including Toyota, Bavaria and AT&T' },
-    { value: 2, suffix: '', label: 'countries — products built in Colombia and the US' },
+    { value: 12, suffix: '+', unit: 'industries', detail: 'from telecom, healthcare and fintech to NGOs, political campaigns and manufacturing' },
+    { value: 30, suffix: '+', unit: 'brands', detail: 'including Toyota, Bavaria and AT&T' },
+    { value: 2, suffix: '', unit: 'countries', detail: 'products built in Colombia and the US' },
     // The 8 disciplines: 3D, industrial design, UX, front-end code, VR/AR, product management,
     // AI orchestration, photography. Change the number if any is removed.
-    { value: 8, suffix: '', label: 'disciplines — from 3D and industrial design to digital product design, code and AI orchestration' },
-  ] satisfies Stat[],
-  industries:
-    'Industries: Telecom · Healthcare · Automotive · Fintech · Education · Sports · Construction · Political parties · NGOs · Floriculture · Plumbing fixtures · Veterinary',
+    { value: 8, suffix: '', unit: 'disciplines', detail: 'from 3D and industrial design to digital product design, code and AI orchestration' },
+  ],
+  industriesLabel: 'Industries',
+  industries: ['Telecom', 'Healthcare', 'Automotive', 'Fintech', 'Education', 'Sports', 'Construction', 'Political parties', 'NGOs', 'Floriculture', 'Plumbing fixtures', 'Veterinary'],
 };
 
 /* ---------------- Case studies ---------------- */
