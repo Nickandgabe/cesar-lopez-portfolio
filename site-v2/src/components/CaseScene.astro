@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import VideoOverlay from './VideoOverlay.astro';
+import StatGrid from './StatGrid.astro';
 import type { CaseItem } from '../content';
 import { work, caseHref } from '../content';
 
@@ -19,8 +20,8 @@ const href = caseHref(item.slug);
 const sectionCls = {
   full: 'lg:h-[640px]',
   'full-right': 'lg:h-[640px]',
-  right: 'lg:h-[680px] lg:mt-10',
-  'right-dark': 'lg:h-[720px] bg-night text-white on-dark',
+  right: 'lg:h-[680px]',
+  'right-dark': 'lg:h-[720px]',
 }[item.layout];
 
 const imgWrapCls = {
@@ -48,8 +49,9 @@ const textCls = {
 <section
   id={item.slug}
   aria-labelledby={headingId}
-  class:list={['relative flex flex-col', sectionCls]}
+  class:list={['relative', item.layout === 'right' && 'lg:mt-10', dark && 'bg-night text-white on-dark']}
 >
+<div class:list={['relative flex flex-col', sectionCls]}>
   {
     eyebrow && (
       <p class="mono relative z-10 m-0 mb-6 px-[var(--gutter)] text-ink-2 lg:absolute lg:top-0 lg:left-0 lg:mb-0">
@@ -92,4 +94,12 @@ const textCls = {
       )
     }
   </div>
+</div>
+  {
+    item.metrics && (
+      <div class="px-[var(--gutter)] pt-4 pb-8 lg:pt-16">
+        <StatGrid items={item.metrics.items} note={item.metrics.note} />
+      </div>
+    )
+  }
 </section>

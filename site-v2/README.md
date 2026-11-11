@@ -18,7 +18,8 @@ npm run preview    # serve dist/ locally
 Every word, number and image choice lives in **`src/content.ts`**. Components only render it.
 
 - **Hero:** `hero.headline`, `hero.body`, `hero.stats` (the count-up numbers).
-- **Metrics band:** `metrics` — `value` is the counted number, `prefix`/`suffix` wrap it (`~`, `+`, `×`, `%`, `M`).
+- **Career strip** (under the hero): `career` — title, subtitle, 4 stats, industries line. Don't repeat hero stats here.
+- **Customer Connect metrics** (50+, 8×, 75%, ~2M + footnote): `metrics` on the Customer Connect item in `work.cases`. `value` counts up; `prefix`/`suffix` wrap it.
 - **Case rows on the homepage:** `work.cases` (short version of each case).
 - **Case pages** (`/work/<slug>/`): `caseStudies` — results band, problem, role, decisions, visual slots, takeaway.
   - `published: false` hides a page from the deployed site (it still shows in `npm run dev`, with a "Draft" badge). Nexus is held this way until the patent is filed.

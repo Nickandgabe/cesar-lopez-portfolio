@@ -1,0 +1,27 @@
+---
+// Big-number stat row: number (counts up), accent suffix, label below.
+// 2×2 on phones, 4 across from 1024 px. Used by the career strip and the Customer Connect case.
+import type { Stat } from '../content';
+
+interface Props {
+  items: Stat[];
+  note?: string;
+}
+const { items, note } = Astro.props;
+---
+
+<ul class="m-0 grid list-none grid-cols-2 gap-x-6 gap-y-10 p-0 sm:gap-x-10 lg:grid-cols-4">
+  {
+    items.map((m, i) => (
+      <li data-reveal style={`transition-delay:${i * 80}ms`}>
+        <p class="num t-metric m-0">
+          {m.prefix}
+          <span data-count={m.value}>{m.value}</span>
+          <span class="text-accent">{m.suffix}</span>
+        </p>
+        <p class="mt-3.5 mb-0 max-w-[300px] text-[15px] leading-normal text-ink-2 sm:text-base">{m.label}</p>
+      </li>
+    ))
+  }
+</ul>
+{note && <p class="mono mt-12 mb-0 border-t border-[rgba(11,11,15,0.12)] pt-5 text-ink-2">{note}</p>}

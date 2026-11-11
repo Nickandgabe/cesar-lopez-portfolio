@@ -95,14 +95,26 @@ export const hero = {
   video: { mp4: '/video/hero.mp4', webm: '/video/hero.webm' },
 };
 
-export const metrics = {
+/** One big-number stat. Only `value` counts up; `suffix` is shown in the accent colour. */
+export interface Stat {
+  prefix?: string;
+  value: number;
+  suffix: string;
+  label: string;
+}
+
+/** Career-wide strip under the hero. Must not repeat hero stats (18 years, up to 20 people, 3 ventures, 180M). */
+export const career = {
+  title: 'Range across a career',
+  subtitle: 'Eighteen years, two countries, and every layer of a product, from physical objects to AI agents.',
   items: [
-    { prefix: '', value: 50, suffix: '+', lines: ['service flows I redesigned —', '7 steps to 3, 57% fewer'] },
-    { prefix: '', value: 8, suffix: '×', lines: ['faster time to market,', 'Customer Connect program'] },
-    { prefix: '', value: 75, suffix: '%', lines: ['API reuse', 'across the program'] },
-    { prefix: '~', value: 2, suffix: 'M', lines: ['work hours saved a year — 9,000', 'agents, 180M customers'] },
-  ],
-  note: '50+ flows: my own design work · 8×, 75%, ~2M: AT&T Customer Connect program results',
+    { value: 12, suffix: '+', label: 'industries — from telecom, healthcare and fintech to NGOs, political campaigns and manufacturing' },
+    { value: 30, suffix: '+', label: 'brands — including Toyota, Bavaria and AT&T' },
+    { value: 2, suffix: '', label: 'countries — products built in Colombia and the US' },
+    { value: 8, suffix: '', label: 'disciplines — from 3D and industrial design to code and AI orchestration' },
+  ] satisfies Stat[],
+  industries:
+    'Industries: Telecom · Healthcare · Automotive · Fintech · Education · Sports · Construction · Political parties · NGOs · Floriculture · Plumbing fixtures · Veterinary',
 };
 
 /* ---------------- Case studies ---------------- */
@@ -277,6 +289,8 @@ export interface CaseItem {
   linkLabel: string;
   image: Img;
   layout: 'full' | 'full-right' | 'right' | 'right-dark';
+  /** Optional stat row shown under the case, with a footnote. */
+  metrics?: { items: Stat[]; note: string };
 }
 
 export const work = {
@@ -313,6 +327,15 @@ export const work = {
         alt: 'Seven small glass blocks merging into larger blue-lit glass blocks',
       },
       layout: 'right',
+      metrics: {
+        items: [
+          { value: 50, suffix: '+', label: 'service flows I redesigned — 7 steps to 3, 57% fewer' },
+          { value: 8, suffix: '×', label: 'faster time to market, Customer Connect program' },
+          { value: 75, suffix: '%', label: 'API reuse across the program' },
+          { prefix: '~', value: 2, suffix: 'M', label: 'work hours saved a year — 9,000 agents, 180M customers' },
+        ],
+        note: '50+ flows: my own design work · 8×, 75%, ~2M: AT&T Customer Connect program results',
+      },
     },
     {
       slug: 'nexus',
