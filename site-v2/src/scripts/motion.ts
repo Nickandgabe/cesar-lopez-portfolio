@@ -51,3 +51,25 @@ if (!reduce && 'IntersectionObserver' in window) {
     io.observe(el);
   });
 }
+
+// Background videos ([data-autoplay]): play only when motion is allowed,
+// data saver is off and the video is on screen.
+const videos = document.querySelectorAll<HTMLVideoElement>('video[data-autoplay]');
+if (videos.length) {
+  const reduceQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
+  const visible = new WeakMap<HTMLVideoElement, boolean>();
+  const sync = (v: HTMLVideoElement) => {
+    if (reduceQuery.matches || saveData || !visible.get(v)) v.pause();
+    else v.play().catch(() => {});
+  };
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const v = e.target as HTMLVideoElement;
+      visible.set(v, e.isIntersecting);
+      sync(v);
+    }
+  });
+  videos.forEach((v) => io.observe(v));
+  reduceQuery.addEventListener('change', () => videos.forEach(sync));
+}

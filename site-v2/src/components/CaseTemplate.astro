@@ -1,5 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
+import VideoOverlay from './VideoOverlay.astro';
 import type { CaseStudy } from '../content';
 import { caseStudies, caseHref } from '../content';
 
@@ -32,6 +33,7 @@ const showNext = next && next.slug !== study.slug;
   <p class="t-lead mt-6 mb-0 max-w-[760px] text-ink-2">{study.impact}</p>
 </header>
 
+<div class="relative">
 <Picture
   src={study.image.src}
   alt={study.image.alt}
@@ -43,6 +45,8 @@ const showNext = next && next.slug !== study.slug;
   fetchpriority="high"
   class="fade-y block aspect-[16/9] max-h-[560px] w-full object-cover sm:aspect-[1024/434]"
 />
+{study.image.video && <VideoOverlay video={study.image.video} poster={study.image.src} class="fade-y absolute inset-0 h-full w-full object-cover" />}
+</div>
 
 <section aria-labelledby="results-title" class="px-[var(--gutter)] py-16 lg:py-24">
   <h2 id="results-title" class="sr-only">Results</h2>

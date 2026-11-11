@@ -9,7 +9,7 @@ import type { ImageMetadata } from 'astro';
 
 import heroImage from './assets/hero-poster.jpg';
 import portraitImage from './assets/portrait.png';
-import apjImage from './assets/apj.png';
+import pulsePoster from './assets/pulse-poster.jpg';
 import ccImage from './assets/cc.png';
 import nexusImage from './assets/nexus.png';
 import teamImage from './assets/team.png';
@@ -20,6 +20,8 @@ import closeImage from './assets/close.png';
 export interface Img {
   src: ImageMetadata;
   alt: string;
+  /** Optional looping video shown over the image; the image must be its first frame. */
+  video?: { webm?: string; mp4?: string };
 }
 
 export interface Link {
@@ -134,7 +136,12 @@ export const caseStudies: CaseStudy[] = [
     label: 'AT&T · AI operating model',
     title: { main: 'AI Product Journey', accent: '& Pulse' },
     impact: 'An AI-agent operating model presented to VPs and AVPs — and the tools to run it.',
-    image: { src: apjImage, alt: 'A frosted glass sphere with smaller glass spheres orbiting on lines of blue light' },
+    image: {
+      src: pulsePoster,
+      alt: 'A glass sphere lit with blue energy, with smaller glass spheres orbiting it on lines of light',
+      // Source: gemini_generated_video_d754408c.mp4, played forward then backward.
+      video: { webm: '/video/pulse.webm', mp4: '/video/pulse.mp4' },
+    },
     results: [
       {
         label: 'Proof',
@@ -268,7 +275,7 @@ export interface CaseItem {
   body: SplitText;
   linkLabel: string;
   image: Img;
-  layout: 'full' | 'right' | 'right-dark';
+  layout: 'full' | 'full-right' | 'right' | 'right-dark';
 }
 
 export const work = {
@@ -284,10 +291,12 @@ export const work = {
       },
       linkLabel: 'Read the case →',
       image: {
-        src: apjImage,
-        alt: 'A frosted glass sphere with smaller glass spheres orbiting on lines of blue light',
+        src: pulsePoster,
+        alt: 'A glass sphere lit with blue energy, with smaller glass spheres orbiting it on lines of light',
+        // Source: gemini_generated_video_d754408c.mp4, played forward then backward.
+        video: { webm: '/video/pulse.webm', mp4: '/video/pulse.mp4' },
       },
-      layout: 'full',
+      layout: 'full-right',
     },
     {
       slug: 'customer-connect',

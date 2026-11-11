@@ -1,0 +1,19 @@
+---
+// A muted looping video laid over an image of the same frame (the image is its poster).
+// Playback is handled in scripts/motion.ts via [data-autoplay].
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  video: { webm?: string; mp4?: string };
+  poster: ImageMetadata;
+  class?: string;
+}
+const { video, poster, class: cls } = Astro.props;
+const posterImg = await getImage({ src: poster, format: 'webp', width: 1280 });
+---
+
+<video class={cls} muted loop playsinline preload="none" poster={posterImg.src} aria-hidden="true" data-autoplay>
+  {video.webm && <source src={video.webm} type="video/webm" />}
+  {video.mp4 && <source src={video.mp4} type="video/mp4" />}
+</video>

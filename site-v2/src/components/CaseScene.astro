@@ -1,5 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
+import VideoOverlay from './VideoOverlay.astro';
 import type { CaseItem } from '../content';
 import { work, caseHref } from '../content';
 
@@ -17,24 +18,28 @@ const href = caseHref(item.slug);
 // Desktop geometry per layout, matching the 1440 px comp.
 const sectionCls = {
   full: 'lg:h-[640px]',
+  'full-right': 'lg:h-[640px]',
   right: 'lg:h-[680px] lg:mt-10',
   'right-dark': 'lg:h-[720px] bg-night text-white on-dark',
 }[item.layout];
 
 const imgWrapCls = {
   full: 'lg:absolute lg:inset-0',
+  'full-right': 'lg:absolute lg:inset-y-0 lg:right-0 lg:w-[72%]',
   right: 'lg:absolute lg:right-0 lg:top-10 lg:h-[640px] lg:w-[62.5%]',
   'right-dark': 'lg:absolute lg:right-[var(--gutter)] lg:-top-[60px] lg:h-[800px] lg:w-[min(600px,42%)]',
 }[item.layout];
 
 const imgCls = {
   full: 'fade-y aspect-[1024/434] lg:aspect-auto object-[50%_50%]',
+  'full-right': 'fade-y lg:fade-yl aspect-video lg:aspect-auto object-[50%_50%]',
   right: 'fade-b lg:fade-l aspect-[4/3] lg:aspect-auto object-[60%_40%]',
   'right-dark': 'fade-y lg:fade-l aspect-[4/5] max-h-[560px] lg:max-h-none lg:aspect-auto',
 }[item.layout];
 
 const textCls = {
   full: 'lg:pt-[170px] lg:max-w-[560px]',
+  'full-right': 'lg:pt-[170px] lg:max-w-[560px]',
   right: 'lg:pt-[170px] lg:max-w-[520px]',
   'right-dark': 'lg:pt-[180px] lg:max-w-[560px]',
 }[item.layout];
@@ -53,17 +58,18 @@ const textCls = {
     )
   }
 
-  <div class:list={['w-full', item.layout === 'right-dark' && 'flex justify-center pt-12 lg:pt-0', imgWrapCls]}>
+  <div class:list={['relative w-full', item.layout === 'right-dark' && 'flex justify-center pt-12 lg:pt-0', imgWrapCls]}>
     <Picture
       src={item.image.src}
       alt={item.image.alt}
       formats={['webp']}
     fallbackFormat="jpg"
       widths={[480, 768, 1024]}
-      sizes={item.layout === 'full' ? '100vw' : '(min-width: 1024px) 62vw, 100vw'}
+      sizes={item.layout === 'full' ? '100vw' : item.layout === 'full-right' ? '(min-width: 1024px) 72vw, 100vw' : '(min-width: 1024px) 62vw, 100vw'}
       loading="lazy"
       class:list={['block h-auto w-full object-cover lg:h-full', imgCls]}
     />
+    {item.image.video && <VideoOverlay video={item.image.video} poster={item.image.src} class:list={['absolute inset-0 h-full w-full object-cover', imgCls]} />}
   </div>
 
   <div data-reveal class:list={['relative z-10 px-[var(--gutter)] pt-6 pb-16 lg:px-0 lg:ml-[var(--gutter)] lg:pb-0', textCls]}>
