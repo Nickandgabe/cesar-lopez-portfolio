@@ -111,7 +111,7 @@ export const career = {
     { value: 12, suffix: '+', label: 'industries — from telecom, healthcare and fintech to NGOs, political campaigns and manufacturing' },
     { value: 30, suffix: '+', label: 'brands — including Toyota, Bavaria and AT&T' },
     { value: 2, suffix: '', label: 'countries — products built in Colombia and the US' },
-    { value: 8, suffix: '', label: 'disciplines — from 3D and industrial design to digital products, code and AI orchestration' },
+    { value: 8, suffix: '', label: 'disciplines — from 3D and industrial design to digital product design, code and AI orchestration' },
   ] satisfies Stat[],
   industries:
     'Industries: Telecom · Healthcare · Automotive · Fintech · Education · Sports · Construction · Political parties · NGOs · Floriculture · Plumbing fixtures · Veterinary',
