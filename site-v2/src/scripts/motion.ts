@@ -20,11 +20,14 @@ if (reduce || !('IntersectionObserver' in window)) {
   revealEls.forEach((el) => io.observe(el));
 }
 
-// Count-up, once. The final number is already in the HTML (and in a
-// screen-reader-only copy), so no-JS and reduced-motion users see it as-is.
+// Count-up, once per number. Each number exists once in the HTML, already at its
+// final value, so no-JS and reduced-motion visitors simply see it. Only the digits
+// animate; prefixes/suffixes ("Up to", "M") sit outside the [data-count] element.
 const counters = document.querySelectorAll<HTMLElement>('[data-count]');
 if (!reduce && 'IntersectionObserver' in window) {
   const run = (el: HTMLElement) => {
+    if (el.dataset.counted) return;
+    el.dataset.counted = 'true';
     const target = Number(el.dataset.count);
     const duration = 1200;
     const start = performance.now();
@@ -33,6 +36,7 @@ if (!reduce && 'IntersectionObserver' in window) {
       const eased = 1 - Math.pow(1 - t, 3);
       el.textContent = String(Math.round(target * eased));
       if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = String(target);
     };
     requestAnimationFrame(tick);
   };
@@ -40,11 +44,11 @@ if (!reduce && 'IntersectionObserver' in window) {
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        run(entry.target as HTMLElement);
         io.unobserve(entry.target);
+        run(entry.target as HTMLElement);
       }
     },
-    { threshold: 0.6 },
+    { threshold: 0.25 },
   );
   counters.forEach((el) => {
     el.textContent = '0';

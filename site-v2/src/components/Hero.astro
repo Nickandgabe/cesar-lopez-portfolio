@@ -31,19 +31,22 @@ const hasVideo = Boolean(hero.video.mp4 || hero.video.webm);
       </h1>
       <p class="mt-[30px] mb-0 max-w-[580px] lg:mt-[clamp(16px,3.2svh,30px)] text-[17px] leading-[1.6] text-mist md:text-[19px]">{hero.body}</p>
 
-      <dl class="m-0 mt-11 lg:mt-[clamp(20px,4.6svh,44px)] flex flex-wrap gap-x-10 gap-y-6">
+      <ul class="m-0 mt-11 grid list-none grid-cols-2 gap-x-6 gap-y-6 p-0 lg:mt-[clamp(20px,4.6svh,44px)] lg:flex lg:flex-nowrap lg:gap-x-7">
         {
           hero.stats.map((s) => (
-            <div class="flex flex-col-reverse">
-              <dt class="mt-1.5 text-[13px] text-mist-2">{s.label}</dt>
-              <dd class="num m-0 text-[clamp(2.25rem,3.06vw,2.75rem)] leading-none font-semibold tracking-[-0.05em]">
-                <span aria-hidden="true" data-count={s.value}>{s.value}</span>
-                <span class="sr-only">{s.value}</span>
-              </dd>
-            </div>
+            <li class="lg:max-w-[180px]">
+              <p class="m-0 flex items-baseline gap-x-1.5 leading-none whitespace-nowrap">
+                {s.prefix && <span class="text-sm font-medium text-mist">{s.prefix}</span>}
+                <span class="num text-[clamp(2rem,2.64vw,2.375rem)] font-semibold tracking-[-0.05em] text-white">
+                  <span data-count={s.value}>{s.value}</span>{s.suffix}
+                </span>
+                {s.unit && <span class="text-sm font-medium text-mist">{s.unit}</span>}
+              </p>
+              <p class="mt-2 mb-0 text-[13px] leading-snug text-mist-2">{s.label}</p>
+            </li>
           ))
         }
-      </dl>
+      </ul>
 
       <div class="mt-11 lg:mt-[clamp(20px,4.6svh,44px)] flex max-w-[580px] flex-wrap justify-end gap-2.5">
         <a href={hero.secondary.href} class="btn btn-ghost glass-dark">{hero.secondary.label}</a>

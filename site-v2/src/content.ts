@@ -37,9 +37,9 @@ export interface SplitText {
 
 export const site = {
   url: 'https://www.iamcesarlopez.com',
-  title: 'Cesar Lopez — AI Experience Design Leader',
+  title: 'Cesar Lopez — AI Product Design Leader',
   description:
-    'I lead AI experience design that turns complex enterprise systems into measurable business results — with an operating model where agents explore and build, and people decide. 18 years across product design, product management, UX and front-end.',
+    'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while people make the calls that matter.',
   ogImage: '/og.jpg',
   ogImageAlt: 'Two glass diamonds with streams of blue light flowing through a glowing core',
   person: {
@@ -65,18 +65,19 @@ export const nav = {
 };
 
 export const hero = {
-  // Neutral on purpose: an "Open to Director / VP roles" line is visible to your current employer.
-  eyebrow: 'Lead Sr UX Designer · AT&T · Certified AI Product Manager (SAFe)',
+  eyebrow: 'AI Product Design Leader',
   headline: {
-    main: 'AI Experience Design Leader.',
-    accent: 'Agents build. People decide.',
+    main: 'Customers ask.',
+    accent: 'Agents build. Team Approve.',
   } satisfies SplitText,
   body:
-    'I lead AI experience design that turns complex enterprise systems into measurable business results — with an operating model where agents explore and build, people decide, and guardrails protect what ships. Shaped over 18 years across industrial design, 3D, enterprise platforms and the ventures I founded.',
+    'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while people make the calls that matter.',
+  // Top line: [prefix] value[suffix] [unit] — only `value` counts up. Label goes below.
   stats: [
-    { value: 18, label: 'years in product & design' },
-    { value: 5, label: 'designers I lead at AT&T' },
-    { value: 3, label: 'ventures founded' },
+    { prefix: '', value: 18, suffix: '', unit: 'years', label: 'in product & design' },
+    { prefix: 'Up to', value: 20, suffix: '', unit: '', label: 'people led across design, production and logistics' },
+    { prefix: '', value: 3, suffix: '', unit: 'ventures', label: 'founded' },
+    { prefix: '', value: 180, suffix: 'M', unit: 'customers', label: 'reached by my flows' },
   ],
   primary: { label: 'See the work ↓', href: '#work' } satisfies Link,
   secondary: { label: 'Get in touch', href: '#contact' } satisfies Link,
