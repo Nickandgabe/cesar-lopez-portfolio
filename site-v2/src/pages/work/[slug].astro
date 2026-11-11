@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import CaseTemplate from '../../components/CaseTemplate.astro';
+import Closing from '../../components/Closing.astro';
+import { caseStudies, type CaseStudy } from '../../content';
+
+export function getStaticPaths() {
+  // Unpublished cases are only built by the dev server.
+  return caseStudies
+    .filter((c) => c.published || import.meta.env.DEV)
+    .map((study) => ({ params: { slug: study.slug }, props: { study } }));
+}
+
+const { study } = Astro.props as { study: CaseStudy };
+const title = `${study.title.main}${study.title.accent ? ' ' + study.title.accent : ''} — Cesar Lopez`;
+---
+
+<Base title={title} description={study.impact}>
+  <Nav />
+  <main id="main" tabindex="-1" class="mx-auto max-w-[1920px] overflow-x-clip">
+    <CaseTemplate study={study} />
+  </main>
+  <Closing />
+</Base>

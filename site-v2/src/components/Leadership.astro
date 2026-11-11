@@ -27,7 +27,10 @@ import { leadership } from '../content';
           <li class="grid grid-cols-[44px_minmax(0,1fr)] gap-3.5 border-t border-[rgba(11,11,15,0.12)] py-[22px] sm:grid-cols-[56px_minmax(0,1fr)]">
             <span class="num text-lg text-accent" aria-hidden="true">{c.n}</span>
             <div>
-              <h3 class="m-0 text-lg font-semibold sm:text-xl">{c.role}</h3>
+              <h3 class="m-0 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-lg font-semibold sm:text-xl">
+                {c.role}
+                {c.dates && <span class="mono font-normal text-ink-2">{c.dates}</span>}
+              </h3>
               <p class="mt-1.5 mb-0 text-base text-ink-2">{c.detail}</p>
             </div>
           </li>

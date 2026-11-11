@@ -1,18 +1,18 @@
 ---
 import { Picture } from 'astro:assets';
 import type { CaseItem } from '../content';
-import { work } from '../content';
+import { work, caseHref } from '../content';
 
 interface Props {
   item: CaseItem;
   /** Section label shown above the first case ("Selected work — …"). */
   eyebrow?: string;
-  sectionId?: string;
 }
 
-const { item, eyebrow, sectionId } = Astro.props;
+const { item, eyebrow } = Astro.props;
 const dark = item.layout === 'right-dark';
-const headingId = `${item.id}-title`;
+const headingId = `${item.slug}-title`;
+const href = caseHref(item.slug);
 
 // Desktop geometry per layout, matching the 1440 px comp.
 const sectionCls = {
@@ -41,7 +41,7 @@ const textCls = {
 ---
 
 <section
-  id={sectionId ?? item.id}
+  id={item.slug}
   aria-labelledby={headingId}
   class:list={['relative flex flex-col', sectionCls]}
 >
@@ -77,8 +77,8 @@ const textCls = {
       {item.body.accent && <span class:list={['accent-light', dark ? 'text-white' : 'text-ink']}> {item.body.accent}</span>}
     </p>
     {
-      item.href ? (
-        <a href={item.href} class="text-link mt-8">
+      href ? (
+        <a href={href} class="text-link mt-8">
           {item.linkLabel}
         </a>
       ) : (

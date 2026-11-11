@@ -39,9 +39,7 @@ const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', 
 
   <div class="flex min-h-[max(640px,100svh)] items-start px-[var(--gutter)] pt-28 pb-16 sm:pt-36 lg:min-h-[clamp(760px,100svh,960px)] lg:pt-[230px]">
     <div class="w-full max-w-[680px]">
-      <p class="mono m-0 mb-[26px] inline-flex items-center gap-2.5 text-mist">
-        <span aria-hidden="true" class="size-2 rounded-full bg-[#22C55E]"></span>{hero.eyebrow}
-      </p>
+      <p class="mono m-0 mb-[26px] text-mist">{hero.eyebrow}</p>
       <h1 class="t-display m-0">
         {hero.headline.main} <span class="accent-light text-accent-soft">{hero.headline.accent}</span>
       </h1>
@@ -68,7 +66,7 @@ const poster = hasVideo ? await getImage({ src: hero.image.src, format: 'webp', 
     </div>
   </div>
 </section>
-<div class="hero-to-page h-[120px] lg:h-[200px]" aria-hidden="true"></div>
+<div class="hero-to-page h-[80px] lg:h-[120px]" aria-hidden="true"></div>
 
 {
   hasVideo && (

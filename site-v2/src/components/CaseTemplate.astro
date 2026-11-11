@@ -1,0 +1,153 @@
+---
+import { Picture } from 'astro:assets';
+import type { CaseStudy } from '../content';
+import { caseStudies, caseHref } from '../content';
+
+interface Props {
+  study: CaseStudy;
+}
+const { study } = Astro.props;
+
+// Next published case, wrapping around.
+const visible = caseStudies.filter((c) => caseHref(c.slug));
+const next = visible[(visible.findIndex((c) => c.slug === study.slug) + 1) % visible.length];
+const showNext = next && next.slug !== study.slug;
+---
+
+{
+  !study.published && (
+    <p class="mono fixed bottom-4 left-1/2 z-50 m-0 -translate-x-1/2 rounded-full bg-[#B45309] px-4 py-2 text-white">
+      Draft (dev only) — {study.hold}
+    </p>
+  )
+}
+
+<header class="px-[var(--gutter)] pt-32 pb-10 lg:pt-44 lg:pb-14">
+  <a href="/#work" class="mono inline-block text-ink-2 hover:text-ink">← All work</a>
+  <p class="mono mt-10 mb-4 text-ink-2">{study.label}</p>
+  <h1 class="t-display m-0 max-w-[1000px]">
+    {study.title.main}
+    {study.title.accent && <span class="accent-light"> {study.title.accent}</span>}
+  </h1>
+  <p class="t-lead mt-6 mb-0 max-w-[760px] text-ink-2">{study.impact}</p>
+</header>
+
+<Picture
+  src={study.image.src}
+  alt={study.image.alt}
+  formats={['webp']}
+  fallbackFormat="jpg"
+  widths={[640, 1024]}
+  sizes="100vw"
+  loading="eager"
+  fetchpriority="high"
+  class="fade-y block aspect-[16/9] max-h-[560px] w-full object-cover sm:aspect-[1024/434]"
+/>
+
+<section aria-labelledby="results-title" class="px-[var(--gutter)] py-16 lg:py-24">
+  <h2 id="results-title" class="sr-only">Results</h2>
+  {
+    study.results.map((g) => (
+      <div class="mb-12 last:mb-0">
+        <p class="mono m-0 mb-6 border-t border-[rgba(11,11,15,0.12)] pt-5 text-ink-2">{g.label}</p>
+        <ul class="m-0 grid list-none grid-cols-1 gap-10 p-0 sm:grid-cols-2 lg:grid-cols-4">
+          {g.items.map((r) => (
+            <li data-reveal>
+              <p class="num m-0 text-[clamp(2.25rem,4.2vw,3.75rem)] leading-none font-semibold tracking-[-0.05em]">{r.value}</p>
+              <p class="mt-3 mb-0 text-base leading-normal text-ink-2">{r.label}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</section>
+
+<div class="px-[var(--gutter)]">
+  <section aria-labelledby="problem" class="case-row">
+    <h2 id="problem" class="case-h">The problem</h2>
+    <p class="t-lead m-0 text-ink">{study.problem}</p>
+  </section>
+
+  <section aria-labelledby="role" class="case-row">
+    <h2 id="role" class="case-h">My role &amp; leadership</h2>
+    <div>
+      {study.role.map((r) => <p class="m-0 mb-3 text-lg leading-relaxed text-ink-2 last:mb-0">{r}</p>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="changed" class="case-row">
+    <h2 id="changed" class="case-h">What I changed</h2>
+    <ol class="m-0 list-none p-0">
+      {
+        study.decisions.map((d, i) => (
+          <li data-reveal class="grid grid-cols-[44px_minmax(0,1fr)] gap-3.5 border-t border-[rgba(11,11,15,0.12)] py-5 first:border-t-0 first:pt-0">
+            <span class="num text-lg text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="m-0 text-xl font-semibold">{d.title}</h3>
+              <p class="mt-1.5 mb-0 text-base leading-relaxed text-ink-2">{d.why}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section aria-labelledby="visuals" class="case-row">
+    <h2 id="visuals" class="case-h">Visuals</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {
+        study.visuals.map((v) => (
+          <div class="mono flex aspect-[16/10] items-center justify-center rounded-[28px] border border-dashed border-[rgba(11,11,15,0.25)] p-6 text-center text-ink-2">
+            {v}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section aria-labelledby="takeaway" class="case-row">
+    <h2 id="takeaway" class="case-h">Takeaway</h2>
+    <p class="accent-light m-0 text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.15]">{study.takeaway}</p>
+  </section>
+
+  {
+    showNext && (
+      <nav aria-label="Next case" class="flex justify-end border-t border-[rgba(11,11,15,0.12)] py-12">
+        <a href={caseHref(next.slug)} class="group text-right">
+          <span class="mono block text-ink-2">Next case</span>
+          <span class="t-h2 mt-2 block group-hover:text-accent">
+            {next.title.main}
+            {next.title.accent && <span class="accent-light"> {next.title.accent}</span>} →
+          </span>
+        </a>
+      </nav>
+    )
+  }
+</div>
+
+<style>
+  .case-row {
+    display: grid;
+    gap: 16px;
+    padding-block: 40px;
+    border-top: 1px solid rgba(11, 11, 15, 0.12);
+  }
+  @media (min-width: 1024px) {
+    .case-row {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: 40px;
+      padding-block: 56px;
+    }
+  }
+  .case-h {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-ink-2);
+    padding-top: 6px;
+  }
+</style>
