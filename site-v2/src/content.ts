@@ -39,7 +39,7 @@ export const site = {
   url: 'https://www.iamcesarlopez.com',
   title: 'Cesar Lopez — AI Product Design Leader',
   description:
-    'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while people make the calls that matter.',
+    'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while teams make the calls that matter.',
   ogImage: '/og.jpg',
   ogImageAlt: 'Two glass diamonds with streams of blue light flowing through a glowing core',
   person: {
@@ -71,7 +71,7 @@ export const hero = {
     accent: 'Agents build. Teams approve.',
   } satisfies SplitText,
   body:
-    'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while people make the calls that matter.',
+    'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while teams make the calls that matter.',
   // Top line: [prefix] value[suffix] [unit] — only `value` counts up. Label goes below.
   stats: [
     { prefix: '', value: 18, suffix: '', unit: 'years', label: 'in product & design', text: '' },
@@ -388,7 +388,7 @@ export const leadership = {
       role: 'AT&T, Sr. UX Designer · UX Architect',
       dates: '2023 – 2026',
       tag: 'Enterprise platform teams',
-      detail: 'Owned 50+ service flows used by 9,000 agents and cut them from seven steps to three. Set design system standards across workstreams.',
+      detail: 'Owned 50+ service flows on the Customer Connect program, serving 9,000 agents, and cut them from seven steps to three. Set design system standards across workstreams.',
     },
     {
       n: '03',
