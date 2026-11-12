@@ -40,6 +40,7 @@ const external = p.href?.startsWith('http');
           sizes="(min-width: 1024px) 31vw, (min-width: 768px) 48vw, 100vw"
           loading="lazy"
           class:list={['card-media absolute inset-0 h-full w-full', p.image.fit === 'contain' ? 'object-contain p-8' : 'object-cover']}
+          style={p.image.position ? `object-position:${p.image.position}` : undefined}
         />
       ) : (
         <div class="card-media flex h-full items-center justify-center p-8" aria-hidden="true">

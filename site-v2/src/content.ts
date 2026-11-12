@@ -437,7 +437,7 @@ export interface Project {
   summary: string;
   cats: Category[];
   /** Image on a soft tile. `fit: 'contain'` for logos, phone screens and cut-out renders. */
-  image?: Img & { fit?: 'cover' | 'contain' };
+  image?: Img & { fit?: 'cover' | 'contain'; /** CSS object-position, e.g. '80% 50%'. */ position?: string };
   /** Show the draggable Supra turntable instead of an image. */
   turntable?: boolean;
   href?: string;
@@ -458,7 +458,7 @@ const brandList: { name: string; line: string; slug: string; logo: ImageMetadata
 
 export const allWork = {
   title: 'All work',
-  intro: 'Everything else I have shipped, designed or founded, from enterprise platforms to 3D experiences and brand identities.',
+  intro: 'Every project in one place, from AI and enterprise platforms to 3D experiences and brand identities. Filter by what you care about.',
   allLabel: 'All',
   // Order = order under "All": AI and enterprise first, brand last.
   projects: [
@@ -467,7 +467,7 @@ export const allWork = {
       meta: 'AT&T',
       summary: 'An AI-agent operating model presented to VPs and AVPs, and the tools to run it.',
       cats: ['AI & Product', 'Enterprise'],
-      image: { src: pulsePoster, alt: 'A glass sphere with smaller glass spheres orbiting it on lines of light', fit: 'cover' },
+      image: { src: pulsePoster, alt: 'A glass sphere with smaller glass spheres orbiting it on lines of light', fit: 'cover', position: '82% 50%' },
       href: '/work/ai-product-journey/',
       badge: 'Case study',
     },
