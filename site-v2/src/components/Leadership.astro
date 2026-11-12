@@ -5,7 +5,7 @@ import { Picture } from 'astro:assets';
 import { leadership } from '../content';
 ---
 
-<section id="leadership" aria-labelledby="leadership-title" class="relative lg:grid lg:grid-cols-[44.5%_minmax(0,1fr)] lg:gap-[1.3%]">
+<section id="leadership" aria-labelledby="leadership-title" class="relative mt-24 lg:mt-36 lg:grid lg:grid-cols-[44.5%_minmax(0,1fr)] lg:gap-[1.3%]">
   <div class="w-full lg:sticky lg:top-0 lg:h-[min(100svh,880px)] lg:self-start">
     <Picture
       src={leadership.image.src}
@@ -15,7 +15,7 @@ import { leadership } from '../content';
       widths={[480, 825]}
       sizes="(min-width: 1024px) 45vw, 100vw"
       loading="lazy"
-      class="fade-b lg:fade-rb block aspect-[4/3] h-auto w-full object-cover object-[50%_30%] lg:aspect-auto lg:h-full"
+      class="fade-y lg:fade-rb block aspect-[4/3] h-auto w-full object-cover object-[50%_30%] lg:aspect-auto lg:h-full"
     />
   </div>
 
