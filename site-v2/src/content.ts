@@ -13,7 +13,15 @@ import pulsePoster from './assets/pulse-poster.jpg';
 import ccImage from './assets/cc.png';
 import nexusImage from './assets/nexus.png';
 import teamImage from './assets/team.png';
-import trackImage from './assets/track.jpg';
+import invitedImage from './assets/work/invited.jpg';
+import archive3dImage from './assets/work/archive-3d.webp';
+import blackMonkeyLogo from './assets/work/brands/black-monkey.png';
+import civilTechLogo from './assets/work/brands/civil-and-tech.png';
+import cloudstersLogo from './assets/work/brands/cloudsters.png';
+import ikimonoLogo from './assets/work/brands/ikimono.png';
+import isergoLogo from './assets/work/brands/isergo-group.png';
+import linkersLogo from './assets/work/brands/linkers.png';
+import riskLogo from './assets/work/brands/risk-appraisals.png';
 import togetherImage from './assets/together.jpg';
 import closeImage from './assets/close.png';
 
@@ -57,7 +65,7 @@ export const nav = {
   links: [
     { label: 'Work', href: '/#work' },
     { label: 'Leadership', href: '/#leadership' },
-    { label: '3D & range', href: '/#range' },
+    { label: 'All work', href: '/#all-work' },
     { label: 'Contact', href: '#contact' },
   ] satisfies Link[],
   // The live site's résumé (password-protected). Swap for a public PDF when ready.
@@ -415,21 +423,143 @@ export const leadership = {
   earlier: 'Earlier: design and product roles in Bogotá, 2008–2013.',
 };
 
-export const range = {
-  title: { main: 'Where I come from:', accent: '3D.' } satisfies SplitText,
-  intro: 'Industrial designer by training. Years of building products you can turn around in your hands.',
+/* ---------------- All work (filterable index) ---------------- */
+
+export const categories = ['AI & Product', 'Enterprise', 'Apps & Platforms', '3D & XR', 'Brand', 'Ventures'] as const;
+export type Category = (typeof categories)[number];
+
+const OLD_SITE = 'https://www.iamcesarlopez.com';
+
+export interface Project {
+  title: string;
+  /** Client or role line, shown small under the title. */
+  meta: string;
+  summary: string;
+  cats: Category[];
+  /** Image on a soft tile. `fit: 'contain'` for logos, phone screens and cut-out renders. */
+  image?: Img & { fit?: 'cover' | 'contain' };
+  /** Show the draggable Supra turntable instead of an image. */
+  turntable?: boolean;
+  href?: string;
+  /** Small badge on the card, e.g. "Case study", "Access on request". */
+  badge?: string;
+}
+
+/** Brand identities: one grouped card under "All", individual cards under the Brand filter. */
+const brandList: { name: string; line: string; slug: string; logo: ImageMetadata }[] = [
+  { name: 'Black Monkey', line: 'Playful branding with bite.', slug: 'black-monkey', logo: blackMonkeyLogo },
+  { name: 'Civil & Tech', line: 'Engineering the ground beneath you.', slug: 'civil-and-tech', logo: civilTechLogo },
+  { name: 'Cloudsters', line: 'Dreammakers, built for the cloud.', slug: 'cloudsters', logo: cloudstersLogo },
+  { name: 'ikimono', line: 'Living, breathing brand experiences.', slug: 'ikimono', logo: ikimonoLogo },
+  { name: 'ISERGO Group', line: 'Structural integrity, at every scale.', slug: 'isergo-group', logo: isergoLogo },
+  { name: 'Linkers', line: 'Infrastructure, made visible.', slug: 'linkers', logo: linkersLogo },
+  { name: 'Risk & Appraisals', line: 'Precision you can stand behind.', slug: 'risk-appraisals', logo: riskLogo },
+];
+
+export const allWork = {
+  title: 'All work',
+  intro: 'Everything else I have shipped, designed or founded, from enterprise platforms to 3D experiences and brand identities.',
+  allLabel: 'All',
+  // Order = order under "All": AI and enterprise first, brand last.
+  projects: [
+    {
+      title: 'AI Product Journey & Pulse',
+      meta: 'AT&T',
+      summary: 'An AI-agent operating model presented to VPs and AVPs, and the tools to run it.',
+      cats: ['AI & Product', 'Enterprise'],
+      image: { src: pulsePoster, alt: 'A glass sphere with smaller glass spheres orbiting it on lines of light', fit: 'cover' },
+      href: '/work/ai-product-journey/',
+      badge: 'Case study',
+    },
+    {
+      title: 'Customer Connect',
+      meta: 'AT&T',
+      summary: '50+ service flows for 9,000 agents serving 180M customers. Seven steps became three.',
+      cats: ['Enterprise'],
+      image: { src: ccImage, alt: 'Seven small glass blocks merging into larger blue-lit glass blocks', fit: 'cover' },
+      href: '/work/customer-connect/',
+      badge: 'Case study',
+    },
+    {
+      title: 'Nexus',
+      meta: 'Founder · Fintech',
+      summary: 'A fintech platform built around verified human identity. Passkeys, not passwords.',
+      cats: ['AI & Product', 'Ventures'],
+      image: { src: nexusImage, alt: 'A glass phone on a stone pedestal with a glowing blue chevron inside', fit: 'cover' },
+      badge: 'Coming soon',
+    },
+    {
+      title: 'Globe Check',
+      meta: 'Product & design lead · 2020–2023',
+      summary: 'A healthcare SaaS platform: product and design leadership, from roadmap to shipped screens.',
+      cats: ['Apps & Platforms'],
+    },
+    {
+      title: 'Invited',
+      meta: 'Club & golf membership app',
+      summary: 'A multi-tenant web and mobile app for members of exclusive golf and city clubs: membership, bookings, tee times.',
+      cats: ['Apps & Platforms'],
+      image: { src: invitedImage, alt: 'Invited app home screen with club activities and featured events', fit: 'contain' },
+      href: `${OLD_SITE}/work/invited-club-golf/`,
+    },
+    {
+      title: 'Toyota Virtual Auto Show',
+      meta: 'Toyota · UX / 3D',
+      summary: 'A virtual auto show so anyone, anywhere, could explore Toyota vehicles. Drag the Supra to rotate it.',
+      cats: ['Apps & Platforms', '3D & XR'],
+      turntable: true,
+      href: `${OLD_SITE}/work/toyota-auto-show/`,
+      badge: 'Access on request',
+    },
+    {
+      title: 'Immersicom',
+      meta: 'UX/UI designer & developer',
+      summary: 'A virtual showroom: any product or trade-show booth as an explorable 3D web experience. Designed and coded end to end.',
+      cats: ['3D & XR', 'Apps & Platforms'],
+      href: `${OLD_SITE}/work/immersicom/`,
+    },
+    {
+      title: 'Together',
+      meta: 'Founder',
+      summary: 'A bilingual digital home for families raising a child on the autism spectrum.',
+      cats: ['Ventures', 'Apps & Platforms'],
+      image: { src: togetherImage, alt: 'A parent using the Together platform on a laptop at home', fit: 'cover' },
+      href: `${OLD_SITE}/work/together/`,
+    },
+    {
+      title: 'SwapZone',
+      meta: 'Founder',
+      summary: 'A PWA for trading FIFA World Cup 2026 sticker collections.',
+      cats: ['Ventures'],
+    },
+    {
+      title: '3D & interactive archive',
+      meta: 'Earlier work',
+      summary: 'Product turntables, showroom transitions and 360° scenes from Toyota and Immersicom deliverables.',
+      cats: ['3D & XR'],
+      image: { src: archive3dImage, alt: '3D render of a Black Hawk helicopter on a glowing platform', fit: 'contain' },
+      href: `${OLD_SITE}/work/earlier-work/`,
+    },
+  ] satisfies Project[],
+  brands: {
+    groupTitle: 'Brand identities',
+    groupSummary: 'Seven identity systems, from logo to full guidelines.',
+    groupMeta: 'Brand design',
+    items: brandList.map((b) => ({
+      title: b.name,
+      meta: 'Brand guidelines',
+      summary: b.line,
+      cats: ['Brand'] as Category[],
+      image: { src: b.logo, alt: `${b.name} logo`, fit: 'contain' as const },
+      href: `${OLD_SITE}/work/brands/${b.slug}/`,
+    })) satisfies Project[],
+  },
   turntable: {
-    caption: 'Toyota — 3D product experience',
-    hint: 'Drag to rotate · 360°',
     alt: '3D render of a blue Toyota Supra on a glowing platform',
     basePath: '/turntables/supra/frame-',
     ext: 'webp',
     frames: 59,
   },
-  items: [
-    { caption: 'Toyota Virtual Auto Show', image: { src: trackImage, alt: '3D render of a race track with two stock cars' } },
-    { caption: 'Together — founder', image: { src: togetherImage, alt: 'A parent using the Together platform on a laptop at home' } },
-  ] satisfies { caption: string; image: Img }[],
 };
 
 export const closing = {

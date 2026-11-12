@@ -1,0 +1,158 @@
+---
+// "All work": every project as a card, with category filter chips.
+// Without JavaScript every project shows (brands as one grouped card).
+// "All" shows the grouped brand card; the "Brand" filter shows the 7 brands individually.
+import ProjectCard from './ProjectCard.astro';
+import { allWork, categories, type Project } from '../content';
+
+const projects: Project[] = allWork.projects;
+const brands: Project[] = allWork.brands.items;
+const brandGroup: Project = {
+  title: allWork.brands.groupTitle,
+  meta: allWork.brands.groupMeta,
+  summary: allWork.brands.groupSummary,
+  cats: ['Brand'],
+  href: '#all-work',
+};
+
+const counts = Object.fromEntries(
+  categories.map((c) => [c, c === 'Brand' ? brands.length : projects.filter((p) => p.cats.includes(c)).length]),
+);
+const allCount = projects.length + 1;
+---
+
+<section id="all-work" aria-labelledby="all-work-title" class="pt-24 lg:pt-[140px]">
+  <div data-reveal class="mb-8 flex flex-col gap-4 px-[var(--gutter)] md:flex-row md:items-end md:justify-between md:gap-8">
+    <h2 id="all-work-title" class="t-h2 m-0">{allWork.title}</h2>
+    <p class="m-0 max-w-[420px] text-base leading-[1.55] text-ink-2 md:text-right">{allWork.intro}</p>
+  </div>
+
+  <div
+    class="chips mb-10 flex gap-2 overflow-x-auto px-[var(--gutter)] pb-1 md:flex-wrap md:overflow-visible"
+    role="group"
+    aria-label="Filter projects by category"
+  >
+    <button type="button" class="chip" aria-pressed="true" data-filter="all">
+      {allWork.allLabel} <span class="chip-count">{allCount}</span>
+    </button>
+    {
+      categories.map((c) => (
+        <button type="button" class="chip" aria-pressed="false" data-filter={c}>
+          {c} <span class="chip-count">{counts[c]}</span>
+        </button>
+      ))
+    }
+  </div>
+  <p class="sr-only" aria-live="polite" data-filter-status></p>
+
+  <ul class="m-0 grid list-none grid-cols-1 gap-x-8 gap-y-12 px-[var(--gutter)] py-0 md:grid-cols-2 lg:grid-cols-3">
+    {
+      projects.map((p) => (
+        <li class="work-item" data-cats={p.cats.join('|')}>
+          <ProjectCard project={p} />
+        </li>
+      ))
+    }
+    <li class="work-item" data-cats="Brand" data-brand-group>
+      <ProjectCard project={brandGroup} mosaic={allWork.brands.items.map((b) => b.image!.src)} setFilter="Brand" />
+    </li>
+    {
+      brands.map((p) => (
+        <li class="work-item" data-cats="Brand" data-brand-item hidden>
+          <ProjectCard project={p} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .chips {
+    scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+  .chip {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(11, 11, 15, 0.16);
+    background: transparent;
+    color: var(--color-ink);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .chip:hover {
+    border-color: rgba(11, 11, 15, 0.4);
+  }
+  .chip[aria-pressed='true'] {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: #fff;
+  }
+  .chip-count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    opacity: 0.6;
+  }
+  :global(.motion) .work-item.is-entering {
+    animation: work-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes work-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+</style>
+
+<script>
+  const section = document.getElementById('all-work');
+  if (section) {
+    const chips = [...section.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const items = [...section.querySelectorAll<HTMLElement>('.work-item')];
+    const status = section.querySelector<HTMLElement>('[data-filter-status]');
+
+    const visibleFor = (el: HTMLElement, f: string) => {
+      if (el.hasAttribute('data-brand-group')) return f === 'all';
+      if (el.hasAttribute('data-brand-item')) return f === 'Brand';
+      return f === 'all' || (el.dataset.cats ?? '').split('|').includes(f);
+    };
+
+    const apply = (f: string) => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === f)));
+      let shown = 0;
+      items.forEach((el, i) => {
+        const show = visibleFor(el, f);
+        el.hidden = !show;
+        el.classList.remove('is-entering');
+        if (show) {
+          shown++;
+          void el.offsetWidth; // restart the entrance animation
+          el.style.animationDelay = `${Math.min(shown, 9) * 40}ms`;
+          el.classList.add('is-entering');
+        }
+      });
+      if (status) status.textContent = `Showing ${shown} project${shown === 1 ? '' : 's'}`;
+    };
+
+    chips.forEach((c) => c.addEventListener('click', () => apply(c.dataset.filter ?? 'all')));
+
+    // The grouped "Brand identities" card opens the Brand filter instead of navigating.
+    section.querySelectorAll<HTMLAnchorElement>('[data-set-filter]').forEach((a) =>
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        apply(a.dataset.setFilter ?? 'all');
+        chips.find((c) => c.dataset.filter === a.dataset.setFilter)?.focus();
+      }),
+    );
+  }
+</script>

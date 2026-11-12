@@ -1,0 +1,91 @@
+---
+// One project in the "All work" grid. The title link is stretched over the whole card;
+// the turntable (if any) sits above that link so it can be dragged.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Turntable from './Turntable.astro';
+import { allWork, type Project } from '../content';
+
+interface Props {
+  project: Project;
+  /** Logos for the grouped "Brand identities" card (shown as a 2×2 mosaic). */
+  mosaic?: ImageMetadata[];
+  /** Clicking the card switches the grid to this filter instead of navigating. */
+  setFilter?: string;
+}
+const { project: p, mosaic, setFilter } = Astro.props;
+const external = p.href?.startsWith('http');
+---
+
+<article class="group relative flex h-full flex-col">
+  <div class="relative aspect-[4/3] overflow-hidden rounded-[24px] bg-[#E6E8EE]">
+    {
+      p.turntable ? (
+        <Turntable {...allWork.turntable} class="relative z-10 h-full w-full" />
+      ) : mosaic ? (
+        <div class="grid h-full grid-cols-2 gap-px bg-[rgba(11,11,15,0.06)]">
+          {mosaic.slice(0, 4).map((logo) => (
+            <div class="flex items-center justify-center bg-[#E6E8EE] p-5">
+              <Picture src={logo} alt="" formats={['webp']} fallbackFormat="png" widths={[240]} sizes="160px" loading="lazy" class="card-media max-h-full w-auto max-w-full object-contain" />
+            </div>
+          ))}
+        </div>
+      ) : p.image ? (
+        <Picture
+          src={p.image.src}
+          alt={p.image.alt}
+          formats={['webp']}
+          fallbackFormat={p.image.fit === 'contain' ? 'png' : 'jpg'}
+          widths={[480, 800]}
+          sizes="(min-width: 1024px) 31vw, (min-width: 768px) 48vw, 100vw"
+          loading="lazy"
+          class:list={['card-media absolute inset-0 h-full w-full', p.image.fit === 'contain' ? 'object-contain p-8' : 'object-cover']}
+        />
+      ) : (
+        <div class="card-media flex h-full items-center justify-center p-8" aria-hidden="true">
+          <span class="text-center text-[clamp(2.5rem,4.2vw,3.5rem)] leading-none font-light tracking-[-0.05em] text-ink">{p.title}</span>
+        </div>
+      )
+    }
+    {p.badge && <span class="absolute top-3 left-3 z-20 rounded-full bg-white/85 px-2.5 py-1 text-xs font-medium text-ink">{p.badge}</span>}
+  </div>
+
+  <div class="pt-4">
+    <p class="mono m-0 text-ink-2">{p.cats.join(' · ')}</p>
+    <h3 class="mt-2 mb-0 text-xl font-semibold tracking-[-0.01em]">
+      {
+        p.href ? (
+          <a href={p.href} class="card-link after:absolute after:inset-0 after:rounded-[24px]" data-set-filter={setFilter}>
+            {p.title}
+            {external && <><span class="text-ink-2" aria-hidden="true"> ↗</span><span class="sr-only"> (on my current site)</span></>}
+          </a>
+        ) : (
+          p.title
+        )
+      }
+    </h3>
+    <p class="mt-1 mb-0 text-sm text-ink-2">{p.meta}</p>
+    <p class="mt-2.5 mb-0 text-[15px] leading-relaxed text-ink-2">{p.summary}</p>
+  </div>
+</article>
+
+<style>
+  .card-link:focus-visible {
+    outline: none;
+  }
+  .card-link:focus-visible::after {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+  }
+  .group:hover .card-link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  :global(.motion) .card-media {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  :global(.motion) .group:hover .card-media {
+    transform: scale(1.03);
+  }
+</style>

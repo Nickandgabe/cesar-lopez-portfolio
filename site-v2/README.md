@@ -25,7 +25,7 @@ Every word, number and image choice lives in **`src/content.ts`**. Components on
   - `published: false` hides a page from the deployed site (it still shows in `npm run dev`, with a "Draft" badge). Nexus is held this way until the patent is filed.
   - While a case is unpublished, its homepage row shows `work.pendingLabel` instead of a link.
 - **Leadership:** `leadership.chapters`.
-- **3D strip:** `range.items` and `range.turntable` (frames live in `public/turntables/supra/`).
+- **All work** (filterable grid): `allWork.projects` — title, meta, summary, `cats` (from `categories`), optional `image` (`fit: 'contain'` for logos/screens), `href`, `badge`. Order = order under "All". Brands live in `allWork.brands` (one grouped card under All, individual under Brand). Toyota card uses the Supra turntable (`public/turntables/supra/`).
 - **Contact:** `closing.primary` is still `[Email Cesar]` → set `label` and `href: 'mailto:…'`.
 - **Résumé link:** `nav.resume.href`.
 

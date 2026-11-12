@@ -1,0 +1,108 @@
+---
+// Drag-to-rotate 360° turntable from a numbered frame sequence (frame-1 … frame-N).
+// Keyboard: arrow keys rotate (Shift = 5 frames), Home resets.
+interface Props {
+  alt: string;
+  basePath: string;
+  ext: string;
+  frames: number;
+  class?: string;
+}
+const { alt, basePath, ext, frames, class: cls } = Astro.props;
+---
+
+<div
+  class:list={['relative flex cursor-grab touch-pan-y items-center justify-center select-none active:cursor-grabbing', cls]}
+  role="slider"
+  tabindex="0"
+  aria-label={`${alt}. Use left and right arrow keys to rotate.`}
+  aria-valuemin="0"
+  aria-valuemax="359"
+  aria-valuenow="0"
+  aria-valuetext="0 degrees"
+  data-turntable
+  data-base={basePath}
+  data-ext={ext}
+  data-frames={frames}
+>
+  <img src={`${basePath}1.${ext}`} alt="" width="555" height="257" loading="lazy" decoding="async" draggable="false" class="pointer-events-none h-auto w-[86%]" />
+  <span class="mono pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-ink-2">Drag to rotate · 360°</span>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-turntable]').forEach((stage) => {
+    const img = stage.querySelector('img')!;
+    const base = stage.dataset.base!;
+    const ext = stage.dataset.ext!;
+    const count = Number(stage.dataset.frames);
+    const src = (i: number) => `${base}${i + 1}.${ext}`;
+    let frame = 0;
+    let loaded = false;
+
+    // Fetch every frame once the stage is near the viewport, so dragging is smooth.
+    const preload = () => {
+      if (loaded) return;
+      loaded = true;
+      for (let i = 1; i < count; i++) {
+        const im = new Image();
+        im.decoding = 'async';
+        im.src = src(i);
+      }
+    };
+    new IntersectionObserver(
+      (entries, io) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          preload();
+          io.disconnect();
+        }
+      },
+      { rootMargin: '300px' },
+    ).observe(stage);
+
+    const show = (i: number) => {
+      frame = ((i % count) + count) % count;
+      img.src = src(frame);
+      const deg = Math.round((frame / count) * 360);
+      stage.setAttribute('aria-valuenow', String(deg));
+      stage.setAttribute('aria-valuetext', `${deg} degrees`);
+    };
+
+    // Drag: ~8 px of horizontal travel per frame. A drag never counts as a click.
+    let startX = 0;
+    let startFrame = 0;
+    let dragging = false;
+    let moved = false;
+    stage.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startFrame = frame;
+      preload();
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      show(startFrame - Math.round(dx / 8));
+    });
+    const end = () => (dragging = false);
+    stage.addEventListener('pointerup', end);
+    stage.addEventListener('pointercancel', end);
+    stage.addEventListener('click', (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+
+    stage.addEventListener('keydown', (e) => {
+      const step = e.shiftKey ? 5 : 1;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') show(frame + step);
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') show(frame - step);
+      else if (e.key === 'Home') show(0);
+      else return;
+      e.preventDefault();
+    });
+  });
+</script>
