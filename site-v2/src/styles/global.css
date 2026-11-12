@@ -344,13 +344,3 @@ a {
 }
 
 }
-
-/* Launch banner height: the bar is fixed at the top; the menu and hero shift down by this much. */
-html.has-banner {
-  --banner-h: 36px;
-}
-@media (max-width: 520px) {
-  html.has-banner {
-    --banner-h: 48px;
-  }
-}

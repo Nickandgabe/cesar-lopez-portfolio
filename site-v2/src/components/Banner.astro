@@ -1,5 +1,5 @@
 ---
-// Thin launch bar above the menu. Shown only while <html> has .has-banner, which an inline
+// Floating launch notice (bottom centre). Shown only while <html> has .has-banner, which an inline
 // script in Base.astro sets before paint (not expired, not dismissed). Close remembers it.
 import { banner } from '../content';
 const active = Boolean(banner.text);
@@ -8,7 +8,7 @@ const active = Boolean(banner.text);
 {
   active && (
     <div class="site-banner" role="region" aria-label="Announcement">
-      <p class="m-0">{banner.text}</p>
+      <p class="m-0"><span aria-hidden="true" class="mr-1.5">⚠</span>{banner.text}</p>
       <button type="button" class="site-banner-close" aria-label={banner.closeLabel} data-banner-close data-until={banner.until}>
         <span aria-hidden="true">×</span>
       </button>
@@ -30,27 +30,33 @@ const active = Boolean(banner.text);
 </script>
 
 <style>
+  /* Floating notice, bottom centre. It overlays the page and never moves the layout. */
   .site-banner {
     position: fixed;
-    inset: 0 0 auto;
+    left: 50%;
+    bottom: 16px;
     z-index: 60;
     display: none;
-    height: var(--banner-h);
     align-items: center;
-    justify-content: center;
-    padding: 0 44px;
-    background: var(--color-ink);
-    color: #fff;
+    gap: 6px;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    transform: translateX(-50%);
+    padding: 10px 46px 10px 18px;
+    border: 1px solid rgba(11, 11, 15, 0.15);
+    border-radius: 999px;
+    background: #fbbf24; /* amber: warning / notice */
+    color: var(--color-ink);
     font-size: 13px;
-    line-height: 1.3;
-    text-align: center;
+    font-weight: 500;
+    line-height: 1.35;
   }
   :global(html.has-banner) .site-banner {
     display: flex;
   }
   .site-banner-close {
     position: absolute;
-    right: 6px;
+    right: 7px;
     top: 50%;
     transform: translateY(-50%);
     display: grid;
@@ -60,16 +66,16 @@ const active = Boolean(banner.text);
     border: 0;
     border-radius: 999px;
     background: transparent;
-    color: var(--color-mist);
+    color: var(--color-ink);
     font-size: 20px;
     line-height: 1;
     cursor: pointer;
   }
   .site-banner-close:hover {
-    color: #fff;
+    background: rgba(11, 11, 15, 0.1);
   }
   .site-banner-close:focus-visible {
-    outline: 2px solid var(--color-accent-soft);
+    outline: 2px solid var(--color-ink);
     outline-offset: 0;
   }
 </style>
