@@ -73,7 +73,7 @@ export const nav = {
 };
 
 export const hero = {
-  eyebrow: 'AI Product Design Leader',
+  eyebrow: { main: 'AI Product Design Leader', accent: 'AI Product Manager' } satisfies SplitText,
   headline: {
     main: 'Customers ask.',
     accent: 'Agents build. Teams approve.',

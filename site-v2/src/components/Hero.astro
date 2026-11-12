@@ -25,7 +25,18 @@ const hasVideo = Boolean(hero.video.mp4 || hero.video.webm);
 
   <div class="hero-text flex items-start px-[var(--gutter)] pb-16 lg:min-h-[clamp(640px,100svh,960px)] lg:items-center lg:pt-[104px] lg:pb-12">
     <div class="w-full max-w-[680px]">
-      <p class="hero-scrim [--scrim:0.55] mono m-0 mb-[26px] text-mist lg:mb-[clamp(14px,2.6svh,26px)]">{hero.eyebrow}</p>
+      <p class="hero-scrim [--scrim:0.55] mono m-0 mb-[26px] grid grid-cols-[6px_minmax(0,1fr)] items-start gap-x-2.5 text-white lg:mb-[clamp(14px,2.6svh,26px)]">
+        <span aria-hidden="true" class="mt-[0.45em] size-1.5 rounded-full bg-accent-soft"></span>
+        <span class="leading-relaxed">
+          {hero.eyebrow.main}
+          {hero.eyebrow.accent && (
+            <>
+              <span aria-hidden="true" class="mx-2 hidden text-mist-2 sm:inline">·</span>
+              <span class="block text-accent-soft sm:inline">{hero.eyebrow.accent}</span>
+            </>
+          )}
+        </span>
+      </p>
       <h1 class="t-display m-0 lg:text-[clamp(2.6rem,min(5.84vw,8.6svh),5.25rem)]">
         {hero.headline.main} <span class="accent-light text-accent-soft">{hero.headline.accent}</span>
       </h1>
