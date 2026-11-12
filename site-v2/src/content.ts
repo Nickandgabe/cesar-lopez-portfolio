@@ -210,6 +210,35 @@ export const caseStudies: CaseStudy[] = [
     takeaway: 'The operating model is the product: AI does more of the work, and people keep the decisions.',
   },
   {
+    slug: 'nexus',
+    published: false,
+    hold: 'Hidden until the patent application is filed. Set published: true in content.ts to release it.',
+    label: 'Founder · Fintech',
+    title: { main: 'Nexus' },
+    impact:
+      'A fintech platform I founded, designed and built around verified human identity: passkeys, on-device biometrics and risk-matched verification.',
+    image: { src: nexusImage, alt: 'A glass phone on a stone pedestal with a glowing blue chevron inside' },
+    results: [
+      {
+        label: 'Pre-launch',
+        items: [
+          { value: '[TODO]', label: '[Pilots, if any]' },
+          { value: '[TODO]', label: '[Merchants or partners, if any]' },
+        ],
+      },
+    ],
+    problem: 'Online, it is hard to know there is a real person on the other side — and passwords are the weakest link.',
+    role: ['Founder. Strategy, design and code, end to end — built with one collaborator on GCP.'],
+    decisions: [
+      { title: 'Passkeys instead of passwords', why: 'Nothing to remember, nothing to phish.' },
+      { title: 'On-device biometrics', why: 'Identity checks happen on the person’s own device.' },
+      { title: 'Anti-Sybil protection', why: 'One real person, one account.' },
+      { title: 'Verification matched to the risk of each action', why: 'Low-risk actions stay light; high-risk actions ask for more.' },
+    ],
+    visuals: ['[Visual — product screens]', '[Visual — vision / brand]'],
+    takeaway: 'Trust is designed in from the first screen, not added at the end.',
+  },
+  {
     slug: 'customer-connect',
     published: true,
     label: 'AT&T · Enterprise scale',
@@ -254,35 +283,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     takeaway: 'Scale comes from removing steps — then repeating that across every flow.',
   },
-  {
-    slug: 'nexus',
-    published: false,
-    hold: 'Hidden until the patent application is filed. Set published: true in content.ts to release it.',
-    label: 'Founder · Fintech',
-    title: { main: 'Nexus' },
-    impact:
-      'A fintech platform I founded, designed and built around verified human identity: passkeys, on-device biometrics and risk-matched verification.',
-    image: { src: nexusImage, alt: 'A glass phone on a stone pedestal with a glowing blue chevron inside' },
-    results: [
-      {
-        label: 'Pre-launch',
-        items: [
-          { value: '[TODO]', label: '[Pilots, if any]' },
-          { value: '[TODO]', label: '[Merchants or partners, if any]' },
-        ],
-      },
-    ],
-    problem: 'Online, it is hard to know there is a real person on the other side — and passwords are the weakest link.',
-    role: ['Founder. Strategy, design and code, end to end — built with one collaborator on GCP.'],
-    decisions: [
-      { title: 'Passkeys instead of passwords', why: 'Nothing to remember, nothing to phish.' },
-      { title: 'On-device biometrics', why: 'Identity checks happen on the person’s own device.' },
-      { title: 'Anti-Sybil protection', why: 'One real person, one account.' },
-      { title: 'Verification matched to the risk of each action', why: 'Low-risk actions stay light; high-risk actions ask for more.' },
-    ],
-    visuals: ['[Visual — product screens]', '[Visual — vision / brand]'],
-    takeaway: 'Trust is designed in from the first screen, not added at the end.',
-  },
 ];
 
 /** URL of a case page, or null while it isn't published (dev builds show drafts). */
@@ -326,8 +326,23 @@ export const work = {
       layout: 'full-right',
     },
     {
+      slug: 'nexus',
+      label: '02 / 03 · Founder · Fintech',
+      title: { main: 'Nexus' },
+      body: {
+        main: 'A fintech platform I founded, designed and built around verified human identity.',
+        accent: 'Passkeys, not passwords.',
+      },
+      linkLabel: 'Read the case →',
+      image: {
+        src: nexusImage,
+        alt: 'A glass phone on a stone pedestal with a glowing blue chevron inside',
+      },
+      layout: 'right-dark',
+    },
+    {
       slug: 'customer-connect',
-      label: '02 / 03 · AT&T · Enterprise scale',
+      label: '03 / 03 · AT&T · Enterprise scale',
       title: { main: 'Customer Connect' },
       body: {
         main: 'My 50+ service flows inside the program that moved 9,000 agents off 50+ legacy systems onto one platform.',
@@ -348,21 +363,6 @@ export const work = {
         ],
         note: '50+ flows: my own design work · 8×, 75%, ~2M: AT&T Customer Connect program results',
       },
-    },
-    {
-      slug: 'nexus',
-      label: '03 / 03 · Founder · Fintech',
-      title: { main: 'Nexus' },
-      body: {
-        main: 'A fintech platform I founded, designed and built around verified human identity.',
-        accent: 'Passkeys, not passwords.',
-      },
-      linkLabel: 'Read the case →',
-      image: {
-        src: nexusImage,
-        alt: 'A glass phone on a stone pedestal with a glowing blue chevron inside',
-      },
-      layout: 'right-dark',
     },
   ] satisfies CaseItem[],
   /** Shown instead of the link while a case page isn't published. */
@@ -472,6 +472,14 @@ export const allWork = {
       badge: 'Case study',
     },
     {
+      title: 'Nexus',
+      meta: 'Founder · Fintech',
+      summary: 'A fintech platform built around verified human identity. Passkeys, not passwords.',
+      cats: ['AI & Product', 'Ventures'],
+      image: { src: nexusImage, alt: 'A glass phone on a stone pedestal with a glowing blue chevron inside', fit: 'cover' },
+      badge: 'Coming soon',
+    },
+    {
       title: 'Customer Connect',
       meta: 'AT&T',
       summary: '50+ service flows for 9,000 agents serving 180M customers. Seven steps became three.',
@@ -479,14 +487,6 @@ export const allWork = {
       image: { src: ccImage, alt: 'Seven small glass blocks merging into larger blue-lit glass blocks', fit: 'cover' },
       href: '/work/customer-connect/',
       badge: 'Case study',
-    },
-    {
-      title: 'Nexus',
-      meta: 'Founder · Fintech',
-      summary: 'A fintech platform built around verified human identity. Passkeys, not passwords.',
-      cats: ['AI & Product', 'Ventures'],
-      image: { src: nexusImage, alt: 'A glass phone on a stone pedestal with a glowing blue chevron inside', fit: 'cover' },
-      badge: 'Coming soon',
     },
     {
       title: 'Globe Check',
