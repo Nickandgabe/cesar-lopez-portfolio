@@ -23,7 +23,7 @@ const hasVideo = Boolean(hero.video.mp4 || hero.video.webm);
   </div>
   <div class="hero-mask absolute inset-0 -z-10" aria-hidden="true"></div>
 
-  <div class="hero-text flex items-start px-[var(--gutter)] pb-16 lg:min-h-[clamp(640px,100svh,960px)] lg:items-center lg:pt-[104px] lg:pb-12">
+  <div class="hero-text flex items-start px-[var(--gutter)] pb-16 lg:min-h-[clamp(640px,100svh,960px)] lg:items-center lg:pt-[calc(104px+var(--banner-h))] lg:pb-12">
     <div class="w-full max-w-[680px]">
       <p class="hero-scrim [--scrim:0.55] mono m-0 mb-[26px] grid grid-cols-[6px_minmax(0,1fr)] items-start gap-x-2.5 text-white lg:mb-[clamp(14px,2.6svh,26px)]">
         <span aria-hidden="true" class="mt-[0.45em] size-1.5 rounded-full bg-accent-soft"></span>

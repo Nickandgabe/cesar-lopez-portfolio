@@ -21,6 +21,7 @@
 :root {
   --gutter: clamp(20px, 5.56vw, 80px);
   --focus: var(--color-accent);
+  --banner-h: 0px;
   color-scheme: light;
 }
 
@@ -78,7 +79,7 @@ a {
 
 /* Anchored sections clear the fixed nav. */
 [id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(96px + var(--banner-h));
 }
 
 }
@@ -197,7 +198,7 @@ a {
 }
 @media (max-width: 1023.98px) {
   .hero-media {
-    top: 64px;
+    top: calc(64px + var(--banner-h));
     height: var(--hero-media-h);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
@@ -207,7 +208,7 @@ a {
   }
   .hero-text {
     min-height: max(640px, 100svh);
-    padding-top: 7rem;
+    padding-top: calc(7rem + var(--banner-h));
   }
   .hero-mask {
     background: rgba(5, 7, 14, var(--hero-mask, 0.43));
@@ -342,4 +343,14 @@ a {
   scroll-snap-align: start;
 }
 
+}
+
+/* Launch banner height: the bar is fixed at the top; the menu and hero shift down by this much. */
+html.has-banner {
+  --banner-h: 36px;
+}
+@media (max-width: 520px) {
+  html.has-banner {
+    --banner-h: 48px;
+  }
 }

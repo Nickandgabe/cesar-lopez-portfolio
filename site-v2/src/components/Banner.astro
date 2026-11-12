@@ -1,0 +1,75 @@
+---
+// Thin launch bar above the menu. Shown only while <html> has .has-banner, which an inline
+// script in Base.astro sets before paint (not expired, not dismissed). Close remembers it.
+import { banner } from '../content';
+const active = Boolean(banner.text);
+---
+
+{
+  active && (
+    <div class="site-banner" role="region" aria-label="Announcement">
+      <p class="m-0">{banner.text}</p>
+      <button type="button" class="site-banner-close" aria-label={banner.closeLabel} data-banner-close data-until={banner.until}>
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-banner-close]').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.remove('has-banner');
+      try {
+        localStorage.setItem('banner-dismissed', btn.dataset.until ?? '1');
+      } catch {
+        /* storage blocked: the bar just comes back on the next visit */
+      }
+    }),
+  );
+</script>
+
+<style>
+  .site-banner {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 60;
+    display: none;
+    height: var(--banner-h);
+    align-items: center;
+    justify-content: center;
+    padding: 0 44px;
+    background: var(--color-ink);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.3;
+    text-align: center;
+  }
+  :global(html.has-banner) .site-banner {
+    display: flex;
+  }
+  .site-banner-close {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-mist);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .site-banner-close:hover {
+    color: #fff;
+  }
+  .site-banner-close:focus-visible {
+    outline: 2px solid var(--color-accent-soft);
+    outline-offset: 0;
+  }
+</style>

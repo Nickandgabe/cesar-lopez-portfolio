@@ -1,0 +1,10 @@
+# Production deploy from the repo root uploads only what the Dockerfile needs.
+/*
+!/Dockerfile
+!/nginx.prod.conf
+!/CesarPortfolioWeb/
+!/site-v2/
+/site-v2/node_modules/
+/site-v2/dist/
+/site-v2/.astro/
+/CesarPortfolioWeb/Dockerfile

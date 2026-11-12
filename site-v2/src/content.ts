@@ -43,6 +43,20 @@ export interface SplitText {
   accent?: string;
 }
 
+/**
+ * Launch banner (thin bar above the menu). Hidden after `until` (YYYY-MM-DD, end of day)
+ * or once the visitor closes it. Set `text: ''` to turn it off.
+ */
+export const banner = {
+  text: 'New portfolio — case studies are rolling out this week.',
+  until: '2026-11-19',
+  closeLabel: 'Dismiss announcement',
+};
+
+/** True for "[TODO …]"-style placeholders. They show in `npm run dev` but never in the deployed build. */
+export const isPlaceholder = (text?: string) => !!text && /\[[^\]]*\]/.test(text);
+export const showPlaceholders = import.meta.env.DEV;
+
 export const site = {
   url: 'https://www.iamcesarlopez.com',
   title: 'Cesar Lopez — AI Product Design Leader',
@@ -366,7 +380,7 @@ export const work = {
     },
   ] satisfies CaseItem[],
   /** Shown instead of the link while a case page isn't published. */
-  pendingLabel: '[Case page coming soon]',
+  pendingLabel: 'Case study coming soon',
 };
 
 export const leadership = {

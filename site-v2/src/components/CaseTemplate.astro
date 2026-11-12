@@ -2,12 +2,20 @@
 import { Picture } from 'astro:assets';
 import VideoOverlay from './VideoOverlay.astro';
 import type { CaseStudy } from '../content';
-import { caseStudies, caseHref } from '../content';
+import { caseStudies, caseHref, isPlaceholder, showPlaceholders } from '../content';
 
 interface Props {
   study: CaseStudy;
 }
 const { study } = Astro.props;
+
+// Placeholders ("[TODO …]") only show in dev.
+const keep = (t?: string) => showPlaceholders || !isPlaceholder(t);
+const results = study.results
+  .map((g) => ({ ...g, items: g.items.filter((r) => keep(r.value) && keep(r.label)) }))
+  .filter((g) => g.items.length > 0);
+const decisions = study.decisions.filter((d) => keep(d.title) && keep(d.why));
+const visuals = study.visuals.filter((v) => keep(v));
 
 // Next published case, wrapping around.
 const visible = caseStudies.filter((c) => caseHref(c.slug));
@@ -51,7 +59,7 @@ const showNext = next && next.slug !== study.slug;
 <section aria-labelledby="results-title" class="px-[var(--gutter)] py-16 lg:py-24">
   <h2 id="results-title" class="sr-only">Results</h2>
   {
-    study.results.map((g) => (
+    results.map((g) => (
       <div class="mb-12 last:mb-0">
         <p class="mono m-0 mb-6 border-t border-[rgba(11,11,15,0.12)] pt-5 text-ink-2">{g.label}</p>
         <ul class="m-0 grid list-none grid-cols-1 gap-10 p-0 sm:grid-cols-2 lg:grid-cols-4">
@@ -84,7 +92,7 @@ const showNext = next && next.slug !== study.slug;
     <h2 id="changed" class="case-h">What I changed</h2>
     <ol class="m-0 list-none p-0">
       {
-        study.decisions.map((d, i) => (
+        decisions.map((d, i) => (
           <li data-reveal class="grid grid-cols-[44px_minmax(0,1fr)] gap-3.5 border-t border-[rgba(11,11,15,0.12)] py-5 first:border-t-0 first:pt-0">
             <span class="num text-lg text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <div>
@@ -97,18 +105,18 @@ const showNext = next && next.slug !== study.slug;
     </ol>
   </section>
 
-  <section aria-labelledby="visuals" class="case-row">
+  {visuals.length > 0 && (<section aria-labelledby="visuals" class="case-row">
     <h2 id="visuals" class="case-h">Visuals</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {
-        study.visuals.map((v) => (
+        visuals.map((v) => (
           <div class="mono flex aspect-[16/10] items-center justify-center rounded-[28px] border border-dashed border-[rgba(11,11,15,0.25)] p-6 text-center text-ink-2">
             {v}
           </div>
         ))
       }
     </div>
-  </section>
+  </section>)}
 
   <section aria-labelledby="takeaway" class="case-row">
     <h2 id="takeaway" class="case-h">Takeaway</h2>

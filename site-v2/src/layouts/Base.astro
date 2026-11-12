@@ -3,7 +3,8 @@ import '@fontsource-variable/geist';
 import '@fontsource-variable/geist-mono';
 import '../styles/global.css';
 import geistWoff2 from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
-import { site } from '../content';
+import { site, banner } from '../content';
+import Banner from '../components/Banner.astro';
 
 interface Props {
   title?: string;
@@ -56,6 +57,15 @@ const personLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
 
+    <!-- Launch banner: show only if not expired and not dismissed (set before paint, no layout jump). -->
+    <script is:inline define:vars={{ bannerOn: Boolean(banner.text), bannerUntil: banner.until }}>
+      var dismissed = false;
+      try { dismissed = localStorage.getItem('banner-dismissed') === bannerUntil; } catch (e) {}
+      if (bannerOn && !dismissed && new Date() <= new Date(bannerUntil + 'T23:59:59')) {
+        document.documentElement.classList.add('has-banner');
+      }
+    </script>
+
     <!-- Turn on reveal animations only when JS runs and motion is allowed. -->
     <script is:inline>
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -65,6 +75,7 @@ const personLd = {
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <Banner />
     <slot />
     <script>
       import '../scripts/motion';

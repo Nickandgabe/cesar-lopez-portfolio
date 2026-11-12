@@ -1,6 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
-import { closing } from '../content';
+import { closing, isPlaceholder, showPlaceholders } from '../content';
+
+const showEmail = showPlaceholders || !isPlaceholder(closing.primary.label);
 ---
 
 <footer id="contact" class="on-dark relative isolate mt-28 flex min-h-[560px] flex-col justify-end overflow-hidden bg-close text-white lg:mt-40">
@@ -20,8 +22,16 @@ import { closing } from '../content';
       {closing.title.main} <span class="accent-light">{closing.title.accent}</span>
     </h2>
     <div class="flex flex-wrap justify-end gap-2.5">
-      <a href={closing.secondary.href} class="btn btn-ghost glass-dark" rel="me">{closing.secondary.label}</a>
-      <a href={closing.primary.href} class="btn btn-light">{closing.primary.label}</a>
+      {
+        showEmail ? (
+          <>
+            <a href={closing.secondary.href} class="btn btn-ghost glass-dark" rel="me">{closing.secondary.label}</a>
+            <a href={closing.primary.href} class="btn btn-light">{closing.primary.label}</a>
+          </>
+        ) : (
+          <a href={closing.secondary.href} class="btn btn-light" rel="me">{closing.secondary.label}</a>
+        )
+      }
     </div>
   </div>
   <p class="absolute bottom-8 left-[var(--gutter)] m-0 pr-[var(--gutter)] text-[13px] text-[#8A8FA8]">{closing.footer}</p>
