@@ -68,7 +68,7 @@ export const hero = {
   eyebrow: 'AI Product Design Leader',
   headline: {
     main: 'Customers ask.',
-    accent: 'Agents build. Team Approve.',
+    accent: 'Agents build. Teams approve.',
   } satisfies SplitText,
   body:
     'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while people make the calls that matter.',
@@ -372,7 +372,7 @@ export const leadership = {
   principles: [
     { title: 'I stay in the work.', detail: "I review flows, prototype and write code next to my team. Leading from a distance isn't my style." },
     { title: 'Clear goals, then trust.', detail: 'I set the direction and the bar, then give people room to own their part.' },
-    { title: 'People decide.', detail: 'The same rule I use with AI: tools and agents do the heavy lifting, and humans make the calls that matter.' },
+    { title: 'Teams approve.', detail: 'The same rule I use with AI: tools and agents do the heavy lifting, and humans make the calls that matter.' },
   ],
   // Newest first.
   chapters: [
