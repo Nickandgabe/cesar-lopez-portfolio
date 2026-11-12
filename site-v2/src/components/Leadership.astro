@@ -1,41 +1,58 @@
 ---
+// "How I lead": image on the left (sticky on desktop while the list scrolls),
+// title, subtitle, three principles and the numbered chapters on the right.
 import { Picture } from 'astro:assets';
 import { leadership } from '../content';
 ---
 
-<section id="leadership" aria-labelledby="leadership-title" class="relative flex flex-col lg:block lg:h-[760px]">
-  <div class="w-full lg:absolute lg:top-0 lg:left-0 lg:h-[760px] lg:w-[44.5%]">
+<section id="leadership" aria-labelledby="leadership-title" class="relative lg:grid lg:grid-cols-[44.5%_minmax(0,1fr)] lg:gap-[1.3%]">
+  <div class="w-full lg:sticky lg:top-0 lg:h-[min(100svh,880px)] lg:self-start">
     <Picture
       src={leadership.image.src}
       alt={leadership.image.alt}
       formats={['webp']}
-    fallbackFormat="jpg"
+      fallbackFormat="jpg"
       widths={[480, 825]}
       sizes="(min-width: 1024px) 45vw, 100vw"
       loading="lazy"
-      class="fade-b lg:fade-r block aspect-[4/3] h-auto w-full object-cover object-[50%_30%] lg:aspect-auto lg:h-full"
+      class="fade-b lg:fade-rb block aspect-[4/3] h-auto w-full object-cover object-[50%_30%] lg:aspect-auto lg:h-full"
     />
   </div>
 
-  <div data-reveal class="px-[var(--gutter)] pt-6 lg:absolute lg:top-10 lg:right-[var(--gutter)] lg:left-[45.8%] lg:px-0 lg:pt-0">
-    <h2 id="leadership-title" class="t-h2 m-0 mb-8">
-      {leadership.title.main} <span class="accent-light">{leadership.title.accent}</span>
-    </h2>
-    <ol class="m-0 list-none p-0">
+  <div class="px-[var(--gutter)] pt-6 pb-4 lg:pt-10 lg:pr-[var(--gutter)] lg:pl-0">
+    <div data-reveal>
+      <h2 id="leadership-title" class="t-h2 m-0">{leadership.title.main}</h2>
+      <p class="t-lead mt-5 mb-0 max-w-[680px] text-ink-2">{leadership.subtitle}</p>
+    </div>
+
+    <ul class="m-0 mt-10 grid list-none gap-6 p-0 lg:mt-12 xl:grid-cols-3 xl:gap-8">
+      {
+        leadership.principles.map((p, i) => (
+          <li data-reveal style={`transition-delay:${i * 90}ms`} class="border-t-2 border-accent pt-4">
+            <h3 class="m-0 text-[17px] font-semibold tracking-[-0.01em]">{p.title}</h3>
+            <p class="mt-1.5 mb-0 text-[15px] leading-relaxed text-ink-2">{p.detail}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <ol class="m-0 mt-12 list-none p-0 lg:mt-14">
       {
         leadership.chapters.map((c) => (
-          <li class="grid grid-cols-[44px_minmax(0,1fr)] gap-3.5 border-t border-[rgba(11,11,15,0.12)] py-[22px] sm:grid-cols-[56px_minmax(0,1fr)]">
-            <span class="num text-lg text-accent" aria-hidden="true">{c.n}</span>
+          <li data-reveal class="grid grid-cols-[40px_minmax(0,1fr)] gap-3 border-t border-[rgba(11,11,15,0.12)] py-6 sm:grid-cols-[56px_minmax(0,1fr)] sm:gap-3.5">
+            <span class="num pt-0.5 text-lg text-accent" aria-hidden="true">{c.n}</span>
             <div>
-              <h3 class="m-0 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-lg font-semibold sm:text-xl">
-                {c.role}
-                {c.dates && <span class="mono font-normal text-ink-2">{c.dates}</span>}
-              </h3>
-              <p class="mt-1.5 mb-0 text-base text-ink-2">{c.detail}</p>
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <h3 class="m-0 text-lg font-semibold sm:text-xl">{c.role}</h3>
+                <span class="mono shrink-0 text-ink-2">{c.dates}</span>
+              </div>
+              <span class="mt-2.5 inline-block rounded-full border border-[rgba(11,11,15,0.14)] px-2.5 py-0.5 text-xs text-ink-2">{c.tag}</span>
+              <p class="mt-2.5 mb-0 text-base leading-relaxed text-ink-2">{c.detail}</p>
             </div>
           </li>
         ))
       }
     </ol>
+    <p class="m-0 border-t border-[rgba(11,11,15,0.12)] pt-5 text-sm text-ink-2">{leadership.earlier}</p>
   </div>
 </section>

@@ -158,6 +158,12 @@ a {
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
     mask-image: linear-gradient(to right, transparent 0%, #000 30%);
   }
+  .lg\:fade-rb {
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, #000 30%), linear-gradient(to bottom, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to left, transparent 0%, #000 30%), linear-gradient(to bottom, #000 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
   .lg\:fade-yl {
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(to right, transparent 0%, #000 30%);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(to right, transparent 0%, #000 30%);

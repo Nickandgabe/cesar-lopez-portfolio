@@ -38,7 +38,7 @@ const hasVideo = Boolean(hero.video.mp4 || hero.video.webm);
               <p class="m-0 flex flex-wrap items-baseline gap-x-1.5 gap-y-1 leading-none sm:flex-nowrap sm:whitespace-nowrap">
                 {s.prefix && <span class="text-sm font-medium text-mist">{s.prefix}</span>}
                 <span class="num text-[clamp(2rem,2.64vw,2.375rem)] font-semibold tracking-[-0.05em] text-white">
-                  <span data-count={s.value}>{s.value}</span>{s.suffix}
+                  {s.text ? s.text : <span data-count={s.value}>{s.value}</span>}{s.suffix}
                 </span>
                 {s.unit && <span class="text-sm font-medium text-mist">{s.unit}</span>}
               </p>

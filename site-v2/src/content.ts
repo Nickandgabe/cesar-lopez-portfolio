@@ -74,10 +74,11 @@ export const hero = {
     'I lead products end to end, from the first business question to what ships and how it performs. My operating model lets AI agents do the heavy lifting while people make the calls that matter.',
   // Top line: [prefix] value[suffix] [unit] — only `value` counts up. Label goes below.
   stats: [
-    { prefix: '', value: 18, suffix: '', unit: 'years', label: 'in product & design' },
-    { prefix: 'Up to', value: 20, suffix: '', unit: '', label: 'people led across design, production and logistics' },
-    { prefix: '', value: 3, suffix: '', unit: 'ventures', label: 'founded' },
-    { prefix: '', value: 180, suffix: 'M', unit: 'customers', label: 'reached by my flows' },
+    { prefix: '', value: 18, suffix: '', unit: 'years', label: 'in product & design', text: '' },
+    // `text` = static (no count-up), shown in the number's size and style.
+    { prefix: '', value: 0, text: 'Any scale', suffix: '', unit: '', label: 'teams led across design, product and engineering' },
+    { prefix: '', value: 3, suffix: '', unit: 'ventures', label: 'founded', text: '' },
+    { prefix: '', value: 180, suffix: 'M', unit: 'customers', label: 'reached by my flows', text: '' },
   ],
   primary: { label: 'See the work ↓', href: '#work' } satisfies Link,
   secondary: { label: 'Get in touch', href: '#contact' } satisfies Link,
@@ -361,27 +362,57 @@ export const work = {
 };
 
 export const leadership = {
-  title: { main: 'Leadership,', accent: 'by chapter' } satisfies SplitText,
+  title: { main: 'How I lead' } satisfies SplitText,
+  subtitle:
+    'I orchestrate design, product and engineering at every level, from a hands-on squad shipping one feature to cross-functional teams building whole platforms.',
   image: {
     src: teamImage,
     alt: 'Six abstract glass figures standing together, one glowing blue in front',
   } satisfies Img,
+  principles: [
+    { title: 'I stay in the work.', detail: "I review flows, prototype and write code next to my team. Leading from a distance isn't my style." },
+    { title: 'Clear goals, then trust.', detail: 'I set the direction and the bar, then give people room to own their part.' },
+    { title: 'People decide.', detail: 'The same rule I use with AI: tools and agents do the heavy lifting, and humans make the calls that matter.' },
+  ],
+  // Newest first.
   chapters: [
     {
       n: '01',
-      role: 'AT&T — Lead Sr UX Designer',
-      dates: 'Jan 2026 – present',
-      detail: 'Leading a team of 5 designers on AI-driven and agentic experiences, design systems and AI governance.',
+      role: 'AT&T, Lead Sr. UX Designer',
+      dates: 'Jan 2026 – Present',
+      tag: 'AI product squad',
+      detail: 'Leading a design team while running AI products in parallel, and presenting a new AI operating model to VPs and AVPs.',
     },
     {
       n: '02',
-      role: 'AT&T — Sr UX Designer · UX Architect',
+      role: 'AT&T, Sr. UX Designer · UX Architect',
       dates: '2023 – 2026',
-      detail: '50+ service flows for retail and call center, Customer Connect, AI Product Journey.',
+      tag: 'Enterprise platform teams',
+      detail: 'Owned 50+ service flows used by 9,000 agents and cut them from seven steps to three. Set design system standards across workstreams.',
     },
-    { n: '03', role: 'Brain Group', dates: '2013 – 2020', detail: 'Led a team of up to 10 designers and developers.' },
-    { n: '04', role: 'Founder — Nexus, Together, SwapZone', dates: '', detail: 'Strategy, design and code, end to end.' },
+    {
+      n: '03',
+      role: 'Globe Check · Immersicom · Integris',
+      dates: '2020 – 2023',
+      tag: 'Product & design lead',
+      detail: 'Led product and design for a healthcare SaaS platform, ran an enterprise design system, and presented roadmaps to executives.',
+    },
+    {
+      n: '04',
+      role: 'Brain Group',
+      dates: '2013 – 2020',
+      tag: 'Multi-brand design & dev team',
+      detail: 'Led designers and developers across a portfolio of brands in Colombia and the US, and scoped and costed every project.',
+    },
+    {
+      n: '05',
+      role: 'Founder: Nexus, Together, SwapZone',
+      dates: 'Ongoing',
+      tag: 'Founder-led product teams',
+      detail: 'Strategy, design and code, end to end.',
+    },
   ],
+  earlier: 'Earlier: design and product roles in Bogotá, 2008–2013.',
 };
 
 export const range = {
